@@ -2384,21 +2384,21 @@ public class CombineServiceNew {
                 openCreateItemAngel(player);
                 break;
             //khaile add
-//            case CHE_TAO_AO_VO_CUC_TU_TAI:
-//                chetaoAoVoCucTuTai(player);
-//                break;
-//            case CHE_TAO_QUAN_VO_CUC_TU_TAI:
-//                chetaoQuanVoCucTuTai(player);
-//                break;
-//            case CHE_TAO_GANG_VO_CUC_TU_TAI:
-//                chetaoGangVoCucTuTai(player);
-//                break;
-//            case CHE_TAO_GIAY_VO_CUC_TU_TAI:
-//                chetaoGiayVoCucTuTai(player);
-//                break;
-//            case CHE_TAO_TRANG_SUC_VO_CUC_TU_TAI:
-//                chetaoTrangSucVoCucTuTai(player);
-//                break;
+            case CHE_TAO_AO_VO_CUC_TU_TAI:
+                chetaoAoVoCucTuTai(player);
+                break;
+            case CHE_TAO_QUAN_VO_CUC_TU_TAI:
+                chetaoQuanVoCucTuTai(player);
+                break;
+            case CHE_TAO_GANG_VO_CUC_TU_TAI:
+                chetaoGangVoCucTuTai(player);
+                break;
+            case CHE_TAO_GIAY_VO_CUC_TU_TAI:
+                chetaoGiayVoCucTuTai(player);
+                break;
+            case CHE_TAO_TRANG_SUC_VO_CUC_TU_TAI:
+                chetaoTrangSucVoCucTuTai(player);
+                break;
             case CHE_TAO_DAN_DUOC_LUYEN_KHI:
                 chetaoHoangCucDan(player);
                 break;
@@ -2423,6 +2423,71 @@ public class CombineServiceNew {
 
     }
 //khaile add
+
+    private void chetaoAoVoCucTuTai(Player player) {
+        sendEffectSuccessCombine(player);
+        createTuTaiItem(player, (short) 1682, Arrays.asList(
+                new ItemOption(199, Util.nextInt(4000, 8000)), // giáp +#00K
+                new ItemOption(94, Util.nextInt(100, 150)), // % giáp
+                new ItemOption(192, 0),
+                new ItemOption(194, 20), // 6 món né đòn 20
+                new ItemOption(191, 750)
+        ));
+        player.combineNew.clearItemCombine();
+        reOpenItemCombine(player);
+    }
+
+    private void chetaoQuanVoCucTuTai(Player player) {
+        sendEffectSuccessCombine(player);
+        createTuTaiItem(player, (short) 1683, Arrays.asList(
+                new ItemOption(196, Util.nextInt(15000, 25000)), // hp +000K
+                new ItemOption(77, Util.nextInt(150, 200)),
+                new ItemOption(192, 0),
+                new ItemOption(194, 20),
+                new ItemOption(191, 750)
+        ));
+        player.combineNew.clearItemCombine();
+        reOpenItemCombine(player);
+    }
+
+    private void chetaoGangVoCucTuTai(Player player) {
+        sendEffectSuccessCombine(player);
+        createTuTaiItem(player, (short) 1684, Arrays.asList(
+                new ItemOption(198, Util.nextInt(1000, 2000)), //+#00K
+                new ItemOption(50, Util.nextInt(100, 150)),
+                new ItemOption(192, 0),
+                new ItemOption(194, 20),
+                new ItemOption(191, 750)
+        ));
+        player.combineNew.clearItemCombine();
+        reOpenItemCombine(player);
+    }
+
+    private void chetaoGiayVoCucTuTai(Player player) {
+        sendEffectSuccessCombine(player);
+        createTuTaiItem(player, (short) 1685, Arrays.asList(
+                new ItemOption(197, Util.nextInt(15000, 25000)), // ki +#000K
+                new ItemOption(103, Util.nextInt(150, 200)),
+                new ItemOption(192, 0),
+                new ItemOption(194, 20),
+                new ItemOption(191, 750)
+        ));
+        player.combineNew.clearItemCombine();
+        reOpenItemCombine(player);
+    }
+
+    private void chetaoTrangSucVoCucTuTai(Player player) {
+        sendEffectSuccessCombine(player);
+        createTuTaiItem(player, (short) 1686, Arrays.asList(
+                new ItemOption(14, Util.nextInt(200, 400)),
+                new ItemOption(5, Util.nextInt(50, 100)),
+                new ItemOption(192, 0),
+                new ItemOption(194, 20),
+                new ItemOption(191, 750)
+        ));
+        player.combineNew.clearItemCombine();
+        reOpenItemCombine(player);
+    }
 
     private void chetaoHoangCucDan(Player player) {
         sendEffectSuccessCombine(player);
