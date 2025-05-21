@@ -33,7 +33,7 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
     public byte tinhan;
     public byte nguyetan;
     public byte nhatan;
-
+    public byte setVoCucTuTai;
 //    public boolean chanmenh;
 
     public boolean huydietClothers;
@@ -208,7 +208,6 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
 //        }
 //        return this.chanmenh ? true : false;
 //    }
-
     private void setupAN() {
         for (int i = 0; i < 5; i++) {
             Item item = this.player.inventory.itemsBody.get(i);
@@ -307,7 +306,12 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
                             isActSet = true;
                             xayda++;
                             break;
-
+//khaile add
+                        case 192:
+                            isActSet = true;
+                            setVoCucTuTai++;
+                            break;
+                        //end khaile add
                         case 210:
                             isActSet = true;
                             setDHD++;
@@ -349,6 +353,7 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
         this.nguyetan = 0;
         this.godClothes = false;
         this.ctHaiTac = -1;
+        this.setVoCucTuTai =0;
     }
 
     public void dispose() {//Zalo: 0358124452//Name: EMTI 

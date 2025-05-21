@@ -497,10 +497,10 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                             break;
                         //khaile add
                         case 196:
-                            this.hpAdd += io.param * 1_000_000; // 000k
+                            this.hpAdd += io.param * 100_000; // 00k
                             break;
                         case 197:
-                            this.mpAdd += io.param * 1_000_000;//000k
+                            this.mpAdd += io.param * 100_000;//00k
                             break;
                         case 198:
                             this.dameAdd += io.param * 100_000;//00k
@@ -897,7 +897,12 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         if (this.tlNeDon > 90) {//Zalo: 0358124452//Name: EMTI 
             this.tlNeDon = 90;
         }
-
+//set vo cuc tu tai
+//khaile add
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+            this.tlNeDon += 20;
+        }
+//end khaile add
     }
 
     public void setPotara2() {//Zalo: 0358124452//Name: EMTI 
@@ -1234,7 +1239,12 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                 this.hpMax += calPercent(this.hpMax, tl);
             }
         }
-
+//set vo cuc tu tai
+//khaile add
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+            this.hpMax += calPercent(this.hpMax, 750);
+        }
+//end khaile add
         // Set nappa
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.nappa
                 == 5) {//Zalo: 0358124452//Name: EMTI 
@@ -1505,7 +1515,12 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                 this.mpMax += calPercent(this.mpMax, tl);
             }
         }
-
+//set vo cuc tu tai
+//khaile add
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+            this.mpMax += calPercent(this.mpMax, 750);
+        }
+//end khaile add
         // Set picolo
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.picolo == 5) {//Zalo: 0358124452//Name: EMTI 
             this.mpMax += calPercent(this.mpMax, 100);
@@ -1746,7 +1761,12 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                 this.dame += calPercent(this.dame, tl);
             }
         }
-
+//set vo cuc tu tai
+//khaile add
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+            this.dame += calPercent(this.dame, 750);
+        }
+//end khaile add
         if (this.player.isPet// chi so lam sao bac tu cho dj
                 && (((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3
                 || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA4
@@ -1997,23 +2017,29 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
             this.def += calPercent(this.def, RewardBlackBall.R2S_2);
         }
     }
+//khaile modify
 
-    private void setCrit() {//Zalo: 0358124452//Name: EMTI 
-        this.crit = this.critg;
-        this.crit += this.critAdd;
-        //ngọc rồng đen 3 sao
-        if (this.player.rewardBlackBall.timeOutOfDateReward[2] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+    private void setCrit() {
+        this.crit = this.critg + this.critAdd;
+        this.overflowcrit = crit;
+        // Ngọc Rồng Đen 3 Sao
+        if (this.player.rewardBlackBall.timeOutOfDateReward[2] > System.currentTimeMillis()) {
             this.crit += RewardBlackBall.R3S_2;
         }
-        //biến khỉ
-        if (this.player.effectSkill.isMonkey) {//Zalo: 0358124452//Name: EMTI 
-            this.crit = 90;
-        }
-        if (this.crit > 90) {//Zalo: 0358124452//Name: EMTI 
-            this.crit = 90;
+
+        // Biến khỉ
+        if (this.player.effectSkill.isMonkey) {
+            this.crit = 100;
         }
 
+        // Xử lý phần chí mạng dư
+        if (this.crit > 100) {
+            int critOverflow = this.crit - 100;  // Phần dư của chí mạng
+            tlDameCrit.add(critOverflow / 5);   // Chuyển phần dư thành tlDameCrit
+            this.crit = 100;                    // Giới hạn chí mạng về 100
+        }
     }
+//end khaile modify
 
     private void resetPoint() {//Zalo: 0358124452//Name: EMTI 
         this.voHieuChuong = 0;
@@ -2100,6 +2126,7 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
             isCrit = Util.isTrue(this.crit, ConstRatio.PER100);
         }
     }
+//khaile add set vo cuc tu tai
 
     public double getDameAttack(boolean isAttackMob) {//Zalo: 0358124452//Name: EMTI 
         setIsCrit();
@@ -2115,11 +2142,17 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                 if (intrinsic.id == 1) {//Zalo: 0358124452//Name: EMTI 
                     percentDameIntrinsic = intrinsic.param1;
                 }
+                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                    percentXDame = 100;
+                }
                 percentDameSkill = skillSelect.damage;
                 break;                                //Zalo: 0358124452                                //Name: EMTI 
             case Skill.KAMEJOKO:
                 if (intrinsic.id == 2) {//Zalo: 0358124452//Name: EMTI 
                     percentDameIntrinsic = intrinsic.param1;
+                }
+                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                    percentXDame = 100;
                 }
                 percentDameSkill = skillSelect.damage;
                 if (this.player.setClothes.songoku == 5) {//Zalo: 0358124452//Name: EMTI 
@@ -2133,6 +2166,9 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                 if (intrinsic.id == 16) {//Zalo: 0358124452//Name: EMTI 
                     percentDameIntrinsic = intrinsic.param1;
                 }
+                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                    percentXDame = 100;
+                }
                 percentDameSkill = skillSelect.damage;
                 if (this.player.setClothes.kakarot == 5) {//Zalo: 0358124452//Name: EMTI 
                     percentXDame = 100;
@@ -2141,6 +2177,9 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
             case Skill.ANTOMIC:
                 if (intrinsic.id == 17) {//Zalo: 0358124452//Name: EMTI 
                     percentDameIntrinsic = intrinsic.param1;
+                }
+                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                    percentXDame = 100;
                 }
                 percentDameSkill = skillSelect.damage;
                 if (this.player.isPet && (((Pet) this.player).typePet == 33)) {
@@ -2151,11 +2190,17 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                 if (intrinsic.id == 8) {//Zalo: 0358124452//Name: EMTI 
                     percentDameIntrinsic = intrinsic.param1;
                 }
+                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                    percentXDame = 100;
+                }
                 percentDameSkill = skillSelect.damage;
                 break;                                //Zalo: 0358124452                                //Name: EMTI 
             case Skill.MASENKO:
                 if (intrinsic.id == 9) {//Zalo: 0358124452//Name: EMTI 
                     percentDameIntrinsic = intrinsic.param1;
+                }
+                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                    percentXDame = 100;
                 }
                 percentDameSkill = skillSelect.damage;
                 if (this.player.setClothes.masenko == 5) {//Zalo: 0358124452//Name: EMTI 
@@ -2170,6 +2215,9 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                 if (intrinsic.id == 26) {//Zalo: 0358124452//Name: EMTI 
                     percentDameIntrinsic = intrinsic.param1;
                 }
+                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                    percentXDame = 100;
+                }
                 percentDameSkill = skillSelect.damage;
                 if (this.player.setClothes.kaioken == 5) {//Zalo: 0358124452//Name: EMTI 
                     percentXDame = 25;
@@ -2178,6 +2226,9 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
             case Skill.LIEN_HOAN:
                 if (intrinsic.id == 13) {//Zalo: 0358124452//Name: EMTI 
                     percentDameIntrinsic = intrinsic.param1;
+                }
+                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                    percentXDame = 100;
                 }
                 percentDameSkill = skillSelect.damage;
                 if (this.player.setClothes.ocTieu == 5) {//Zalo: 0358124452//Name: EMTI 

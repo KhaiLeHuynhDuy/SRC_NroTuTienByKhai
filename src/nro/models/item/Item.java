@@ -174,20 +174,20 @@ public class Item {
                     + n + "param" + n + ":" + n + param + n
                     + "}";
         }
-
-        public int[] getItemOption(int optionID, int param) {
-            int op = optionID;
-            int pr = param;
-            if (optionID == 6 || optionID == 7) {
-                pr = param > Short.MAX_VALUE ? (int) Util.IntToLong(param) : param;
-                op = param > Short.MAX_VALUE ? (optionID == 6 ? 22 : optionID == 7 ? 23 : optionID) : optionID;
-            }
-            return new int[]{
-                op,
-                pr
-            };
-        }
-
+//khaile comment
+//        public int[] getItemOption(int optionID, int param) {
+//            int op = optionID;
+//            int pr = param;
+//            if (optionID == 6 || optionID == 7) {
+//                pr = param > Short.MAX_VALUE ? (int) Util.IntToLong(param) : param;
+//                op = param > Short.MAX_VALUE ? (optionID == 6 ? 22 : optionID == 7 ? 23 : optionID) : optionID;
+//            }
+//            return new int[]{
+//                op,
+//                pr
+//            };
+//        }
+//end khaile commet
         public ItemOption format() {
             int id = optionTemplate.id;
             int param = this.param;
