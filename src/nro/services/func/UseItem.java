@@ -1535,6 +1535,114 @@ public class UseItem {
                         case 722:
                             Openhop8_3(pl, item);
                             break;
+
+                        //khaile add
+                        case 1698: { // linh tuu
+                            long amount = 5_000_000_000L;
+                            pl.nPoint.powerUp(amount);
+                            pl.nPoint.tiemNangUp(amount);
+                            PlayerService.gI().sendTNSM(pl, (byte) 2, amount);
+                            Service.gI().sendThongBao(pl, "Bạn nhận 5 tỷ tu vi");
+                            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+                            InventoryServiceNew.gI().sendItemBags(pl);
+                            break;
+                        }
+                        case 1668: // Hoàng Cuc Đan
+                        {
+                            int requiredCap = 1;
+                            if (pl.capTT != requiredCap) {
+                                Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Hoàng Cúc Đan");
+                                break;
+                            } else {
+                                int damegIncrease = 10_000;
+                                int hpMpIncrease = 30_000;
+                                int maxDameg = 3_600_000;
+                                int maxHpMp = maxDameg * 3;
+                                boolean avaiable = true;
+                                // Kiểm tra giới hạn hiện tại
+                                boolean damegMaxed = pl.nPoint.dameg >= maxDameg;
+                                boolean hpMpMaxed = pl.nPoint.hpg >= maxHpMp && pl.nPoint.mpg >= maxHpMp;
+
+                                if (damegMaxed && hpMpMaxed) {
+                                    Service.gI().sendThongBao(pl, "Đã đạt giới hạn, không thể sử dụng vật phẩm");
+                                    avaiable = false;
+                                    break;
+                                }
+
+                                // Tăng chỉ số nếu chưa đạt giới hạn
+                                if (avaiable) {
+                                    if (!damegMaxed) {
+                                        pl.nPoint.dameg = Math.min(pl.nPoint.dameg + damegIncrease, maxDameg);
+                                    }
+                                    if (!hpMpMaxed) {
+                                        pl.nPoint.hpg = Math.min(pl.nPoint.hpg + hpMpIncrease, maxHpMp);
+                                        pl.nPoint.mpg = Math.min(pl.nPoint.mpg + hpMpIncrease, maxHpMp);
+                                    }
+                                    // Cập nhật trạng thái
+                                    Service.gI().point(pl);
+                                    InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+                                    InventoryServiceNew.gI().sendItemBags(pl);
+                                    Service.gI().sendThongBao(pl, "Bạn nhận được SD, HP và KI");
+                                }
+                                break;
+                            }
+                        }
+                        case 1667: // Trúc Cơ Đan
+                        {
+                            int requiredCap = 1;
+                            if (pl.capTT != requiredCap) {
+                                Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Trúc Cơ Đan");
+                                break;
+                            } else {
+                                int requiredDame = 3_600_000;
+                                int requiredHpKi = requiredDame * 3;
+
+                                int damegIncrease = 1_000_000;
+                                int hpMpIncrease = damegIncrease * 3;
+
+                                int maxDameg = 4_600_000;
+                                int maxHpMp = maxDameg * 3;
+                                boolean avaiable = true;
+
+                                // Kiểm tra nếu chưa đạt điều kiện đột phá
+                                boolean notEligible = pl.nPoint.dameg < requiredDame
+                                        || pl.nPoint.hpg < requiredHpKi
+                                        || pl.nPoint.mpg < requiredHpKi;
+
+                                if (notEligible) {
+                                    avaiable = false;
+                                    Service.gI().sendThongBao(pl, "Chưa xong luyện khí mà đòi trúc cơ à mày !!!");
+                                    break;
+                                }
+
+                                // Kiểm tra nếu đã vượt ngưỡng yêu cầu
+                                boolean alreadyBeyond = pl.nPoint.dameg >= requiredDame
+                                        || pl.nPoint.hpg >= requiredHpKi
+                                        || pl.nPoint.mpg >= requiredHpKi;
+
+                                if (alreadyBeyond) {
+                                    avaiable = false;
+                                    Service.gI().sendThongBao(pl, "Mạnh rồi trúc cơ gì nữa !!!");
+                                    break;
+                                }
+                                if (avaiable) {
+
+                                    // Nếu đủ điều kiện, tiến hành đột phá Trúc Cơ
+                                    pl.nPoint.dameg = Math.min(pl.nPoint.dameg + damegIncrease, maxDameg);
+                                    pl.nPoint.hpg = Math.min(pl.nPoint.hpg + hpMpIncrease, maxHpMp);
+                                    pl.nPoint.mpg = Math.min(pl.nPoint.mpg + hpMpIncrease, maxHpMp);
+                                    //pl.isUseTrucCoDan = true;
+                                    Service.gI().point(pl);
+                                    Service.gI().sendThongBao(pl, "Cảnh giới của bạn đã hoàn mỹ, lần tiếp theo đột phá vì Thiên Đạo Trúc Cơ");
+
+                                    // Trừ vật phẩm
+                                    InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+                                    InventoryServiceNew.gI().sendItemBags(pl);
+                                    break;
+                                }
+                            }
+                        }
+                        //end khaile add
                     }
             }
         }

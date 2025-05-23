@@ -351,7 +351,7 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                         case 224:
                         case 246:
                         case 5: //+#% sức đánh chí mạng
-                            this.tlDameCrit.add(io.param / 2);
+                            this.tlDameCrit.add(io.param);
                             break;
                         case 233://Zalo: 0358124452                                //Name: EMTI 
                         case 6: //HP+#

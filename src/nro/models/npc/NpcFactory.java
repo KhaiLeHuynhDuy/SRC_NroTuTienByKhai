@@ -113,7 +113,7 @@ public class NpcFactory {
                     if (this.mapId == 5) {
                         createOtherMenu(player, 1,
                                 "Xin chào, ta có thể giúp cậu chế tạo trang bị mạnh mẽ hoặc luyện đan.",
-                                "Chế Tạo", "Luyện Đan", "Đột phá", "Luyện Chế Trúc Cơ Đan Dược");
+                                "Chế Tạo","Đổi ngoại trang", "Luyện Đan", "Đột phá", "Luyện Chế Trúc Cơ Đan Dược");
                     }
                 }
             }
@@ -128,15 +128,20 @@ public class NpcFactory {
                                     createOtherMenu(player, 2,
                                             "Cậu muốn chế tạo loại trang bị nào?",
                                             "Chế Tạo Vô Cực");
-                                } else if (select == 1) { // Luyện Đan
+                                } 
+                                 else if (select == 1) { //
+                                    createOtherMenu(player, 3,
+                                            "Cậu muốn đổi ngoại trang nào?",
+                                            "Ngoại trang Vô Cực");
+                                }else if (select == 2) { // Luyện Đan
                                     createOtherMenu(player, 5,
                                             "Cậu muốn luyện loại đan dược nào?",
                                             "Đan Luyện Khí", "Trúc Cơ Đan");
-                                } else if (select == 2) { // dot pha
+                                } else if (select == 3) { // dot pha
                                     createOtherMenu(player, 6,
                                             "Đột phá dành cho tu sĩ đã đạt giới hạn của Trúc Cơ Cảnh",
                                             "Pháp Tu", "Thể Tu");
-                                } else if (select == 3) {
+                                } else if (select == 4) {
                                     createOtherMenu(player, 7,
                                             "Cậu muốn luyện loại đan dược nào?",
                                             "Trúc Cơ Sơ Kỳ", "Trúc Cơ Trung Kỳ", "Trúc Cơ Hậu Kỳ");
@@ -144,11 +149,12 @@ public class NpcFactory {
                                 break;
 
                             case 2: // Chọn loại trang bị
-                                if (select == 0) {
-                                    createOtherMenu(player, 3,
-                                            "Chọn vật phẩm muốn chế tạo:",
-                                            "Áo Vô Cực", "Quần Vô Cực", "Găng Vô Cực", "Giày Vô Cực", "Nhẫn Vô Cực");
-                                }
+//                                if (select == 0) {
+//                                    createOtherMenu(player, 3,
+//                                            "Chọn vật phẩm muốn chế tạo:",
+//                                            "Áo Vô Cực", "Quần Vô Cực", "Găng Vô Cực", "Giày Vô Cực", "Nhẫn Vô Cực");
+//                                }
+                                CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_VO_CUC_TU_TAI);
 //                                else if (select == 1) {
 //                                    createOtherMenu(player, 4,
 //                                            "Chọn vật phẩm muốn chế tạo:",
@@ -156,26 +162,9 @@ public class NpcFactory {
 //                                }
                                 break;
 
-                            case 3: // Chế tạo Vô Cực
-                                switch (select) {
-                                    case 0:
-                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_AO_VO_CUC_TU_TAI);
-                                        break;
-                                    case 1:
-                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_QUAN_VO_CUC_TU_TAI);
-                                        break;
-                                    case 2:
-                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_GANG_VO_CUC_TU_TAI);
-                                        break;
-                                    case 3:
-                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_GIAY_VO_CUC_TU_TAI);
-                                        break;
-                                    case 4:
-                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_TRANG_SUC_VO_CUC_TU_TAI);
-                                        break;
-                                }
+                            case 3: // Chế tạo ngoại trang Vô Cực
+                                CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_NGOAI_TRANG_VO_CUC_TU_TAI);
                                 break;
-
 //                            case 4: // Chế tạo La Thiên
 //                                switch (select) {
 //                                    case 0:

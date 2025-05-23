@@ -188,6 +188,7 @@ public class Item {
 //            };
 //        }
 //end khaile commet
+
         public ItemOption format() {
             int id = optionTemplate.id;
             int param = this.param;
@@ -243,6 +244,13 @@ public class Item {
 
     public boolean isTanDan() {
         if (this.template.id >= 1672 && this.template.id <= 1680) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isPhieuDoiNgoaiTrangVoCuc() {
+        if (this.template.id >= 1693 && this.template.id <= 1697) {
             return true;
         }
         return false;
