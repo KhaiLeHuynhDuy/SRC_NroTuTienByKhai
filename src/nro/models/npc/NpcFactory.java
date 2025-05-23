@@ -113,7 +113,7 @@ public class NpcFactory {
                     if (this.mapId == 5) {
                         createOtherMenu(player, 1,
                                 "Xin chào, ta có thể giúp cậu chế tạo trang bị mạnh mẽ hoặc luyện đan.",
-                                "Chế Tạo","Đổi ngoại trang", "Luyện Đan", "Đột phá", "Luyện Chế Trúc Cơ Đan Dược");
+                                "Chế Tạo", "Đổi ngoại trang", "Luyện Đan", "Đột phá", "Luyện Chế Trúc Cơ Đan Dược");
                     }
                 }
             }
@@ -128,12 +128,11 @@ public class NpcFactory {
                                     createOtherMenu(player, 2,
                                             "Cậu muốn chế tạo loại trang bị nào?",
                                             "Chế Tạo Vô Cực");
-                                } 
-                                 else if (select == 1) { //
+                                } else if (select == 1) { //
                                     createOtherMenu(player, 3,
                                             "Cậu muốn đổi ngoại trang nào?",
                                             "Ngoại trang Vô Cực");
-                                }else if (select == 2) { // Luyện Đan
+                                } else if (select == 2) { // Luyện Đan
                                     createOtherMenu(player, 5,
                                             "Cậu muốn luyện loại đan dược nào?",
                                             "Đan Luyện Khí", "Trúc Cơ Đan");
@@ -195,7 +194,7 @@ public class NpcFactory {
                                 }
                                 break;
                             case 6: // Đột phá
-//                                DotPhaService.gI().thucHienDotPha(player, select);
+                                DotPhaService.gI().thucHienDotPha(player, select);
                                 break;
                             case 7: // luyện chế trúc cơ đan dược
                                 switch (select) {
@@ -5431,7 +5430,7 @@ public class NpcFactory {
                                     InventoryServiceNew.gI().sendItemBags(player);
                                     Service.gI().sendThongBao(player, "Chúc Mừng Bạn Đổi Vật Phẩm Thành Công !");
                                 } else {
-                                    Item item = ItemService.gI().createNewItem((short) Util.nextInt(2123, 2126));
+                                    Item item = ItemService.gI().createNewItem((short) Util.nextInt(2123, 2125));
                                     item.itemOptions.add(new ItemOption(30, 1));
                                     item.itemOptions.add(new ItemOption(93, Util.nextInt(1, 20)));
                                     InventoryServiceNew.gI().addItemBag(player, item);

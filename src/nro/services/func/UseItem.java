@@ -1631,7 +1631,7 @@ public class UseItem {
                                     pl.nPoint.dameg = Math.min(pl.nPoint.dameg + damegIncrease, maxDameg);
                                     pl.nPoint.hpg = Math.min(pl.nPoint.hpg + hpMpIncrease, maxHpMp);
                                     pl.nPoint.mpg = Math.min(pl.nPoint.mpg + hpMpIncrease, maxHpMp);
-                                    //pl.isUseTrucCoDan = true;
+                                    pl.isUseTrucCoDan = true;
                                     Service.gI().point(pl);
                                     Service.gI().sendThongBao(pl, "Cảnh giới của bạn đã hoàn mỹ, lần tiếp theo đột phá vì Thiên Đạo Trúc Cơ");
 

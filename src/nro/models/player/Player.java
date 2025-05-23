@@ -210,6 +210,10 @@ public class Player {
 
     public byte capCS;
     public byte capTT;
+    //khaile add
+    public boolean isUseTrucCoDan;
+    public byte dotpha;
+    //end khaile add
     public boolean titleitem;
     public boolean titlett;
     public boolean isTitleUse;

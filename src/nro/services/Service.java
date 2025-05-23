@@ -884,7 +884,7 @@ public class Service {
             }
 
             info.append("\nĐột Phá: ")
-                    // .append(DotPhaService.gI().getRealNameDotPha(player.dotpha))
+                    .append(DotPhaService.gI().getRealNameDotPha(player.dotpha))
                     .append("\n\nSức Mạnh: ").append(Util.getFormatNumber(player.nPoint.power))
                     .append("\nChí Mạng: ").append(Util.getFormatNumber(player.nPoint.overflowcrit))
                     .append("\nSức Đánh Chí Mạng: ")

@@ -139,7 +139,7 @@ public class GodGK {
                             DataGame.sendDataItemBG(session);
                             DataGame.sendVersionGame(session);
                             DataGame.sendTileSetInfo(session);
-                          //  Service.gI().sendMessage(session, -93, "1630679752231_-93_r");
+                            //  Service.gI().sendMessage(session, -93, "1630679752231_-93_r");
                             DataGame.updateData(session);
                             //  DataGame.effData(session, int, int);
 
@@ -192,6 +192,12 @@ public class GodGK {
 
                             player.lastTimeDropTail = Long.parseLong(rs.getString("lastTimeDropTail"));
                             player.totalPlayerViolate = 0;
+                            //khaile add code
+                            player.isUseTrucCoDan = rs.getBoolean("isUseTrucCoDan");
+                            player.capTT = rs.getByte("capTT");
+                            player.capCS = rs.getByte("capCS");
+                            player.dotpha = rs.getByte("dotpha"); // Add this line
+                            //end khaile add code
                             int clanId = rs.getInt("clan_id_sv" + Manager.SERVER);
                             if (clanId != -1) {
                                 Clan clan = ClanService.gI().getClanById(clanId);
@@ -908,7 +914,7 @@ public class GodGK {
         PreparedStatement ps = null;
         String name = "";
         ResultSet rs = null;
-        try ( Connection con = GirlkunDB.getConnection()) {
+        try (Connection con = GirlkunDB.getConnection()) {
             ps = con.prepareStatement("select * from player");
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -1137,7 +1143,7 @@ public class GodGK {
         PreparedStatement ps = null;
         String name = "";
         ResultSet rs = null;
-        try ( Connection con = GirlkunDB.getConnection()) {
+        try (Connection con = GirlkunDB.getConnection()) {
             ps = con.prepareStatement("select * from player");
             rs = ps.executeQuery();
             while (rs.next()) {
