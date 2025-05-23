@@ -1003,21 +1003,21 @@ public class Mob {
             }
             Service.gI().dropItemMapForMe(player, new ItemMap(zone, 457, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
         }
-//        if (mapid == 218) { //ln 3
-//            Service.gI().dropItemMapForMe(player,
-//                    new ItemMap(zone, 457, 10, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
-//            Service.gI().dropItemMapForMe(player,
-//                    new ItemMap(zone, 1697, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
-//            if (player.dotpha == 1) {
-//                Service.gI().dropItemMapForMe(player,
-//                        new ItemMap(zone, 1711, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
-//            }
-//            if (player.dotpha == 2) {
-//                Service.gI().dropItemMapForMe(player,
-//                        new ItemMap(zone, 1712, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
-//            }
-//
-//        }
+        if (mapid == 218) { //ln 3
+            Service.gI().dropItemMapForMe(player,
+                    new ItemMap(zone, 457, 10, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
+            Service.gI().dropItemMapForMe(player,
+                    new ItemMap(zone, 1671, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));// linh khi
+            if (player.dotpha == 1) { //phap tu
+                Service.gI().dropItemMapForMe(player,
+                        new ItemMap(zone, 1700, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
+            }
+            if (player.dotpha == 2) {//the tu
+                Service.gI().dropItemMapForMe(player,
+                        new ItemMap(zone, 1701, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
+            }
+
+        }
 //end khaile add
         if (mapid == 159) {
             if (Util.isTrue(1, 200)) {

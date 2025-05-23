@@ -2386,28 +2386,29 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
             if (this.intrinsic != null && this.intrinsic.id == 24) {//Zalo: 0358124452//Name: EMTI 
                 tiemNang += ((long) tn * this.intrinsic.param1 / 100);
             }
-
-            if (this.power >= 900000000000L) {//Zalo: 0358124452//Name: EMTI 
-                tiemNang -= ((long) tn * 999999 / 1000000);
-            } else if (this.power >= 800000000000L) {//Zalo: 0358124452//Name: EMTI 
-                tiemNang -= ((long) tn * 99999 / 100000);
-            } else if (this.power >= 700000000000L) {//Zalo: 0358124452//Name: EMTI 
-                tiemNang -= ((long) tn * 99995 / 100000);
-            } else if (this.power >= 600000000000L) {//Zalo: 0358124452//Name: EMTI 
-                tiemNang -= ((long) tn * 9999 / 10000);
-            } else if (this.power >= 250000000000L) {//Zalo: 0358124452//Name: EMTI 
-                tiemNang -= ((long) tn * 9990 / 10000);
-            } else if (this.power >= 200000000000L) {//Zalo: 0358124452//Name: EMTI 
-                tiemNang -= ((long) tn * 9960 / 10000);
-            } else if (this.power >= 150000000000L) {//Zalo: 0358124452//Name: EMTI 
-                tiemNang -= ((long) tn * 995 / 1000);
-            } else if (this.power >= 60000000000L) {//Zalo: 0358124452//Name: EMTI 
-                tiemNang -= ((long) tn * 955 / 1000);
-            } else if (this.power >= 40000000000L) {//Zalo: 0358124452//Name: EMTI 
-                tiemNang -= ((long) tn * 900 / 1000);
-            } else if (this.power >= 20000000000L) {//Zalo: 0358124452//Name: EMTI 
-                tiemNang -= ((long) tn * 800 / 1000);
-            }
+////khaile comment
+//            if (this.power >= 900000000000L) {//Zalo: 0358124452//Name: EMTI 
+//                tiemNang -= ((long) tn * 999999 / 1000000);
+//            } else if (this.power >= 800000000000L) {//Zalo: 0358124452//Name: EMTI 
+//                tiemNang -= ((long) tn * 99999 / 100000);
+//            } else if (this.power >= 700000000000L) {//Zalo: 0358124452//Name: EMTI 
+//                tiemNang -= ((long) tn * 99995 / 100000);
+//            } else if (this.power >= 600000000000L) {//Zalo: 0358124452//Name: EMTI 
+//                tiemNang -= ((long) tn * 9999 / 10000);
+//            } else if (this.power >= 250000000000L) {//Zalo: 0358124452//Name: EMTI 
+//                tiemNang -= ((long) tn * 9990 / 10000);
+//            } else if (this.power >= 200000000000L) {//Zalo: 0358124452//Name: EMTI 
+//                tiemNang -= ((long) tn * 9960 / 10000);
+//            } else if (this.power >= 150000000000L) {//Zalo: 0358124452//Name: EMTI 
+//                tiemNang -= ((long) tn * 995 / 1000);
+//            } else if (this.power >= 60000000000L) {//Zalo: 0358124452//Name: EMTI 
+//                tiemNang -= ((long) tn * 955 / 1000);
+//            } else if (this.power >= 40000000000L) {//Zalo: 0358124452//Name: EMTI 
+//                tiemNang -= ((long) tn * 900 / 1000);
+//            } else if (this.power >= 20000000000L) {//Zalo: 0358124452//Name: EMTI 
+//                tiemNang -= ((long) tn * 800 / 1000);
+//            }
+//end khaile comment
             if (this.player != null && this.player.zone != null) {
                 if (MapService.gI().isMapDoanhTrai(player.zone.map.mapId)) {
                     tiemNang = tn * 5;
@@ -2445,30 +2446,31 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
     }
 
     public long calSubTNSM(long tiemNang) {//Zalo: 0358124452//Name: EMTI 
-        if (power >= 701000000000L) {//Zalo: 0358124452//Name: EMTI 
-            tiemNang -= ((long) tiemNang * 999 / 1000);
-        } else if (power >= 501000000000L) {//Zalo: 0358124452//Name: EMTI 
-            tiemNang -= ((long) tiemNang * 980 / 1000);
-        } else if (power >= 301000000000L) {//Zalo: 0358124452//Name: EMTI 
-            tiemNang -= ((long) tiemNang * 98 / 100);
-        } else if (power >= 201000000000L) {//Zalo: 0358124452//Name: EMTI 
-            tiemNang -= ((long) tiemNang * 97 / 100);
-        } else if (power >= 150000000000L) {//Zalo: 0358124452//Name: EMTI 
-            tiemNang -= ((long) tiemNang * 95 / 100);
-        } else if (power >= 109000000000L) {//Zalo: 0358124452//Name: EMTI 
-            tiemNang -= ((long) tiemNang * 91 / 100);
-        } else if (power >= 180000000000L) {//Zalo: 0358124452//Name: EMTI 
-            tiemNang -= ((long) tiemNang * 90 / 100);
-        } else if (power >= 110000000000L) {//Zalo: 0358124452//Name: EMTI 
-            tiemNang -= ((long) tiemNang * 85 / 100);
-        } else if (power >= 100000000000L) {//Zalo: 0358124452//Name: EMTI 
-            tiemNang -= ((long) tiemNang * 80 / 100);
-        } else if (power >= 90000000000L) {//Zalo: 0358124452//Name: EMTI 
-            tiemNang -= ((long) tiemNang * 75 / 100);
-        } else if (power >= 80000000000L) {//Zalo: 0358124452//Name: EMTI 
-            tiemNang -= ((long) tiemNang * 70 / 100);
-        }
-
+        //khaile comment
+//        if (power >= 701000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            tiemNang -= ((long) tiemNang * 999 / 1000);
+//        } else if (power >= 501000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            tiemNang -= ((long) tiemNang * 980 / 1000);
+//        } else if (power >= 301000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            tiemNang -= ((long) tiemNang * 98 / 100);
+//        } else if (power >= 201000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            tiemNang -= ((long) tiemNang * 97 / 100);
+//        } else if (power >= 150000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            tiemNang -= ((long) tiemNang * 95 / 100);
+//        } else if (power >= 109000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            tiemNang -= ((long) tiemNang * 91 / 100);
+//        } else if (power >= 180000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            tiemNang -= ((long) tiemNang * 90 / 100);
+//        } else if (power >= 110000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            tiemNang -= ((long) tiemNang * 85 / 100);
+//        } else if (power >= 100000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            tiemNang -= ((long) tiemNang * 80 / 100);
+//        } else if (power >= 90000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            tiemNang -= ((long) tiemNang * 75 / 100);
+//        } else if (power >= 80000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            tiemNang -= ((long) tiemNang * 70 / 100);
+//        }
+//end khaile comment
         return tiemNang;
     }
 

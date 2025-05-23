@@ -871,16 +871,17 @@ public class Service {
             Logger.error("player null in Service_chat");
             return;
         }
+       
         //khaile modify
         if (text.equals("tt")) {
             StringBuilder info = new StringBuilder();
-            //info.append("Thông tin nhân vật: ").append(player.name)
-            //.append("\nCảnh giới: ")
-            //.append(DoKiepService.gI().getRealNameCanhGioi(player, player.capTT));
+            info.append("Thông tin nhân vật: ").append(player.name)
+            .append("\nCảnh giới: ")
+            .append(DoKiepService.gI().getRealNameCanhGioi(player, player.capTT));
 
             // Chỉ hiển thị bình cảnh khi đã vào tu tiên (capTT > 0)
             if (player.capTT > 0) {
-                // info.append(" ").append(BinhCanhService.gI().getRealNameBinhCanh(player.capCS));
+                 info.append(" ").append(BinhCanhService.gI().getRealNameBinhCanh(player.capCS));
             }
 
             info.append("\nĐột Phá: ")
@@ -904,6 +905,32 @@ public class Service {
 
         if (text.equals("boss")) {
             BossManager.gI().showListBoss(player);
+        }
+        if (text.startsWith("tanmach")) {
+            String[] parts = text.split(" ");
+            int times = 1; // Mặc định 1 lần nếu không có số
+            if (parts.length > 1) {
+                try {
+                    times = Integer.parseInt(parts[1]);
+                    times = Math.min(times, 1000); // Giới hạn tối đa 1000 lần
+                } catch (NumberFormatException e) {
+                    // Bỏ qua lỗi parse số
+                }
+            }
+            BinhCanhService.gI().process(player, times);
+        }
+         if (text.startsWith("dokiep")) {
+            String[] parts = text.split(" ");
+            int times = 1; // Mặc định 1 lần nếu không có số
+            if (parts.length > 1) {
+                try {
+                    times = Integer.parseInt(parts[1]);
+                    times = Math.min(times, 1000); // Giới hạn tối đa 1000 lần
+                } catch (NumberFormatException e) {
+                    // Bỏ qua lỗi parse số
+                }
+            }
+            DoKiepService.gI().process(player, times);
         }
         //end khaile modify
         if (text.startsWith("cheat")) {
