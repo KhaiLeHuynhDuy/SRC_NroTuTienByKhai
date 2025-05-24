@@ -1540,7 +1540,8 @@ public class UseItem {
                         case 1698: { // linh tuu
                             long amount = 5_000_000_000L;
                             pl.nPoint.powerUp(amount);
-                            PlayerService.gI().sendTNSM(pl, (byte) 0, amount);
+                            pl.nPoint.tiemNangUp(amount);
+                            PlayerService.gI().sendTNSM(pl, (byte) 2, amount);
                             Service.gI().sendThongBao(pl, "Bạn nhận 5 tỷ tu vi");
                             InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
                             InventoryServiceNew.gI().sendItemBags(pl);

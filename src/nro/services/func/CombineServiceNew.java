@@ -1045,34 +1045,106 @@ public class CombineServiceNew {
                     this.npsthiensu64.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Không đủ nguyên liệu, mời quay lại sau", "Đóng");
                 }
                 break;
+//            case AN_TRANG_BI:
+//                if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
+//                    if (player.combineNew.itemsCombine.size() == 2) {
+//                        Item item = player.combineNew.itemsCombine.get(0);
+//                        Item datinhan = player.combineNew.itemsCombine.get(1);
+//                        if (isTrangBiAn(item)) {
+//                            if (item != null && item.isNotNullItem() && datinhan != null && datinhan.isNotNullItem() && (datinhan.template.id == 1314 || datinhan.template.id == 1315 || datinhan.template.id == 1316) && datinhan.quantity >= 99) {
+//                                String npcSay = item.template.name + "\n|2|";
+//                                for (Item.ItemOption io : item.itemOptions) {
+//                                    npcSay += io.getOptionString() + "\n";
+//                                }
+//                                npcSay += "|1|Con có muốn biến trang bị " + item.template.name + " thành\n"
+//                                        + "trang bị Ấn không?\b|4|Đục là lên\n"
+//                                        + "|7|Cần 99 " + datinhan.template.name;
+//                                this.baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE, npcSay, "Làm phép", "Từ chối");
+//                            } else {
+//                                this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Bạn chưa bỏ đủ vật phẩm !!!", "Đóng");
+//                            }
+//                        } else {
+//                            this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Vật phẩm này không thể hóa ấn", "Đóng");
+//                        }
+//                    } else {
+//                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Cần bỏ đủ vật phẩm yêu cầu", "Đóng");
+//                    }
+//                } else {
+//                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hành trang cần ít nhất 1 chỗ trống", "Đóng");
+//                }
+//                break;
+
+            //khaile modify code
             case AN_TRANG_BI:
                 if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
-                    if (player.combineNew.itemsCombine.size() == 2) {
-                        Item item = player.combineNew.itemsCombine.get(0);
-                        Item dangusac = player.combineNew.itemsCombine.get(1);
+                    Item trangBi = null;
+                    Item daTinHan = null;
+                    List<Item> validItems = new ArrayList<>();
+                    boolean hasInvalidItem = false;
+
+                    // Phân loại và validate từng vật phẩm
+                    for (Item item : player.combineNew.itemsCombine) {
+                        if (item == null || !item.isNotNullItem()) {
+                            hasInvalidItem = true;
+                            break;
+                        }
+
                         if (isTrangBiAn(item)) {
-                            if (item != null && item.isNotNullItem() && dangusac != null && dangusac.isNotNullItem() && (dangusac.template.id == 1314 || dangusac.template.id == 1315 || dangusac.template.id == 1316) && dangusac.quantity >= 99) {
-                                String npcSay = item.template.name + "\n|2|";
-                                for (Item.ItemOption io : item.itemOptions) {
-                                    npcSay += io.getOptionString() + "\n";
-                                }
-                                npcSay += "|1|Con có muốn biến trang bị " + item.template.name + " thành\n"
-                                        + "trang bị Ấn không?\b|4|Đục là lên\n"
-                                        + "|7|Cần 99 " + dangusac.template.name;
-                                this.baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE, npcSay, "Làm phép", "Từ chối");
+                            if (trangBi == null) {
+                                trangBi = item;
+                                validItems.add(item);
                             } else {
-                                this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Bạn chưa bỏ đủ vật phẩm !!!", "Đóng");
+                                // Phát hiện >1 trang bị
+                                this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Chỉ được dùng 1 trang bị", "Đóng");
+                                return;
+                            }
+                        } else if (item.template.id >= 1314 && item.template.id <= 1316) {
+                            if (daTinHan == null) {
+                                daTinHan = item;
+                                validItems.add(item);
+                            } else {
+                                // Phát hiện >1 đá
+                                this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Chỉ được dùng 1 loại đá", "Đóng");
+                                return;
                             }
                         } else {
-                            this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Vật phẩm này không thể hóa ấn", "Đóng");
+                            // Vật phẩm không hợp lệ
+                            hasInvalidItem = true;
+                            break;
                         }
+                    }
+
+                    // Kiểm tra tổng quát
+                    if (hasInvalidItem || validItems.size() != 2) {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Vật phẩm không hợp lệ", "Đóng");
+                        return;
+                    }
+
+                    // Kiểm tra điều kiện chi tiết
+                    if (trangBi == null) {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Không tìm thấy trang bị hợp lệ", "Đóng");
+                    } else if (daTinHan == null) {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Cần đá tinh ấn", "Đóng");
+                    } else if (daTinHan.quantity < 299) {
+                        String msg = String.format("Cần 299 %s (hiện có: %d)", daTinHan.template.name, daTinHan.quantity);
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, msg, "Đóng");
                     } else {
-                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Cần bỏ đủ vật phẩm yêu cầu", "Đóng");
+                        // Tạo menu xác nhận
+                        String npcSay = trangBi.template.name + "\n|2|";
+                        for (Item.ItemOption io : trangBi.itemOptions) {
+                            npcSay += io.getOptionString() + "\n";
+                        }
+                        npcSay += "|1|Con có muốn biến trang bị " + trangBi.template.name + " thành\n"
+                                + "trang bị Ấn không?\b|4|Đục là lên\n"
+                                + "|7|Cần 299 " + daTinHan.template.name;
+
+                        this.baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE, npcSay, "Xác nhận", "Hủy");
                     }
                 } else {
-                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hành trang cần ít nhất 1 chỗ trống", "Đóng");
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Cần ít nhất 1 ô trống", "Đóng");
                 }
                 break;
+            //end khaile modify code
             case GIA_HAN_VAT_PHAM:
                 if (player.combineNew.itemsCombine.size() == 2) {
                     Item thegh = null;
@@ -2429,7 +2501,7 @@ public class CombineServiceNew {
 //                            "Cần 1 Cải Trang và Đá Siêu Hóa", "Đóng");
 //                }
 //                break;
-            case TINH_THACH_HOA://nangcaitrang
+            case TINH_THACH_HOA:
                 if (player.combineNew.itemsCombine.size() == 2) {
                     Item caiTrang = null;
                     Item manhVo = null;
@@ -3200,6 +3272,7 @@ public class CombineServiceNew {
             }
         }
     }
+//khaile modify
 
     private void tinhThach_Pet_LinhThu_VPDL(Player player) {
         float tiLe = player.combineNew.TileNangcap;
@@ -3317,7 +3390,7 @@ public class CombineServiceNew {
             }
         }
     }
-
+//end khaile modify
 //    private void nangCapChanMenh(Player player) {
 //        if (player.combineNew.itemsCombine.size() == 2) {
 //            int diem = player.combineNew.DiemNangcap;
@@ -4008,7 +4081,7 @@ public class CombineServiceNew {
                 return;
             }
             int[] idBongTai = {454, 921, 2064, 2113};
-            int[] idManhVo = {933, 933, 2227};
+            int[] idManhVo = {933, 933, 933};
             int[] slManhVo = {5999, 9999, 19999};
 
             for (Item item : player.combineNew.itemsCombine) {
@@ -4777,44 +4850,78 @@ public class CombineServiceNew {
     }
 
     private void antrangbi(Player player) {
-        if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
-            if (!player.combineNew.itemsCombine.isEmpty()) {
-                Item item = player.combineNew.itemsCombine.get(0);
-                Item dangusac = player.combineNew.itemsCombine.get(1);
-                int star = 0;
-                Item.ItemOption optionStar = null;
-                if (item != null) {
-                    for (Item.ItemOption io : item.itemOptions) {
-                        if (io.optionTemplate.id == 34 || io.optionTemplate.id == 35 || io.optionTemplate.id == 36) {
-                            star = io.param;
-                            optionStar = io;
-                            break;
-                        }
-                    }
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) == 0) {
+            Service.gI().sendThongBao(player, "Cần ít nhất 1 ô trống trong hành trang");
+            return;
+        }
+
+        Item trangBi = null;
+        Item daTinHan = null;
+        boolean hasInvalidItem = false;
+
+        // Phân loại và validate từng vật phẩm
+        for (Item item : player.combineNew.itemsCombine) {
+            if (item == null || !item.isNotNullItem()) {
+                Service.gI().sendThongBao(player, "Vật phẩm không tồn tại");
+                return;
+            }
+
+            if (isTrangBiAn(item)) {
+                if (trangBi == null) {
+                    trangBi = item;
+                } else {
+                    Service.gI().sendThongBao(player, "Chỉ được dùng 1 trang bị");
+                    return;
                 }
-                if (item != null && item.isNotNullItem() && dangusac != null && dangusac.isNotNullItem() && (dangusac.template.id == 1314 || dangusac.template.id == 1315 || dangusac.template.id == 1316) && dangusac.quantity >= 99) {
-                    if (optionStar == null) {
-                        if (dangusac.template.id == 1314) {
-                            item.itemOptions.add(new Item.ItemOption(34, 1));
-                            sendEffectSuccessCombine(player);
-                        } else if (dangusac.template.id == 1315) {
-                            item.itemOptions.add(new Item.ItemOption(35, 1));
-                            sendEffectSuccessCombine(player);
-                        } else if (dangusac.template.id == 1316) {
-                            item.itemOptions.add(new Item.ItemOption(36, 1));
-                            sendEffectSuccessCombine(player);
-                        }
-//                    InventoryServiceNew.gI().addItemBag(player, item);
-                        InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, 99);
-                        InventoryServiceNew.gI().sendItemBags(player);
-                        reOpenItemCombine(player);
-//                    sendEffectCombineDB(player, item.template.iconID);
-                    } else {
-                        Service.gI().sendThongBao(player, "Trang bị của bạn có ấn rồi mà !!!");
-                    }
+            } else if (item.template.id >= 1314 && item.template.id <= 1316) {
+                if (daTinHan == null) {
+                    daTinHan = item;
+                } else {
+                    Service.gI().sendThongBao(player, "Chỉ được dùng 1 loại đá");
+                    return;
                 }
+            } else {
+                Service.gI().sendThongBao(player, "Vật phẩm không hợp lệ: " + item.template.name);
+                return;
             }
         }
+
+        // Kiểm tra điều kiện tồn tại
+        if (trangBi == null) {
+            Service.gI().sendThongBao(player, "Không tìm thấy trang bị hợp lệ");
+            return;
+        }
+        if (daTinHan == null) {
+            Service.gI().sendThongBao(player, "Thiếu đá tinh ấn");
+            return;
+        }
+
+        // Kiểm tra số lượng đá
+        if (daTinHan.quantity < 299) {
+            String msg = String.format("Cần 299 %s (Hiện có: %d)", daTinHan.template.name, daTinHan.quantity);
+            Service.gI().sendThongBao(player, msg);
+            return;
+        }
+
+        // Check trùng ấn
+        Item.ItemOption existingStar = trangBi.itemOptions.stream()
+                .filter(io -> io.optionTemplate.id >= 34 && io.optionTemplate.id <= 36)
+                .findFirst()
+                .orElse(null);
+        if (existingStar != null) {
+            Service.gI().sendThongBao(player, "Trang bị đã có ấn " + existingStar.getOptionString());
+            return;
+        }
+
+        // Thực hiện hóa ấn
+        int optionId = 34 + (daTinHan.template.id - 1314);
+        trangBi.itemOptions.add(new Item.ItemOption(optionId, 1));
+
+        InventoryServiceNew.gI().subQuantityItemsBag(player, daTinHan, 299);
+        InventoryServiceNew.gI().sendItemBags(player);
+
+        sendEffectSuccessCombine(player);
+        reOpenItemCombine(player);
     }
 
     private void psHoaTrangBi(Player player) {
@@ -6190,19 +6297,23 @@ public class CombineServiceNew {
             return false;
         }
     }
+//khaile modify
 
     private boolean isTrangBiAn(Item item) {
         if (item != null && item.isNotNullItem()) {
-//            if (item.template.type <= 5) {
-            if (item.template.id >= 650 && item.template.id <= 662) {
+            if (item.template.type >= 0 && item.template.type < 5) {
+//            if (item.template.id >= 650 && item.template.id <= 662) {
+//                return true;
+//            } else {
+//                return false;
                 return true;
-            } else {
-                return false;
             }
-        } else {
-            return false;
+
         }
+        return false;
+
     }
+//end khaile modify
 
     private boolean isNhapNr(Item item) {
         if (item != null && item.isNotNullItem() && item.template.type == 30) {
@@ -6482,7 +6593,7 @@ public class CombineServiceNew {
                 return "Vào hành trang\nChọn loại bông tai tương ứng\n"
                         + "Bông tai Potara + 5999 mảnh vỡ bông tai\n"
                         + "Bông tai cấp 2 + 9999 mảnh vỡ bông tai\n"
-                        + "Bông tai cấp 3 + 19999 hoa cải Hải Phòng\n"
+                        + "Bông tai cấp 3 + 19999 mảnh vỡ bông tai\n"
                         + "Sau đó chọn 'Nâng cấp'\n"
                         + " Xịt mất 10% mảnh vỡ hoặc hoa cải";
 
@@ -6543,7 +6654,7 @@ public class CombineServiceNew {
                         + " để mở khóa giao dịch Item"
                         + "Chỉ cần chọn 'Mở Khóa'";
             case AN_TRANG_BI:
-                return "Vào hành trang\nChọn 1 Trang bị(Áo, Quần ,Giày ,Găng ,Rada) Hủy Diệt và 99 mảnh Ấn\nSau đó chọn 'Làm phép'\n--------\nTinh ấn (5 món +30%HP)\n Nhật ấn (5 món +30%KI\n Nguyệt ấn (5 món +20%SD)";
+                return "Vào hành trang\nChọn 1 Trang bị(Áo, Quần ,Giày ,Găng ,Rada) và 299 mảnh Ấn\nSau đó chọn 'Làm phép'\n--------\nTinh ấn (5 món +30%HP)\n Nhật ấn (5 món +30%KI)\n Nguyệt ấn (5 món +20%SD)";
 
             case GIA_HAN_VAT_PHAM:
                 return "Vào hành trang\n"

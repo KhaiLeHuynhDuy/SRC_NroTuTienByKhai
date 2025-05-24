@@ -1062,11 +1062,13 @@ public class Mob {
                 list.add(new ItemMap(zone, 1142, 1, x, player.location.y, player.id));
             }
         }
-        if (!player.isPet) {
-            if (Util.isTrue(1, 30)) {
-                list.add(new ItemMap(zone, 225, 1, x, player.location.y, player.id));
-            }
-        }
+        //khaile xoa manh da vun
+//        if (!player.isPet) {
+//            if (Util.isTrue(1, 30)) {
+//                list.add(new ItemMap(zone, 225, 1, x, player.location.y, player.id));
+//            }
+//        }
+        //khaile xoa manh da vun
         if (!player.isPet) {
             if (Util.isTrue(1, 300)) {
                 list.add(new ItemMap(zone, 226, 1, x, player.location.y, player.id));
