@@ -1142,7 +1142,7 @@ public class CombineServiceNew {
                                 this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Chỉ được dùng 1 trang bị", "Đóng");
                                 return;
                             }
-                        } else if (item.template.id >= 1314 && item.template.id <= 1316) {
+                        } else if (item.template.id >= 1314 && item.template.id <= 1316) { //1314 tinh an; 1315 nguyet an; 1316 nhat an
                             if (daTinHan == null) {
                                 daTinHan = item;
                                 validItems.add(item);
@@ -2880,15 +2880,14 @@ public class CombineServiceNew {
         sendEffectSuccessCombine(player);
         createNgoaiTrangVoCuc(player, (short) 1687, Arrays.asList(
                 new ItemOption(199, 1000),//giáp
-                new ItemOption(196, 1000),//hp
+                new ItemOption(196, 2000),//hp
                 new ItemOption(198, 1000),//sd
-                new ItemOption(197, 1000),//ki
+                new ItemOption(197, 2000),//ki
 
                 new ItemOption(94, 100),
                 new ItemOption(50, 100),
-                new ItemOption(77, 350),
-                new ItemOption(103, 350),
-                new ItemOption(5, 25)
+                new ItemOption(77, 450),
+                new ItemOption(103, 450)
         ));
         player.combineNew.clearItemCombine();
         reOpenItemCombine(player);
@@ -6880,7 +6879,7 @@ public class CombineServiceNew {
                         + " để mở khóa giao dịch Item"
                         + "Chỉ cần chọn 'Mở Khóa'";
             case AN_TRANG_BI:
-                return "Vào hành trang\nChọn 1 Trang bị(Áo, Quần ,Giày ,Găng ,Rada) và 299 mảnh Ấn\nSau đó chọn 'Làm phép'\n--------\nTinh ấn (5 món +30%HP)\n Nhật ấn (5 món +30%KI)\n Nguyệt ấn (5 món +20%SD)";
+                return "Vào hành trang\nChọn 1 Trang bị(Áo, Quần ,Giày ,Găng ,Rada) và 299 mảnh Ấn\nSau đó chọn 'Làm phép'\n--------\nTinh ấn (5 món +20%SĐ)\n Nhật ấn (5 món +30%HP)\n Nguyệt ấn (5 món +20%KI)";
 
             case GIA_HAN_VAT_PHAM:
                 return "Vào hành trang\n"

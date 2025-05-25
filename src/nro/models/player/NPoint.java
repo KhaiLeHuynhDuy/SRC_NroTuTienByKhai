@@ -1455,7 +1455,10 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                 && !this.isKhongLanh) {//Zalo: 0358124452//Name: EMTI 
             this.hpMax -= calPercent(this.hpMax, 50);
         }
-
+        //set nhật ấn
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.nhatan == 5) {
+            this.hpMax += calPercent(this.hpMax, 30);
+        }
         //mèo mun
         if (player.capCS
                 > 0) {//Zalo: 0358124452//Name: EMTI 
@@ -1525,8 +1528,8 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.picolo == 5) {//Zalo: 0358124452//Name: EMTI 
             this.mpMax += calPercent(this.mpMax, 100);
         }
-        //set tinh ấn
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.tinhan == 5) {
+        //set nguyệt ấn
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.nguyetan == 5) {
             this.mpMax += calPercent(this.mpMax, 30);
         }
         // Check if the "ngọc rồng đen" reward with 2 stars is still valid
@@ -1720,10 +1723,7 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                 mpMax += (17500) * (player.capCS);
             }
         }
-        //set nhật ấn
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.nhatan == 5) {
-            this.mpMax += calPercent(this.mpMax, 30);
-        }
+
         //xiên cá
         if (this.player.effectFlagBag.useXienCa) {//Zalo: 0358124452//Name: EMTI 
             this.mpMax += calPercent(this.mpMax, 15);
@@ -1949,11 +1949,11 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
             this.dame += calPercent(this.dame, 10);
             this.tlDameCrit.add(20);
         }
-        //set nguyệt ấn
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.nguyetan == 5) {
+
+        //set tinh ấn
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.tinhan == 5) {
             this.dame += calPercent(this.dame, 20);
         }
-
         //phóng heo
         if (this.player.effectFlagBag.usePhongHeo) {//Zalo: 0358124452//Name: EMTI 
             this.dame += calPercent(this.dame, 15);
