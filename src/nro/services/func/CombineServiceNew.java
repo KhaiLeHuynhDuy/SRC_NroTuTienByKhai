@@ -82,12 +82,12 @@ public class CombineServiceNew {
     public static final int NANG_CAP_LINH_THU = 603;
 
     //khaile add
-    public static final int CHE_TAO_AO_THIEN_MA = 521;
-    public static final int CHE_TAO_QUAN_THIEN_MA = 522;
-    public static final int CHE_TAO_GANG_THIEN_MA = 527;
-    public static final int CHE_TAO_GIAY_THIEN_MA = 524;
-    public static final int CHE_TAO_TRANG_SUC_THIEN_MA = 525;
-    public static final int CHE_TAO_CAI_TRANG_THIEN_MA = 528;
+    public static final int CHE_TAO_THIEN_MA = 521;
+//    public static final int CHE_TAO_QUAN_THIEN_MA = 522;
+//    public static final int CHE_TAO_GANG_THIEN_MA = 527;
+//    public static final int CHE_TAO_GIAY_THIEN_MA = 524;
+//    public static final int CHE_TAO_TRANG_SUC_THIEN_MA = 525;
+//    public static final int CHE_TAO_CAI_TRANG_THIEN_MA = 528;
 
 //    public static final int CHE_TAO_AO_VO_CUC_TU_TAI = 400;
 //    public static final int CHE_TAO_QUAN_VO_CUC_TU_TAI = 401;
@@ -111,6 +111,7 @@ public class CombineServiceNew {
     private final Npc npsthiensu64;
     private final Npc HungVuong;
     private final Npc DoaTien;
+    private final Npc ThienMa;
     private static CombineServiceNew i;
 
     public CombineServiceNew() {
@@ -118,6 +119,7 @@ public class CombineServiceNew {
         this.npsthiensu64 = NpcManager.getNpc(ConstNpc.NPC_64);
         this.HungVuong = NpcManager.getNpc(ConstNpc.HUNG_VUONG);
         this.DoaTien = NpcManager.getNpc(ConstNpc.DOA_TIEN);
+        this.ThienMa = NpcManager.getNpc(ConstNpc.THIEN_MA);
     }
 
     public static CombineServiceNew gI() {
@@ -170,47 +172,62 @@ public class CombineServiceNew {
 //khaile add cac ham ve dieu kien va che tao item
 
 // Hàm hỗ trợ
-// Hàm hỗ trợ
-    private int getFragmentIdByOptionId(int optionId) {
-        switch (optionId) {
-            case 241:
-                return 1360;
-            case 242:
-                return 1361;
-            case 243:
-                return 1362;
-            case 244:
-                return 1363;
-            case 245:
-                return 1364;
-            case 246:
-                return 1365;
-            case 247:
-                return 1366;
+//    private int getTinhThachPetIdByOptionId(int optionId) {
+//        switch (optionId) {
+//            case 241:
+//                return 1360;
+//            case 242:
+//                return 1361;
+//            case 243:
+//                return 1362;
+//            case 244:
+//                return 1363;
+//            case 245:
+//                return 1364;
+//            case 246:
+//                return 1365;
+//            case 247:
+//                return 1366;
+//            default:
+//                return -1;
+//        }
+//    }
+//// Hàm hỗ trợ chuyển đổi ID mảnh sang ID option
+//
+//    private int getOptionIdByTinhThachPet(int fragmentId) {
+//        switch (fragmentId) {
+//            case 1360:
+//                return 241;
+//            case 1361:
+//                return 242;
+//            case 1362:
+//                return 243;
+//            case 1363:
+//                return 244;
+//            case 1364:
+//                return 245;
+//            case 1365:
+//                return 246;
+//            case 1366:
+//                return 247;
+//            default:
+//                return -1;
+//        }
+//    }
+    private String getTenManhTrangBi(int manhId) {
+        switch (manhId) {
+            case 1688:
+                return "Áo Vạn Năng";
+            case 1689:
+                return "Quần Vạn Năng";
+            case 1690:
+                return "Găng Vạn Năng";
+            case 1691:
+                return "Giày Vạn Năng";
+            case 1692:
+                return "Nhẫn Vạn Năng";
             default:
-                return -1;
-        }
-    }
-// Hàm hỗ trợ chuyển đổi ID mảnh sang ID option
-
-    private int getOptionIdByFragmentId(int fragmentId) {
-        switch (fragmentId) {
-            case 1360:
-                return 241;
-            case 1361:
-                return 242;
-            case 1362:
-                return 243;
-            case 1363:
-                return 244;
-            case 1364:
-                return 245;
-            case 1365:
-                return 246;
-            case 1366:
-                return 247;
-            default:
-                return -1;
+                return "";
         }
     }
 
@@ -283,6 +300,58 @@ public class CombineServiceNew {
         }
     }
 
+    private String getTenTrangBiThienMa(int manhId) {
+        switch (manhId) {
+            case 1688:
+                return "Áo Thiên Ma";
+            case 1689:
+                return "Quần Thiên Ma";
+            case 1690:
+                return "Găng Thiên Ma";
+            case 1691:
+                return "Giày Thiên Ma";
+            case 1692:
+                return "Nhẫn Thiên Ma";
+            default:
+                return "";
+        }
+    }
+
+    private short getIdTrangBiThienMaTuManhTrangBi(int manhId) {
+        // Map ID mảnh -> ID thành phẩm
+        switch (manhId) {
+            case 1688:
+                return 1702; // ID áo
+            case 1689:
+                return 1703; // ID quần
+            case 1690:
+                return 1704; // ID găng
+            case 1691:
+                return 1705; // ID giày
+            case 1692:
+                return 1706; // ID trang sức
+            default:
+                return -1;
+        }
+    }
+
+    private String getTenThienMaTuIdThanhPham(short itemId) {
+        switch (itemId) {
+            case 1702:
+                return "Áo Thiên Ma";
+            case 1703:
+                return "Quần Thiên Ma";
+            case 1704:
+                return "Găng Thiên Ma";
+            case 1705:
+                return "Giày Thiên Ma";
+            case 1706:
+                return "Nhẫn Thiên Ma";
+            default:
+                return "";
+        }
+    }
+
     private void conditionTuTaiItem(Player player) {
         if (player.combineNew.itemsCombine.isEmpty()) {
             this.DoaTien.createOtherMenu(player, ConstNpc.IGNORE_MENU,
@@ -332,7 +401,7 @@ public class CombineServiceNew {
         // Validate số lượng
         if (player.combineNew.itemsCombine.size() != validItems.size()) {
             this.DoaTien.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                    "Có vật phẩm không hợp lệ!", "Đóng");
+                    "Có vật phẩm không hợp lệ hoặc số lượng không đủ!", "Đóng");
             return;
         }
 
@@ -386,7 +455,7 @@ public class CombineServiceNew {
                 + "|2|- 5M Hồng Ngọc\n"
                 + "|2|- 250k VNĐ",
                 getTenTrangBi(manhTrangBi.template.id),
-                getTenTrangBi(manhTrangBi.template.id));
+                getTenManhTrangBi(manhTrangBi.template.id));
 
         this.DoaTien.createOtherMenu(player, ConstNpc.MENU_START_COMBINE, confirmMsg, "Chế tạo", "Hủy");
     }
@@ -537,6 +606,102 @@ public class CombineServiceNew {
         // Thông báo thành công
         Service.gI().sendThongBao(player, "Chúc mừng! Bạn đã đổi thành công ngoại trang Vô Cực!");
 
+    }
+
+    private void conditionThienMaItem(Player player) {
+        List<Item> validItems = new ArrayList<>();
+        Item manhTrangBi = null;
+        // Kiểm tra nếu danh sách nguyên liệu trống
+        if (player.combineNew.itemsCombine.isEmpty()) {
+            this.ThienMa.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                    "Hãy đưa ta Thiên Mã Thạch, ta sẽ cho Đô Thiên Ma", "Đóng");
+            return;
+        }
+        for (Item item : player.combineNew.itemsCombine) {
+            if (item != null && item.isNotNullItem()) {
+                // Check Đan Dược
+                if (item.isThienMaThach() && item.quantity >= 100_000) {
+                    validItems.add(item);
+                } // Check Mảnh Trang Bị
+                else if (item.template.id >= 1688 && item.template.id <= 1692) {
+                    if (manhTrangBi == null && item.quantity >= 19) {
+                        manhTrangBi = item;
+                        validItems.add(item);
+                    } else {
+                        this.DoaTien.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                                "Chỉ được dùng 1 loại mảnh trang bị!", "Đóng");
+                        return;
+                    }
+                }
+            }
+        }
+
+        // Validate số lượng
+        if (player.combineNew.itemsCombine.size() != validItems.size()) {
+            this.ThienMa.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                    "Có vật phẩm không hợp lệ hoặc số lượng không đủ!", "Đóng");
+            return;
+        }
+        if (manhTrangBi == null) {
+            this.ThienMa.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                    "Cần 19 mảnh trang bị vạn năng!", "Đóng");
+            return;
+
+        }
+        // Kiểm tra túi đồ có đủ ô trống không
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) == 0) {
+            Service.gI().sendThongBao(player, "Không đủ ô trống !");
+            return;
+        }
+
+        // Hiển thị menu xác nhận
+        String confirmMsg = String.format("Chế tạo %s?\nChi phí:\n"
+                + "|2|- 19 Mảnh %s\n"
+                + "|2|- 100K Thiên Ma Thạch",
+                getTenTrangBiThienMa(manhTrangBi.template.id),
+                getTenManhTrangBi(manhTrangBi.template.id));
+
+        this.ThienMa.createOtherMenu(player, ConstNpc.MENU_START_COMBINE, confirmMsg, "Chế tạo", "Từ chối");
+    }
+
+    private void createThienMaItem(Player player, short itemId, List<ItemOption> itemOptions) {
+        List<Item> validItems = new ArrayList<>();
+        int removedCount = 0;
+        // Kiểm tra nếu danh sách nguyên liệu trống
+        for (Item item : player.combineNew.itemsCombine) {
+            if (item != null && item.isNotNullItem()) {
+                if (item.isThienMaThach() && item.quantity >= 100_000) {
+                    validItems.add(item);
+
+                }
+            }
+        }
+        Item manhTrangBi = null;
+        for (Item item : player.combineNew.itemsCombine) {
+            if (item.template.id >= 1688 && item.template.id <= 1692) {
+                manhTrangBi = item;
+                break;
+            }
+        }
+        for (Item item : validItems) {
+            if (item.isThienMaThach() && item.quantity >= 100_000) {
+                InventoryServiceNew.gI().subQuantityItemsBag(player, item, 100_000);
+                removedCount++;
+                if (removedCount == 1) {
+                    break;
+                }
+            }
+        }
+        InventoryServiceNew.gI().subQuantityItemsBag(player, manhTrangBi, 19);
+        short idThanhPham = getIdTrangBiThienMaTuManhTrangBi(manhTrangBi.template.id);
+        Item newItem = ItemService.gI().createNewItem(idThanhPham);
+        newItem.itemOptions.addAll(itemOptions);
+        InventoryServiceNew.gI().addItemBag(player, newItem);
+        // Cập nhật hành trang
+        InventoryServiceNew.gI().sendItemBags(player);
+        // Thông báo thành công
+        String tenTrangBi = getTenThienMaTuIdThanhPham(itemId);
+        Service.gI().sendThongBao(player, "Chúc mừng! Chế tạo thành công " + "" + tenTrangBi);
     }
 
     private void conditionHoangCucDan(Player player) {
@@ -1015,6 +1180,9 @@ public class CombineServiceNew {
                 break;
             case CHE_TAO_TRUC_CO_HAU:
                 conditionTrucCoDan_HauKy(player);
+                break;
+            case CHE_TAO_THIEN_MA:
+                conditionThienMaItem(player);
                 break;
             //end khaile add
             case CHE_TAO_TRANG_BI_TS:
@@ -2754,14 +2922,12 @@ public class CombineServiceNew {
             case NANG_TL_LEN_HUY_DIET:
                 nangCapThanLinhLenHuyDiet(player);
                 break;
-
             case NANG_HUY_DIET_LEN_SKH:
                 huyDietLenKichHoatThuong(player);
                 break;
             case NANG_HUY_DIET_LEN_SKH_VIP:
                 huyDietLenKichHoathoiVang_IP(player);
                 break;
-
             case NANG_CAP_CHAN_MENH:
                 nangCapChanMenh(player);
                 break;
@@ -2790,8 +2956,10 @@ public class CombineServiceNew {
             case CHE_TAO_TRUC_CO_HAU:
                 chetaoTrucCo_Hau(player);
                 break;
+            case CHE_TAO_THIEN_MA:
+                combineThienMa(player);
+                break;
             //end khaile add
-
         }
         player.iDMark.setIndexMenu(ConstNpc.IGNORE_MENU);
         player.combineNew.clearParamCombine();
@@ -2891,6 +3059,81 @@ public class CombineServiceNew {
         ));
         player.combineNew.clearItemCombine();
         reOpenItemCombine(player);
+    }
+
+    private void combineThienMa(Player player) {
+        // Tìm mảnh trang bị trong nguyên liệu
+        Item manhTrangBi = player.combineNew.itemsCombine.stream()
+                .filter(item -> item.template.id >= 1688 && item.template.id <= 1692)
+                .findFirst()
+                .orElse(null);
+
+        if (manhTrangBi == null) {
+            Service.gI().sendThongBao(player, "Lỗi hệ thống!");
+            return;
+        }
+
+        // Xác định loại trang bị
+        short itemId = getIdTrangBiThienMaTuManhTrangBi(manhTrangBi.template.id);
+        List<ItemOption> options = createItemThienMaOptions(manhTrangBi.template.id);
+
+        // Thực hiện chế tạo
+        sendEffectSuccessCombine(player);
+        createThienMaItem(player, itemId, options);
+        player.combineNew.updateItemsCombine(player.inventory.itemsBag);
+        reOpenItemCombine(player);
+    }
+
+    private List<ItemOption> createItemThienMaOptions(int manhId) {
+        switch (manhId) {
+            case 1688: // Áo
+                return Arrays.asList(
+                        new ItemOption(199, Util.nextInt(20, 40)),
+                        new ItemOption(94, Util.nextInt(100, 200)),
+                        new ItemOption(192, 0),
+                        new ItemOption(189, 100),
+                        new ItemOption(194, 20),
+                        new ItemOption(191, 750)
+                );
+            case 1689: // Quần
+                return Arrays.asList(
+                        new ItemOption(196, Util.nextInt(50, 100)),
+                        new ItemOption(77, Util.nextInt(300, 400)),
+                        new ItemOption(192, 0),
+                        new ItemOption(189, 100),
+                        new ItemOption(194, 20),
+                        new ItemOption(191, 750)
+                );
+            case 1690: // Găng
+                return Arrays.asList(
+                        new ItemOption(198, Util.nextInt(5, 10)),
+                        new ItemOption(50, Util.nextInt(100, 200)),
+                        new ItemOption(192, 0),
+                        new ItemOption(189, 100),
+                        new ItemOption(194, 20),
+                        new ItemOption(191, 750)
+                );
+            case 1691: // Giày
+                return Arrays.asList(
+                        new ItemOption(197, Util.nextInt(50, 100)),
+                        new ItemOption(103, Util.nextInt(300, 400)),
+                        new ItemOption(192, 0),
+                        new ItemOption(189, 100),
+                        new ItemOption(194, 20),
+                        new ItemOption(191, 750)
+                );
+            case 1692: // Trang sức
+                return Arrays.asList(
+                        new ItemOption(14, Util.nextInt(25, 50)),
+                        new ItemOption(5, Util.nextInt(5, 20)),
+                        new ItemOption(192, 0),
+                        new ItemOption(189, 100),
+                        new ItemOption(194, 20),
+                        new ItemOption(191, 750)
+                );
+            default:
+                return Collections.emptyList();
+        }
     }
 
     private void chetaoHoangCucDan(Player player) {

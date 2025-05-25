@@ -140,7 +140,10 @@ public class ConstNpc {
     public static final byte RONG_XUONG = 101;
     public static final byte GAPTHU = 103;
     public static final byte DAISHINKAN = 74;
+    //khaile add
     public static final byte DOA_TIEN = 84;
+    public static final byte THIEN_MA = 85;
+    //end khaile add
     public static final int RUONG_PHU = 9989;
     public static final int MAIL_BOX = 9990;
     //----------------------index menu------------------------------------------
@@ -153,7 +156,7 @@ public class ConstNpc {
     public static final int BASE_MENU = 752004;
     public static final int KIGUICU = 752006;
     public static final int MENU_GAU_PO = 752007;
-     public static final int MENU_ANSWER = 752008;
+    public static final int MENU_ANSWER = 752008;
     public static final int ESCORT_QILIN_MENU = 7520033;
     public static final int BASE_MENU_QUY_LAO = 7520049;
 
@@ -330,8 +333,8 @@ public class ConstNpc {
     public static final int MENU_PHU_HP = 500;
     public static final int MENU_OPTION_PHU_HP = 501;
     public static final int MENU_OPTION_GO_HOME = 502;
-    
-     //index menu rồng sao đen
+
+    //index menu rồng sao đen
     public static final int MENU_PHU_CS = 5000;
     public static final int MENU_OPTION_PHU_CS = 5001;
     public static final int MENU_OPTION_GO_HOMEE = 5002;

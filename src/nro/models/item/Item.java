@@ -235,6 +235,13 @@ public class Item {
         return false;
     }
 
+    public boolean isThienMaThach() {
+        if (this.template.id == 1707) {
+            return true;
+        }
+        return false;
+    }
+
     public boolean isLinhKhi() {
         if (this.template.id == 1671) {
             return true;

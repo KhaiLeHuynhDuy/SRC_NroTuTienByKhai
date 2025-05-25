@@ -220,6 +220,65 @@ public class NpcFactory {
             }
         };
     }
+
+    public static Npc ThienMa(int mapId, int status, int cx, int cy, int tempId, int avartar) {
+        return new Npc(mapId, status, cx, cy, tempId, avartar) {
+            @Override
+            public void openBaseMenu(Player player) {
+                if (canOpenNpc(player)) {
+                    if (this.mapId == 5) {
+                        createOtherMenu(player, 1,
+                                "Xin chào, ta có thể giúp cậu chế tạo trang bị Thiên Ma.",
+                                "Chế Tạo", "Đi úp");
+                    }
+                }
+            }
+
+            @Override
+            public void confirmMenu(Player player, int select) {
+                if (canOpenNpc(player)) {
+                    if (this.mapId == 5) {
+                        switch (player.iDMark.getIndexMenu()) {
+                            case 1: // Menu chính
+                                if (select == 0) { // Chế tạo
+                                    createOtherMenu(player, 2,
+                                            "Hãy chọn loại trang bị muốn chế tạo:",
+                                            "Chế tạo Thiên Ma");
+                                } else if (select == 1) {
+                                    createOtherMenu(player, 3,
+                                            "Chọn map đêêêêê",
+                                            "Tầng 1", "Tầng 2", "Tầng 3");
+                                }
+                                break;
+
+                            case 2: // Chọn loại trang bị Thiên Ma
+                                CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_THIEN_MA);
+                                break;
+                            case 3:
+                                switch (select) {
+                                    case 0:
+                                        ChangeMapService.gI().changeMapInYard(player, 204, -1, 552);
+                                        break;
+                                    case 1:
+                                        ChangeMapService.gI().changeMapInYard(player, 205, -1, 552);
+                                        break;
+                                    case 2:
+                                        ChangeMapService.gI().changeMapInYard(player, 206, -1, 552);
+                                        break;
+                                }
+
+                                break;
+                            case ConstNpc.MENU_START_COMBINE:
+                                if (player.combineNew.typeCombine != -1) {
+                                    CombineServiceNew.gI().startCombine(player);
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+        };
+    }
 //end khaile add
 
     private static Npc trungLinhThu(int mapId, int status, int cx, int cy, int tempId, int avartar) {
@@ -9064,9 +9123,11 @@ public class NpcFactory {
                     return duongtank(mapId, status, cx, cy, tempId, avatar);
                 case ConstNpc.THO_DAI_CA:
                     return thodaica(mapId, status, cx, cy, tempId, avatar);
-                //khaile add
+//khaile add
                 case ConstNpc.DOA_TIEN:
                     return DoaTien(mapId, status, cx, cy, tempId, avatar);
+                case ConstNpc.THIEN_MA:
+                    return ThienMa(mapId, status, cx, cy, tempId, avatar);
 //end khaile add
                 default:
                     return new Npc(mapId, status, cx, cy, tempId, avatar) {
