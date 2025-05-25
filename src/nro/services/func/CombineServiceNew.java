@@ -170,6 +170,50 @@ public class CombineServiceNew {
 //khaile add cac ham ve dieu kien va che tao item
 
 // Hàm hỗ trợ
+// Hàm hỗ trợ
+    private int getFragmentIdByOptionId(int optionId) {
+        switch (optionId) {
+            case 241:
+                return 1360;
+            case 242:
+                return 1361;
+            case 243:
+                return 1362;
+            case 244:
+                return 1363;
+            case 245:
+                return 1364;
+            case 246:
+                return 1365;
+            case 247:
+                return 1366;
+            default:
+                return -1;
+        }
+    }
+// Hàm hỗ trợ chuyển đổi ID mảnh sang ID option
+
+    private int getOptionIdByFragmentId(int fragmentId) {
+        switch (fragmentId) {
+            case 1360:
+                return 241;
+            case 1361:
+                return 242;
+            case 1362:
+                return 243;
+            case 1363:
+                return 244;
+            case 1364:
+                return 245;
+            case 1365:
+                return 246;
+            case 1366:
+                return 247;
+            default:
+                return -1;
+        }
+    }
+
     private String getTenTrangBi(int manhId) {
         switch (manhId) {
             case 1688:
@@ -2501,52 +2545,139 @@ public class CombineServiceNew {
 //                            "Cần 1 Cải Trang và Đá Siêu Hóa", "Đóng");
 //                }
 //                break;
+            //khaile comment
+//            case TINH_THACH_HOA:
+//                if (player.combineNew.itemsCombine.size() == 2) {
+//                    Item caiTrang = null;
+//                    Item manhVo = null;
+//                    int star = 0;
+//                    for (Item item : player.combineNew.itemsCombine) {
+//                        if (item.template.type == 21 || item.template.type == 72 || item.template.type == 11) {
+//                            caiTrang = item;
+//                        } else if (item.template.type == 93 && item.template.id >= 1360 && item.template.id <= 1366) {
+//                            manhVo = item;
+//                        }
+//                    }
+//                    if (caiTrang != null) {
+//                        for (Item.ItemOption io2 : caiTrang.itemOptions) {
+//                            if (io2.optionTemplate.id == 241 || io2.optionTemplate.id == 242 || io2.optionTemplate.id == 243 || io2.optionTemplate.id == 244 || io2.optionTemplate.id == 245 || io2.optionTemplate.id == 246 || io2.optionTemplate.id == 247) {
+//
+//                                if (io2.param >= 10) {
+//                                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+//                                            "Vật phẩm đã nâng tinh thạch cấp tối đa", "Đóng");
+//                                    return;
+//                                }
+//                                star = io2.param;
+//                                break;
+//                            }
+//                        }
+//
+//                    }
+//                    player.combineNew.DaNangcap = getDaNangcapTinhThach(star);
+//                    player.combineNew.TileNangcap = getTiLeNangcapTinhThach(star);
+//                    if (caiTrang != null && manhVo != null) {
+//                        String npcSay = caiTrang.template.name + "\n|2|";
+//                        for (Item.ItemOption io : caiTrang.itemOptions) {
+//                            npcSay += io.getOptionString() + "\n";
+//                        }
+//                        npcSay += "|7|Tỉ lệ thành công: " + getTiLeNangcapTinhThach(star) + "%" + "\n";
+//                        npcSay += "|1|Cần " + Util.numberToMoney(getDaNangcapTinhThach(star)) + " Tinh Thạch ";
+//                        baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE, npcSay,
+//                                "Nâng cấp");
+//
+//                    } else {
+//                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+//                                "Cần 1 Pet, Linh Thú hoặc Vật phẩm đeo lưng và loại đá tinh thạch", "Đóng");
+//                    }
+//                } else {
+//                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+//                            "Cần 1 Pet, Linh Thú hoặc Vật phẩm đeo lưng và loại đá tinh thạch", "Đóng");
+//                }
+//                break;
+            //end khaile comment
             case TINH_THACH_HOA:
                 if (player.combineNew.itemsCombine.size() == 2) {
                     Item caiTrang = null;
                     Item manhVo = null;
                     int star = 0;
+                    int tinhThachCount = 0;
+
+                    // Phân loại và validate vật phẩm
                     for (Item item : player.combineNew.itemsCombine) {
+                        // Kiểm tra vật phẩm đeo
                         if (item.template.type == 21 || item.template.type == 72 || item.template.type == 11) {
+                            if (caiTrang != null) {
+                                this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Chỉ được chọn 1 Pet/Linh Thú/VPDL", "Đóng");
+                                return;
+                            }
                             caiTrang = item;
-                        } else if (item.template.type == 93 && item.template.id >= 1360 && item.template.id <= 1366) {
+
+                            // Kiểm tra số sao và loại tinh thạch
+                            for (Item.ItemOption io : caiTrang.itemOptions) {
+                                if (io.optionTemplate.id >= 241 && io.optionTemplate.id <= 247) {
+                                    tinhThachCount++;
+                                    star = Math.max(star, io.param);
+                                }
+                            }
+
+                            if (tinhThachCount > 1) {
+                                this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Vật phẩm có nhiều tinh thạch", "Đóng");
+                                return;
+                            }
+                        } // Kiểm tra đá tinh thạch
+                        else if (item.template.type == 93 && item.template.id >= 1360 && item.template.id <= 1366) {
+                            if (manhVo != null) {
+                                this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Chỉ được chọn 1 loại đá", "Đóng");
+                                return;
+                            }
                             manhVo = item;
+                        } else {
+                            this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Vật phẩm không hợp lệ", "Đóng");
+                            return;
                         }
                     }
-                    if (caiTrang != null) {
-                        for (Item.ItemOption io2 : caiTrang.itemOptions) {
-                            if (io2.optionTemplate.id == 241 || io2.optionTemplate.id == 242 || io2.optionTemplate.id == 243 || io2.optionTemplate.id == 244 || io2.optionTemplate.id == 245 || io2.optionTemplate.id == 246 || io2.optionTemplate.id == 247) {
 
-                                if (io2.param >= 10) {
-                                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                                            "Vật phẩm đã nâng tinh thạch cấp tối đa", "Đóng");
-                                    return;
-                                }
-                                star = io2.param;
+                    // Check null vật phẩm
+                    if (caiTrang == null || manhVo == null) {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Cần 1 Pet/Linh Thú/VPDL và 1 đá tinh thạch", "Đóng");
+                        return;
+                    }
+
+                    // Check xung đột loại tinh thạch
+                    if (tinhThachCount > 0) {
+                        int existingType = -1;
+                        for (Item.ItemOption io : caiTrang.itemOptions) {
+                            if (io.optionTemplate.id >= 241 && io.optionTemplate.id <= 247) {
+                                existingType = io.optionTemplate.id;
                                 break;
                             }
                         }
-
+                        int requiredFragment = 1360 + (existingType - 241);
+                        if (manhVo.template.id != requiredFragment) {
+                            this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Sai loại đá cho tinh thạch hiện tại", "Đóng");
+                            return;
+                        }
                     }
+
+                    // Check max level
+                    if (star >= 10) {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Đã đạt cấp tối đa", "Đóng");
+                        return;
+                    }
+
+                    // Build message GUI (giữ nguyên như code gốc)
+                    String npcSay = caiTrang.template.name + "\n|2|";
+                    for (Item.ItemOption io : caiTrang.itemOptions) {
+                        npcSay += io.getOptionString() + "\n";
+                    }
+                    npcSay += "|7|Tỉ lệ thành công: " + getTiLeNangcapTinhThach(star) + "%" + "\n";
+                    npcSay += "|1|Cần " + Util.numberToMoney(getDaNangcapTinhThach(star)) + " Tinh Thạch ";
+
                     player.combineNew.DaNangcap = getDaNangcapTinhThach(star);
                     player.combineNew.TileNangcap = getTiLeNangcapTinhThach(star);
-                    if (caiTrang != null && manhVo != null) {
-                        String npcSay = caiTrang.template.name + "\n|2|";
-                        for (Item.ItemOption io : caiTrang.itemOptions) {
-                            npcSay += io.getOptionString() + "\n";
-                        }
-                        npcSay += "|7|Tỉ lệ thành công: " + getTiLeNangcapTinhThach(star) + "%" + "\n";
-                        npcSay += "|1|Cần " + Util.numberToMoney(getDaNangcapTinhThach(star)) + " Tinh Thạch ";
-                        baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE, npcSay,
-                                "Nâng cấp");
-
-                    } else {
-                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                                "Cần 1 Pet, Linh Thú hoặc Vật phẩm đeo lưng và loại đá tinh thạch", "Đóng");
-                    }
+                    baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE, npcSay, "Nâng cấp");
                 } else {
-                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                            "Cần 1 Pet, Linh Thú hoặc Vật phẩm đeo lưng và loại đá tinh thạch", "Đóng");
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Cần chọn đúng 2 vật phẩm", "Đóng");
                 }
                 break;
         }
@@ -3274,120 +3405,213 @@ public class CombineServiceNew {
     }
 //khaile modify
 
+//    private void tinhThach_Pet_LinhThu_VPDL(Player player) {
+//        float tiLe = player.combineNew.TileNangcap;
+//
+//        if (player.combineNew.itemsCombine.size() == 2) {
+//            long gold = player.combineNew.goldCombine;
+//            if (player.inventory.gold < gold) {
+//                Service.gI().sendThongBao(player, "Không đủ vàng để thực hiện");
+//                return;
+//            }
+//            int gem = player.combineNew.gemCombine;
+//            if (player.inventory.gem < gem) {
+//                Service.gI().sendThongBao(player, "Không đủ ngọc để thực hiện");
+//                return;
+//            }
+//
+//            Item caiTrang = null;
+//            Item manhCaiTrang = null;
+//            for (Item item : player.combineNew.itemsCombine) {
+//                if (item.template.type == 21 || item.template.type == 72 || item.template.type == 11) {
+//                    caiTrang = item;
+//                } else if (item.template.type == 93 && item.template.id >= 1360 && item.template.id <= 1366) {
+//                    manhCaiTrang = item;
+//                }
+//            }
+//
+//            int star = 0;
+//            if (caiTrang != null) {
+//                for (Item.ItemOption io : caiTrang.itemOptions) {
+//                    if (io.optionTemplate.id == 241 || io.optionTemplate.id == 242 || io.optionTemplate.id == 243 || io.optionTemplate.id == 244 || io.optionTemplate.id == 245 || io.optionTemplate.id == 246 || io.optionTemplate.id == 247) {
+//                        star = Math.max(star, io.param);
+//                    }
+//                }
+//            }
+//            if (star >= 10) {
+//                Service.gI().sendThongBao(player, "Đã max cấp");
+//                return;
+//            }
+//            if (caiTrang != null && manhCaiTrang != null && manhCaiTrang.quantity > player.combineNew.DaNangcap) {
+//                player.inventory.gold -= gold;
+//                player.inventory.gem -= gem;
+//                InventoryServiceNew.gI().subQuantityItemsBag(player, manhCaiTrang, player.combineNew.DaNangcap);
+//                if (Util.isTrue(tiLe, 100)) {
+//                    Item newCaiTrang = ItemService.gI().createNewItem((short) (caiTrang.template.id));
+//
+//                    // Copy các chỉ số từ bông tai cũ sang bông tai mới
+//                    for (Item.ItemOption io : caiTrang.itemOptions) {
+//                        newCaiTrang.itemOptions.add(new ItemOption(io.optionTemplate.id, io.param));
+//                    }
+//
+//                    // Khai báo randomOptionId ở ngoài
+//                    int randomOptionId = -1;
+//
+//                    // Xác định giá trị randomOptionId dựa trên manhCaiTrang.template.id
+//                    switch (manhCaiTrang.template.id) {
+//                        case 1360:
+//                            randomOptionId = 241;
+//                            break;
+//                        case 1361:
+//                            randomOptionId = 242;
+//                            break;
+//                        case 1362:
+//                            randomOptionId = 243;
+//                            break;
+//                        case 1363:
+//                            randomOptionId = 244;
+//                            break;
+//                        case 1364:
+//                            randomOptionId = 245;
+//                            break;
+//                        case 1365:
+//                            randomOptionId = 246;
+//                            break;
+//                        case 1366:
+//                            randomOptionId = 247;
+//                            break;
+//                        default:
+//                            break;
+//                    }
+//
+//                    // Kiểm tra nếu newCaiTrang đã có loại tinh thạch khác
+//                    for (Item.ItemOption io : newCaiTrang.itemOptions) {
+//                        if (io.optionTemplate.id != randomOptionId && (io.optionTemplate.id >= 241 && io.optionTemplate.id <= 247)) {
+//                            Service.gI().sendThongBao(player, "Đã nâng một loại tinh thạch khác rồi, không thể nâng tiếp");
+//                            return;
+//                        }
+//                    }
+//
+//                    // Nếu không có loại tinh thạch khác, tiếp tục thêm hoặc nâng cấp
+//                    boolean hasOption = false;
+//                    for (Item.ItemOption io : newCaiTrang.itemOptions) {
+//                        if (io.optionTemplate.id == randomOptionId) {
+//                            io.param = Math.min(io.param + 1, 10);
+//                            hasOption = true;
+//                            break;
+//                        }
+//                    }
+//
+//                    if (!hasOption) {
+//                        newCaiTrang.itemOptions.add(new ItemOption(randomOptionId, 1));
+//                    }
+//
+//                    sendEffectSuccessCombine(player);
+//                    InventoryServiceNew.gI().subQuantityItemsBag(player, caiTrang, 1);
+//                    InventoryServiceNew.gI().addItemBag(player, newCaiTrang);
+//
+//                } else {
+//                    sendEffectFailCombine(player);
+//                }
+//                InventoryServiceNew.gI().sendItemBags(player);
+//                Service.gI().sendMoney(player);
+//                reOpenItemCombine(player);
+//            } else {
+//                Service.gI().sendThongBao(player, "Thiếu vật phẩm cần để nâng");
+//            }
+//        }
+//    }
     private void tinhThach_Pet_LinhThu_VPDL(Player player) {
         float tiLe = player.combineNew.TileNangcap;
 
         if (player.combineNew.itemsCombine.size() == 2) {
-            long gold = player.combineNew.goldCombine;
-            if (player.inventory.gold < gold) {
-                Service.gI().sendThongBao(player, "Không đủ vàng để thực hiện");
+            // Check vàng
+            if (player.inventory.gold < player.combineNew.goldCombine) {
+                Service.gI().sendThongBao(player, "Không đủ vàng");
                 return;
             }
-            int gem = player.combineNew.gemCombine;
-            if (player.inventory.gem < gem) {
-                Service.gI().sendThongBao(player, "Không đủ ngọc để thực hiện");
+
+            // Check ngọc
+            if (player.inventory.gem < player.combineNew.gemCombine) {
+                Service.gI().sendThongBao(player, "Không đủ ngọc");
                 return;
             }
 
             Item caiTrang = null;
-            Item manhCaiTrang = null;
+            Item manhVo = null;
+
+            // Lấy vật phẩm
             for (Item item : player.combineNew.itemsCombine) {
                 if (item.template.type == 21 || item.template.type == 72 || item.template.type == 11) {
                     caiTrang = item;
-                } else if (item.template.type == 93 && item.template.id >= 1360 && item.template.id <= 1366) {
-                    manhCaiTrang = item;
+                } else if (item.template.type == 93) {
+                    manhVo = item;
                 }
             }
 
-            int star = 0;
-            if (caiTrang != null) {
-                for (Item.ItemOption io : caiTrang.itemOptions) {
-                    if (io.optionTemplate.id == 241 || io.optionTemplate.id == 242 || io.optionTemplate.id == 243 || io.optionTemplate.id == 244 || io.optionTemplate.id == 245 || io.optionTemplate.id == 246 || io.optionTemplate.id == 247) {
-                        star = Math.max(star, io.param);
-                    }
-                }
-            }
-            if (star >= 10) {
-                Service.gI().sendThongBao(player, "Đã max cấp");
+            // Check tồn tại vật phẩm
+            if (caiTrang == null || manhVo == null) {
+                Service.gI().sendThongBao(player, "Vật phẩm không hợp lệ");
                 return;
             }
-            if (caiTrang != null && manhCaiTrang != null && manhCaiTrang.quantity > player.combineNew.DaNangcap) {
-                player.inventory.gold -= gold;
-                player.inventory.gem -= gem;
-                InventoryServiceNew.gI().subQuantityItemsBag(player, manhCaiTrang, player.combineNew.DaNangcap);
-                if (Util.isTrue(tiLe, 100)) {
-                    Item newCaiTrang = ItemService.gI().createNewItem((short) (caiTrang.template.id));
 
-                    // Copy các chỉ số từ bông tai cũ sang bông tai mới
-                    for (Item.ItemOption io : caiTrang.itemOptions) {
-                        newCaiTrang.itemOptions.add(new ItemOption(io.optionTemplate.id, io.param));
-                    }
-
-                    // Khai báo randomOptionId ở ngoài
-                    int randomOptionId = -1;
-
-                    // Xác định giá trị randomOptionId dựa trên manhCaiTrang.template.id
-                    switch (manhCaiTrang.template.id) {
-                        case 1360:
-                            randomOptionId = 241;
-                            break;
-                        case 1361:
-                            randomOptionId = 242;
-                            break;
-                        case 1362:
-                            randomOptionId = 243;
-                            break;
-                        case 1363:
-                            randomOptionId = 244;
-                            break;
-                        case 1364:
-                            randomOptionId = 245;
-                            break;
-                        case 1365:
-                            randomOptionId = 246;
-                            break;
-                        case 1366:
-                            randomOptionId = 247;
-                            break;
-                        default:
-                            break;
-                    }
-
-                    // Kiểm tra nếu newCaiTrang đã có loại tinh thạch khác
-                    for (Item.ItemOption io : newCaiTrang.itemOptions) {
-                        if (io.optionTemplate.id != randomOptionId && (io.optionTemplate.id >= 241 && io.optionTemplate.id <= 247)) {
-                            Service.gI().sendThongBao(player, "Đã nâng một loại tinh thạch khác rồi, không thể nâng tiếp");
-                            return;
-                        }
-                    }
-
-                    // Nếu không có loại tinh thạch khác, tiếp tục thêm hoặc nâng cấp
-                    boolean hasOption = false;
-                    for (Item.ItemOption io : newCaiTrang.itemOptions) {
-                        if (io.optionTemplate.id == randomOptionId) {
-                            io.param = Math.min(io.param + 1, 10);
-                            hasOption = true;
-                            break;
-                        }
-                    }
-
-                    if (!hasOption) {
-                        newCaiTrang.itemOptions.add(new ItemOption(randomOptionId, 1));
-                    }
-
-                    sendEffectSuccessCombine(player);
-                    InventoryServiceNew.gI().subQuantityItemsBag(player, caiTrang, 1);
-                    InventoryServiceNew.gI().addItemBag(player, newCaiTrang);
-
-                } else {
-                    sendEffectFailCombine(player);
-                }
-                InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendMoney(player);
-                reOpenItemCombine(player);
-            } else {
-                Service.gI().sendThongBao(player, "Thiếu vật phẩm cần để nâng");
+            // Check số lượng đá
+            if (manhVo.quantity < player.combineNew.DaNangcap) {
+                Service.gI().sendThongBao(player, "Không đủ số lượng đá");
+                return;
             }
+
+            // Check loại đá và tinh thạch hiện tại
+            int fragmentType = manhVo.template.id;
+            int expectedOptionId = 241 + (fragmentType - 1360);
+            for (Item.ItemOption io : caiTrang.itemOptions) {
+                if (io.optionTemplate.id >= 241 && io.optionTemplate.id <= 247 && io.optionTemplate.id != expectedOptionId) {
+                    Service.gI().sendThongBao(player, "Không thể dùng loại đá khác");
+                    return;
+                }
+            }
+
+            // Xử lý nâng cấp
+            player.inventory.gold -= player.combineNew.goldCombine;
+            player.inventory.gem -= player.combineNew.gemCombine;
+            InventoryServiceNew.gI().subQuantityItemsBag(player, manhVo, player.combineNew.DaNangcap);
+
+            if (Util.isTrue(tiLe, 100)) {
+                Item newItem = ItemService.gI().createNewItem(caiTrang.template.id);
+
+                // Copy options
+                newItem.itemOptions.addAll(caiTrang.itemOptions.stream()
+                        .map(io -> new ItemOption(io.optionTemplate.id, io.param))
+                        .collect(Collectors.toList()));
+
+                // Update tinh thạch
+                boolean updated = false;
+                for (ItemOption io : newItem.itemOptions) {
+                    if (io.optionTemplate.id == expectedOptionId) {
+                        io.param = Math.min(io.param + 1, 10);
+                        updated = true;
+                        break;
+                    }
+                }
+
+                // Thêm mới nếu chưa có
+                if (!updated) {
+                    newItem.itemOptions.add(new ItemOption(expectedOptionId, 1));
+                }
+
+                // Apply vật phẩm
+                InventoryServiceNew.gI().subQuantityItemsBag(player, caiTrang, 1);
+                InventoryServiceNew.gI().addItemBag(player, newItem);
+                sendEffectSuccessCombine(player);
+            } else {
+                sendEffectFailCombine(player);
+            }
+
+            // Update GUI
+            InventoryServiceNew.gI().sendItemBags(player);
+            Service.gI().sendMoney(player);
+            player.combineNew.updateItemsCombine(player.inventory.itemsBag);
+            reOpenItemCombine(player);
         }
     }
 //end khaile modify
@@ -3433,6 +3657,7 @@ public class CombineServiceNew {
 //            }
 //        }
 //    }
+
     private void nangCapThanLinhLenHuyDiet(Player player) {
         if (player.combineNew.itemsCombine.size() == 1) {
             Item dtl = null;
@@ -3455,6 +3680,7 @@ public class CombineServiceNew {
                 }
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendMoney(player);
+
                 reOpenItemCombine(player);
 
             }
