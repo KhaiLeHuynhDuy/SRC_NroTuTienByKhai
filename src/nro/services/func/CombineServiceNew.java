@@ -489,7 +489,7 @@ public class CombineServiceNew {
         }
         InventoryServiceNew.gI().subQuantityItemsBag(player, manhTrangBi, 99);
         // Trừ nguyên liệu
-        thoiVang.quantity -= 10000;
+        thoiVang.quantity -= 10_000;
         InventoryServiceNew.gI().subQuantityItemsBag(player, linhKhi, 99_999);
         player.inventory.ruby -= 5_000_000;
         // cập nhật hồng ngọc hành trang
@@ -7173,6 +7173,10 @@ public class CombineServiceNew {
             case CHE_TAO_NGOAI_TRANG_VO_CUC_TU_TAI:
                 return "Vào hành trang\n"
                         + "Chọn 5 phiếu đổi ngoại trang (Áo - Quần - Găng - Giày - Nhẫn)\n";
+            case CHE_TAO_THIEN_MA:
+                return "Vào hành trang\n"
+                        + "Chọn 19 mảnh trang bị vạn năng theo loại trang bị muốn chế tạo\n"
+                        + "100k Thiên Ma Thạch\n";
             //end khaile add
             default:
                 return "Vui lòng chờ thêm thông tin";

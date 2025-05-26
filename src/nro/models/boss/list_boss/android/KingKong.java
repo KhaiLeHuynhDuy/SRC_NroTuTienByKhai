@@ -14,10 +14,12 @@ import nro.services.TaskService;
 import nro.utils.Util;
 import java.util.Arrays;
 import java.util.Random;
+import nro.models.boss.list_boss.gokuvocuc.Gokuvc;
 import nro.models.skill.Skill;
 import nro.server.Manager;
 import nro.services.EffectSkillService;
 import nro.services.PlayerService;
+import nro.utils.Logger;
 
 public class KingKong extends Boss {
 
@@ -58,26 +60,124 @@ public class KingKong extends Boss {
         }
 
     }
- @Override
+// @Override
+//    public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
+//        if (!this.isDie()) {
+//            if (plAtt != null) {
+//                switch (plAtt.playerSkill.skillSelect.template.id) {
+//                    case Skill.KAMEJOKO:
+//                    case Skill.MASENKO:
+//                    case Skill.ANTOMIC:
+//                        int hpHoi = (int) ((long) damage * 30 / 100);
+//                        PlayerService.gI().hoiPhuc(this, hpHoi, 0);
+//                        PlayerService.gI().hoiPhuc(plAtt, hpHoi / 3, 0);
+//                        if (Util.isTrue(1, 5)) {
+//                            this.chat("Hấp thụ.. các ngươi nghĩ sao vậy?");
+//                        }
+//                        return 0;
+//                }
+//            }
+//            damage = this.nPoint.subDameInjureWithDeff(damage);
+//        if (plAtt != null && !piercing && effectSkill.isShielding) {
+//                if (damage > nPoint.hpMax) {
+//                    EffectSkillService.gI().breakShield(this);
+//                }
+//                damage = damage * 0.5;
+//            }
+//            this.nPoint.subHP(damage);
+//            if (isDie()) {
+//                this.setDie(plAtt);
+//                die(plAtt);
+//            }
+//            return damage;
+//        } else {
+//            return 0;
+//        }
+//    }
+//
+//    @Override
+//    public void active() {
+//        if (this.typePk == ConstPlayer.NON_PK) {
+//            return;
+//        }
+//        this.attack();
+//    }
+//
+//    @Override
+//    public void joinMap() {
+//        super.joinMap(); //To change body of generated methods, choose Tools | Templates.
+//        st = System.currentTimeMillis();
+//    }
+//    private long st;
+//
+//    @Override
+//    public void updateBoss() {
+//        super.updateBoss();
+//        bossRestart();
+//    }
+//
+//    public void bossRestart() {
+//        if (this.zone != null && this.getTimeToRestart() != -1
+//                && Util.canDoWithTime(getTimeToRestart(), getSecondsNotify() * 1000)) {
+//            if (Arrays.asList(getBossAppearTogether()[0]).stream().anyMatch(x -> x.isDie()) && !startRespawn) {
+//                handleSubBossRestart();
+//            }
+//            setLastTimeNotify(System.currentTimeMillis());
+//        }
+//    }
+//
+//    private synchronized void handleSubBossRestart() {
+//        startRespawn = true;
+//        for (Boss boss : getBossAppearTogether()[0]) {
+//            boss.changeStatus(BossStatus.LEAVE_MAP);
+//        }
+//        this.changeStatus(BossStatus.LEAVE_MAP);
+//        System.out.println("aaa");
+//        BossManager.gI().createBoss(BossType.KING_KONG);
+//    }
+     @Override
+    public void joinMap() {
+        super.joinMap();
+        st = System.currentTimeMillis();
+    }
+    private long st;
 
+    @Override
+    public void active() {
+        if (this.typePk == ConstPlayer.NON_PK) {
+            this.changeToTypePK();
+        }
+        try {
+        } catch (Exception ex) {
+            Logger.logException(KingKong.class, ex);
+        }
+        this.attack();
+        if (Util.canDoWithTime(st, 900000)) {
+            this.changeStatus(BossStatus.LEAVE_MAP);
+        }
+    }
+    @Override
     public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
+            if (!piercing && Util.isTrue(40, 1000)) {
+                this.chat("Xí hụt");
+                return 0;
+            }
             if (plAtt != null) {
                 switch (plAtt.playerSkill.skillSelect.template.id) {
                     case Skill.KAMEJOKO:
+
+                        damage = damage / 2;
+                         case Skill.LIEN_HOAN:
+                        damage = damage * 75 / 100;
                     case Skill.MASENKO:
-                    case Skill.ANTOMIC:
-                        int hpHoi = (int) ((long) damage * 30 / 100);
-                        PlayerService.gI().hoiPhuc(this, hpHoi, 0);
-                        PlayerService.gI().hoiPhuc(plAtt, hpHoi / 3, 0);
-                        if (Util.isTrue(1, 5)) {
-                            this.chat("Hấp thụ.. các ngươi nghĩ sao vậy?");
-                        }
-                        return 0;
+                        damage = damage * 130 / 100;
+                    case Skill.GALICK:
+                        damage = damage * 70 / 100;
                 }
             }
-            damage = this.nPoint.subDameInjureWithDeff(damage);
-        if (plAtt != null && !piercing && effectSkill.isShielding) {
+         damage = this.nPoint.subDameInjureWithDeff(damage);
+             if (plAtt != null && !piercing && effectSkill.isShielding) {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
                 }
@@ -92,47 +192,6 @@ public class KingKong extends Boss {
         } else {
             return 0;
         }
-    }
-
-    @Override
-    public void active() {
-        if (this.typePk == ConstPlayer.NON_PK) {
-            return;
-        }
-        this.attack();
-    }
-
-    @Override
-    public void joinMap() {
-        super.joinMap(); //To change body of generated methods, choose Tools | Templates.
-        st = System.currentTimeMillis();
-    }
-    private long st;
-
-    @Override
-    public void updateBoss() {
-        super.updateBoss();
-        bossRestart();
-    }
-
-    public void bossRestart() {
-        if (this.zone != null && this.getTimeToRestart() != -1
-                && Util.canDoWithTime(getTimeToRestart(), getSecondsNotify() * 1000)) {
-            if (Arrays.asList(getBossAppearTogether()[0]).stream().anyMatch(x -> x.isDie()) && !startRespawn) {
-                handleSubBossRestart();
-            }
-            setLastTimeNotify(System.currentTimeMillis());
-        }
-    }
-
-    private synchronized void handleSubBossRestart() {
-        startRespawn = true;
-        for (Boss boss : getBossAppearTogether()[0]) {
-            boss.changeStatus(BossStatus.LEAVE_MAP);
-        }
-        this.changeStatus(BossStatus.LEAVE_MAP);
-        System.out.println("aaa");
-        BossManager.gI().createBoss(BossType.KING_KONG);
     }
 }
 

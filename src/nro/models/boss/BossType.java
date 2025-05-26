@@ -86,9 +86,9 @@ public class BossType {
     public static final int BLACK = 55;
     public static final int BLACK1 = 56;
     public static final int BLACK2 = 57;
-    public static final int ZAMASMAX = 58;
-    public static final int ZAMASZIN = 59;
-
+    public static final int ZAMAS_KAIO = 58;
+    public static final int ZAMAS_ZIN = 59;
+    public static final int ZAMAS_TOITHUONG = 115;
     public static final int THAN_HUY_DIET = 60;
     public static final int THIEN_SU_WHIS = 61;
     public static final int THAN_HUY_DIET_CHAMPA = 62;
@@ -166,7 +166,7 @@ public class BossType {
     public static final byte MATROI = 112;
     public static final byte XUONG = 113;
     public static final byte GOKU_VOCUC = 114;
-    public static final byte ZAMASUTOITHUONG = 115;
+
     public static final byte SUPER_BLACK_GOKU_2 = 116;
     public static final int AN_TROM_TV = 117;
 

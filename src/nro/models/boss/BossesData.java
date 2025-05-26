@@ -102,14 +102,15 @@ public class BossesData {
             new String[]{"|-1|Hẹn gặp lại",
                 "|-2|Không tiễn"}, //text chat 3
             REST_15_M, //second rest
-            REST_15_M, //second rest
-            new int[]{BossType.ZAMASZIN}
+            REST_15_M //second rest
+    // new int[]{BossType.ZAMAS_ZIN} // boss xuat hien voi boss khac
     );
 
     public static final BossData ZAMAS = new BossData(
             "Kaioshin Zamas", //name
             ConstPlayer.TRAI_DAT, //gender
-            new short[]{433, 904, 905, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+
+            new short[]{903, 904, 905, -1, -1, -1},//outfit {head, body, leg, bag, aura, eff}
             45321, //dame
             new long[]{700000000}, //hp
             new int[]{102, 92, 93, 94, 96, 97, 98, 99, 100}, //map join
@@ -140,7 +141,8 @@ public class BossesData {
 
             new String[]{"|-1|Chỉ còn một cách duy nhất mà thôi",
                 "|-1|Bông tai Porata!"}, //text chat 3
-            TypeAppear.APPEAR_WITH_ANOTHER
+            REST_15_M, //second rest
+            REST_15_M
     );
     public static final BossData ZAMASUTOITHUONG = new BossData(
             "Zamasu Tối Thượng", //name
@@ -175,7 +177,8 @@ public class BossesData {
             }, //text chat 2
 
             new String[]{"|-1|Tại sao AAAAAAAAAAAAAAAAAAAAAA"}, //text chat 3
-            TypeAppear.APPEAR_WITH_ANOTHER
+            REST_15_M, //second rest
+            REST_15_M
     );
     public static final BossData NhatThan = new BossData(
             "Nhật thần", //name
@@ -702,7 +705,7 @@ public class BossesData {
             new short[]{252, 253, 254, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             120550, //dame
             new long[]{150000000}, //hp
-            new int[]{104}, //map join
+            new int[]{84, 104}, //map join
             new int[][]{
                 {Skill.DEMON, 3, 1000}, {Skill.DEMON, 6, 2000}, {Skill.DRAGON, 7, 3000}, {Skill.DRAGON, 1, 4000}, {Skill.GALICK, 5, 5000},
                 {Skill.DICH_CHUYEN_TUC_THOI, 1, 15000},},
@@ -722,7 +725,8 @@ public class BossesData {
                 "|-2|Đúng là mạnh mồm thật đấy!",
                 "|-2|Đỡ này",}, //text chat 2
             new String[]{"|-1|Sô..Sông...gôku....."}, //text chat 3
-            TypeAppear.CALL_BY_ANOTHER
+            REST_15_M, //second rest
+            REST_15_M
     );
 
     public static final BossData ANDROID_14 = new BossData(
@@ -731,7 +735,7 @@ public class BossesData {
             new short[]{246, 247, 248, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             120000, //dame
             new long[]{140000000}, //hp
-            new int[]{104}, //map join
+            new int[]{84, 104}, //map join
             new int[][]{
                 {Skill.DEMON, 3, 1000}, {Skill.DEMON, 6, 2000}, {Skill.DRAGON, 7, 3000}, {Skill.DRAGON, 1, 4000}, {Skill.GALICK, 5, 5000},
                 {Skill.DICH_CHUYEN_TUC_THOI, 1, 15000},},
@@ -741,9 +745,8 @@ public class BossesData {
             }, //text chat 1
             new String[]{}, //text chat 2
             new String[]{"|0|Số 14 và số 15 tiêu tùng cả rồi à?"}, //text chat 3
-            REST_10_M,
-            REST_10_M,
-            new int[]{BossType.ANDROID_13, BossType.ANDROID_15}
+            REST_15_M, //second rest
+            REST_15_M
     );
 
     public static final BossData ANDROID_15 = new BossData(
@@ -752,14 +755,15 @@ public class BossesData {
             new short[]{261, 262, 263, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             19200, //dame
             new long[]{130000000}, //hp
-            new int[]{104}, //map join
+            new int[]{84, 104}, //map join
             new int[][]{
                 {Skill.DEMON, 3, 1000}, {Skill.DEMON, 6, 2000}, {Skill.DRAGON, 7, 3000}, {Skill.DRAGON, 1, 4000}, {Skill.GALICK, 5, 5000},
                 {Skill.DICH_CHUYEN_TUC_THOI, 1, 15000},},
             new String[]{}, //text chat 1
             new String[]{}, //text chat 2
             new String[]{"|-2|Thì ra vẫn chỉ là một đống sắt vụn!"}, //text chat 3
-            TypeAppear.APPEAR_WITH_ANOTHER
+            REST_15_M, //second rest
+            REST_15_M
     );
 //**************************************************************************
 
@@ -794,9 +798,8 @@ public class BossesData {
             new String[]{"|1|Pic tiêu rồi, tớ lên trước nhé!",
                 "|-3|Okê, xin cứ tự nhiên"
             }, //text chat 3
-            REST_20_M,
-            REST_20_M,
-            TypeAppear.APPEAR_WITH_ANOTHER
+            REST_15_M, //second rest
+            REST_15_M
     );
 
     public static final BossData ADR17 = new BossData(
@@ -873,9 +876,8 @@ public class BossesData {
                 "|-2|Tại sao cô gái xinh đẹp thế này mà lại là rôbốt nhỉ?"
             }, //text chat 2
             new String[]{"|-2|Cô gái xinh đẹp vậy mà lại bị tên tiến sĩ Kôrê biến thành người máy.."}, //text chat 3
-            REST_20_M,
-            REST_20_M,
-            TypeAppear.APPEAR_WITH_ANOTHER
+            REST_15_M, //second rest
+            REST_15_M
     );
 
     public static final BossData KING_KONG = new BossData(
@@ -894,9 +896,8 @@ public class BossesData {
                 "|-1|Thằng kia đừng để bọn nó trói tao !"
             }, //text chat 2
             new String[]{}, //text chat 3
-            REST_20_M,
-            REST_20_M,
-            new int[]{BossType.PIC, BossType.POC}
+            REST_15_M, //second rest
+            REST_15_M
     );
     //************************************************************************** Boss cell
 
@@ -1543,7 +1544,8 @@ public class BossesData {
 
             new String[]{"|-1|Chỉ còn một cách duy nhất mà thôi",
                 "|-1|Bông tai Porata!"}, //text chat 3
-            TypeAppear.APPEAR_WITH_ANOTHER
+            REST_15_M, //second rest
+            REST_15_M
     );
     //-------------------------------------------------------------------
     public static final BossData THANZM2 = new BossData(

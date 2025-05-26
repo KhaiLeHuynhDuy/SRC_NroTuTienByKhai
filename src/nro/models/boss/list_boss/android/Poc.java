@@ -1,8 +1,10 @@
 package nro.models.boss.list_boss.android;
 
 import java.util.Random;
+import nro.consts.ConstPlayer;
 import nro.consts.cn;
 import nro.models.boss.Boss;
+import nro.models.boss.BossStatus;
 import nro.models.boss.BossType;
 import nro.models.boss.BossesData;
 import nro.models.map.ItemMap;
@@ -13,8 +15,8 @@ import nro.services.EffectSkillService;
 import nro.services.PlayerService;
 import nro.services.Service;
 import nro.services.TaskService;
+import nro.utils.Logger;
 import nro.utils.Util;
-
 
 public class Poc extends Boss {
 
@@ -22,7 +24,7 @@ public class Poc extends Boss {
         super(BossType.POC, BossesData.POC);
     }
 
-     @Override
+    @Override
     public void reward(Player pl) {
         pl.event.addEventPointBoss(1);
         Service.gI().sendThongBao(pl, "Bạn nhận được 1 điểm săn boss");
@@ -52,26 +54,117 @@ public class Poc extends Boss {
             generalRewards(pl);
         }
 
-    } @Override
+    }
+//    @Override
+//
+//    public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
+//        if (!this.isDie()) {
+//            if (plAtt != null) {
+//                switch (plAtt.playerSkill.skillSelect.template.id) {
+//                    case Skill.KAMEJOKO:
+//                    case Skill.MASENKO:
+//                    case Skill.ANTOMIC:
+//                        int hpHoi = (int) ((long) damage * 30 / 100);
+//                        PlayerService.gI().hoiPhuc(this, hpHoi, 0);
+//                        PlayerService.gI().hoiPhuc(plAtt, hpHoi / 3, 0);
+//                        if (Util.isTrue(1, 5)) {
+//                            this.chat("Hấp thụ.. các ngươi nghĩ sao vậy?");
+//                        }
+//                        return 0;
+//                }
+//            }
+//             damage = this.nPoint.subDameInjureWithDeff(damage);
+//        if (plAtt != null && !piercing && effectSkill.isShielding) {
+//                if (damage > nPoint.hpMax) {
+//                    EffectSkillService.gI().breakShield(this);
+//                }
+//                damage = damage * 0.5;
+//            }
+//            this.nPoint.subHP(damage);
+//            if (isDie()) {
+//                this.setDie(plAtt);
+//                die(plAtt);
+//            }
+//            return damage;
+//        } else {
+//            return 0;
+//        }
+//    }
+//    @Override
+//    public void active() {
+//        super.active(); //To change body of generated methods, choose Tools | Templates.
+//    //    if(Util.canDoWithTime(st,900000)){
+//    //        this.changeStatus(BossStatus.LEAVE_MAP);
+//     //   }
+//    }
+//
+//    @Override
+//    public void leaveMap() {
+//        super.leaveMap();
+//        getParentBoss().setTimeToRestart(System.currentTimeMillis());
+//    }
+//    
+//    
+//
+//    @Override
+//    public void joinMap() {
+//        super.joinMap(); //To change body of generated methods, choose Tools | Templates.
+//        st= System.currentTimeMillis();
+//    }
+//    private long st;
+//
+//    @Override
+//    public void wakeupAnotherBossWhenDisappear() {
+//        Boss boss = this.getParentBoss().getBossAppearTogether()[this.getCurrentLevel()][0];
+//        if (boss!= null && !boss.isDie()) {
+//            boss.changeToTypePK();
+//        }
+//    }
 
+    @Override
+    public void joinMap() {
+        super.joinMap();
+        st = System.currentTimeMillis();
+    }
+    private long st;
+
+    @Override
+    public void active() {
+        if (this.typePk == ConstPlayer.NON_PK) {
+            this.changeToTypePK();
+        }
+        try {
+        } catch (Exception ex) {
+            Logger.logException(Poc.class, ex);
+        }
+        this.attack();
+        if (Util.canDoWithTime(st, 900000)) {
+            this.changeStatus(BossStatus.LEAVE_MAP);
+        }
+    }
+
+    @Override
     public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
+            if (!piercing && Util.isTrue(40, 1000)) {
+                this.chat("Xí hụt");
+                return 0;
+            }
             if (plAtt != null) {
                 switch (plAtt.playerSkill.skillSelect.template.id) {
                     case Skill.KAMEJOKO:
+
+                        damage = damage / 2;
+                    case Skill.LIEN_HOAN:
+                        damage = damage * 75 / 100;
                     case Skill.MASENKO:
-                    case Skill.ANTOMIC:
-                        int hpHoi = (int) ((long) damage * 30 / 100);
-                        PlayerService.gI().hoiPhuc(this, hpHoi, 0);
-                        PlayerService.gI().hoiPhuc(plAtt, hpHoi / 3, 0);
-                        if (Util.isTrue(1, 5)) {
-                            this.chat("Hấp thụ.. các ngươi nghĩ sao vậy?");
-                        }
-                        return 0;
+                        damage = damage * 130 / 100;
+                    case Skill.GALICK:
+                        damage = damage * 70 / 100;
                 }
             }
-             damage = this.nPoint.subDameInjureWithDeff(damage);
-        if (plAtt != null && !piercing && effectSkill.isShielding) {
+            damage = this.nPoint.subDameInjureWithDeff(damage);
+            if (plAtt != null && !piercing && effectSkill.isShielding) {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
                 }
@@ -87,37 +180,6 @@ public class Poc extends Boss {
             return 0;
         }
     }
-    @Override
-    public void active() {
-        super.active(); //To change body of generated methods, choose Tools | Templates.
-    //    if(Util.canDoWithTime(st,900000)){
-    //        this.changeStatus(BossStatus.LEAVE_MAP);
-     //   }
-    }
-
-    @Override
-    public void leaveMap() {
-        super.leaveMap();
-        getParentBoss().setTimeToRestart(System.currentTimeMillis());
-    }
-    
-    
-
-    @Override
-    public void joinMap() {
-        super.joinMap(); //To change body of generated methods, choose Tools | Templates.
-        st= System.currentTimeMillis();
-    }
-    private long st;
-
-    @Override
-    public void wakeupAnotherBossWhenDisappear() {
-        Boss boss = this.getParentBoss().getBossAppearTogether()[this.getCurrentLevel()][0];
-        if (boss!= null && !boss.isDie()) {
-            boss.changeToTypePK();
-        }
-    }
-
 }
 
 /**

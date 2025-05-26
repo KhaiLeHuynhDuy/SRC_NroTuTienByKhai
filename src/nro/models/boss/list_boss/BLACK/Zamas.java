@@ -16,10 +16,10 @@ import nro.models.boss.list_boss.android.Poc;
 import nro.services.TaskService;
 import nro.utils.Logger;
 
-public class ZamasKaio extends Boss {
+public class Zamas extends Boss {
 
-    public ZamasKaio() throws Exception {
-        super(BossType.ZAMAS_KAIO, BossesData.ZAMASU);
+    public Zamas() throws Exception {
+         super(BossType.ZAMAS_ZIN, BossesData.ZAMAS);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class ZamasKaio extends Boss {
         }
         try {
         } catch (Exception ex) {
-            Logger.logException(ZamasKaio.class, ex);
+            Logger.logException(Zamas.class, ex);
         }
         this.attack();
         if (Util.canDoWithTime(st, 900000)) {
@@ -111,7 +111,7 @@ public class ZamasKaio extends Boss {
             return 0;
         }
     }
-}
+    }
 //    @Override
 //    public void moveTo(int x, int y) {
 //        if(this.currentLevel == 1){

@@ -6,17 +6,20 @@ import nro.consts.cn;
 import nro.models.boss.Boss;
 import nro.models.boss.BossData;
 import nro.models.boss.BossManager;
+import nro.models.boss.BossStatus;
 import nro.models.boss.BossType;
 import nro.models.boss.BossesData;
 import nro.models.boss.SmallBoss;
 import nro.models.map.ItemMap;
 import nro.models.map.Zone;
 import nro.models.player.Player;
+import nro.models.skill.Skill;
 import nro.server.Manager;
 import nro.services.EffectSkillService;
 import nro.services.Service;
 import nro.services.TaskService;
 import nro.services.func.ChangeMapService;
+import nro.utils.Logger;
 import nro.utils.Util;
 
 public class Pic extends SmallBoss {
@@ -37,14 +40,7 @@ public class Pic extends SmallBoss {
         this.y = y;
     }
 
-    @Override
-    public void joinMap() {
-        if (this.bigBoss == null) {
-            super.joinMap();
-        } else {
-            ChangeMapService.gI().changeMap(this, this.zone, x + Util.getOne(-1, 1) * 50, y);
-        }
-    }
+
    @Override
     public void reward(Player pl) {
         pl.event.addEventPointBoss(1);
@@ -76,56 +72,156 @@ public class Pic extends SmallBoss {
         }
 
     }
-
+//    @Override
+//    public void joinMap() {
+//        if (this.bigBoss == null) {
+//            super.joinMap();
+//        } else {
+//            ChangeMapService.gI().changeMap(this, this.zone, x + Util.getOne(-1, 1) * 50, y);
+//        }
+//    }
+//
+//    @Override
+//    public void doneChatE() {
+//        if (this.getParentBoss() == null || this.getParentBoss().getBossAppearTogether() == null
+//                || this.getParentBoss().getBossAppearTogether()[this.getParentBoss().getCurrentLevel()] == null) {
+//            this.changeToTypePK();
+//        } else {
+//            for (Boss boss : this.getParentBoss().getBossAppearTogether()[this.getParentBoss().getCurrentLevel()]) {
+//                if (boss.id == BossType.POC && !boss.isDie()) {
+//                    boss.changeToTypePK();
+//                    break;
+//                }
+//            }
+//        }
+//    }
+//
+//    @Override
+//    public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
+//        if (!this.isDie()) {
+//            if (!piercing && Util.isTrue(this.nPoint.tlNeDon, 1000)) {
+//                this.chat("Xí hụt");
+//                return 0;
+//            }
+//           damage = this.nPoint.subDameInjureWithDeff(damage);
+//        if (plAtt != null && !piercing && effectSkill.isShielding) {
+//                if (damage > nPoint.hpMax) {
+//                    EffectSkillService.gI().breakShield(this);
+//                }
+//                damage = damage * 0.5;
+//            }
+//            if (damage >= this.nPoint.hp && this.bigBoss != null && !this.isReady) {
+//                this.changeToTypeNonPK();
+//                this.isReady = true;
+//                this.nPoint.hp = 1;
+////                this.effectSkill.removeSkillEffectWhenDie();
+////                if (((SuperAndroid17) this.bigBoss).isReady) {
+////                    ((SuperAndroid17) this.bigBoss).lastTimeFusion = System.currentTimeMillis();
+////                    ((SuperAndroid17) this.bigBoss).lastTimecanAttack = System.currentTimeMillis();
+////                }
+//                return 0;
+//            } if (plAtt != null && !piercing && effectSkill.isShielding) {
+//                if (damage > nPoint.hpMax) {
+////                    EffectSkillService.gI().breakShield(this);
+//                    damage = nPoint.hpMax * 0.1;
+//                } else {
+//
+//                    damage = Util.nextInt((int) plAtt.nPoint.dameg, (int) (plAtt.nPoint.dameg * 1.3));
+//                }
+//
+//            }
+//            this.nPoint.subHP(damage);
+//            if (isDie()) {
+//                this.setDie(plAtt);
+//                die(plAtt);
+//            }
+//            return damage;
+//        } else {
+//            return 0;
+//        }
+//    }
+//
+//    @Override
+//    public void active() {
+//        if (this.bigBoss == null) {
+//            if (this.typePk == ConstPlayer.NON_PK) {
+//                return;
+//            }
+//            this.attack();
+//        } else {
+//            if (this.bigBoss != null && this.bigBoss.typePk == ConstPlayer.PK_ALL && !this.isReady) {
+//                this.changeToTypePK();
+//            }
+//            this.attack();
+//        }
+//    }
+//
+//    @Override
+//    public void wakeupAnotherBossWhenDisappear() {
+//        Boss boss = this.getParentBoss();
+//        if (boss != null && !boss.isDie()) {
+//            boss.changeToTypePK();
+//        }
+//    }
+//
+//    @Override
+//    public void leaveMap() {
+//        if (this.bigBoss == null) {
+//            super.leaveMap();
+//        } else {
+//            synchronized (this) {
+//                BossManager.gI().removeBoss(this);
+//            }
+//            this.dispose();
+//        }
+//    }
+  @Override
+    public void joinMap() {
+        super.joinMap();
+        st = System.currentTimeMillis();
+    }
+    private long st;
 
     @Override
-    public void doneChatE() {
-        if (this.getParentBoss() == null || this.getParentBoss().getBossAppearTogether() == null
-                || this.getParentBoss().getBossAppearTogether()[this.getParentBoss().getCurrentLevel()] == null) {
+    public void active() {
+        if (this.typePk == ConstPlayer.NON_PK) {
             this.changeToTypePK();
-        } else {
-            for (Boss boss : this.getParentBoss().getBossAppearTogether()[this.getParentBoss().getCurrentLevel()]) {
-                if (boss.id == BossType.POC && !boss.isDie()) {
-                    boss.changeToTypePK();
-                    break;
-                }
-            }
+        }
+        try {
+        } catch (Exception ex) {
+            Logger.logException(Pic.class, ex);
+        }
+        this.attack();
+        if (Util.canDoWithTime(st, 900000)) {
+            this.changeStatus(BossStatus.LEAVE_MAP);
         }
     }
-
     @Override
     public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
-            if (!piercing && Util.isTrue(this.nPoint.tlNeDon, 1000)) {
+            if (!piercing && Util.isTrue(40, 1000)) {
                 this.chat("Xí hụt");
                 return 0;
             }
-           damage = this.nPoint.subDameInjureWithDeff(damage);
-        if (plAtt != null && !piercing && effectSkill.isShielding) {
+            if (plAtt != null) {
+                switch (plAtt.playerSkill.skillSelect.template.id) {
+                    case Skill.KAMEJOKO:
+
+                        damage = damage / 2;
+                         case Skill.LIEN_HOAN:
+                        damage = damage * 75 / 100;
+                    case Skill.MASENKO:
+                        damage = damage * 130 / 100;
+                    case Skill.GALICK:
+                        damage = damage * 70 / 100;
+                }
+            }
+         damage = this.nPoint.subDameInjureWithDeff(damage);
+             if (plAtt != null && !piercing && effectSkill.isShielding) {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
                 }
                 damage = damage * 0.5;
-            }
-            if (damage >= this.nPoint.hp && this.bigBoss != null && !this.isReady) {
-                this.changeToTypeNonPK();
-                this.isReady = true;
-                this.nPoint.hp = 1;
-//                this.effectSkill.removeSkillEffectWhenDie();
-//                if (((SuperAndroid17) this.bigBoss).isReady) {
-//                    ((SuperAndroid17) this.bigBoss).lastTimeFusion = System.currentTimeMillis();
-//                    ((SuperAndroid17) this.bigBoss).lastTimecanAttack = System.currentTimeMillis();
-//                }
-                return 0;
-            } if (plAtt != null && !piercing && effectSkill.isShielding) {
-                if (damage > nPoint.hpMax) {
-//                    EffectSkillService.gI().breakShield(this);
-                    damage = nPoint.hpMax * 0.1;
-                } else {
-
-                    damage = Util.nextInt((int) plAtt.nPoint.dameg, (int) (plAtt.nPoint.dameg * 1.3));
-                }
-
             }
             this.nPoint.subHP(damage);
             if (isDie()) {
@@ -137,42 +233,6 @@ public class Pic extends SmallBoss {
             return 0;
         }
     }
-
-    @Override
-    public void active() {
-        if (this.bigBoss == null) {
-            if (this.typePk == ConstPlayer.NON_PK) {
-                return;
-            }
-            this.attack();
-        } else {
-            if (this.bigBoss != null && this.bigBoss.typePk == ConstPlayer.PK_ALL && !this.isReady) {
-                this.changeToTypePK();
-            }
-            this.attack();
-        }
-    }
-
-    @Override
-    public void wakeupAnotherBossWhenDisappear() {
-        Boss boss = this.getParentBoss();
-        if (boss != null && !boss.isDie()) {
-            boss.changeToTypePK();
-        }
-    }
-
-    @Override
-    public void leaveMap() {
-        if (this.bigBoss == null) {
-            super.leaveMap();
-        } else {
-            synchronized (this) {
-                BossManager.gI().removeBoss(this);
-            }
-            this.dispose();
-        }
-    }
-
 }
 
 /**

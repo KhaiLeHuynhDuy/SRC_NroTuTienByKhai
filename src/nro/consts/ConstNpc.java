@@ -96,7 +96,7 @@ public class ConstNpc {
     public static final byte OSIN = 44;
     public static final byte KIBIT = 45;
     public static final byte BABIDAY = 46;
-    public static final byte GIUMA_DAU_BO = 47;
+    public static final byte CAU_BE = 47;
     public static final byte NGO_KHONG = 48;
     public static final byte DUONG_TANG = 49;
     public static final byte QUA_TRUNG = 50;

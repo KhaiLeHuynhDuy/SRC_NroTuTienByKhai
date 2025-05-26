@@ -8,13 +8,16 @@ import nro.models.boss.BossType;
 import nro.models.boss.BossStatus;
 import nro.models.boss.BossType;
 import nro.models.boss.BossesData;
+import nro.models.boss.list_boss.gokuvocuc.Gokuvc;
 import nro.models.map.ItemMap;
 import nro.models.player.Player;
+import nro.models.skill.Skill;
 import nro.server.Manager;
 import nro.services.EffectSkillService;
 import nro.services.PlayerService;
 import nro.services.Service;
 import nro.services.TaskService;
+import nro.utils.Logger;
 import nro.utils.Util;
 
 public class Android14 extends Boss {
@@ -61,67 +64,136 @@ public class Android14 extends Boss {
     }
 
     @Override
-    protected void resetBase() {
-        super.resetBase();
-        this.callApk13 = false;
-        this.adr13 = (Android13) this.getBossAppearTogether()[this.getCurrentLevel()][0];
-        this.adr15 = (Android15) this.getBossAppearTogether()[this.getCurrentLevel()][1];
+    public void joinMap() {
+        super.joinMap();
+        st = System.currentTimeMillis();
     }
+    private long st;
 
     @Override
     public void active() {
-        if (this.typePk == ConstPlayer.NON_PK && !this.callApk13) {
+        if (this.typePk == ConstPlayer.NON_PK) {
             this.changeToTypePK();
-        } else if (this.callApk13 && adr13.typePk == ConstPlayer.PK_ALL) {
-            this.changeToTypePK();
+        }
+        try {
+        } catch (Exception ex) {
+            Logger.logException(Android14.class, ex);
         }
         this.attack();
-    }
-
-    @Override
-    public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
-        if (!this.callApk13 && this.nPoint.hp - damage <= this.nPoint.hpMax / 2) {
-            this.callApk13();
-            return 0;
+        if (Util.canDoWithTime(st, 900000)) {
+            this.changeStatus(BossStatus.LEAVE_MAP);
         }
-        damage = this.nPoint.subDameInjureWithDeff(damage);
-        if (plAtt != null && !piercing && effectSkill.isShielding) {
+    }
+//    @Override
+//    public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
+//        if (!this.callApk13 && this.nPoint.hp - damage <= this.nPoint.hpMax / 2) {
+//            this.callApk13();
+//            return 0;
+//        }
+//        damage = this.nPoint.subDameInjureWithDeff(damage);
+//        if (plAtt != null && !piercing && effectSkill.isShielding) {
+//                if (damage > nPoint.hpMax) {
+//                    EffectSkillService.gI().breakShield(this);
+//                }
+//                damage = damage * 0.5;
+//            }
+//        return super.injured(plAtt, damage, piercing, isMobAttack);
+//    }
+
+//    @Override
+//    public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
+//        if (damage >= this.nPoint.hp) {
+//            boolean flag = true;
+//            if (this.getParentBoss() != null) {
+//                if (this.getParentBoss().getBossAppearTogether() != null && getParentBoss().getBossAppearTogether()[this.getParentBoss().getCurrentLevel()] != null) {
+//                    for (Boss boss : this.getParentBoss().getBossAppearTogether()[this.getParentBoss().getCurrentLevel()]) {
+//                        if (boss.id == BossType.ANDROID_15 && !boss.isDie()) {
+//                            flag = false;
+//                            break;
+//                        }
+//                    }
+//                }
+//                if (flag && !this.getParentBoss().isDie()) {
+//                    flag = false;
+//                }
+//            }
+//            if (!flag) {
+//                return 0;
+//            }
+//        }
+//        damage = this.nPoint.subDameInjureWithDeff(damage);
+//        if (plAtt != null && !piercing && effectSkill.isShielding) {
+//            if (damage > nPoint.hpMax) {
+//                EffectSkillService.gI().breakShield(this);
+//            }
+//            damage = damage * 0.5;
+//        }
+//        return super.injured(plAtt, damage, piercing, isMobAttack);
+//    }
+//    public void callApk13() {
+//        if (this.getBossAppearTogether() == null || this.getBossAppearTogether()[this.getCurrentLevel()] == null) {
+//            return;
+//        }
+//        this.adr15.changeToTypeNonPK();
+//        this.changeToTypeNonPK();
+//        this.adr15.callApk13 = true;
+//        this.callApk13 = true;
+//        this.adr15.recoverHP();
+//        this.recoverHP();
+//        this.adr13.changeStatus(BossStatus.RESPAWN);
+//    }
+//
+//    public void recoverHP() {
+//        PlayerService.gI().hoiPhuc(this, this.nPoint.hpMax, 0);
+//    }
+
+//    @Override
+//    public void doneChatS() {
+//        if (this.getBossAppearTogether() == null || this.getBossAppearTogether()[this.getCurrentLevel()] == null) {
+//            return;
+//        }
+//        for (Boss boss : this.getBossAppearTogether()[this.getCurrentLevel()]) {
+//            if (boss.id == BossType.ANDROID_15) {
+//                boss.changeToTypePK();
+//                break;
+//            }
+//        }
+//    }
+ @Override
+    public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
+        if (!this.isDie()) {
+            if (!piercing && Util.isTrue(40, 1000)) {
+                this.chat("Xí hụt");
+                return 0;
+            }
+            if (plAtt != null) {
+                switch (plAtt.playerSkill.skillSelect.template.id) {
+                    case Skill.KAMEJOKO:
+
+                        damage = damage / 2;
+                         case Skill.LIEN_HOAN:
+                        damage = damage * 75 / 100;
+                    case Skill.MASENKO:
+                        damage = damage * 130 / 100;
+                    case Skill.GALICK:
+                        damage = damage * 70 / 100;
+                }
+            }
+         damage = this.nPoint.subDameInjureWithDeff(damage);
+             if (plAtt != null && !piercing && effectSkill.isShielding) {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
                 }
                 damage = damage * 0.5;
             }
-        return super.injured(plAtt, damage, piercing, isMobAttack);
-    }
-
-    public void callApk13() {
-        if (this.getBossAppearTogether() == null || this.getBossAppearTogether()[this.getCurrentLevel()] == null) {
-            return;
-        }
-        this.adr15.changeToTypeNonPK();
-        this.changeToTypeNonPK();
-        this.adr15.callApk13 = true;
-        this.callApk13 = true;
-        this.adr15.recoverHP();
-        this.recoverHP();
-        this.adr13.changeStatus(BossStatus.RESPAWN);
-    }
-
-    public void recoverHP() {
-        PlayerService.gI().hoiPhuc(this, this.nPoint.hpMax, 0);
-    }
-
-    @Override
-    public void doneChatS() {
-        if (this.getBossAppearTogether() == null || this.getBossAppearTogether()[this.getCurrentLevel()] == null) {
-            return;
-        }
-        for (Boss boss : this.getBossAppearTogether()[this.getCurrentLevel()]) {
-            if (boss.id == BossType.ANDROID_15) {
-                boss.changeToTypePK();
-                break;
+            this.nPoint.subHP(damage);
+            if (isDie()) {
+                this.setDie(plAtt);
+                die(plAtt);
             }
+            return damage;
+        } else {
+            return 0;
         }
     }
-
 }

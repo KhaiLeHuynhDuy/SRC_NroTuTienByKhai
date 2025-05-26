@@ -1404,7 +1404,7 @@ public class NpcFactory {
         };
     }
 
-    public static Npc Giuma(int mapId, int status, int cx, int cy, int tempId, int avartar) {
+    public static Npc CauBe(int mapId, int status, int cx, int cy, int tempId, int avartar) {
         return new Npc(mapId, status, cx, cy, tempId, avartar) {
             @Override
             public void openBaseMenu(Player player) {
@@ -8981,8 +8981,8 @@ public class NpcFactory {
             switch (tempId) {
                 case ConstNpc.TRONG_TAI:
                     return TrongTai(mapId, status, cx, cy, tempId, avatar);
-                case ConstNpc.GIUMA_DAU_BO:
-                    return Giuma(mapId, status, cx, cy, tempId, avatar);
+                case ConstNpc.CAU_BE:
+                    return CauBe(mapId, status, cx, cy, tempId, avatar);
 
 //                case ConstNpc.BERUS_DHVT:
 //                 

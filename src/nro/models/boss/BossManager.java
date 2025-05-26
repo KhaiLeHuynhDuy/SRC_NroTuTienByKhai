@@ -126,24 +126,38 @@ public class BossManager {
 //        ExecutorService executor = Executors.newFixedThreadPool(10); // Số lượng threads có thể được điều chỉnh
 
             int[] bossTypes = {
-                BossType.TIEU_DOI_TRUONG, BossType.KING_KONG, BossType.CUMBER, BossType.XEN_BO_HUNG, BossType.MA_TROI,
-                BossType.SIEU_BO_HUNG, BossType.BLACK, BossType.PIC, BossType.BU_MAP, BossType.KUKU, BossType.MAP_DAU_DINH,
-                BossType.RAMBO, BossType.FIDE, BossType.DR_KORE, BossType.ANDROID_14,// BossType.SUPER_ANDROID_17,
+                BossType.TIEU_DOI_TRUONG,
+                BossType.KING_KONG, BossType.PIC, BossType.POC,
+                BossType.CUMBER,
+                BossType.MA_TROI,
+                BossType.SIEU_BO_HUNG, BossType.XEN_BO_HUNG,
+                BossType.BLACK,
+                BossType.BU_MAP,
+                BossType.KUKU, BossType.MAP_DAU_DINH, BossType.RAMBO,
+                BossType.FIDE,
+                BossType.DR_KORE,
+                BossType.ANDROID_13, BossType.ANDROID_14, BossType.ANDROID_15,// BossType.SUPER_ANDROID_17,
                 BossType.DORAEMON, BossType.NOBITA, BossType.CHAIEN, BossType.XUKA, BossType.XEKO,
-                BossType.GOKU_VOCUC, BossType.ZAMASZIN, BossType.SUPER_BLACK_GOKU_2,
+                BossType.GOKU_VOCUC,
+                BossType.ZAMAS_ZIN, BossType.ZAMAS_KAIO, BossType.ZAMAS_TOITHUONG,
+                BossType.SUPER_BLACK_GOKU_2,
                 BossType.CHILL,
                 BossType.DOI,
                 BossType.MATROI,
                 BossType.XUONG,
-                BossType.NHAT_THAN, BossType.FIDE2, BossType.HEART, BossType.HUTAO, BossType.XIAO, BossType.AKAYA, BossType.JEM_NI_BA, BossType.TOP_PO,
-                BossType.NGUYET_THAN, BossType.GRANONA, BossType.GOHAN, BossType.COOLER, BossType.BROLY, BossType.BROLY_SUPER, BossType.AN_TROM, BossType.AN_TROM_TV
+                BossType.HuyetMa,
+                BossType.NHAT_THAN, BossType.NGUYET_THAN,
+                BossType.FIDE2, BossType.HEART,
+                BossType.HUTAO, BossType.XIAO, BossType.AKAYA,
+                BossType.JEM_NI_BA, BossType.TOP_PO,
+                BossType.GRANONA, BossType.GOHAN, BossType.COOLER, BossType.BROLY, BossType.BROLY_SUPER, BossType.AN_TROM, BossType.AN_TROM_TV
             };
             for (int i = 0; i < bossTypes.length; i++) {
                 switch (bossTypes[i]) {
                     case BossType.KUKU:
                     case BossType.MAP_DAU_DINH:
                     case BossType.RAMBO:
-                        for (int j = 0; j < 3; j++) {
+                        for (int j = 0; j < 1; j++) {
                             createBoss(bossTypes[i]);
                             Thread.sleep(1000);
                         }
@@ -451,14 +465,18 @@ public class BossManager {
 //                    return new NguyetThan();
                 case BossType.HuyetMa:
                     return new HuyetMa();
-                case BossType.CHILL:
-                    return new Chill();
+//                case BossType.CHILL:
+//                    return new Chill();
 //                case BossType.GOHAN:
 //                    return new GoHanZoomBi();
                 case BossType.GOKU_VOCUC:
                     return new Gokuvc();
-                case BossType.ZAMASZIN:
+                case BossType.ZAMAS_ZIN:
+                    return new Zamas();
+                case BossType.ZAMAS_KAIO:
                     return new ZamasKaio();
+                case BossType.ZAMAS_TOITHUONG:
+                    return new ZamasToiThuong();
                 case BossType.SUPER_BLACK_GOKU_2:
                     return new SuperBlack2();
                 case BossType.BROLY:

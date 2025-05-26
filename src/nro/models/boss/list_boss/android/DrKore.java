@@ -58,10 +58,6 @@ public class DrKore extends Boss {
         }
 
     }
-
-
-
-
     @Override
     public void chatM() {
         if (Util.isTrue(60, 61)) {
