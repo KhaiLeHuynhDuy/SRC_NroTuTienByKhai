@@ -435,7 +435,7 @@ public class CombineServiceNew {
             return;
         }
 
-        if (player.getSession().vnd < 200_000) {
+        if (player.getSession().vnd < 250_000) {
             this.DoaTien.createOtherMenu(player, ConstNpc.IGNORE_MENU,
                     "Cần 250,000 VNĐ!", "Đóng");
             return;

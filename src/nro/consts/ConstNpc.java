@@ -143,6 +143,7 @@ public class ConstNpc {
     //khaile add
     public static final byte DOA_TIEN = 84;
     public static final byte THIEN_MA = 85;
+    public static final byte DUOC_TIEN_NU = 86;
     //end khaile add
     public static final int RUONG_PHU = 9989;
     public static final int MAIL_BOX = 9990;

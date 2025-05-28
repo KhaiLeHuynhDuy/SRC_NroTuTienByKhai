@@ -139,7 +139,7 @@ public class NpcFactory {
                                 } else if (select == 3) { // dot pha
                                     createOtherMenu(player, 6,
                                             "Đột phá dành cho tu sĩ đã đạt giới hạn của Trúc Cơ Cảnh",
-                                            "Pháp Tu", "Thể Tu");
+                                            "Pháp Tu", "Thể Tu", "Hồn Tu");
                                 } else if (select == 4) {
                                     createOtherMenu(player, 7,
                                             "Cậu muốn luyện loại đan dược nào?",
@@ -269,6 +269,122 @@ public class NpcFactory {
 
                                 break;
                             case ConstNpc.MENU_START_COMBINE:
+                                if (player.combineNew.typeCombine != -1) {
+                                    CombineServiceNew.gI().startCombine(player);
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+        };
+    }
+
+    private static Npc DuocTienNu(int mapId, int status, int cx, int cy, int tempId, int avartar) {
+        return new Npc(mapId, status, cx, cy, tempId, avartar) {
+            @Override
+            public void openBaseMenu(Player player) {
+                if (canOpenNpc(player)) {
+                    if (this.mapId == 222) {
+                        createOtherMenu(player, 1,
+                                "Xin chào, ta có thể giúp cậu chế tạo trang bị mạnh mẽ hoặc luyện đan.",
+                                "Chế Tạo", "Đổi ngoại trang", "Luyện Đan", "Đột phá", "Luyện Chế Trúc Cơ Đan Dược");
+                    }
+                }
+            }
+
+            @Override
+            public void confirmMenu(Player player, int select) {
+                if (canOpenNpc(player)) {
+                    if (this.mapId == 222) {
+                        switch (player.iDMark.getIndexMenu()) {
+                            case 1: // Menu chính
+                                if (select == 0) { // Chế tạo
+                                    createOtherMenu(player, 2,
+                                            "Cậu muốn chế tạo loại trang bị nào?",
+                                            "Chế Tạo Vô Cực");
+                                } else if (select == 1) { //
+                                    createOtherMenu(player, 3,
+                                            "Cậu muốn đổi ngoại trang nào?",
+                                            "Ngoại trang Vô Cực");
+                                } else if (select == 2) { // Luyện Đan
+                                    createOtherMenu(player, 5,
+                                            "Cậu muốn luyện loại đan dược nào?",
+                                            "Đan Luyện Khí", "Trúc Cơ Đan");
+                                } else if (select == 3) { // dot pha
+                                    createOtherMenu(player, 6,
+                                            "Đột phá dành cho tu sĩ đã đạt giới hạn của Trúc Cơ Cảnh",
+                                            "Pháp Tu", "Thể Tu");
+                                } else if (select == 4) {
+                                    createOtherMenu(player, 7,
+                                            "Cậu muốn luyện loại đan dược nào?",
+                                            "Trúc Cơ Sơ Kỳ", "Trúc Cơ Trung Kỳ", "Trúc Cơ Hậu Kỳ");
+                                }
+                                break;
+
+                            case 2: // Chọn loại trang bị
+//                                if (select == 0) {
+//                                    createOtherMenu(player, 3,
+//                                            "Chọn vật phẩm muốn chế tạo:",
+//                                            "Áo Vô Cực", "Quần Vô Cực", "Găng Vô Cực", "Giày Vô Cực", "Nhẫn Vô Cực");
+//                                }
+                                CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_VO_CUC_TU_TAI);
+//                                else if (select == 1) {
+//                                    createOtherMenu(player, 4,
+//                                            "Chọn vật phẩm muốn chế tạo:",
+//                                            "Áo La Thiên", "Quần La Thiên", "Găng La Thiên", "Giày La Thiên", "Nhẫn La Thiên");
+//                                }
+                                break;
+
+                            case 3: // Chế tạo ngoại trang Vô Cực
+                                CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_NGOAI_TRANG_VO_CUC_TU_TAI);
+                                break;
+//                            case 4: // Chế tạo La Thiên
+//                                switch (select) {
+//                                    case 0:
+//                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_AO_LA_THIEN_TU_TAI);
+//                                        break;
+//                                    case 1:
+//                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_QUAN_LA_THIEN_TU_TAI);
+//                                        break;
+//                                    case 2:
+//                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_GANG_LA_THIEN_TU_TAI);
+//                                        break;
+//                                    case 3:
+//                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_GIAY_LA_THIEN_TU_TAI);
+//                                        break;
+//                                    case 4:
+//                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_TRANG_SUC_LA_THIEN_TU_TAI);
+//                                        break;
+//                                }
+//                                break;
+                            case 5: // Luyện đan
+                                switch (select) {
+                                    case 0:
+                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_DAN_DUOC_LUYEN_KHI);
+                                        break;
+                                    case 1:
+                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_TRUC_CO_DAN);
+                                        break;
+                                }
+                                break;
+                            case 6: // Đột phá
+                                DotPhaService.gI().thucHienDotPha(player, select);
+                                break;
+                            case 7: // luyện chế trúc cơ đan dược
+                                switch (select) {
+                                    case 0: // trúc cơ sơ kỳ
+                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_TRUC_CO_SO);
+                                        break;
+                                    case 1: // trúc cơ trung kỳ
+                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_TRUC_CO_TRUNG);
+                                        break;
+                                    case 2:// trúc cơ hậu kỳ
+                                        CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_TRUC_CO_HAU);
+                                        break;
+                                }
+                                break;
+                            case ConstNpc.MENU_START_COMBINE: // Xử lý kết hợp
                                 if (player.combineNew.typeCombine != -1) {
                                     CombineServiceNew.gI().startCombine(player);
                                 }
@@ -9365,6 +9481,8 @@ public class NpcFactory {
                     return DoaTien(mapId, status, cx, cy, tempId, avatar);
                 case ConstNpc.THIEN_MA:
                     return ThienMa(mapId, status, cx, cy, tempId, avatar);
+                case ConstNpc.DUOC_TIEN_NU:
+                    return DuocTienNu(mapId, status, cx, cy, tempId, avatar);
 //end khaile add
                 default:
                     return new Npc(mapId, status, cx, cy, tempId, avatar) {

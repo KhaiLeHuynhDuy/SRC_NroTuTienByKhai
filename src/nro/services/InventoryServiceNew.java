@@ -266,8 +266,8 @@ public class InventoryServiceNew {
                     itemThrow = player.inventory.itemsBag.get(index);
                     if (itemThrow != null && itemThrow.template != null) {
 
-                        if (itemThrow.template.id == 457) {
-                            Service.gI().sendThongBao(player, "Thưa ngài");
+                        if (itemThrow.template.id == 457|| itemThrow.template.id == 1708) {
+                            Service.gI().sendThongBao(player, "Thưa ngài không thể vứt được item này ạ");
                         } else {
                             removeItemBag(player, index);
                             sortItems(player.inventory.itemsBag);

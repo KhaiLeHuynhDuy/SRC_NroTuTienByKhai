@@ -1802,6 +1802,16 @@ public class UseItem {
                                 break;
                             }
                         }
+                        case 1708: {
+                            if (pl.dotpha != 3 && !pl.isAdmin()) {
+                                Service.gI().sendThongBaoOK(pl, "Có Bug không đó :3");
+                                PlayerService.gI().banPlayer((pl));
+                                Service.gI().sendThongBao(pl, "Bạn bị ban thành công");
+                                return;
+                            } else {
+                                  ChangeMapService.gI().changeMapBySpaceShip(pl, 222, -1, 552);
+                            }
+                        }
                         //end khaile add
                     }
             }
