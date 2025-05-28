@@ -1693,25 +1693,15 @@ public class NpcFactory {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU,
                                 "Ngươi có muốn tiến vào map để up mảnh vỡ và mảnh hồn bông tai hay không ?"
                                 + "\n Lãnh địa bang hội: Có tỉ lệ rơi mảnh vỡ, mảnh hồn bông tai và đá xanh lam"
-                                + "\n Cung trăng: Có tỉ lệ rơi MẢNH NGUYỆT ẤN"
-                                + "\n Địa ngục: Có tỉ lệ rơi MẢNH TINH ẤN"
-                                + "\n Dung Nham: Có tỉ lệ rơi MẢNH NHẬT ẤN"
-                                + "\n Hoang Địa: Đang Update"
                                 + "\n Thung lũng Sharotto: Có tỉ lệ rơi Tinh Thạch"
-                                + "\n Vùng đất Cấm: Đang Update"
-                                + "\n Khu nghỉ dưỡng: Đang Update"
-                                + "\n Trạm tàu hủy diệt: Đang Update"
-                                + "\n Vùng đất băng giá: Đang Update",
+                                + "\n Dung Nham Tầng 1: Nơi tu luyện dành cho tu sĩ dưới Trúc Cơ Cảnh"
+                                + "\n Dung Nham Tầng 2: Nơi tu luyện của tu sĩ Trúc Cơ Cảnh"
+                                + "\n Dung Nham Tầng 3: Khuyến nghị nên đạt Trúc Cơ Đỉnh Phong",
                                 "Lãnh địa bang hội",
-                                "Cung Trăng",
-                                "Địa Ngục",
-                                "Dung Nham",
-                                "Hoang Địa",
                                 "Thung lũng Sharotto",
-                                "Vùng đất Cấm",
-                                "Khu nghỉ dưỡng",
-                                "Trạm tàu hủy diệt",
-                                "Vùng đất băng giá"
+                                "Dung Nham",
+                                "Dung Nham",
+                                "Dung Nham"
                         );
                     }
                 } else {
@@ -1732,42 +1722,16 @@ public class NpcFactory {
                                     ChangeMapService.gI().changeMapInYard(player, 157, -1, 552);
                                     break;
                                 case 1:
-                                    if (TaskService.gI().getIdTask(player) < ConstTask.TASK_28_0) {
-                                        Service.gI().sendThongBao(player, "Cần hoàn thành nhiệm vụ Siêu Bọ Hung");
-                                        return;
-
-                                    }
-                                    ChangeMapService.gI().changeMapInYard(player, 202, -1, 552);
-                                    break;
-                                case 2:
-                                    if (player.getSession() != null && player.getSession().player.nPoint.power <= 200000000000L) {
-
-                                        Service.gI().sendThongBao(player, "Bạn cần đạt 200 tỉ sức mạnh");
-                                        return;
-                                    }
-                                    ChangeMapService.gI().changeMapInYard(player, 214, -1, 552);
-                                    break;
-                                case 3:
-                                    ChangeMapService.gI().changeMapInYard(player, 216, -1, 552);
-                                    break;
-                                case 4:
-                                    ChangeMapService.gI().changeMapInYard(player, 204, -1, 552);
-                                    break;
-                                case 5:
                                     ChangeMapService.gI().changeMapInYard(player, 176, -1, 552);
                                     break;
-
-                                case 6:
-                                    ChangeMapService.gI().changeMapInYard(player, 170, -1, 552);
+                                case 2:// dung nham 1
+                                    ChangeMapService.gI().changeMapInYard(player, 216, -1, 552);
                                     break;
-                                case 7:
-                                    ChangeMapService.gI().changeMapInYard(player, 212, -1, 552);
+                                case 3:// dung nham 2
+                                    ChangeMapService.gI().changeMapInYard(player, 217, -1, 552);
                                     break;
-                                case 8:
-                                    ChangeMapService.gI().changeMapInYard(player, 146 + player.gender, -1, 552);
-                                    break;
-                                case 9:
-                                    ChangeMapService.gI().changeMapInYard(player, 152, -1, 552);
+                                case 4:// dung nham 3
+                                    ChangeMapService.gI().changeMapInYard(player, 218, -1, 552);
                                     break;
                             }
                         }
@@ -2649,11 +2613,7 @@ public class NpcFactory {
         return new Npc(mapId, status, cx, cy, tempId, avartar) {
             public void chatWithNpc(Player player) {
                 String[] chat = {
-                    "Chào mừng tới với NR EMTI",
-                    "Qua npc Bardock để đổi VND",
-                    "Qua npc Fide để lấy pet ha ><",
                     "Mang cho ta 10 củ cà rốt khi săn boss để đổi quà"
-
                 };
                 Timer timer = new Timer();
                 timer.scheduleAtFixedRate(new TimerTask() {
@@ -2679,7 +2639,7 @@ public class NpcFactory {
                                         "Nhận Quà", "Đóng");
                             } else {
                                 this.createOtherMenu(player, ConstNpc.BASE_MENU,
-                                        "\b|3|Muốn rèn thỏi vàng khóa sang thường hả ?"
+                                        "\b|1|Muốn rèn từ vàng sang thỏi vàng hả ?"
                                         + "Khi rèn để hạn chế việc rèn bị hụt, bạn nên rèn nhỏ giọt thỏi vàng lại.\n"
                                         + "Rèn xong thỏi vàng sẽ được gửi vô hòm thư\n"
                                         + "Lưu ý đặc biệt: khi nhận thỏi vàng khi rèn thành công ở hòm thư tuyệt đối không để xót thỏi vàng khoá ở hành trang\n",
@@ -2751,11 +2711,9 @@ public class NpcFactory {
                             case 3:
                                 if (player.getSession() != null) {
                                     Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
-                                    Item bdkb = ItemService.gI().createNewItem((short) 457, (short) cn.slthoiVang_);
-                                    bdkb.itemOptions.add(new Item.ItemOption(93, 10));
-                                    bdkb.itemOptions.add(new Item.ItemOption(30, 1));
+                                    Item thoivang = ItemService.gI().createNewItem((short) 457, (short) cn.slthoiVang_);
                                     InventoryServiceNew.gI().subQuantityItemsBag(player, carot, cn.get_sl_cr);
-                                    InventoryServiceNew.gI().addItemBag(player, bdkb);
+                                    InventoryServiceNew.gI().addItemBag(player, thoivang);
                                     InventoryServiceNew.gI().sendItemBags(player);
                                     Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.slthoiVang_ + " Thỏi Vàng");
                                 }
@@ -2770,7 +2728,6 @@ public class NpcFactory {
                                 if (!player.getSession().actived) {
                                     Service.gI().sendThongBao(player, "Vui lòng kích hoạt tài khoản để sử dụng chức năng này");
                                 } else {
-
                                     Input.gI().DOITHOI(player);
                                 }
                                 break;
@@ -5250,14 +5207,14 @@ public class NpcFactory {
                                 "Ngươi tìm ta có việc gì?\n",
                                 "Ép sao\ntrang bị",
                                 "Pha lê\nhóa\ntrang bị",
-                                "Đập đồ\nẢo Hóa",
-                                "Build Đồ",
-                                "Pháp sư hoá",
-                                "Siêu hóa\n Cải trang",
+                                // "Đập đồ\nẢo Hóa",
+                                // "Build Đồ",
+                                // "Pháp sư hoá",
+                                // "Siêu hóa\n Cải trang",
                                 "Shop Bà Hạt Mít",
                                 "Tinh ấn\ntrang bị",
-                                "Tinh thạch\ntrang bị",
-                                "Nâng cấp\nGiáp LT"
+                                "Tinh thạch\ntrang bị"
+                        // "Nâng cấp\nGiáp LT"
                         );
                     } else if (this.mapId == 121) {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU,
@@ -5291,30 +5248,30 @@ public class NpcFactory {
                                 case 1:
                                     CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.PHA_LE_HOA_TRANG_BI);
                                     break;
-                                case 2:
-                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.DAP_DO_AO_HOA);
-                                    break;
-                                case 3:
-                                    this.createOtherMenu(player, 22233,
-                                            "|7|\bChi Tiết:\n"
-                                            + "\n|0|Thần Linh->Hủy diệt: tỉ lệ thành công 30% - Xịt mất đồ"
-                                            + "\nThần Linh->Hủy diệt: tỉ lệ thành công 30% - Xịt mất đồ"
-                                            + "\nHủy diệt->SKH: tỉ lệ thành công 30% - Xịt mất đồ"
-                                            + "\nHủy diệt->SKH VIP: tỉ lệ thành công 30% - Xịt mất đồ"
-                                            + "\nMở Khóa GD: tỉ lệ thành công 30%"
-                                            + "\nGia hạn Vật Phẩm: tỉ lệ thành công 30% + 3 - 7 ngày, 70% + 1 ngày"
-                                            + "\nTẩy đồ: tẩy sao pha lê, chỉ số đặc biệt một số trang bị",
-                                            "Thần Linh\n->Hủy diệt", "Hủy diệt\n->SKH", "Hủy diệt\n->SKH VIP", "Mở Khóa GD", "Gia hạn\n Vật Phẩm", "Tẩy Đồ"
-                                    );
-                                    break;//Zalo: 0358124452   
-                                case 4:
-//      
-                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.PS_HOA_TRANG_BI);
-                                    break;//Zalo: 0358124452   
-                                case 5:
-                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.SIEU_HOA);
-                                    break;
-                                case 6: //nâng cấp Chân mệnh
+//                                case 2:
+//                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.DAP_DO_AO_HOA);
+//                                    break;
+//                                case 3:
+//                                    this.createOtherMenu(player, 22233,
+//                                            "|7|\bChi Tiết:\n"
+//                                            + "\n|0|Thần Linh->Hủy diệt: tỉ lệ thành công 30% - Xịt mất đồ"
+//                                            + "\nThần Linh->Hủy diệt: tỉ lệ thành công 30% - Xịt mất đồ"
+//                                            + "\nHủy diệt->SKH: tỉ lệ thành công 30% - Xịt mất đồ"
+//                                            + "\nHủy diệt->SKH VIP: tỉ lệ thành công 30% - Xịt mất đồ"
+//                                            + "\nMở Khóa GD: tỉ lệ thành công 30%"
+//                                            + "\nGia hạn Vật Phẩm: tỉ lệ thành công 30% + 3 - 7 ngày, 70% + 1 ngày"
+//                                            + "\nTẩy đồ: tẩy sao pha lê, chỉ số đặc biệt một số trang bị",
+//                                            "Thần Linh\n->Hủy diệt", "Hủy diệt\n->SKH", "Hủy diệt\n->SKH VIP", "Mở Khóa GD", "Gia hạn\n Vật Phẩm", "Tẩy Đồ"
+//                                    );
+//                                    break;//Zalo: 0358124452   
+//                                case 4:
+////      
+//                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.PS_HOA_TRANG_BI);
+//                                    break;//Zalo: 0358124452   
+//                                case 5:
+//                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.SIEU_HOA);
+//                                    break;
+                                case 2: //nâng cấp Chân mệnh
                                     this.createOtherMenu(player, 5701,
                                             "|7|CHÂN MỆNH"
                                             + "\n\n|1|Bạn đang có: " + Util.format(player.event.getEventPointBHM()) + " Điểm Săn Boss"
@@ -5323,15 +5280,15 @@ public class NpcFactory {
                                             player.event.getEventPointBHM() >= 1000 ? "Nhận Chân mệnh" : "Cần 1000 điểm\n để nhận", "Nâng cấp Chân mệnh", "Shop\nĐIỂM", "Shop\nBà Hạt Mít"
                                     );
                                     break;//Zalo: 0358124452   
-                                case 7:
+                                case 3:
                                     CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.AN_TRANG_BI);
                                     break;//Name: EMTI 
-                                case 8:
+                                case 4:
                                     CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.TINH_THACH_HOA);
                                     break;//Name: EMTI  
-                                case 9:
-                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.NANG_GIAP_LUYEN_TAP);
-                                    break;//Name: EMTI 
+//                                case 9:
+//                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.NANG_GIAP_LUYEN_TAP);
+//                                    break;//Name: EMTI 
 
                             }
 

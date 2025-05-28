@@ -804,7 +804,7 @@ public class CombineServiceNew {
                     countDanDuoc++;
                     validItems.add(item);
                 }
-                // Kiểm tra Trúc Cơ Đan Phương (giả sử id = 2000)
+                // Kiểm tra Trúc Cơ Đan Phương
                 if (item.template.id == 1681) {
                     hasTrucCoDanPhuong = true;
                     validItems.add(item);
@@ -3090,46 +3090,36 @@ public class CombineServiceNew {
                 return Arrays.asList(
                         new ItemOption(199, Util.nextInt(20, 40)),
                         new ItemOption(94, Util.nextInt(100, 200)),
-                        new ItemOption(192, 0),
-                        new ItemOption(189, 100),
-                        new ItemOption(194, 20),
-                        new ItemOption(191, 750)
+                        new ItemOption(191, 100),
+                        new ItemOption(190, 0)
                 );
             case 1689: // Quần
                 return Arrays.asList(
                         new ItemOption(196, Util.nextInt(50, 100)),
                         new ItemOption(77, Util.nextInt(300, 400)),
-                        new ItemOption(192, 0),
-                        new ItemOption(189, 100),
-                        new ItemOption(194, 20),
-                        new ItemOption(191, 750)
+                        new ItemOption(191, 100),
+                        new ItemOption(190, 0)
                 );
             case 1690: // Găng
                 return Arrays.asList(
                         new ItemOption(198, Util.nextInt(5, 10)),
                         new ItemOption(50, Util.nextInt(100, 200)),
-                        new ItemOption(192, 0),
-                        new ItemOption(189, 100),
-                        new ItemOption(194, 20),
-                        new ItemOption(191, 750)
+                        new ItemOption(191, 100),
+                        new ItemOption(190, 0)
                 );
             case 1691: // Giày
                 return Arrays.asList(
                         new ItemOption(197, Util.nextInt(50, 100)),
                         new ItemOption(103, Util.nextInt(300, 400)),
-                        new ItemOption(192, 0),
-                        new ItemOption(189, 100),
-                        new ItemOption(194, 20),
-                        new ItemOption(191, 750)
+                        new ItemOption(191, 100),
+                        new ItemOption(190, 0)
                 );
             case 1692: // Trang sức
                 return Arrays.asList(
                         new ItemOption(14, Util.nextInt(25, 50)),
                         new ItemOption(5, Util.nextInt(5, 20)),
-                        new ItemOption(192, 0),
-                        new ItemOption(189, 100),
-                        new ItemOption(194, 20),
-                        new ItemOption(191, 750)
+                        new ItemOption(191, 100),
+                        new ItemOption(190, 0)
                 );
             default:
                 return Collections.emptyList();

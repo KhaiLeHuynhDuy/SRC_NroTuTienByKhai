@@ -171,7 +171,7 @@ public class Util {
         Locale locale = Locale.forLanguageTag("vi-VN");
         NumberFormat num = NumberFormat.getInstance(locale);
         num.setMaximumFractionDigits(1);
-        if (power >= 1000000000) {
+        if (power >= 1_000_000_000) {
             return num.format((double) power / 1000000000) + " Tỷ";
         } else if (power >= 1000000) {
             return num.format((double) power / 1000000) + " Tr";

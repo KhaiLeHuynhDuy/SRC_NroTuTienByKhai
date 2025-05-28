@@ -53,28 +53,21 @@ public class BossesData {
             "Gô ku vô cực", //name
             ConstPlayer.XAYDA, //gender
             new short[]{2072, 2073, 2074, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            2101000, //dame
-            new long[]{1000000000}, //hp
+            2_000_000_000L, //dame
+            new long[]{25_000_000_000L}, //hp
             new int[]{4, 5, 6}, //map join goku xuất hiện ma nào ong dao k
             new int[][]{
                 {Skill.DICH_CHUYEN_TUC_THOI, 7, 10000},
                 {Skill.KAMEJOKO, 7, 5000},
                 {Skill.LIEN_HOAN, 7, 1000}},
-            new String[]{"|-1|Ta bị sao thế này !", // ông sửa text cho con boss nó chat gì nha
-                "|-2|Chú Goku",
-                "|-2|Đó không còn là chú Goku nữa rồi",
-                "|-1|GAAAAAAAAAAAAAA!."
-            }, //text chat 1
-            new String[]{"|-2|Tỉnh lại đi chú Goku",
-                "|-2|Đừng để bị hắn chi phối!",
-                "|-1|Định chạy trốn hả?",
-                "|-1|Ta sẽ tàn sát khu này trong vòng 5 phút nữa",
-                "|-2|Không được rồi!",
-                "|-2|Phải cố hết sức thôi"
+            new String[]{"|-1|Ta bị sao thế này !" // ông sửa text cho con boss nó chat gì nha
+        }, //text chat 1
+            new String[]{
+                "|-2|Đừng để bị hắn chi phối!"
             }, //text chat 2
             new String[]{"|-2|Mau nghỉ ngơi nào chú Goku"}, //text chat 3
-            REST_15_M,//second rest // thời gian xuất hiện boss 15p/ lần
-            REST_15_M //second rest // thời gian xuất hiện boss 15p/ lần
+            REST_30_M,//second rest // thời gian xuất hiện boss 15p/ lần
+            REST_30_M //second rest // thời gian xuất hiện boss 15p/ lần
     );
 
     public static final BossData SUPER_BLACK_GOKU_2 = new BossData(

@@ -21,6 +21,7 @@ import java.util.Random;
 import nro.consts.ConstPlayer;
 import nro.models.boss.BossStatus;
 import nro.models.boss.list_boss.BLACK.Black;
+import nro.server.ServerNotify;
 import nro.utils.Logger;
 
 /**
@@ -63,6 +64,10 @@ public class Gokuvc extends Boss {
         } else {
             Service.gI().dropItemMap(this.zone, new ItemMap(zone, 861, 1000, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 
+        }
+        if (Util.isTrue(5, 100)) {
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1681, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+            ServerNotify.gI().notify("Người chơi " + pl.name + " vừa tiêu diệt Gô ku vô cực và nhận được Trúc Cơ Đan đan phương!!");
         }
         TaskService.gI().checkDoneTaskKillBoss(pl, this);
         if (Util.isTrue(1, 10)) {

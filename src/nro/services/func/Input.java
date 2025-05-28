@@ -671,75 +671,143 @@ public class Input {
                     break;
                 }
                 //end khaile add
+//                case DOITHOI:
+//
+//                    int sotvdoi = Integer.valueOf(text[0]);
+//                    if (sotvdoi < 0) {
+//                        Service.gI().sendThongBao(player, "Cút");
+//                        return;
+//                    }
+//                    if (sotvdoi > 5000) {
+//                        Service.gI().sendThongBao(player, "Rèn tối đa 5000 thỏi vàng");
+//                        return;
+//                    }
+//                    Item tvdoi1 = null;
+//                    for (Item item : player.inventory.itemsBag) {
+//                        if (item.template != null && item.isNotNullItem() && item.template.id == 457) {
+//                            tvdoi1 = item;
+//                            break;
+//                        }
+//                    }
+//                    try {
+//                        if (tvdoi1 != null && tvdoi1.quantity >= sotvdoi) {
+//                            InventoryServiceNew.gI().subQuantityItemsBag(player, tvdoi1, sotvdoi);
+//                            InventoryServiceNew.gI().sendItemBags(player);
+//                            int TimeSeconds = 10;
+//                            Service.gI().sendThongBao(player, "Chờ 10 giây để t rèn cái.");
+//                            while (TimeSeconds > 0) {
+//                                TimeSeconds--;
+//                                Thread.sleep(1000);
+//                            }
+//                            int x = Util.nextInt(1, 9);
+//                            int y = Util.nextInt(1, 9);
+//
+//                            int tong = x + y;
+//                            if (4 <= (x + y) && (x + y) <= 10) {
+//                                if (player != null) {// tự sửa lại tên lấy
+//                                    Service.gI().sendThongBaoOK(player, "Kết quả" + "\nSố hệ thống quay ra là :"
+//                                            + " " + x + " " + y + " \nTổng là : " + tong + "\nBạn đã rèn : "
+//                                            + sotvdoi + " thỏi vàng lỏ" + "\nKết quả : ĐÃ BỊ TRỘM MẤT " + "\nĐÚNG CÒN CÁI NỊT.");
+//                                    return;
+//                                }
+//                            } else if (x == y) {
+//                                if (player != null) {
+//                                    Service.gI().sendThongBaoOK(player, "Kết quả" + "Số hệ thống quay ra : " + x + " " + y + " \nTổng là : " + tong + "\nBạn đã rèn : " + sotvdoi + " thỏi vàng vào lò" + "\nKết quả : Số thì đẹp đấy nhưng" + "\nCòn cái nịt.");
+//                                    return;
+//                                }
+//                            } else if ((x + y) > 10) {
+//
+//                                if (player != null) {
+//                                    Item tvthang = ItemService.gI().createNewItem((short) 457);
+//                                    tvthang.quantity = (int) Math.round(sotvdoi * 0.8);
+//                                    if (tvthang.template.id == 457) {
+//                                        tvthang.itemOptions.add(new Item.ItemOption(93, 5));
+//                                    }
+//                                    player.inventory.itemsMailBox.add(tvthang);
+//                                    if (GodGK.updateMailBox(player)) {
+//
+//                                        Service.gI().sendThongBaoOK(player, "Kết quả" + "\nSố hệ thống quay ra : " + x + " "
+//                                                + y + " \nTổng là : " + tong + "\nBạn đã rèn : " + sotvdoi
+//                                                + " thỏi vàng vào lò " + "\nKết quả : Rèn Thành Công" + "\n\nChúc Mừng Em Iu"
+//                                                + "Thỏi vàng đã gửi hòm thư kiểm tra tại npc ở nhà nhé");
+//                                        return;
+//                                    }
+//                                }
+//                            }
+//                        } else {
+//                            Service.gI().sendThongBao(player, "Bạn không đủ thỏi vàng để rèn.");
+//                        }
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                        Service.gI().sendThongBao(player, "Lỗi.");
+//                    }
+//                    break;
                 case DOITHOI:
-
                     int sotvdoi = Integer.valueOf(text[0]);
                     if (sotvdoi < 0) {
-                        Service.gI().sendThongBao(player, "Cút");
+                        Service.gI().sendThongBao(player, "Số lượng không hợp lệ");
                         return;
                     }
-                    if (sotvdoi > 5000) {
-                        Service.gI().sendThongBao(player, "Rèn tối đa 5000 thỏi vàng");
+                    if (sotvdoi > 1000) {
+                        Service.gI().sendThongBao(player, "Rèn tối đa 1000 thỏi vàng");
                         return;
                     }
-                    Item tvdoi1 = null;
-                    for (Item item : player.inventory.itemsBag) {
-                        if (item.template != null && item.isNotNullItem() && item.template.id == 457) {
-                            tvdoi1 = item;
-                            break;
-                        }
+
+                    // Tính tổng gold cần để đổi
+                    long totalGoldRequired = sotvdoi * 500_000_000L;
+                    if (player.inventory.gold < totalGoldRequired) {
+                        Service.gI().sendThongBao(player, "Bạn không đủ Gold để đổi. Cần " + Util.numberToMoney(totalGoldRequired) + " Gold");
+                        return;
+                    }
+                    if (InventoryServiceNew.gI().getCountEmptyBag(player) < 2) {
+                        Service.gI().sendThongBao(player, "Không đủ ô trống!");
+                        return;
                     }
                     try {
-                        if (tvdoi1 != null && tvdoi1.quantity >= sotvdoi) {
-                            InventoryServiceNew.gI().subQuantityItemsBag(player, tvdoi1, sotvdoi);
-                            InventoryServiceNew.gI().sendItemBags(player);
-                            int TimeSeconds = 10;
-                            Service.gI().sendThongBao(player, "Chờ 10 giây để t rèn cái.");
-                            while (TimeSeconds > 0) {
-                                TimeSeconds--;
-                                Thread.sleep(1000);
-                            }
-                            int x = Util.nextInt(1, 9);
-                            int y = Util.nextInt(1, 9);
+                        // Trừ gold của người chơi
+                        player.inventory.gold -= totalGoldRequired;
+                        Service.gI().sendMoney(player);
 
-                            int tong = x + y;
-                            if (4 <= (x + y) && (x + y) <= 10) {
-                                if (player != null) {// tự sửa lại tên lấy
-                                    Service.gI().sendThongBaoOK(player, "Kết quả" + "\nSố hệ thống quay ra là :"
-                                            + " " + x + " " + y + " \nTổng là : " + tong + "\nBạn đã rèn : "
-                                            + sotvdoi + " thỏi vàng lỏ" + "\nKết quả : ĐÃ BỊ TRỘM MẤT " + "\nĐÚNG CÒN CÁI NỊT.");
+                        int TimeSeconds = 10;
+                        Service.gI().sendThongBao(player, "Chờ 10 giây để hệ thống xử lý...");
+                        while (TimeSeconds > 0) {
+                            TimeSeconds--;
+                            Thread.sleep(1000);
+                        }
+
+                        // Random kết quả
+                        int x = Util.nextInt(1, 9);
+                        int y = Util.nextInt(1, 9);
+                        int tong = x + y;
+
+                        if (4 <= tong && tong <= 10) {
+                            Service.gI().sendThongBaoOK(player, "Kết quả" + "\nSố hệ thống quay ra là: "
+                                    + x + " " + y + " \nTổng là: " + tong + "\nBạn đã đổi: "
+                                    + sotvdoi + " thỏi vàng (" + Util.numberToMoney(totalGoldRequired) + " Gold)"
+                                    + "\nKết quả: ĐÃ BỊ TRỘM MẤT" + "\nĐÚNG CÒN CÁI NỊT.");
+                        } else if (x == y) {
+                            Service.gI().sendThongBaoOK(player, "Kết quả" + "\nSố hệ thống quay ra: "
+                                    + x + " " + y + " \nTổng là: " + tong + "\nBạn đã đổi: "
+                                    + sotvdoi + " thỏi vàng (" + Util.numberToMoney(totalGoldRequired) + " Gold)"
+                                    + "\nKết quả: Số thì đẹp đấy nhưng" + "\nCòn cái nịt.");
+                        } else if (tong > 10) {
+                            if (player != null) {
+                                Item tvthang = ItemService.gI().createNewItem((short) 457);
+                                tvthang.quantity = (int) Math.round(sotvdoi * 0.8);
+                                player.inventory.itemsMailBox.add(tvthang);
+                                if (GodGK.updateMailBox(player)) {
+
+                                    Service.gI().sendThongBaoOK(player, "Kết quả" + "\nSố hệ thống quay ra : " + x + " "
+                                            + y + " \nTổng là : " + tong + "\nBạn đã rèn : " + sotvdoi
+                                            + " thỏi vàng vào lò " + "\nKết quả : Rèn Thành Công" + "\n\nChúc Mừng Em\n"
+                                            + "Thỏi vàng đã gửi hòm thư kiểm tra tại npc ở nhà nhé");
                                     return;
                                 }
-                            } else if (x == y) {
-                                if (player != null) {
-                                    Service.gI().sendThongBaoOK(player, "Kết quả" + "Số hệ thống quay ra : " + x + " " + y + " \nTổng là : " + tong + "\nBạn đã rèn : " + sotvdoi + " thỏi vàng vào lò" + "\nKết quả : Số thì đẹp đấy nhưng" + "\nCòn cái nịt.");
-                                    return;
-                                }
-                            } else if ((x + y) > 10) {
-
-                                if (player != null) {
-                                    Item tvthang = ItemService.gI().createNewItem((short) 457);
-                                    tvthang.quantity = (int) Math.round(sotvdoi * 0.8);
-                                    if (tvthang.template.id == 457) {
-                                        tvthang.itemOptions.add(new Item.ItemOption(93, 5));
-                                    }
-                                    player.inventory.itemsMailBox.add(tvthang);
-                                    if (GodGK.updateMailBox(player)) {
-
-                                        Service.gI().sendThongBaoOK(player, "Kết quả" + "\nSố hệ thống quay ra : " + x + " "
-                                                + y + " \nTổng là : " + tong + "\nBạn đã rèn : " + sotvdoi
-                                                + " thỏi vàng vào lò " + "\nKết quả : Rèn Thành Công" + "\n\nChúc Mừng Em Iu"
-                                                + "Thỏi vàng đã gửi hòm thư kiểm tra tại npc ở nhà nhé");
-                                        return;
-                                    }
-                                }
                             }
-                        } else {
-                            Service.gI().sendThongBao(player, "Bạn không đủ thỏi vàng để rèn.");
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
-                        Service.gI().sendThongBao(player, "Lỗi.");
+                        Service.gI().sendThongBao(player, "Có lỗi xảy ra, vui lòng thử lại");
                     }
                     break;
                 case SEND_THOI_VANG: {
