@@ -52,6 +52,8 @@ public class Chaien extends Boss {
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length - 1);
 
         //Item roi
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+
         if (Util.isTrue(9, 10)) {
             Service.gI().dropItemMap(this.zone, Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         } else {
@@ -96,6 +98,7 @@ public class Chaien extends Boss {
             this.changeStatus(BossStatus.LEAVE_MAP);
         }
     }
+
     @Override
     public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
@@ -104,7 +107,7 @@ public class Chaien extends Boss {
                 return 0;
             }
 
-damage = this.nPoint.subDameInjureWithDeff(damage);
+            damage = this.nPoint.subDameInjureWithDeff(damage);
             if (plAtt != null && !piercing && effectSkill.isShielding) {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
@@ -121,6 +124,7 @@ damage = this.nPoint.subDameInjureWithDeff(damage);
             return 0;
         }
     }
+
     @Override
     public void wakeupAnotherBossWhenDisappear() {
         if (this.getParentBoss() == null) {

@@ -885,6 +885,286 @@ public class NpcFactory {
 //            }
 //        };
 //    }
+
+    private static Npc gauPo(int mapId, int status, int cx, int cy, int tempId, int avartar) {
+        return new Npc(mapId, status, cx, cy, tempId, avartar) {
+            @Override
+            public void openBaseMenu(Player player) {
+                if (canOpenNpc(player)) {
+                    if (this.mapId == 0 || this.mapId == 7 || this.mapId == 14) {
+                        String[] menu = {"Trân Bảo Các", "Thoát"};
+                        this.createOtherMenu(player, ConstNpc.BASE_MENU, "Thương gia Gấu mập Po",
+                                menu[0], menu[1]);
+                    }
+                }
+            }
+
+            @Override
+            public void confirmMenu(Player pl, int select) {
+                if (canOpenNpc(pl)) {
+//                    short vp1 = 1596;
+//                    short vp2 = 1597;
+//                    short vp3 = 1598;
+//                    short vp4 = 1599;
+//                    byte slchange = 10;
+//                    byte sldoivip = 30;
+//                    Item i1 = InventoryServiceNew.gI().findItemBag(pl, vp1);
+//                    Item i2 = InventoryServiceNew.gI().findItemBag(pl, vp2);
+//                    Item i3 = InventoryServiceNew.gI().findItemBag(pl, vp3);
+//                    Item i4 = InventoryServiceNew.gI().findItemBag(pl, vp4);
+//                    int sli1 = (i1 == null) ? 0 : i1.quantity;
+//                    int sli2 = (i2 == null) ? 0 : i2.quantity;
+//                    int sli3 = (i3 == null) ? 0 : i3.quantity;
+//                    int sli4 = (i4 == null) ? 0 : i4.quantity;
+//                    String menu = "|7|Đổi vật phẩm chỉ định ra vật phẩm còn lại ngẫu nhiên"
+//                            + "\n|4|Số lượng " + ItemService.gI().getTemplate(vp1).name + ": " + sli1
+//                            + "\n|5|Số lượng " + ItemService.gI().getTemplate(vp2).name + ": " + sli2
+//                            + "\n|3|Số lượng " + ItemService.gI().getTemplate(vp3).name + ": " + sli3
+//                            + "\n|2|Số lượng " + ItemService.gI().getTemplate(vp4).name + ": " + sli4;
+//                    String[] menuchoise = {
+//                        "Đổi x" + slchange + " " + ItemService.gI().getTemplate(vp1).name + "\n(Ngẫu nhiên)",
+//                        "Đổi x" + slchange + " " + ItemService.gI().getTemplate(vp2).name + "\n(Ngẫu nhiên)",
+//                        "Đổi x" + slchange + " " + ItemService.gI().getTemplate(vp3).name + "\n(Ngẫu nhiên)",
+//                        "Đổi x" + slchange + " " + ItemService.gI().getTemplate(vp4).name + "\n(Ngẫu nhiên)",
+//                        "Thoát"
+//                    };
+                    if (this.mapId == 0 || this.mapId == 7 || this.mapId == 14) {
+                        switch (pl.iDMark.getIndexMenu()) {
+                            case ConstNpc.BASE_MENU:
+                                switch (select) {
+                                    case 0:
+                                        ShopServiceNew.gI().opendShop(pl, "Trân Bảo Các", false);
+                                        break;
+//                                    case 1:
+//                                        this.createOtherMenu(pl, ConstNpc.MENU_GAU_PO, menu,
+//                                                menuchoise[0], menuchoise[1], menuchoise[2], menuchoise[3], menuchoise[4]);
+//                                        break;
+//                                    case 2: {
+//                                        short[][] ramdomItem = {
+//                                            {1493, 1367, 1368, 1369, 1319, 1320, 1321, 1322, 1323, 1344, 1345, 1346, 1387, 1389, 1600},
+//                                            {1407, 1408, 1409, 1410, 1411, 1412, 1413, 1414, 1415, 1416, 1417, 1418, 1419, 1420, 1421, 1422},
+//                                            {1403, 1404, 1405, 1336, 1337, 1338, 1336, 1337, 1338, 1336, 1337, 1338, 1336, 1401, 1402, 1406}};
+//                                        int sel = Util.nextInt(Util.isTrue(1, 100) ? 0 : 3, Util.isTrue(1, 100) ? 15 : 12);
+//                                        int choise = Util.nextInt(0, Util.isTrue(1, 100) ? 2 : 1);
+//                                        if (sli1 < 30) {
+//                                            Service.gI().sendThongBao(pl, "Bạn thiếu " + (sldoivip - sli1) + " " + ItemService.gI().getTemplate(vp1).name);
+//                                            return;
+//                                        }
+//                                        if (sli2 < 30) {
+//                                            Service.gI().sendThongBao(pl, "Bạn thiếu " + (sldoivip - sli2) + " " + ItemService.gI().getTemplate(vp2).name);
+//                                            return;
+//                                        }
+//                                        if (sli3 < 30) {
+//                                            Service.gI().sendThongBao(pl, "Bạn thiếu " + (sldoivip - sli3) + " " + ItemService.gI().getTemplate(vp3).name);
+//                                            return;
+//                                        }
+//                                        if (sli4 < 30) {
+//                                            Service.gI().sendThongBao(pl, "Bạn thiếu " + (sldoivip - sli4) + " " + ItemService.gI().getTemplate(vp4).name);
+//                                            return;
+//                                        }
+//                                        if (InventoryServiceNew.gI().getCountEmptyBag(pl) < 1) {
+//                                            Service.gI().sendThongBao(pl, "Hành trang không đủ chỗ trống");
+//                                            return;
+//                                        }
+//                                        Item caitrang = ItemService.gI().createNewItem((short) ramdomItem[choise][sel], 1);
+//                                        if (choise == 0) {
+//                                            caitrang.itemOptions.add(new ItemOption(50, Util.nextInt(25, 40)));
+//                                            caitrang.itemOptions.add(new ItemOption(77, Util.nextInt(25, 40)));
+//                                            caitrang.itemOptions.add(new ItemOption(103, Util.nextInt(25, 40)));
+//                                            if (Util.isTrue(99, 100)) {
+//                                                caitrang.itemOptions.add(new ItemOption(93, Util.nextInt(10, 14)));
+//                                            }
+//                                            if (Util.isTrue(5, 100)) {
+//                                                caitrang.itemOptions.add(new ItemOption(14, Util.nextInt(10, 14)));
+//                                            }
+//                                            if (Util.isTrue(5, 100)) {
+//                                                caitrang.itemOptions.add(new ItemOption(5, Util.nextInt(12, 30)));
+//                                            }
+//                                            if (Util.isTrue(5, 100)) {
+//                                                caitrang.itemOptions.add(new ItemOption(Util.nextInt(94, 101), Util.nextInt(10, 25)));
+//                                            }
+//                                        } else if (choise == 1) {
+//                                            caitrang.itemOptions.add(new ItemOption(50, Util.nextInt(5, 12)));
+//                                            caitrang.itemOptions.add(new ItemOption(77, Util.nextInt(5, 12)));
+//                                            caitrang.itemOptions.add(new ItemOption(103, Util.nextInt(5, 12)));
+//                                            if (Util.isTrue(99, 100)) {
+//                                                caitrang.itemOptions.add(new ItemOption(93, Util.nextInt(10, 14)));
+//                                            }
+//                                            if (Util.isTrue(5, 100)) {
+//                                                caitrang.itemOptions.add(new ItemOption(14, Util.nextInt(10, 14)));
+//                                            }
+//                                            if (Util.isTrue(5, 100)) {
+//                                                caitrang.itemOptions.add(new ItemOption(5, Util.nextInt(5, 12)));
+//                                            }
+//                                            if (Util.isTrue(5, 100)) {
+//                                                caitrang.itemOptions.add(new ItemOption(Util.nextInt(94, 101), Util.nextInt(10, 25)));
+//                                            }
+//                                        } else if (choise == 2) {
+//                                            caitrang.itemOptions.add(new ItemOption(50, Util.nextInt(10, 15)));
+//                                            caitrang.itemOptions.add(new ItemOption(77, Util.nextInt(10, 15)));
+//                                            caitrang.itemOptions.add(new ItemOption(103, Util.nextInt(10, 15)));
+//                                            if (Util.isTrue(99, 100)) {
+//                                                caitrang.itemOptions.add(new ItemOption(93, Util.nextInt(10, 14)));
+//                                            }
+//                                            if (Util.isTrue(5, 100)) {
+//                                                caitrang.itemOptions.add(new ItemOption(14, Util.nextInt(10, 14)));
+//                                            }
+//                                            if (Util.isTrue(5, 100)) {
+//                                                caitrang.itemOptions.add(new ItemOption(5, Util.nextInt(5, 15)));
+//                                            }
+//                                            if (Util.isTrue(5, 100)) {
+//                                                caitrang.itemOptions.add(new ItemOption(Util.nextInt(94, 101), Util.nextInt(10, 25)));
+//                                            }
+//                                        }
+//                                        InventoryServiceNew.gI().subQuantityItemsBag(pl, i1, sldoivip);
+//                                        InventoryServiceNew.gI().subQuantityItemsBag(pl, i2, sldoivip);
+//                                        InventoryServiceNew.gI().subQuantityItemsBag(pl, i3, sldoivip);
+//                                        InventoryServiceNew.gI().subQuantityItemsBag(pl, i4, sldoivip);
+//                                        InventoryServiceNew.gI().sendItemBags(pl);
+//                                        Service.gI().sendThongBao(pl, "Bạn đã nhận được " + 1 + " " + caitrang.template.name);
+//                                        InventoryServiceNew.gI().addItemBag(pl, caitrang);
+//                                    }
+//
+//                                    break;
+//                                    case 3:
+//                                        Service.gI().sendThongBao(pl, "Ad chưa thêm xong");
+//                                        break;
+                                    case 1:
+                                        break;
+                                }
+
+                                break;
+//                            case ConstNpc.MENU_GAU_PO:
+//                                switch (select) {
+//                                    case 0: {
+//                                        Item item = InventoryServiceNew.gI().findItemBag(pl, 1596);
+//                                        if (item == null) {
+//                                            Service.gI().sendThongBao(pl, "Không tìm thấy " + ItemService.gI().getTemplate(1596).name);
+//                                        } else {
+//                                            short[] ramdomItem = {1597, 1598, 1599};
+//                                            int sel = Util.nextInt(0, 2);
+//                                            int sl = item.quantity;
+//                                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) < 1) {
+//                                                Service.gI().sendThongBao(pl, "Hành trang không đủ chỗ trống");
+//                                                return;
+//                                            }
+//                                            if (sl >= 10) {
+//                                                Item vpsk = ItemService.gI().createNewItem((short) ramdomItem[sel], 1);
+//                                                int slnew = Util.nextInt(0, 9);
+//                                                vpsk.itemOptions.add(new ItemOption(93, 10));
+//                                                vpsk.quantity = 10 - slnew;
+//                                                InventoryServiceNew.gI().subQuantityItemsBag(pl, item, slchange);
+//                                                InventoryServiceNew.gI().addItemBag(pl, vpsk);
+//                                                InventoryServiceNew.gI().sendItemBags(pl);
+//                                                Service.gI().sendThongBao(pl, "Bạn đã nhận được " + (10 - slnew) + " " + vpsk.template.name);
+//                                            } else {
+//                                                Service.gI().sendThongBao(pl, "Thiếu " + (10 - sl) + " " + item.template.name);
+//                                            }
+//
+//                                        }
+//                                        this.createOtherMenu(pl, ConstNpc.MENU_GAU_PO, menu,
+//                                                menuchoise[0], menuchoise[1], menuchoise[2], menuchoise[3], menuchoise[4]);
+//
+//                                    }
+//                                    break;
+//                                    case 1: {
+//                                        Item item = InventoryServiceNew.gI().findItemBag(pl, 1597);
+//                                        if (item == null) {
+//                                            Service.gI().sendThongBao(pl, "Không tìm thấy " + ItemService.gI().getTemplate(1596).name);
+//                                        } else {
+//                                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) < 1) {
+//                                                Service.gI().sendThongBao(pl, "Hành trang không đủ chỗ trống");
+//                                                return;
+//                                            }
+//                                            short[] ramdomItem = {1596, 1598, 1599};
+//                                            int sel = Util.nextInt(0, 2);
+//                                            int sl = item.quantity;
+//                                            if (sl >= 10) {
+//                                                Item vpsk = ItemService.gI().createNewItem((short) ramdomItem[sel], 1);
+//                                                int slnew = Util.nextInt(0, 9);
+//                                                vpsk.itemOptions.add(new ItemOption(93, 10));
+//                                                vpsk.quantity = 10 - slnew;
+//                                                InventoryServiceNew.gI().subQuantityItemsBag(pl, item, slchange);
+//                                                InventoryServiceNew.gI().addItemBag(pl, vpsk);
+//                                                InventoryServiceNew.gI().sendItemBags(pl);
+//                                                Service.gI().sendThongBao(pl, "Bạn đã nhận được " + (10 - slnew) + " " + vpsk.template.name);
+//                                            } else {
+//                                                Service.gI().sendThongBao(pl, "Thiếu " + (10 - sl) + " " + item.template.name);
+//                                            }
+//                                        }
+//                                        this.createOtherMenu(pl, ConstNpc.MENU_GAU_PO, menu,
+//                                                menuchoise[0], menuchoise[1], menuchoise[2], menuchoise[3], menuchoise[4]);
+//
+//                                    }
+//                                    break;
+//                                    case 2: {
+//                                        Item item = InventoryServiceNew.gI().findItemBag(pl, 1598);
+//                                        if (item == null) {
+//                                            Service.gI().sendThongBao(pl, "Không tìm thấy " + ItemService.gI().getTemplate(1596).name);
+//                                        } else {
+//                                            short[] ramdomItem = {1596, 1597, 1599};
+//                                            int sel = Util.nextInt(0, 2);
+//                                            int sl = item.quantity;
+//                                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) < 1) {
+//                                                Service.gI().sendThongBao(pl, "Hành trang không đủ chỗ trống");
+//                                                return;
+//                                            }
+//                                            if (sl >= 10) {
+//                                                Item vpsk = ItemService.gI().createNewItem((short) ramdomItem[sel], 1);
+//                                                int slnew = Util.nextInt(0, 9);
+//                                                vpsk.itemOptions.add(new ItemOption(93, 10));
+//                                                vpsk.quantity = 10 - slnew;
+//                                                InventoryServiceNew.gI().subQuantityItemsBag(pl, item, slchange);
+//                                                InventoryServiceNew.gI().addItemBag(pl, vpsk);
+//                                                InventoryServiceNew.gI().sendItemBags(pl);
+//                                                Service.gI().sendThongBao(pl, "Bạn đã nhận được " + (10 - slnew) + " " + vpsk.template.name);
+//                                            } else {
+//                                                Service.gI().sendThongBao(pl, "Thiếu " + (10 - sl) + " " + item.template.name);
+//                                            }
+//                                        }
+//                                        this.createOtherMenu(pl, ConstNpc.MENU_GAU_PO, menu,
+//                                                menuchoise[0], menuchoise[1], menuchoise[2], menuchoise[3], menuchoise[4]);
+//
+//                                    }
+//                                    break;
+//                                    case 3: {
+//                                        Item item = InventoryServiceNew.gI().findItemBag(pl, 1599);
+//                                        if (item == null) {
+//                                            Service.gI().sendThongBao(pl, "Không tìm thấy " + ItemService.gI().getTemplate(1596).name);
+//                                        } else {
+//                                            short[] ramdomItem = {1596, 1597, 1598};
+//                                            int sel = Util.nextInt(0, 2);
+//                                            int sl = item.quantity;
+//                                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) < 1) {
+//                                                Service.gI().sendThongBao(pl, "Hành trang không đủ chỗ trống");
+//                                                return;
+//                                            }
+//                                            if (sl >= 10) {
+//                                                Item vpsk = ItemService.gI().createNewItem((short) ramdomItem[sel], 1);
+//                                                int slnew = Util.nextInt(0, 9);
+//                                                vpsk.itemOptions.add(new ItemOption(93, 10));
+//                                                vpsk.quantity = 10 - slnew;
+//                                                InventoryServiceNew.gI().subQuantityItemsBag(pl, item, slchange);
+//                                                InventoryServiceNew.gI().addItemBag(pl, vpsk);
+//                                                InventoryServiceNew.gI().sendItemBags(pl);
+//                                                Service.gI().sendThongBao(pl, "Bạn đã nhận được " + (10 - slnew) + " " + vpsk.template.name);
+//                                            } else {
+//                                                Service.gI().sendThongBao(pl, "Thiếu " + (10 - sl) + " " + item.template.name);
+//                                            }
+//                                        }
+//                                        this.createOtherMenu(pl, ConstNpc.MENU_GAU_PO, menu,
+//                                                menuchoise[0], menuchoise[1], menuchoise[2], menuchoise[3], menuchoise[4]);
+//
+//                                    }
+//                                    break;
+//                                }
+//                                break;
+                        }
+                    }
+                }
+            }
+        };
+    }
 //end khaile comment
 
     private static Npc suKien2_9(int mapId, int status, int cx, int cy, int tempId, int avartar) {
@@ -9019,8 +9299,8 @@ public class NpcFactory {
                 case ConstNpc.JIREN:
                     return Jiren(mapId, status, cx, cy, tempId, avatar);
                 //khaile comment
-//                case ConstNpc.GAU_PO:
-//                    return gauPo(mapId, status, cx, cy, tempId, avatar);
+                case ConstNpc.GAU_PO:
+                    return gauPo(mapId, status, cx, cy, tempId, avatar);
                 //end khaile comment
                 case ConstNpc.TRUNGTHU:
                     return TRUNGTHU(mapId, status, cx, cy, tempId, avatar);

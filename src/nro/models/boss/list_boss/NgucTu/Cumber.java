@@ -33,16 +33,18 @@ public class Cumber extends Boss {
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length - 1);
 
         //Item roi
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+
         if (Util.isTrue(9, 10)) {
             Service.gI().dropItemMap(this.zone, Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         } else {
             Service.gI().dropItemMap(this.zone, new ItemMap(zone, Manager.itemIds_NR_SB[randomNR], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         }
         if (Util.isTrue(9, 10)) {
-            Service.gI().dropItemMap(this.zone, new ItemMap(zone,  Manager.manhts[randomDo2], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, Manager.manhts[randomDo2], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         } else {
-            Service.gI().dropItemMap(this.zone, new ItemMap(zone,  462, 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
-           
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, 462, 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+
         }
         if (Util.isTrue(1, 10)) {
             Service.gI().dropItemMap(this.zone, new ItemMap(zone, 457, Util.nextInt(1, 20), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
@@ -79,7 +81,7 @@ public class Cumber extends Boss {
         }
     }
 
-  @Override
+    @Override
 
     public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
@@ -103,7 +105,7 @@ public class Cumber extends Boss {
                 }
                 damage = damage * 0.5;
             }
-            this.nPoint.subHP(damage/10);
+            this.nPoint.subHP(damage / 10);
             if (isDie()) {
                 this.setDie(plAtt);
                 die(plAtt);

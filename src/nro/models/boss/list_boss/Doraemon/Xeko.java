@@ -24,7 +24,7 @@ public class Xeko extends Boss {
         super(BossType.XEKO, BossesData.XEKO);
     }
 
-   @Override
+    @Override
     public void reward(Player pl) {
         pl.event.addEventPointBoss(1);
         Service.gI().sendThongBao(pl, "Bạn nhận được 1 điểm săn boss");
@@ -33,6 +33,8 @@ public class Xeko extends Boss {
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length - 1);
 
         //Item roi
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+
         if (Util.isTrue(9, 10)) {
             Service.gI().dropItemMap(this.zone, Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         } else {
@@ -55,7 +57,6 @@ public class Xeko extends Boss {
         }
 
     }
-
 
     @Override
     public void wakeupAnotherBossWhenDisappear() {
@@ -100,7 +101,7 @@ public class Xeko extends Boss {
                 this.chat("Xí hụt");
                 return 0;
             }
-     damage = this.nPoint.subDameInjureWithDeff(damage);
+            damage = this.nPoint.subDameInjureWithDeff(damage);
             if (plAtt != null && !piercing && effectSkill.isShielding) {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);

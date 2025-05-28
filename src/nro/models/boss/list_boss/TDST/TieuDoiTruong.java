@@ -42,7 +42,7 @@ public class TieuDoiTruong extends Boss {
         bossRestart();
     }
 
-   @Override
+    @Override
     public void reward(Player pl) {
         pl.event.addEventPointBoss(1);
         Service.gI().sendThongBao(pl, "Bạn nhận được 1 điểm săn boss");
@@ -50,6 +50,8 @@ public class TieuDoiTruong extends Boss {
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length - 1);
 
         //Item roi
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+
         if (Util.isTrue(990, 1000)) {
             Service.gI().dropItemMap(this.zone, Util.RaitiDoc12(zone, Manager.itemDC12[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         } else {
@@ -73,6 +75,7 @@ public class TieuDoiTruong extends Boss {
         }
 
     }
+
     public void bossRestart() {
         if (this.zone != null && this.getTimeToRestart() != -1
                 && Util.canDoWithTime(getTimeToRestart(), getSecondsNotify() * 1000)) {

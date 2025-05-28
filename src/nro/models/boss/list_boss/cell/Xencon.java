@@ -36,6 +36,8 @@ public class Xencon extends Boss {
         if (Util.isTrue(100, 100)) {
             Service.gI().dropItemMap(this.zone, new ItemMap(zone, 76, 35000, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
         }
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
+
         TaskService.gI().checkDoneTaskKillBoss(plKill, this);
     }
 
@@ -54,7 +56,7 @@ public class Xencon extends Boss {
                 return 0;
             }
             damage = this.nPoint.subDameInjureWithDeff(damage);
-             if (plAtt != null && !piercing && effectSkill.isShielding) {
+            if (plAtt != null && !piercing && effectSkill.isShielding) {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
                 }

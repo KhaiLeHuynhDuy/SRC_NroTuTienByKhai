@@ -27,7 +27,7 @@ public class BinhCanhService {
 
     // Yêu cầu power theo capTT: [0]=Luyện Khí (capTT=1), [1]=Trúc Cơ (capTT=2)
     private static final long[][] REALM_POWER_REQUIRE = {
-        {250_000_000L, 450_000_000, 750_000_000L}, // capTT=1
+        {250_000_000_000L, 450_000_000_000L, 750_000_000_000L}, // capTT=1
         {1_200_000_000_000L, 1_700_000_000_000L, 2_100_000_000_000L} // capTT=2
     };
 
@@ -46,93 +46,101 @@ public class BinhCanhService {
     }
 
     public void process(Player player, int times) {
-
-        if (player.capTT > 0) {
-            try {
-                if (player.capCS >= MAX_BinhCanh) {
-                    Service.gI().sendThongBao(player,
-                            "Bạn đã đạt Đỉnh Phong, hãy độ kiếp để lên cảnh giới mới");
-                    return;
-                }
-
-                int initialLevel = player.capCS;
-                int totalItemsUsed = 0;
-                int successCount = 0;
-
-                for (int i = 0; i < times; i++) {
-                    int currLevel = player.capCS;
-                    if (currLevel >= MAX_BinhCanh) {
-                        return;
-                    }
-
-                    int targetLevel = currLevel + 1;
-                    int needItem = ITEM_REQUIRE[currLevel];
-                    long needPower = calculateRequiredPower(player.capTT, currLevel, player.isUseTrucCoDan);
-
-                    // 1) Kiểm tra item
-                    Item it = findItem(player);
-                    if (it == null || it.quantity < needItem) {
-                        Service.gI().sendThongBao(player,
-                                "Cần " + needItem + " Thỏi vàng để đột phá bình cảnh");
-                        return;
-                    }
-
-                    // 2) Kiểm tra power
-                    if (player.nPoint.power < needPower) {
-                        Service.gI().sendThongBao(player,
-                                String.format("Tu vi tối thiểu: %,l (Hiện tại: %,l)",
-                                        needPower, player.nPoint.power));
-                        return;
-                    }
-
-                    // 3) Trừ item
-                    InventoryServiceNew.gI().subQuantityItemsBag(player, it, needItem);
-                    totalItemsUsed += needItem;
-
-                    // 4) Quay tỉ lệ thành công
-                    boolean success = rand.nextInt(100) < SUCCESS_RATE[currLevel];
-                    if (success) {
-                        player.capCS = (byte) targetLevel;
-                        int newplayerpower = 1_500_000;
-                        long oldplayerpower = player.nPoint.power;
-                        long subplayerpower = newplayerpower - oldplayerpower;
-                        PlayerService.gI().sendTNSM(player, (byte) 0, subplayerpower);
-                        player.nPoint.power = newplayerpower;
-                        successCount++;
-                        PlayerDAO.updatePlayer(player);
-                        InventoryServiceNew.gI().sendItemBags(player);
-                        break;
-
-                    }
-                    if (player.capCS == MAX_BinhCanh) {
-                        Service.gI().sendThongBao(player,
-                                "Chúc mừng! Bạn đã đạt Đỉnh Phong. Hãy độ kiếp để lên cảnh giới cao hơn.");
-                        return;
-                    }
-                }
-
-                Service.gI().sendThongBao(player,
-                        String.format(
-                                "Kết quả đột phá %d lần:\n"
-                                + "- Cảnh giới: %s ➔ %s\n"
-                                + "- Đã dùng: %,d Thỏi vàng\n"
-                                + "- Lượt thành công: %d",
-                                times,
-                                getRealNameBinhCanh(initialLevel),
-                                getRealNameBinhCanh(player.capCS),
-                                totalItemsUsed,
-                                successCount
-                        )
-                );
-
-            } catch (Exception e) {
-                Logger.error("Lỗi đột phá bình cảnh: " + e.getMessage());
-                Service.gI().sendThongBao(player, "Có lỗi xảy ra, vui lòng thử lại.");
-            } finally {
-                InventoryServiceNew.gI().sendItemBags(player);
+        try {
+            // VALIDATION TỔNG
+            if (player.capTT <= 0) {
+                Service.gI().sendThongBao(player, "Phàm nhân mà độ cái gì thiên kiếp ?");
+                return;
             }
-        }
 
+            if (player.capCS >= MAX_BinhCanh) {
+                Service.gI().sendThongBao(player, "Bạn đã đạt Đỉnh Phong, hãy độ kiếp lên cảnh giới mới");
+                return;
+            }
+
+            int initialLevel = player.capCS;
+            int totalItemsUsed = 0;
+            int successCount = 0;
+            boolean reachedMax = false;
+
+            for (int i = 0; i < times; i++) {
+                // VALIDATION TRƯỚC MỖI LẦN
+                if (player.capCS >= MAX_BinhCanh) {
+                    reachedMax = true;
+                    break;
+                }
+
+                int currLevel = player.capCS;
+                int targetLevel = currLevel + 1;
+
+                // 1. KIỂM TRA VẬT PHẨM
+                int needItem = ITEM_REQUIRE[currLevel];
+                Item goldBar = findItem(player);
+                if (goldBar == null || goldBar.quantity < needItem) {
+                    Service.gI().sendThongBao(player,
+                            String.format("Cần %,d Thỏi vàng cho đột phá %s → %s",
+                                    needItem,
+                                    getRealNameBinhCanh(currLevel),
+                                    getRealNameBinhCanh(targetLevel)
+                            )
+                    );
+                    break;
+                }
+
+                // 2. KIỂM TRA TU VI
+                long needPower = calculateRequiredPower(player.capTT, currLevel, player.isUseTrucCoDan);
+                if (player.nPoint.power < needPower) {
+                    Service.gI().sendThongBao(player,
+                            String.format("Tu vi cần: %,d\nHiện tại: %,d",
+                                    needPower,
+                                    player.nPoint.power)
+                    );
+                    break;
+                }
+
+                // 3. TRỪ VẬT PHẨM
+                InventoryServiceNew.gI().subQuantityItemsBag(player, goldBar, needItem);
+                totalItemsUsed += needItem;
+
+                // 4. TÍNH TOÁN TỈ LỆ
+                boolean success = rand.nextInt(100) < SUCCESS_RATE[currLevel];
+                if (success) {
+                    player.capCS = (byte) targetLevel;
+                    int newplayerpower = 1_500_000;
+                    long oldplayerpower = player.nPoint.power;
+                    long subplayerpower = newplayerpower - oldplayerpower;
+                    PlayerService.gI().sendTNSM(player, (byte) 0, subplayerpower);
+                    player.nPoint.power = newplayerpower;
+                    successCount++;
+                    PlayerDAO.updatePlayer(player);
+                    InventoryServiceNew.gI().sendItemBags(player);
+                    break;
+                }
+
+                // 5. KIỂM TRA LẠI SAU KHI NÂNG
+                if (player.capCS >= MAX_BinhCanh) {
+                    reachedMax = true;
+                    break;
+                }
+            }
+
+            // THÔNG BÁO KẾT QUẢ
+            String resultMsg = String.format(
+                    "Kết quả đột phá %d lần:\n- Thành công: %d/%d\n- Dùng: %,d Thỏi vàng",
+                    times, successCount, times, totalItemsUsed
+            );
+
+            if (reachedMax) {
+                resultMsg += "\n|5|ĐẠT ĐỈNH PHONG|";
+            }
+
+            Service.gI().sendThongBao(player, resultMsg);
+            InventoryServiceNew.gI().sendItemBags(player);
+
+        } catch (Exception e) {
+            Logger.logException(BinhCanhService.class, e, "Lỗi đột phá bình cảnh");
+            Service.gI().sendThongBao(player, "Lỗi hệ thống, vui lòng báo GM");
+        }
     }
 
     /**

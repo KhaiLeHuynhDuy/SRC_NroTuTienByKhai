@@ -32,7 +32,7 @@ public class DotPhaService {
                 return;
             }
             if (player.capTT != 3) {
-                Service.gI().sendThongBaoOK(player, "Lại độ thiên kiếp rồi lại tới đột phá!");
+                Service.gI().sendThongBaoOK(player, "Lại độ thiên kiếp rồi tới đây đột phá!");
                 return;
             }
             if (player.dotpha != 0) {

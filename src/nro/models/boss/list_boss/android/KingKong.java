@@ -29,7 +29,7 @@ public class KingKong extends Boss {
         super(BossType.KING_KONG, BossesData.KING_KONG);
     }
 
-      @Override
+    @Override
     public void reward(Player pl) {
         pl.event.addEventPointBoss(1);
         Service.gI().sendThongBao(pl, "Bạn nhận được 1 điểm săn boss");
@@ -37,6 +37,8 @@ public class KingKong extends Boss {
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length - 1);
 
         //Item roi
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+
         if (Util.isTrue(99, 100)) {
             Service.gI().dropItemMap(this.zone, Util.RaitiDoc12(zone, Manager.itemDC12[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         } else {
@@ -135,7 +137,8 @@ public class KingKong extends Boss {
 //        System.out.println("aaa");
 //        BossManager.gI().createBoss(BossType.KING_KONG);
 //    }
-     @Override
+
+    @Override
     public void joinMap() {
         super.joinMap();
         st = System.currentTimeMillis();
@@ -156,6 +159,7 @@ public class KingKong extends Boss {
             this.changeStatus(BossStatus.LEAVE_MAP);
         }
     }
+
     @Override
     public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
@@ -168,7 +172,7 @@ public class KingKong extends Boss {
                     case Skill.KAMEJOKO:
 
                         damage = damage / 2;
-                         case Skill.LIEN_HOAN:
+                    case Skill.LIEN_HOAN:
                         damage = damage * 75 / 100;
                     case Skill.MASENKO:
                         damage = damage * 130 / 100;
@@ -176,8 +180,8 @@ public class KingKong extends Boss {
                         damage = damage * 70 / 100;
                 }
             }
-         damage = this.nPoint.subDameInjureWithDeff(damage);
-             if (plAtt != null && !piercing && effectSkill.isShielding) {
+            damage = this.nPoint.subDameInjureWithDeff(damage);
+            if (plAtt != null && !piercing && effectSkill.isShielding) {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
                 }

@@ -39,6 +39,8 @@ public class Android14 extends Boss {
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length - 1);
 
         //Item roi
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+
         if (Util.isTrue(99, 100)) {
             Service.gI().dropItemMap(this.zone, Util.RaitiDoc12(zone, Manager.itemDC12[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         } else {
@@ -146,7 +148,6 @@ public class Android14 extends Boss {
 //    public void recoverHP() {
 //        PlayerService.gI().hoiPhuc(this, this.nPoint.hpMax, 0);
 //    }
-
 //    @Override
 //    public void doneChatS() {
 //        if (this.getBossAppearTogether() == null || this.getBossAppearTogether()[this.getCurrentLevel()] == null) {
@@ -159,7 +160,7 @@ public class Android14 extends Boss {
 //            }
 //        }
 //    }
- @Override
+    @Override
     public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
             if (!piercing && Util.isTrue(40, 1000)) {
@@ -171,7 +172,7 @@ public class Android14 extends Boss {
                     case Skill.KAMEJOKO:
 
                         damage = damage / 2;
-                         case Skill.LIEN_HOAN:
+                    case Skill.LIEN_HOAN:
                         damage = damage * 75 / 100;
                     case Skill.MASENKO:
                         damage = damage * 130 / 100;
@@ -179,8 +180,8 @@ public class Android14 extends Boss {
                         damage = damage * 70 / 100;
                 }
             }
-         damage = this.nPoint.subDameInjureWithDeff(damage);
-             if (plAtt != null && !piercing && effectSkill.isShielding) {
+            damage = this.nPoint.subDameInjureWithDeff(damage);
+            if (plAtt != null && !piercing && effectSkill.isShielding) {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
                 }

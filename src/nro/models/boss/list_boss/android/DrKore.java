@@ -20,14 +20,13 @@ import nro.services.TaskService;
 import nro.utils.Logger;
 import nro.utils.Util;
 
-
 public class DrKore extends Boss {
 
     public DrKore() throws Exception {
         super(BossType.DR_KORE, BossesData.DR_KORE);
     }
 
-      @Override
+    @Override
     public void reward(Player pl) {
         pl.event.addEventPointBoss(1);
         Service.gI().sendThongBao(pl, "Bạn nhận được 1 điểm săn boss");
@@ -35,6 +34,8 @@ public class DrKore extends Boss {
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length - 1);
 
         //Item roi
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+
         if (Util.isTrue(99, 100)) {
             Service.gI().dropItemMap(this.zone, Util.RaitiDoc12(zone, Manager.itemDC12[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         } else {
@@ -58,6 +59,7 @@ public class DrKore extends Boss {
         }
 
     }
+
     @Override
     public void chatM() {
         if (Util.isTrue(60, 61)) {
@@ -76,7 +78,7 @@ public class DrKore extends Boss {
         }
     }
 
-  @Override
+    @Override
     public void joinMap() {
         super.joinMap();
         st = System.currentTimeMillis();
@@ -111,13 +113,14 @@ public class DrKore extends Boss {
                     }
                     return 0;
             }
-        }damage = this.nPoint.subDameInjureWithDeff(damage);
+        }
+        damage = this.nPoint.subDameInjureWithDeff(damage);
         if (plAtt != null && !piercing && effectSkill.isShielding) {
-                if (damage > nPoint.hpMax) {
-                    EffectSkillService.gI().breakShield(this);
-                }
-                damage = damage * 0.5;
+            if (damage > nPoint.hpMax) {
+                EffectSkillService.gI().breakShield(this);
             }
+            damage = damage * 0.5;
+        }
         return super.injured(plAtt, damage, piercing, isMobAttack);
     }
 

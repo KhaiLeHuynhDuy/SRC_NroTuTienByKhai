@@ -49,16 +49,12 @@ public class HuyetMa extends Boss {
         pl.event.addEventPointBoss(1);
         Service.gI().sendThongBao(pl, "Bạn nhận được 1 điểm săn boss");
 
-        int itemId = 1680;
+        int itemId = 1707;
         int quantity = 1000;
 
-        // Gọi hàm đồng bộ
-        // Nếu không cộng dồn được -> rơi xuống đất
-        Service.gI().dropItemMapForMe(pl,
-                new ItemMap(zone, itemId, quantity, this.location.x + 6,
-                        zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, itemId, quantity, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 
-        Service.gI().dropItemMapForMe(pl, new ItemMap(zone, 1710, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 
     }
 

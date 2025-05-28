@@ -1550,10 +1550,15 @@ public class UseItem {
                         case 1668: // Hoàng Cuc Đan
                         {
                             int requiredCap = 1;
-                            if (pl.capTT != requiredCap) {
+                            if (pl.capTT > requiredCap) {
+                                Service.gI().sendThongBao(pl, "Cảnh giới vượt mức");
+                                break;
+                            }
+                            if (pl.capTT < requiredCap) {
                                 Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Hoàng Cúc Đan");
                                 break;
-                            } else {
+                            }
+                            if (pl.capTT == requiredCap) {
                                 int damegIncrease = 10_000;
                                 int hpMpIncrease = 30_000;
                                 int maxDameg = 3_600_000;
@@ -1590,10 +1595,15 @@ public class UseItem {
                         case 1667: // Trúc Cơ Đan
                         {
                             int requiredCap = 1;
-                            if (pl.capTT != requiredCap) {
-                                Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Trúc Cơ Đan");
+                            if (pl.capTT > requiredCap) {
+                                Service.gI().sendThongBao(pl, "Cảnh giới vượt mức");
                                 break;
-                            } else {
+                            }
+                            if (pl.capTT < requiredCap) {
+                                Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Hoàng Cúc Đan");
+                                break;
+                            }
+                            if (pl.capTT == requiredCap) {
                                 int requiredDame = 3_600_000;
                                 int requiredHpKi = requiredDame * 3;
 

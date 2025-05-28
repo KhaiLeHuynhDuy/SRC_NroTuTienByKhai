@@ -64,6 +64,7 @@ public class SieuBoHung extends Boss {
         int[] NRs = new int[]{16, 18, 18, 15, 17, 17, 17};
 
         int randomNR = new Random().nextInt(NRs.length);
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
 
         if (Util.isTrue(cn.tileroinr, 100)) {
             ItemMap it = new ItemMap(this.zone, 14, 1, this.location.x, this.zone.map.yPhysicInTop(this.location.x,
@@ -83,8 +84,8 @@ public class SieuBoHung extends Boss {
                 this.chat("Xí hụt");
                 return 0;
             }
-         damage = this.nPoint.subDameInjureWithDeff(damage);
-        if (plAtt != null && !piercing && effectSkill.isShielding) {
+            damage = this.nPoint.subDameInjureWithDeff(damage);
+            if (plAtt != null && !piercing && effectSkill.isShielding) {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
                 }
