@@ -8,7 +8,7 @@ public class cn {//Zalo: 0358124452//Name: EMTI
     public final static int GIA_X = 1;
     public final static int tileroinr = 30;
     public final static int SV = 1;
-    public final static String SDT = "0358124452";
+    public final static String Sacombank = "070115480871";
     public final static int ID_TOPSM = 58240;//SV1
 //    public final static int ID_TOPSM = 1598;//SV2
 //    public final static int ID_TOPSM = 56868;//SV3

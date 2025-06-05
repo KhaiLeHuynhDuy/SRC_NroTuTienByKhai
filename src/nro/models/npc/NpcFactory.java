@@ -1727,7 +1727,7 @@ public class NpcFactory {
                     if (!TaskService.gI().checkDoneTaskTalkNpc(player, this)) {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU,
                                 "Ngọc rồng Namếc đang bị 2 thế lực tranh giành\nHãy chọn cấp độ tham gia tùy theo sức mạnh bản thân",
-                                "Tham gia", "Đổi điểm\nThưởng\n[" + slMCL + "]", "Bảng\nxếp hạng", "Từ chối");
+                                "Tham gia", "Từ chối");
                     }
                 }
             }
@@ -1753,13 +1753,13 @@ public class NpcFactory {
                                     }
                                     Service.gI().sendPopUpMultiLine(player, 0, 7184, "Sự kiện sẽ mở đăng ký vào lúc " + TranhNgoc.HOUR_REGISTER + ":" + TranhNgoc.MIN_REGISTER + "\nSự kiện sẽ bắt đầu vào " + TranhNgoc.HOUR_OPEN + ":" + TranhNgoc.MIN_OPEN + " và kết thúc vào " + TranhNgoc.HOUR_CLOSE + ":" + TranhNgoc.HOUR_CLOSE);
                                     break;
-                                case 1:// Shop
-                                    ShopServiceNew.gI().opendShop(player, "TRUONG_LAO", false);
-                                    break;
-                                case 2:
-                                    Service.gI().showListTop(player, Manager.topDauThan);
-                                    // Service.gI().sendThongBao(player, "Update coming soon");
-                                    break;
+//                                case 1:// Shop
+//                                    ShopServiceNew.gI().opendShop(player, "TRUONG_LAO", false);
+//                                    break;
+//                                case 2:
+//                                    Service.gI().showListTop(player, Manager.topDauThan);
+//                                    // Service.gI().sendThongBao(player, "Update coming soon");
+//                                    break;
                             }
                             break;
                         case ConstNpc.REGISTER_TRANH_NGOC:
@@ -1807,17 +1807,16 @@ public class NpcFactory {
                 if (this.mapId == 153 || this.mapId == 5) {
                     if (player.getSession() != null) {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU,
-                                "Ngươi có muốn tiến vào map để up mảnh vỡ và mảnh hồn bông tai hay không ?"
-                                + "\n Lãnh địa bang hội: Có tỉ lệ rơi mảnh vỡ, mảnh hồn bông tai và đá xanh lam"
+                                "\n Lãnh địa bang hội: Có tỉ lệ rơi mảnh vỡ, mảnh hồn bông tai và đá xanh lam"
                                 + "\n Thung lũng Sharotto: Có tỉ lệ rơi Tinh Thạch"
                                 + "\n Dung Nham Tầng 1: Nơi tu luyện dành cho tu sĩ dưới Trúc Cơ Cảnh"
                                 + "\n Dung Nham Tầng 2: Nơi tu luyện của tu sĩ Trúc Cơ Cảnh"
                                 + "\n Dung Nham Tầng 3: Khuyến nghị nên đạt Trúc Cơ Đỉnh Phong",
                                 "Lãnh địa bang hội",
                                 "Thung lũng Sharotto",
-                                "Dung Nham",
-                                "Dung Nham",
-                                "Dung Nham"
+                                "Dung Nham 1",
+                                "Dung Nham 2",
+                                "Dung Nham 3"
                         );
                     }
                 } else {
@@ -1878,7 +1877,7 @@ public class NpcFactory {
                     String menu = "Chào con, ta rất vui khi gặp con\n"
                             + " Con muốn làm gì nào ?\n"
                             + "\b|7|Số người online: " + (Client.gI().getPlayers().size() * 2);
-                    String[] choisemenu = {"Nói chuyện", "Quà mốc nạp", "Bỏ Qua Nhiệm Vụ"};
+                    String[] choisemenu = {"Nói chuyện", "Bỏ Nhiệm Vụ"};
                     this.createOtherMenu(player, 1111, menu, choisemenu);
                 }
 
@@ -1893,9 +1892,9 @@ public class NpcFactory {
                     case 1111:
                         handleMainOptions(player, select);
                         break;
-                    case 1115:
-                        handleMainMocNap(player, select);
-                        break;
+//                    case 1115:
+//                        handleMainMocNap(player, select);
+//                        break;
                     case 1112:
                         handleMainTalk(player, select);
                         break;
@@ -2228,13 +2227,12 @@ public class NpcFactory {
 //                                "Xin chào, ta có một số vật phẩm đặt biệt cậu có muốn xem không?",
 //                                "Vật phẩm", "Cải trang", "Pet", "Hàng hiếm");
 //                        break;
-                    case 1:
-                        if (player.getSession() != null) {
-                            this.createOtherMenu(player, 1115, "Nạp đạt mốc nhận quà he :3", "Xem quà mốc nạp", "Nhận quà mốc nạp", "Đóng");
-                        }
-
-                        break;
-
+//                    case 1:
+//                        if (player.getSession() != null) {
+//                            this.createOtherMenu(player, 1115, "Nạp đạt mốc nhận quà he :3", "Xem quà mốc nạp", "Nhận quà mốc nạp", "Đóng");
+//                        }
+//
+//                        break;
                 }
             }
 
@@ -2616,97 +2614,99 @@ public class NpcFactory {
 //                }
 //            }
             private void handleMainMocNap(Player player, int select) {
-                switch (select) {
-                    case 0:
-                        if (player.getSession() != null) {
-//                            this.createOtherMenu(player, 22222, Arrays.toString(Archivement.Textmocnap), "Đóng");
-                            Service.gI().sendThongBaoFromAdmin(player, "____Reset mỗi thứ 2 đầu tuần____\n"
-                                    + "|3|• Mốc " + Archivement.GIADOLACHIADOI * 1 + ":\n"
-                                    + " - x" + mocnap_1.sli10_1 + " " + ItemService.gI().getTemplate(mocnap_1.i10_1).name + ",\n"
-                                    + "|2|• Mốc " + Archivement.GIADOLACHIADOI * 2 + ":\n"
-                                    + " - x" + mocnap_1.sli20_1 + " " + ItemService.gI().getTemplate(mocnap_1.i20_1).name + ",\n"
-                                    + " - x" + mocnap_1.sli20_2 + " " + ItemService.gI().getTemplate(mocnap_1.i20_2).name + "\n"
-                                    + "|1|• Mốc " + Archivement.GIADOLACHIADOI * 3 + ":\n"
-                                    + " - x" + mocnap_1.sli30_1 + " " + ItemService.gI().getTemplate(mocnap_1.i30_1).name + " % cs, \n"
-                                    + " - x" + mocnap_1.sli30_2 + " " + ItemService.gI().getTemplate(mocnap_1.i30_2).name + "\n"
-                                    + "|4|• Mốc " + Archivement.GIADOLACHIADOI * 5 + ":\n"
-                                    + " - x" + mocnap_1.sli50_1 + " " + ItemService.gI().getTemplate(mocnap_1.i50_1).name + ", "
-                                    + ItemService.gI().getTemplate(mocnap_1.i50_2).name + " \n"
-                                    + "|6|• Mốc " + Archivement.GIADOLACHIADOI * 7 + ":\n"
-                                    + " - x" + mocnap_1.sli70_1 + " " + ItemService.gI().getTemplate(mocnap_1.i70_1).name + " " + mocnap_1.csi70_1 + "% cs, \n"
-                                    + " - x" + mocnap_1.sli70_2 + " " + ItemService.gI().getTemplate(mocnap_1.i70_2).name + ", " + ItemService.gI().getTemplate(mocnap_1.i70_3).name + ", " + ItemService.gI().getTemplate(mocnap_1.i70_4).name + "\n"
-                                    + "|5|• Mốc " + Archivement.GIADOLACHIADOI * 10 + ":\n"
-                                    + " - x" + mocnap_1.sli100_1 + " " + ItemService.gI().getTemplate(mocnap_1.i100_1).name + ",\n"
-                                    + " - x" + mocnap_1.sli100_2 + " " + ItemService.gI().getTemplate(mocnap_1.i100_2).name + ",\n"
-                                    + " - x" + mocnap_1.sli100_3 + " " + ItemService.gI().getTemplate(mocnap_1.i100_3).name + "\n"
-                                    + "|3|• Mốc " + Archivement.GIADOLACHIADOI * 20 + ":\n"
-                                    + " - x" + mocnap_1.sli200_1 + " " + ItemService.gI().getTemplate(mocnap_1.i200_1).name + ",\n"
-                                    + " - x" + mocnap_1.sli200_3 + " " + ItemService.gI().getTemplate(mocnap_1.i200_3).name + ",\n"
-                                    + " - x" + mocnap_1.sli200_2 + " " + ItemService.gI().getTemplate(mocnap_1.i200_2).name + " " + mocnap_1.csi200_2 + "\n"
-                                    + "|4|• Mốc " + Archivement.GIADOLACHIADOI * 30 + ":\n"
-                                    + " - x" + mocnap_1.sli300_1 + " " + ItemService.gI().getTemplate(mocnap_1.i300_1).name + ",\n"
-                                    + " - x" + mocnap_1.sli300_2 + " " + ItemService.gI().getTemplate(mocnap_1.i300_2).name + ",\n"
-                                    + " - x" + mocnap_1.sli300_3 + " " + ItemService.gI().getTemplate(mocnap_1.i300_3).name + "\n"
-                                    + "|5|• Mốc " + Archivement.GIADOLACHIADOI * 50 + ":\n"
-                                    + " - x" + mocnap_1.sli500_1 + " " + ItemService.gI().getTemplate(mocnap_1.i500_1).name + " " + mocnap_1.sdi500_1 + " cs, \n"// + mocnap_1.csi500_2 + " sức đánh đẹp\n"
-                                    + " - x" + mocnap_1.sli500_2 + " " + ItemService.gI().getTemplate(mocnap_1.i500_2).name + " , x" + mocnap_1.sli500_3 + " " + ItemService.gI().getTemplate(mocnap_1.i500_3).name + ",\n"
-                                    + " - x" + mocnap_1.sli500_4 + " " + ItemService.gI().getTemplate(mocnap_1.i500_4).name + " " + mocnap_1.csi500_4 + "\n"
-                                    + "|6|• Mốc " + Archivement.GIADOLACHIADOI * 100 + ":\n"
-                                    + " - x" + mocnap_1.sli1000_1 + " " + ItemService.gI().getTemplate(mocnap_1.i1000_1).name + ",\n"
-                                    + " - x" + mocnap_1.sli1000_2 + " " + ItemService.gI().getTemplate(mocnap_1.i1000_2).name + ",\n"
-                                    + " - x" + mocnap_1.sli1000_3 + " " + ItemService.gI().getTemplate(mocnap_1.i1000_3).name + " DAME-HP-KI -> " + mocnap_1.sdi1000_3 + "-" + mocnap_1.hpi1000_3 + "-" + mocnap_1.kii1000_3 + "(%)\n"
-                                    + " - x" + mocnap_1.sli1000_4 + " " + ItemService.gI().getTemplate(mocnap_1.i1000_4).name + ",\n"
-                                    + " - x" + mocnap_1.sli1000_5 + " " + ItemService.gI().getTemplate(mocnap_1.i1000_5).name + "\n"
-                                    + "|1|• Mốc " + Archivement.GIADOLACHIADOI * 200 + ":\n"
-                                    + " - x" + mocnap_1.sli2000_1 + " " + ItemService.gI().getTemplate(mocnap_1.i2000_1).name + ",\n"
-                                    + " - x" + mocnap_1.sli2000_2 + " " + ItemService.gI().getTemplate(mocnap_1.i2000_2).name + ",\n"
-                                    + " - x" + mocnap_1.sli2000_3 + " " + ItemService.gI().getTemplate(mocnap_1.i2000_3).name + " DAME-HP-KI-SDCM -> " + mocnap_1.sdi2000_3 + "-" + mocnap_1.hpi2000_3 + "-" + mocnap_1.kii2000_3 + "-" + mocnap_1.sdcmi2000_3 + "(%)\n"
-                                    + " - x" + mocnap_1.sli2000_4 + " " + ItemService.gI().getTemplate(mocnap_1.i2000_4).name + ",\n"
-                                    + " - x" + mocnap_1.sli2000_5 + " " + ItemService.gI().getTemplate(mocnap_1.i2000_5).name + "\n"
-                                    + "|1|• Mốc " + Archivement.GIADOLACHIADOI * 300 + ":\n"
-                                    + " - x" + mocnap_1.sli3000_1 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_1).name + ",\n"
-                                    + " - x" + mocnap_1.sli3000_2 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_2).name + ",\n"
-                                    + " - x" + mocnap_1.sli3000_3 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_3).name + ",\n" //+ mocnap_1.hpi3000_3 + "-" + mocnap_1.kii3000_3 + "-" + mocnap_1.sdcmi3000_3 + "(%)\n"
-                                    + " - x" + mocnap_1.sli3000_4 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_4).name + ",\n"
-                                    + " - x" + mocnap_1.sli3000_5 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_5).name + ",\n"
-                                    + " - x" + mocnap_1.sli3000_6 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_6).name + ",\n"
-                                    + " - x" + mocnap_1.sli3000_7 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_7).name + ",\n"
-                                    + " - x" + mocnap_1.sli3000_8 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_8).name + "\n"
-                                    + "|1|• Mốc " + Archivement.GIADOLACHIADOI * 500 + ":\n"
-                                    + " - x" + mocnap_1.sli5000_1 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_1).name + ",\n"
-                                    + " - x" + mocnap_1.sli5000_2 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_2).name + ",\n"
-                                    + " - x" + mocnap_1.sli5000_3 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_3).name + " DAME-HP-KI-SDCM-SDĐẸP -> " + mocnap_1.sdi5000_3 + "-" + mocnap_1.hpi5000_3 + "-" + mocnap_1.kii5000_3 + "-" + mocnap_1.sdcmi5000_3 + "-" + mocnap_1.sddepi5000_3 + "(%)\n"
-                                    + " - x" + mocnap_1.sli5000_4 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_4).name + ",\n"
-                                    + " - x" + mocnap_1.sli5000_5 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_5).name + "\n"
-                                    + " - x" + mocnap_1.sli5000_6 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_6).name + ",\n"
-                                    + " - x" + mocnap_1.sli5000_7 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_7).name + ",\n"
-                                    + " - x" + mocnap_1.sli5000_8 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_8).name + "\n"
-                                    + "|1|• Mốc " + Archivement.GIADOLACHIADOI * 700 + ":\n"
-                                    + " - x" + mocnap_1.sli7000_1 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_1).name + ",\n"
-                                    + " - x" + mocnap_1.sli7000_2 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_2).name + ",\n"
-                                    //                                    + " - x" + mocnap_1.sli7000_3 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_3).name + " DAME-SDCM-SDĐẸP -> " + mocnap_1.sdi7000_3 + "-" + mocnap_1.sdcmi7000_3 + "-" + mocnap_1.sddepi7000_3 + "(%)\n"
-                                    + " - x" + mocnap_1.sli7000_3 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_3).name + " DAME-HP_KI -> " + mocnap_1.sdi7000_3 + "-" + mocnap_1.sdi7000_3 + "-" + mocnap_1.sdi7000_3 + "(%)\n"
-                                    + " - x" + mocnap_1.sli7000_4 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_4).name + ",\n"
-                                    + " - x" + mocnap_1.sli7000_5 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_5).name + "\n"
-                                    + " - x" + mocnap_1.sli7000_6 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_6).name + ",\n"
-                                    + " - x" + mocnap_1.sli7000_7 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_7).name + ",\n"
-                                    + " - x" + mocnap_1.sli7000_8 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_8).name + "\n"
-                            );
-
-                        }
+                //khaile comment
+//                switch (select) {
+//                    case 0:
+//                        if (player.getSession() != null) {
+////                            this.createOtherMenu(player, 22222, Arrays.toString(Archivement.Textmocnap), "Đóng");
+//                            Service.gI().sendThongBaoFromAdmin(player, "____Reset mỗi thứ 2 đầu tuần____\n"
+//                                    + "|3|• Mốc " + Archivement.GIADOLACHIADOI * 1 + ":\n"
+//                                    + " - x" + mocnap_1.sli10_1 + " " + ItemService.gI().getTemplate(mocnap_1.i10_1).name + ",\n"
+//                                    + "|2|• Mốc " + Archivement.GIADOLACHIADOI * 2 + ":\n"
+//                                    + " - x" + mocnap_1.sli20_1 + " " + ItemService.gI().getTemplate(mocnap_1.i20_1).name + ",\n"
+//                                    + " - x" + mocnap_1.sli20_2 + " " + ItemService.gI().getTemplate(mocnap_1.i20_2).name + "\n"
+//                                    + "|1|• Mốc " + Archivement.GIADOLACHIADOI * 3 + ":\n"
+//                                    + " - x" + mocnap_1.sli30_1 + " " + ItemService.gI().getTemplate(mocnap_1.i30_1).name + " % cs, \n"
+//                                    + " - x" + mocnap_1.sli30_2 + " " + ItemService.gI().getTemplate(mocnap_1.i30_2).name + "\n"
+//                                    + "|4|• Mốc " + Archivement.GIADOLACHIADOI * 5 + ":\n"
+//                                    + " - x" + mocnap_1.sli50_1 + " " + ItemService.gI().getTemplate(mocnap_1.i50_1).name + ", "
+//                                    + ItemService.gI().getTemplate(mocnap_1.i50_2).name + " \n"
+//                                    + "|6|• Mốc " + Archivement.GIADOLACHIADOI * 7 + ":\n"
+//                                    + " - x" + mocnap_1.sli70_1 + " " + ItemService.gI().getTemplate(mocnap_1.i70_1).name + " " + mocnap_1.csi70_1 + "% cs, \n"
+//                                    + " - x" + mocnap_1.sli70_2 + " " + ItemService.gI().getTemplate(mocnap_1.i70_2).name + ", " + ItemService.gI().getTemplate(mocnap_1.i70_3).name + ", " + ItemService.gI().getTemplate(mocnap_1.i70_4).name + "\n"
+//                                    + "|5|• Mốc " + Archivement.GIADOLACHIADOI * 10 + ":\n"
+//                                    + " - x" + mocnap_1.sli100_1 + " " + ItemService.gI().getTemplate(mocnap_1.i100_1).name + ",\n"
+//                                    + " - x" + mocnap_1.sli100_2 + " " + ItemService.gI().getTemplate(mocnap_1.i100_2).name + ",\n"
+//                                    + " - x" + mocnap_1.sli100_3 + " " + ItemService.gI().getTemplate(mocnap_1.i100_3).name + "\n"
+//                                    + "|3|• Mốc " + Archivement.GIADOLACHIADOI * 20 + ":\n"
+//                                    + " - x" + mocnap_1.sli200_1 + " " + ItemService.gI().getTemplate(mocnap_1.i200_1).name + ",\n"
+//                                    + " - x" + mocnap_1.sli200_3 + " " + ItemService.gI().getTemplate(mocnap_1.i200_3).name + ",\n"
+//                                    + " - x" + mocnap_1.sli200_2 + " " + ItemService.gI().getTemplate(mocnap_1.i200_2).name + " " + mocnap_1.csi200_2 + "\n"
+//                                    + "|4|• Mốc " + Archivement.GIADOLACHIADOI * 30 + ":\n"
+//                                    + " - x" + mocnap_1.sli300_1 + " " + ItemService.gI().getTemplate(mocnap_1.i300_1).name + ",\n"
+//                                    + " - x" + mocnap_1.sli300_2 + " " + ItemService.gI().getTemplate(mocnap_1.i300_2).name + ",\n"
+//                                    + " - x" + mocnap_1.sli300_3 + " " + ItemService.gI().getTemplate(mocnap_1.i300_3).name + "\n"
+//                                    + "|5|• Mốc " + Archivement.GIADOLACHIADOI * 50 + ":\n"
+//                                    + " - x" + mocnap_1.sli500_1 + " " + ItemService.gI().getTemplate(mocnap_1.i500_1).name + " " + mocnap_1.sdi500_1 + " cs, \n"// + mocnap_1.csi500_2 + " sức đánh đẹp\n"
+//                                    + " - x" + mocnap_1.sli500_2 + " " + ItemService.gI().getTemplate(mocnap_1.i500_2).name + " , x" + mocnap_1.sli500_3 + " " + ItemService.gI().getTemplate(mocnap_1.i500_3).name + ",\n"
+//                                    + " - x" + mocnap_1.sli500_4 + " " + ItemService.gI().getTemplate(mocnap_1.i500_4).name + " " + mocnap_1.csi500_4 + "\n"
+//                                    + "|6|• Mốc " + Archivement.GIADOLACHIADOI * 100 + ":\n"
+//                                    + " - x" + mocnap_1.sli1000_1 + " " + ItemService.gI().getTemplate(mocnap_1.i1000_1).name + ",\n"
+//                                    + " - x" + mocnap_1.sli1000_2 + " " + ItemService.gI().getTemplate(mocnap_1.i1000_2).name + ",\n"
+//                                    + " - x" + mocnap_1.sli1000_3 + " " + ItemService.gI().getTemplate(mocnap_1.i1000_3).name + " DAME-HP-KI -> " + mocnap_1.sdi1000_3 + "-" + mocnap_1.hpi1000_3 + "-" + mocnap_1.kii1000_3 + "(%)\n"
+//                                    + " - x" + mocnap_1.sli1000_4 + " " + ItemService.gI().getTemplate(mocnap_1.i1000_4).name + ",\n"
+//                                    + " - x" + mocnap_1.sli1000_5 + " " + ItemService.gI().getTemplate(mocnap_1.i1000_5).name + "\n"
+//                                    + "|1|• Mốc " + Archivement.GIADOLACHIADOI * 200 + ":\n"
+//                                    + " - x" + mocnap_1.sli2000_1 + " " + ItemService.gI().getTemplate(mocnap_1.i2000_1).name + ",\n"
+//                                    + " - x" + mocnap_1.sli2000_2 + " " + ItemService.gI().getTemplate(mocnap_1.i2000_2).name + ",\n"
+//                                    + " - x" + mocnap_1.sli2000_3 + " " + ItemService.gI().getTemplate(mocnap_1.i2000_3).name + " DAME-HP-KI-SDCM -> " + mocnap_1.sdi2000_3 + "-" + mocnap_1.hpi2000_3 + "-" + mocnap_1.kii2000_3 + "-" + mocnap_1.sdcmi2000_3 + "(%)\n"
+//                                    + " - x" + mocnap_1.sli2000_4 + " " + ItemService.gI().getTemplate(mocnap_1.i2000_4).name + ",\n"
+//                                    + " - x" + mocnap_1.sli2000_5 + " " + ItemService.gI().getTemplate(mocnap_1.i2000_5).name + "\n"
+//                                    + "|1|• Mốc " + Archivement.GIADOLACHIADOI * 300 + ":\n"
+//                                    + " - x" + mocnap_1.sli3000_1 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_1).name + ",\n"
+//                                    + " - x" + mocnap_1.sli3000_2 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_2).name + ",\n"
+//                                    + " - x" + mocnap_1.sli3000_3 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_3).name + ",\n" //+ mocnap_1.hpi3000_3 + "-" + mocnap_1.kii3000_3 + "-" + mocnap_1.sdcmi3000_3 + "(%)\n"
+//                                    + " - x" + mocnap_1.sli3000_4 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_4).name + ",\n"
+//                                    + " - x" + mocnap_1.sli3000_5 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_5).name + ",\n"
+//                                    + " - x" + mocnap_1.sli3000_6 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_6).name + ",\n"
+//                                    + " - x" + mocnap_1.sli3000_7 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_7).name + ",\n"
+//                                    + " - x" + mocnap_1.sli3000_8 + " " + ItemService.gI().getTemplate(mocnap_1.i3000_8).name + "\n"
+//                                    + "|1|• Mốc " + Archivement.GIADOLACHIADOI * 500 + ":\n"
+//                                    + " - x" + mocnap_1.sli5000_1 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_1).name + ",\n"
+//                                    + " - x" + mocnap_1.sli5000_2 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_2).name + ",\n"
+//                                    + " - x" + mocnap_1.sli5000_3 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_3).name + " DAME-HP-KI-SDCM-SDĐẸP -> " + mocnap_1.sdi5000_3 + "-" + mocnap_1.hpi5000_3 + "-" + mocnap_1.kii5000_3 + "-" + mocnap_1.sdcmi5000_3 + "-" + mocnap_1.sddepi5000_3 + "(%)\n"
+//                                    + " - x" + mocnap_1.sli5000_4 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_4).name + ",\n"
+//                                    + " - x" + mocnap_1.sli5000_5 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_5).name + "\n"
+//                                    + " - x" + mocnap_1.sli5000_6 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_6).name + ",\n"
+//                                    + " - x" + mocnap_1.sli5000_7 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_7).name + ",\n"
+//                                    + " - x" + mocnap_1.sli5000_8 + " " + ItemService.gI().getTemplate(mocnap_1.i5000_8).name + "\n"
+//                                    + "|1|• Mốc " + Archivement.GIADOLACHIADOI * 700 + ":\n"
+//                                    + " - x" + mocnap_1.sli7000_1 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_1).name + ",\n"
+//                                    + " - x" + mocnap_1.sli7000_2 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_2).name + ",\n"
+//                                    //                                    + " - x" + mocnap_1.sli7000_3 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_3).name + " DAME-SDCM-SDĐẸP -> " + mocnap_1.sdi7000_3 + "-" + mocnap_1.sdcmi7000_3 + "-" + mocnap_1.sddepi7000_3 + "(%)\n"
+//                                    + " - x" + mocnap_1.sli7000_3 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_3).name + " DAME-HP_KI -> " + mocnap_1.sdi7000_3 + "-" + mocnap_1.sdi7000_3 + "-" + mocnap_1.sdi7000_3 + "(%)\n"
+//                                    + " - x" + mocnap_1.sli7000_4 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_4).name + ",\n"
+//                                    + " - x" + mocnap_1.sli7000_5 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_5).name + "\n"
+//                                    + " - x" + mocnap_1.sli7000_6 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_6).name + ",\n"
+//                                    + " - x" + mocnap_1.sli7000_7 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_7).name + ",\n"
+//                                    + " - x" + mocnap_1.sli7000_8 + " " + ItemService.gI().getTemplate(mocnap_1.i7000_8).name + "\n"
+//                            );
 //
-
-                        break;
-                    case 1:
-                        if (player.getSession().actived) {
-                            Archivement.gI().getAchievement(player);
-                        } else {
-                            Service.gI().sendThongBao(player, "Mở thành viên tại bardock đi rồi qua đây nhận nhe baby!");
-                        }
-                        break;
-                    case 2:
-                        break;
-                }
+//                        }
+////
+//
+//                        break;
+//                    case 1:
+//                        if (player.getSession().actived) {
+//                            Archivement.gI().getAchievement(player);
+//                        } else {
+//                            Service.gI().sendThongBao(player, "Mở thành viên tại bardock đi rồi qua đây nhận nhe baby!");
+//                        }
+//                        break;
+//                    case 2:
+//                        break;
+//                }
+//end khaile comment
             }
 
             private void handleMenuBDKB(Player player, int select) {
@@ -2724,6 +2724,139 @@ public class NpcFactory {
         };
     }
 //end khaile modify quy lao
+//
+//    private static Npc thodaica(int mapId, int status, int cx, int cy, int tempId, int avartar) {
+//        return new Npc(mapId, status, cx, cy, tempId, avartar) {
+//            public void chatWithNpc(Player player) {
+//                String[] chat = {
+//                    "Mang cho ta 10 củ cà rốt khi săn boss để đổi quà"
+//                };
+//                Timer timer = new Timer();
+//                timer.scheduleAtFixedRate(new TimerTask() {
+//                    int index = 0;
+//
+//                    @Override
+//                    public void run() {
+//                        npcChat(player, chat[index]);
+//                        index = (index + 1) % chat.length;
+//                    }
+//                }, 10000, 10000);
+//            }
+//
+//            @Override
+//            public void openBaseMenu(Player player) {
+//                //chatWithNpc(player);
+//                Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
+//                if (canOpenNpc(player)) {
+//                    if (!TaskService.gI().checkDoneTaskTalkNpc(player, this)) {
+//                        if (player.getSession() != null) {
+//                            if (carot != null && carot.quantity >= cn.check_sl_cr) {
+//                                this.createOtherMenu(player, 12, "\b|2|Kiếm đủ " + ItemService.gI().getTemplate(cn.cr).name + " rồi à ? ta sẽ cho ngươi phần thưởng !",
+//                                        "Nhận Quà", "Đóng");
+//                            } else {
+//                                this.createOtherMenu(player, ConstNpc.BASE_MENU,
+//                                        "Rèn xong thỏi vàng sẽ được gửi vô hòm thư\n"
+//                                        + "Lưu ý đặc biệt: khi nhận thỏi vàng khi rèn thành công ở hòm thư tuyệt đối không để xót thỏi vàng khoá ở hành trang\n",
+//                                        "Rèn Vàng Khóa", "ĐÓNG");
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void confirmMenu(Player player, int select) {
+//                if (canOpenNpc(player)) {
+//                    if (player.iDMark.getIndexMenu() == 12) {
+//                        switch (select) {
+//                            case 0:
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 5,
+//                                            "Cảm ơn cậu đã cứu bụng đói của ta\n Để cảm ơn ta sẽ tặng cậu món quà.",
+//                                            "Đổi " + cn.slnx + "\n Ngọc Xanh",
+//                                            "Đổi " + cn.slnh + " Hồng Ngọc",
+//                                            "Đổi " + cn.slbd + " Bản Đồ Kho Báu",
+//                                            "Đổi " + cn.slthoiVang_ + "\n thỏi vàng");
+//
+//                                }
+//                                break;
+//                            case 1:
+////                               
+//                                break;
+//
+//                        }
+//                    } else if (player.iDMark.getIndexMenu() == 5) {
+//                        switch (select) {
+//                            case 0:
+//
+//                                //if (!player.gift.gemTanThu) { 
+//                                if (player.getSession() != null) {
+//                                    Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
+//                                    player.inventory.gem += cn.slnx;
+//                                    InventoryServiceNew.gI().subQuantityItemsBag(player, carot, cn.get_sl_cr);
+//                                    Service.gI().sendMoney(player);
+//
+//                                    Service.gI().sendThongBao(player, "Bạn vừa nhận được " + cn.slnx + " ngọc xanh");
+//                                    player.gift.gemTanThu = true;
+//                                }
+//                                break;
+//
+//                            case 1:
+//                                if (player.getSession() != null) {
+//                                    Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
+//                                    player.inventory.ruby += cn.slnh;
+//                                    InventoryServiceNew.gI().subQuantityItemsBag(player, carot, cn.get_sl_cr);
+//                                    Service.gI().sendMoney(player);
+//                                    Service.gI().sendThongBao(player, "Bạn vừa nhận được " + cn.slnh + " hồng ngọc");
+//                                    player.gift.gemTanThu = true;
+//                                }
+//                                break;
+//                            case 2:
+//                                if (player.getSession() != null) {
+//                                    Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
+//                                    Item bdkb = ItemService.gI().createNewItem((short) 611, (short) cn.slbd);
+//
+//                                    InventoryServiceNew.gI().subQuantityItemsBag(player, carot, cn.get_sl_cr);
+//                                    InventoryServiceNew.gI().addItemBag(player, bdkb);
+//                                    InventoryServiceNew.gI().sendItemBags(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.slbd + " Bản Đồ Kho Báu");
+//                                }
+//                                break;
+//                            case 3:
+//                                if (player.getSession() != null) {
+//                                    Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
+//                                    Item thoivang = ItemService.gI().createNewItem((short) 457, (short) cn.slthoiVang_);
+//                                    InventoryServiceNew.gI().subQuantityItemsBag(player, carot, cn.get_sl_cr);
+//                                    InventoryServiceNew.gI().addItemBag(player, thoivang);
+//                                    InventoryServiceNew.gI().sendItemBags(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.slthoiVang_ + " Thỏi Vàng");
+//                                }
+//                                break;
+//
+//                        }
+//
+//                    }
+//                    if (player.iDMark.getIndexMenu() == ConstNpc.BASE_MENU) {
+//                        switch (select) {
+//                            case 0:
+//                                if (!player.getSession().actived) {
+//                                    Service.gI().sendThongBao(player, "Vui lòng kích hoạt tài khoản để sử dụng chức năng này");
+//                                } else {
+//                                    Input.gI().DOITHOI(player);
+//                                }
+//                                break;
+//                            case 1:
+//                                break;
+//                        }
+//
+////                    } else if (player.iDMark.getIndexMenu() == ConstNpc.NAP_THE) { 
+////                        Input.gI().createFormNapThe(player, loaiThe, menhGia);
+////            
+//                    }
+//                }
+//            }
+//        };
+//    }
 
     private static Npc thodaica(int mapId, int status, int cx, int cy, int tempId, int avartar) {
         return new Npc(mapId, status, cx, cy, tempId, avartar) {
@@ -2745,21 +2878,23 @@ public class NpcFactory {
 
             @Override
             public void openBaseMenu(Player player) {
-                //chatWithNpc(player);
-                Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
                 if (canOpenNpc(player)) {
+                    Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
                     if (!TaskService.gI().checkDoneTaskTalkNpc(player, this)) {
                         if (player.getSession() != null) {
                             if (carot != null && carot.quantity >= cn.check_sl_cr) {
-                                this.createOtherMenu(player, 12, "\b|2|Kiếm đủ " + ItemService.gI().getTemplate(cn.cr).name + " rồi à ? ta sẽ cho ngươi phần thưởng !",
-                                        "Nhận Quà", "Đóng");
+                                this.createOtherMenu(player, ConstNpc.BASE_MENU,
+                                        "Bạn có thể chọn các tùy chọn sau:\n"
+                                        + "1. Đổi cà rốt lấy phần thưởng\n"
+                                        + "2. Rèn thỏi vàng từ vàng\n\n"
+                                        + "Lưu ý: Khi rèn thành công, thỏi vàng sẽ được gửi vào hòm thư",
+                                        "Đổi Phần Thưởng", "Rèn Vàng Khóa", "Đóng");
                             } else {
                                 this.createOtherMenu(player, ConstNpc.BASE_MENU,
-                                        "\b|1|Muốn rèn từ vàng sang thỏi vàng hả ?"
-                                        + "Khi rèn để hạn chế việc rèn bị hụt, bạn nên rèn nhỏ giọt thỏi vàng lại.\n"
-                                        + "Rèn xong thỏi vàng sẽ được gửi vô hòm thư\n"
-                                        + "Lưu ý đặc biệt: khi nhận thỏi vàng khi rèn thành công ở hòm thư tuyệt đối không để xót thỏi vàng khoá ở hành trang\n",
-                                        "Rèn Vàng Khóa", "ĐÓNG");
+                                        "Bạn cần 10 củ cà rốt để hiện menu đổi quà\n"
+                                        + "Hoặc bạn có thể rèn thỏi vàng:\n"
+                                        + "Rèn xong thỏi vàng sẽ được gửi vô hòm thư\n",
+                                        "Rèn Vàng Khóa", "Đóng");
                             }
                         }
                     }
@@ -2769,43 +2904,59 @@ public class NpcFactory {
             @Override
             public void confirmMenu(Player player, int select) {
                 if (canOpenNpc(player)) {
-                    if (player.iDMark.getIndexMenu() == 12) {
-                        switch (select) {
-                            case 0:
-                                if (player.getSession() != null) {
+                    Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
+
+                    if (player.iDMark.getIndexMenu() == ConstNpc.BASE_MENU) {
+                        if (carot != null && carot.quantity >= cn.check_sl_cr) {
+                            // Menu khi có đủ cà rốt
+                            switch (select) {
+                                case 0: // Đổi Phần Thưởng
                                     this.createOtherMenu(player, 5,
                                             "Cảm ơn cậu đã cứu bụng đói của ta\n Để cảm ơn ta sẽ tặng cậu món quà.",
-                                            "Đổi " + cn.slnx + "\n Ngọc Xanh",
+                                            "Đổi " + cn.slnx + " Ngọc Xanh",
                                             "Đổi " + cn.slnh + " Hồng Ngọc",
                                             "Đổi " + cn.slbd + " Bản Đồ Kho Báu",
-                                            "Đổi " + cn.slthoiVang_ + "\n thỏi vàng");
-
-                                }
-                                break;
-                            case 1:
-//                               
-                                break;
-
+                                            "Đổi " + cn.slthoiVang_ + " Thỏi Vàng",
+                                            "Quay lại");
+                                    break;
+                                case 1: // Rèn Vàng Khóa
+                                    if (!player.getSession().actived) {
+                                        Service.gI().sendThongBao(player, "Vui lòng kích hoạt tài khoản để sử dụng chức năng này");
+                                    } else {
+                                        Input.gI().DOITHOI(player);
+                                    }
+                                    break;
+                                case 2: // Đóng
+                                    break;
+                            }
+                        } else {
+                            // Menu khi không đủ cà rốt
+                            switch (select) {
+                                case 0: // Rèn Vàng Khóa
+                                    if (!player.getSession().actived) {
+                                        Service.gI().sendThongBao(player, "Vui lòng kích hoạt tài khoản để sử dụng chức năng này");
+                                    } else {
+                                        Input.gI().DOITHOI(player);
+                                    }
+                                    break;
+                                case 1: // Đóng
+                                    break;
+                            }
                         }
                     } else if (player.iDMark.getIndexMenu() == 5) {
+                        // Xử lý menu đổi quà
                         switch (select) {
-                            case 0:
-
-                                //if (!player.gift.gemTanThu) { 
+                            case 0: // Ngọc Xanh
                                 if (player.getSession() != null) {
-                                    Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
                                     player.inventory.gem += cn.slnx;
                                     InventoryServiceNew.gI().subQuantityItemsBag(player, carot, cn.get_sl_cr);
                                     Service.gI().sendMoney(player);
-
                                     Service.gI().sendThongBao(player, "Bạn vừa nhận được " + cn.slnx + " ngọc xanh");
                                     player.gift.gemTanThu = true;
                                 }
                                 break;
-
-                            case 1:
+                            case 1: // Hồng Ngọc
                                 if (player.getSession() != null) {
-                                    Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
                                     player.inventory.ruby += cn.slnh;
                                     InventoryServiceNew.gI().subQuantityItemsBag(player, carot, cn.get_sl_cr);
                                     Service.gI().sendMoney(player);
@@ -2813,20 +2964,17 @@ public class NpcFactory {
                                     player.gift.gemTanThu = true;
                                 }
                                 break;
-                            case 2:
+                            case 2: // Bản Đồ Kho Báu
                                 if (player.getSession() != null) {
-                                    Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
                                     Item bdkb = ItemService.gI().createNewItem((short) 611, (short) cn.slbd);
-
                                     InventoryServiceNew.gI().subQuantityItemsBag(player, carot, cn.get_sl_cr);
                                     InventoryServiceNew.gI().addItemBag(player, bdkb);
                                     InventoryServiceNew.gI().sendItemBags(player);
                                     Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.slbd + " Bản Đồ Kho Báu");
                                 }
                                 break;
-                            case 3:
+                            case 3: // Thỏi Vàng
                                 if (player.getSession() != null) {
-                                    Item carot = InventoryServiceNew.gI().findItemBag(player, cn.cr);
                                     Item thoivang = ItemService.gI().createNewItem((short) 457, (short) cn.slthoiVang_);
                                     InventoryServiceNew.gI().subQuantityItemsBag(player, carot, cn.get_sl_cr);
                                     InventoryServiceNew.gI().addItemBag(player, thoivang);
@@ -2834,32 +2982,15 @@ public class NpcFactory {
                                     Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.slthoiVang_ + " Thỏi Vàng");
                                 }
                                 break;
-
-                        }
-
-                    }
-                    if (player.iDMark.getIndexMenu() == ConstNpc.BASE_MENU) {
-                        switch (select) {
-                            case 0:
-                                if (!player.getSession().actived) {
-                                    Service.gI().sendThongBao(player, "Vui lòng kích hoạt tài khoản để sử dụng chức năng này");
-                                } else {
-                                    Input.gI().DOITHOI(player);
-                                }
-                                break;
-                            case 1:
+                            case 4: // Quay lại
+                                openBaseMenu(player);
                                 break;
                         }
-
-//                    } else if (player.iDMark.getIndexMenu() == ConstNpc.NAP_THE) { 
-//                        Input.gI().createFormNapThe(player, loaiThe, menhGia);
-//            
                     }
                 }
             }
         };
     }
-
 //    public static Npc truongLaoGuru(int mapId, int status, int cx, int cy, int tempId, int avartar) {
 //        return new Npc(mapId, status, cx, cy, tempId, avartar) {
 //            @Override
@@ -2877,6 +3008,7 @@ public class NpcFactory {
 //            }
 //        };
 //    }
+
     public static Npc vuaVegeta(int mapId, int status, int cx, int cy, int tempId, int avartar) {
         return new Npc(mapId, status, cx, cy, tempId, avartar) {
             @Override
@@ -3094,14 +3226,11 @@ public class NpcFactory {
                     if (player.getSession().vnd < cn.ghVnd && player.getSession().totalvnd < cn.ghTotalVnd) {
                         if (!TaskService.gI().checkDoneTaskTalkNpc(player, this)) {
                             this.createOtherMenu(player, ConstNpc.BASE_MENU,
-                                    "\n\b|7|Con đang có :" + player.getSession().vnd + " COIN\n"
-                                    + player.getSession().totalvnd + " VND"
-                                    + "\n Dùng COIN, VND hãy qua NPC HEART, QUY LÃO ở đảo Kame nhé!!!"
-                                    + "\nMở thành viên tại Bardock, dùng COIN tại đây!"
-                                    + "\n Next all nv đến kuku, có mốc nạp tại Quy lão"
-                                    + "\n Con có thể đua top sự kiện tại Quy Lão Kame"
-                                    + "\b\n|5|Code tân thủ: emti1 đến emti13\n"
-                                    + "\b\n|3|Lưu ý: Chỉ giao dịch nạp tiền qua duy nhất qua admin Emti,\n"
+                                    "\n\b|7|Con đang có :" + player.getSession().vnd + " COIN"
+                                    + "\b|7|Con đang có :" + player.getSession().totalvnd + " VND"
+                                    + "\nMở thành viên tại Bardock!"
+                                    + "\n Next all nv đến kuku"
+                                    + "\b\n|3|Lưu ý: Chỉ giao dịch nạp tiền qua duy nhất qua admin,\n"
                                     + "mọi rủi ro tự chịu nếu không chấp hành."
                                     + "\n\b|4| Bảo trì định kì 18H mỗi ngày !!!"
                                             .replaceAll("%1", player.gender == ConstPlayer.TRAI_DAT ? "Quy lão Kamê"
@@ -3960,6 +4089,1313 @@ public class NpcFactory {
             }
         };
     }
+//khaile commet
+//    public static Npc npc70(int mapId, int status, int cx, int cy, int tempId, int avartar) {
+//        return new Npc(mapId, status, cx, cy, tempId, avartar) {
+//            @Override
+//            public void openBaseMenu(Player pl) {
+//                if (canOpenNpc(pl)) {
+//                    if (pl.getSession().vnd < cn.ghVnd && pl.getSession().totalvnd < cn.ghTotalVnd) {
+//                        this.createOtherMenu(pl, ConstNpc.BASE_MENU,
+//                                "\b|1|Đây là nơi ngươi có thể đổi bất cứ thứ gì"
+//                                + "\nMiễn là ngươi có tiền"
+//                                + "\b\n|3| Nạp COIN giá trị ( cứ 20k được <20.000 COIN> và <20.000 VND> trong game)"
+//                                + "\b|5|MBBANK: " + cn.Sacombank + " \n"
+//                                + "|1|Nội dung chuyển khoản: " + cn.MANAP + "" + pl.getSession().userId + "\n"
+//                                + "\b|3|Lưu ý: Chỉ giao dịch nạp tiền qua duy nhất qua admin Emti,\n"
+//                                + "mọi rủi ro tự chịu nếu không chấp hành."
+//                                + "\n\b|7|Bạn đang có :" + pl.getSession().vnd + " COIN\n"
+//                                + " Tổng nạp: " + pl.getSession().totalvnd + " VND",
+//                                "Cửa hàng",
+//                                "Menu COIN",
+//                                "Đổi VND -> COIN",
+//                                "Đổi đệ",
+//                                " Mở thành viên",
+//                                "Đổi skill đệ");
+//                    } else {
+//                        Service.gI().sendThongBaoOK(pl, "Có Bug không đó :3");
+//                        PlayerService.gI().banPlayer((pl));
+//                        Service.gI().sendThongBao(pl, "Bạn bị ban thành công");
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void confirmMenu(Player player, int select) {
+//                if (canOpenNpc(player)) {
+//                    if (player.iDMark.isBaseMenu()) {
+//                        switch (select) {
+//
+//                            case 0:
+//                                ShopServiceNew.gI().opendShop(player, "BARDOCK_SHOP", false);
+//                                break;
+//                            case 1:
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 777,
+//                                            "\b|1|Có tiền rồi đổi thôi!\n"
+//                                            + "|6|\bCó thể nhận mốc nạp khi nạp ở quy lão Kame nha"
+//                                            + " \n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN",
+//                                            "Đổi thỏi vàng", "Đổi ngọc xanh", "Đổi hồng ngọc");
+//                                }
+//                                break;
+//                            case 2:
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 12999,
+//                                            "\b|1|Có VND đỏi COIN tại đây nhá (10K VND = 9K COIN)\n"
+//                                            + " \n\b|7|Bạn đang có :" + player.getSession().totalvnd + " VND"
+//                                            + " \n\b|7|Bạn Có :" + player.getSession().vnd + " COIN",
+//                                            "Đổi VND\n--> COIN");
+//                                }
+//                                break;
+//                            case 3:
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 13000,
+//                                            "\b|1|Có tiền rồi đổi thôi!\n "
+//                                            + "\n\b|3| Đổi đệ thì tháo cái đồ đệ ra, mất tự chịu nha!\n "
+//                                            + "\n\b|4| Chỉ số hợp thể chỉ có tác dụng với bông tai cấp 3 trở lên!\n "
+//                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN",
+//                                            "Đổi đệ tầm trung", "Đổi đệ vip", "Đổi đệ vip pro", "Đổi đệ siêu cấp", "Đổi đệ siêu thần");
+//                                }
+//                                break;
+//
+//                            case 4:
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 782,
+//                                            "\b|2|Mở thành viên giá 20k \n \b|7|Bạn đã nạp :"
+//                                            + "" + player.getSession().totalvnd2 + " đồng",
+//                                            "Mở", "Đóng");
+//                                }
+//                                break;
+//                            case 5:
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 888,
+//                                            "|3|Lưu ý: Đổi Skill đệ bằng tiền nạp sẽ mất COIN\n"
+//                                            + "\nBạn có: " + player.getSession().vnd + " COIN",
+//                                            //Menu CHọn
+//                                            "Đổi skill 2-3\n " + cn.skill23, "Đổi skill 2-4\n " + cn.skill24);
+//
+//                                }
+//                                break;
+//
+//                        }
+//                    } else if (player.iDMark.getIndexMenu() == 12999) {
+//                        switch (select) {
+//                            case 0:
+//                                Input.gI().createFormDoiVND(player);
+//                                break;
+//                        }
+//                    } else if (player.iDMark.getIndexMenu() == 13000) {
+//                        switch (select) {
+//                            case 0:
+//                                if (player.pet == null) {
+//                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
+//                                    return;
+//                                }
+//                                for (Item item : player.pet.inventory.itemsBody) {
+//                                    if (item.isNotNullItem()) {
+//                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
+//                                        return;
+//                                    }
+//                                }
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 781,
+//                                            "\b|2|Muốn đổi đệ mới bằng COIN à?\n"
+//                                            + "|3|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)\n"
+//                                            + "Tùy chọn 1: Đệ tử Cell: HP + " + cn.hpPet4 + "%, MP + " + cn.mpPet4 + "%, Dame + " + cn.damePet4 + " %\n"
+//                                            + "Tùy chọn 2: Đệ tử Cumber: HP + " + cn.hpPet5 + "%, MP + " + cn.mpPet5 + "%, Dame + " + cn.damePet5 + " %\n"
+//                                            + "Tùy chọn 3: Đệ tử Fide Vàng: HP + " + cn.hpPet6 + "%, MP + " + cn.mpPet6 + "%, Dame + " + cn.damePet6 + " %\n"
+//                                            + "Tùy chọn 4: Đệ tử Mai: HP + " + cn.hpPet8 + "%, MP + " + cn.mpPet8 + "%, Dame + " + cn.damePet8 + " %\n"
+//                                            + "Tùy chọn 5: Đệ tử Heart: HP + " + cn.hpPet7 + "%, MP + " + cn.mpPet7 + "%, Dame + " + cn.damePet7 + " %\n"
+//                                            + "Tùy chọn 6: Đệ tử Beerus: HP + " + cn.hpPet2 + "%, MP + " + cn.mpPet2 + "%, Dame + " + cn.damePet2 + " %\n"
+//                                            + "Tùy chọn 7: Đệ tử Gohan: HP + " + cn.hpPet9 + "%, MP + " + cn.mpPet9 + "%, Dame + " + cn.damePet9 + " %\n"
+//                                            + "Tùy chọn 8: Đệ tử Jiren Full Power: HP + " + cn.hpPet10 + "%, MP + " + cn.mpPet10 + "%, Dame + " + cn.damePet10 + " %\n"
+//                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
+//                                            + "",
+//                                            //                                            + "|6|\nChỉ số hợp thể đệ hiện tại :\n"
+//                                            //                                            + ""
+//                                            //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
+//                                            //Menu Chọn
+//                                            "Đệ cell\n " + cn.de1 + " COIN",
+//                                            "Đệ Cumber\n " + cn.de2 + " COIN",
+//                                            "Đệ Fide Vàng\n " + cn.de3 + " COIN",
+//                                            "Đệ Mai\n " + cn.de4 + " COIN",
+//                                            "Đệ Heart\n " + cn.de5 + " COIN",
+//                                            "Đệ berus\n " + cn.de6 + " COIN",
+//                                            "Đệ Gohan\n " + cn.de7 + " COIN",
+//                                            "Đệ Jiren Full Power\n " + cn.de8 + " COIN");
+//                                }
+//                                break;
+//                            case 1:
+//                                if (player.pet == null) {
+//                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
+//                                    return;
+//                                }
+//                                for (Item item : player.pet.inventory.itemsBody) {
+//                                    if (item.isNotNullItem()) {
+//                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
+//                                        return;
+//                                    }
+//                                }
+//                                if (player.getSession() != null) {
+//
+//                                    this.createOtherMenu(player, 783,
+//                                            "\b|2|Muốn đổi đệ Vip thì mua giá hơi chát nhá!!! "
+//                                            + "\n|4|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)"
+//                                            + "\n Tùy chọn 1: Đệ tử Goku Black SSJ3: HP + " + cn.hpPet11 + "%, MP + " + cn.mpPet11 + "%, Dame + " + cn.damePet11 + "% "
+//                                            + "\n Tùy chọn 2: Đệ tử GOGETA SSJ4: HP + " + cn.hpPet12 + "%, MP + " + cn.mpPet12 + "%, Dame + " + cn.damePet12 + "% "
+//                                            + "\n Tùy chọn 3: Đệ tử Goku VÔ CỰC: HP + " + cn.hpPet13 + "%, MP + " + cn.mpPet13 + "%, Dame + " + cn.damePet13 + "% "
+//                                            + "\n Tùy chọn 4: Đệ tử Berus Bí Ngô: HP + " + cn.hpPet14 + "%, MP + " + cn.mpPet14 + "%, Dame + " + cn.damePet14 + "% "
+//                                            + "\n Tùy chọn 5: Đệ tử Zamasu: HP + " + cn.hpPet15 + "%, MP + " + cn.mpPet15 + "%, Dame + " + cn.damePet15 + "% "
+//                                            + "\n Tùy chọn 6: Đệ tử Daisinkan: HP + " + cn.hpPet16 + "%, MP + " + cn.mpPet16 + "%, Dame + " + cn.damePet16 + "% "
+//                                            + "\n Tùy chọn 7: Đệ tử Whis: HP + " + cn.hpPet17 + "%, MP + " + cn.mpPet17 + "%, Dame + " + cn.damePet17 + "% "
+//                                            + "\n Tùy chọn 8: Đệ tử Granola: HP + " + cn.hpPet18 + "%, MP + " + cn.mpPet18 + "%, Dame + " + cn.damePet18 + "% "
+//                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
+//                                            + "",
+//                                            //                                            + "|6|\nChỉ số hợp thể đệ hiện tại :\n"
+//                                            //                                            + ""
+//                                            //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
+//                                            //Menu Chọn
+//                                            "Đệ Goku Black3\n " + cn.de9 + " COIN",
+//                                            "Đệ Gogeta C4\n " + cn.de10 + " COIN",
+//                                            "Đệ Goku VÔ CỰC\n " + cn.de11 + " COIN",
+//                                            "Đệ Berus Bí\n " + cn.de12 + " COIN",
+//                                            "Đệ Zamasu\n " + cn.de13 + " COIN",
+//                                            "Đệ Daisinkan\n " + cn.de14 + " COIN",
+//                                            "Đệ Whis\n " + cn.de15 + " COIN",
+//                                            "Đệ Granlola\n " + cn.de16 + " COIN");
+//                                }
+//                                break;
+//                            case 2:
+//                                if (player.pet == null) {
+//                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
+//                                    return;
+//                                }
+//
+//                                for (Item item : player.pet.inventory.itemsBody) {
+//                                    if (item.isNotNullItem()) {
+//                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
+//                                        return;
+//                                    }
+//                                }
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 784,
+//                                            "\b|2|Muốn đổi đệ Vip thì mua giá hơi chát nhá!!! "
+//                                            + "\n|5|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)"
+//                                            + "\n Tùy chọn 1: Đệ tử Oren: HP + " + cn.hpPet20 + "%, MP + " + cn.mpPet20 + "%, Dame + " + cn.damePet20 + " %"
+//                                            + "\n Tùy chọn 2: Đệ tử Kamin: HP + " + cn.hpPet19 + "%, MP + " + cn.mpPet19 + "%, Dame + " + cn.damePet19 + " %"
+//                                            + "\n Tùy chọn 3: Đệ tử Drabura: HP + " + cn.hpPet25 + "%, MP + " + cn.mpPet25 + "%, Dame + " + cn.damePet25 + " %"
+//                                            + "\n Tùy chọn 4: Đệ tử Kamin Oren: HP + " + cn.hpPet21 + "%, MP + " + cn.mpPet21 + "%, Dame + " + cn.damePet21 + " %"
+//                                            + "\n Tùy chọn 5: Đệ tử Gojo: HP + " + cn.hpPet22 + "%, MP + " + cn.mpPet22 + "%, Dame + " + cn.damePet22 + " %"
+//                                            + "\n Tùy chọn 6: Đệ tử Baby jiren: HP + " + cn.hpPet27 + "%, MP + " + cn.mpPet27 + "%, Dame + " + cn.damePet27 + " %"
+//                                            + "\n Tùy chọn 7: Đệ tử Hachiyack: HP + " + cn.hpPet23 + "%, MP + " + cn.mpPet23 + "%, Dame + " + cn.damePet23 + " %"
+//                                            + "\n Tùy chọn 8: Đệ tử Goku SSSJ5: HP + " + cn.hpPet26 + "%, MP + " + cn.mpPet26 + "%, Dame + " + cn.damePet26 + " %"
+//                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
+//                                            + "",
+//                                            //                                            + "|6|\nChỉ số hợp thể đệ hiện tại :\n"
+//                                            //                                            + ""
+//                                            //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
+//                                            //Menu Chọn
+//                                            "Đệ Oren\n " + cn.de17 + " COIN",
+//                                            "Đệ Kamin\n " + cn.de18 + " COIN",
+//                                            "Đệ Drabura\n " + cn.de19 + " COIN",
+//                                            "Đệ Kamin Oren\n " + cn.de20 + " COIN",
+//                                            "Đệ Gôjo\n " + cn.de21 + " COIN",
+//                                            "Đệ Baby jiren\n " + cn.de22 + " COIN",
+//                                            "Đệ Hachiyack\n " + cn.de23 + " COIN",
+//                                            "Đệ Goku SSJ5\n " + cn.de24 + " COIN");
+//                                }
+//                                break;
+//                            case 3:
+//                                if (player.pet == null) {
+//                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
+//                                    return;
+//                                }
+//                                for (Item item : player.pet.inventory.itemsBody) {
+//                                    if (item.isNotNullItem()) {
+//                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
+//                                        return;
+//                                    }
+//                                }
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 785,
+//                                            "\b|2|Muốn đổi đệ Vip thì mua giá hơi chát nhá!!! "
+//                                            + "\n|1|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)"
+//                                            + "\n Tùy chọn 1: Đệ tử Zamas Cải Cách: HP + " + cn.hpPet29 + "%, MP + " + cn.mpPet29 + "%, Dame + " + cn.damePet29 + " %"
+//                                            + "\n Tùy chọn 2: Đệ tử Baby Vegeta: HP + " + cn.hpPet28 + "%, MP + " + cn.mpPet28 + "%, Dame + " + cn.damePet28 + " %"
+//                                            + "\n Tùy chọn 3: Đệ tử Kafula: HP + " + cn.hpPet30 + "%, MP + " + cn.mpPet30 + "%, Dame + " + cn.damePet30 + " %"
+//                                            + "\n Tùy chọn 4: Đệ tử Ultra Ego: HP + " + cn.hpPet24 + "%, MP + " + cn.mpPet24 + "%, Dame + " + cn.damePet24 + " %"
+//                                            + "\n Tùy chọn 5: Đệ tử Cumber Base: HP + " + cn.hpPet31 + "%, MP + " + cn.mpPet31 + "%, Dame + " + cn.damePet31 + " %"
+//                                            + "\n Tùy chọn 6: Đệ tử Cumber Super: HP + " + cn.hpPet32 + "%, MP + " + cn.mpPet32 + "%, Dame + " + cn.damePet32 + " %"
+//                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
+//                                            + "",
+//                                            //                                            + "|6|\nChỉ số hợp thể đệ hiện tại :\n"
+//                                            //                                            + ""
+//                                            //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
+//                                            //Menu Chọn
+//                                            "Đệ Zamas Cải\n " + cn.de25 + " COIN",
+//                                            "Đệ Baby Vegeta\n " + cn.de26 + " COIN",
+//                                            "Đệ Kafula\n " + cn.de27 + " COIN",
+//                                            "Đệ Ultra Ego\n " + cn.de28 + " COIN",
+//                                            "Đệ Cumber Base\n " + cn.de29 + " COIN",
+//                                            "Đệ Cumber Super\n " + cn.de30 + " COIN");
+//                                }
+//                                break;
+//                            case 4:
+//                                if (player.pet == null) {
+//                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
+//                                    return;
+//                                }
+//                                for (Item item : player.pet.inventory.itemsBody) {
+//                                    if (item.isNotNullItem()) {
+//                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
+//                                        return;
+//                                    }
+//                                }
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 786,
+//                                            "\b|2|Muốn đổi đệ Siêu Vip thì mua giá hơi chát nhá!!! "
+//                                            + "\n|1|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)\n"
+//                                            + "\n|3| Đây là đệ đặc biệt khi hợp thể sẽ ramdom chỉ số cộng không cố định"
+//                                            + "\n Tùy chọn 0: Đệ tử OMEGA: Ramdom từ 100 - 200%"
+//                                            + "\n Tùy chọn 1: Đệ tử ZAMASU DỊ: Ramdom từ 100 - 200%"
+//                                            + "\n Tùy chọn 2: Đệ tử YACHIRO: Ramdom từ 120 - 220%"
+//                                            + "\n Tùy chọn 3: Đệ tử Goku_SJJ4: Ramdom từ 140 - 240%"
+//                                            + "\n Tùy chọn 4: Đệ tử VEGETA_SSJ4: Ramdom từ 160 - 260%"
+//                                            + "\n Tùy chọn 5: Đệ tử GOGETA_SSJ4: Ramdom từ 180 - 280%"
+//                                            + "\n Tùy chọn 6: Đệ tử TOPPO: Ramdom từ 180 - 280%"
+//                                            + "\n Tùy chọn 7: Đệ tử Zeno: Ramdom từ 200 - 350%"
+//                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
+//                                            + ""
+//                                            + "|6|\nChỉ số hợp thể đệ Ramdom :\n"
+//                                            + ""
+//                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
+//                                            //Menu Chọn
+//                                            "Đệ OMEGA\n " + cn.de31 + " COIN",
+//                                            "Đệ ZAMASU DỊ\n " + cn.de31 + " COIN",
+//                                            "Đệ YACHIRO\n " + cn.de32 + " COIN",
+//                                            "Đệ Goku_SJJ4\n " + cn.de33 + " COIN",
+//                                            "Đệ VEGETA_SSJ4\n " + cn.de34 + " COIN",
+//                                            "Đệ GOGETA_SSJ4\n " + cn.de35 + " COIN",
+//                                            "Đệ TOPPO\n " + cn.de35 + " COIN",
+//                                            "Đệ Zeno\n " + cn.de36 + " COIN");
+//                                }
+//                                break;
+//
+//                        }
+//                    } else if (player.iDMark.getIndexMenu() == 888) {
+//                        switch (select) {
+//                            case 0: //thay chiêu 2-3 đệ tử
+//                                if (player.getSession() != null && player.getSession().vnd < cn.skill23) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.skill23 + " COIN");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.skill23)) {
+//                                    if (player.pet != null) {
+//                                        if (player.pet.playerSkill.skills.get(1).skillId != -1) {
+//                                            player.pet.openSkill2();
+//                                            if (player.pet.playerSkill.skills.get(2).skillId != -1) {
+//                                                player.pet.openSkill3();
+//                                            }
+//                                            Service.gI().sendThongBao(player, "Đổi skill 2-3 đệ thành công");
+//                                        } else {
+//                                            Service.gI().sendThongBao(player, "Ít nhất đệ tử ngươi phải có chiêu 2 chứ!");
+//
+//                                        }
+//                                    } else {
+//                                        Service.gI().sendThongBao(player, "Ngươi làm gì có đệ tử?");
+//
+//                                    }
+//                                }
+//                                break;
+//                            case 1: //thay chiêu 2-4 đệ tử
+//                                if (player.getSession() != null && player.getSession().vnd < cn.skill24) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.skill24 + " COIN");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.skill24)) {
+//                                    if (player.pet != null) {
+//                                        if (player.pet.playerSkill.skills.get(1).skillId != -1) {
+//                                            player.pet.openSkill2();
+//                                            if (player.pet.playerSkill.skills.get(3).skillId != -1) {
+//                                                player.pet.openSkill4();
+//                                            }
+//                                            Service.gI().sendThongBao(player, "Đổi skill 2-4 đệ thành công");
+//
+//                                        } else {
+//                                            Service.gI().sendThongBao(player, "Ít nhất đệ tử ngươi phải có chiêu 2 chứ!");
+//
+//                                        }
+//                                    } else {
+//                                        Service.gI().sendThongBao(player, "Ngươi làm gì có đệ tử?");
+//
+//                                    }
+//                                }
+//                                break;
+//
+//                        }
+//                    } else if (player.iDMark.getIndexMenu() == 777) {
+//                        switch (select) {
+//                            case 0:
+//                                Input.gI().createFormDoiThoiVang(player);
+//                                break;
+//                            case 1:
+//                                Input.gI().createFormDoiNgocXanh(player);
+//                                break;
+//                            case 2:
+//                                Input.gI().createFormDoiNgocHong(player);
+//                                break;
+//                        }
+//                    } else if (player.iDMark.getIndexMenu() == 778) {
+//                        switch (select) {
+//                            case 0:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_1) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_1 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_1)) {
+//                                    if (InventoryServiceNew.gI().findItemBag(player, cn.thoivang) != null && InventoryServiceNew.gI().findItemBag(player, cn.thoivang).quantity > cn.ghThoiVang) {
+//                                        Service.gI().sendThongBaoOK(player, ItemService.gI().getTemplate(cn.thoivang).name + "của bạn đã đạt giới hạn vui lòng sử dụng bớt coi");
+//                                        return;
+//                                    }
+//                                    Item i = ItemService.gI().createNewItem(cn.thoivang, cn.thoiVang_1);
+//                                    i.itemOptions.add(new Item.ItemOption(93, 15));
+//                                    InventoryServiceNew.gI().addItemBag(player, i);
+//                                    InventoryServiceNew.gI().sendItemBags(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.thoiVang_1 + " " + ItemService.gI().getTemplate(cn.thoivang).name);
+//
+//                                }
+//
+//                                break;
+//
+//                            case 1:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_2) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_2 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_2)) {
+//                                    if (InventoryServiceNew.gI().findItemBag(player, cn.thoivang) != null && InventoryServiceNew.gI().findItemBag(player, cn.thoivang).quantity > cn.ghThoiVang) {
+//                                        Service.gI().sendThongBaoOK(player, ItemService.gI().getTemplate(cn.thoivang).name + "của bạn đã đạt giới hạn vui lòng sử dụng bớt coi");
+//                                        return;
+//                                    }
+//                                    Item i = ItemService.gI().createNewItem(cn.thoivang, cn.thoiVang_2);
+//                                    i.itemOptions.add(new Item.ItemOption(93, 15));
+//                                    InventoryServiceNew.gI().addItemBag(player, i);
+//                                    InventoryServiceNew.gI().sendItemBags(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.thoiVang_2 + " " + ItemService.gI().getTemplate(cn.thoivang).name);
+//
+//                                }
+//                                if (player.getSession() != null && player.getSession().actived) {
+//                                    this.createOtherMenu(player, 778,
+//                                            "\b|1|Muốn đổi  " + ItemService.gI().getTemplate(cn.thoivang).name + " à?"
+//                                            + "\n\b|7|Bạn đang có : " + player.getSession().vnd + " COIN\n"
+//                                            + " Tổng nạp: " + player.getSession().totalvnd + " VND",
+//                                            //Menu Chọn
+//                                            " " + cn.giaVND_1 + " COIN\n " + cn.thoiVang_1 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_2 + " COIN\n " + cn.thoiVang_2 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_3 + " COIN\n " + cn.thoiVang_3 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_4 + " COIN\n " + cn.thoiVang_4 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_5 + " COIN\n " + cn.thoiVang_5 + " " + ItemService.gI().getTemplate(cn.thoivang).name);
+//                                } else {
+//                                    Service.gI().sendThongBaoOK(player, "Cần mở thành viên để sử dụng đổi thỏi");
+//                                }
+//                                break;
+//                            case 2:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_3) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_3 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_3)) {
+//                                    if (InventoryServiceNew.gI().findItemBag(player, cn.thoivang) != null && InventoryServiceNew.gI().findItemBag(player, cn.thoivang).quantity > cn.ghThoiVang) {
+//                                        Service.gI().sendThongBaoOK(player, ItemService.gI().getTemplate(cn.thoivang).name + "của bạn đã đạt giới hạn vui lòng sử dụng bớt coi");
+//                                        return;
+//                                    }
+//                                    Item i = ItemService.gI().createNewItem(cn.thoivang, cn.thoiVang_3);
+//                                    i.itemOptions.add(new Item.ItemOption(93, 15));
+//                                    InventoryServiceNew.gI().addItemBag(player, i);
+//                                    InventoryServiceNew.gI().sendItemBags(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.thoiVang_3 + " " + ItemService.gI().getTemplate(cn.thoivang).name);
+//
+//                                }
+//                                if (player.getSession() != null && player.getSession().actived) {
+//                                    this.createOtherMenu(player, 778,
+//                                            "\b|1|Muốn đổi  " + ItemService.gI().getTemplate(cn.thoivang).name + " à?"
+//                                            + "\n\b|7|Bạn đang có : " + player.getSession().vnd + " COIN\n"
+//                                            + " Tổng nạp: " + player.getSession().totalvnd + " VND",
+//                                            //Menu Chọn
+//                                            " " + cn.giaVND_1 + " COIN\n " + cn.thoiVang_1 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_2 + " COIN\n " + cn.thoiVang_2 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_3 + " COIN\n " + cn.thoiVang_3 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_4 + " COIN\n " + cn.thoiVang_4 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_5 + " COIN\n " + cn.thoiVang_5 + " " + ItemService.gI().getTemplate(cn.thoivang).name);
+//                                } else {
+//                                    Service.gI().sendThongBaoOK(player, "Cần mở thành viên để sử dụng đổi thỏi");
+//                                }
+//                                break;
+//                            case 3:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_4) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_4 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_4)) {
+//                                    if (InventoryServiceNew.gI().findItemBag(player, cn.thoivang) != null && InventoryServiceNew.gI().findItemBag(player, cn.thoivang).quantity > cn.ghThoiVang) {
+//                                        Service.gI().sendThongBaoOK(player, ItemService.gI().getTemplate(cn.thoivang).name + "của bạn đã đạt giới hạn vui lòng sử dụng bớt coi");
+//                                        return;
+//                                    }
+//                                    Item i = ItemService.gI().createNewItem(cn.thoivang, cn.thoiVang_4);
+//                                    i.itemOptions.add(new Item.ItemOption(93, 15));
+//                                    InventoryServiceNew.gI().addItemBag(player, i);
+//                                    InventoryServiceNew.gI().sendItemBags(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.thoiVang_4 + " " + ItemService.gI().getTemplate(cn.thoivang).name);
+//
+//                                }
+//                                if (player.getSession() != null && player.getSession().actived) {
+//                                    this.createOtherMenu(player, 778,
+//                                            "\b|1|Muốn đổi  " + ItemService.gI().getTemplate(cn.thoivang).name + " à?"
+//                                            + "\n\b|7|Bạn đang có : " + player.getSession().vnd + " COIN\n"
+//                                            + " Tổng nạp: " + player.getSession().totalvnd + " VND",
+//                                            //Menu Chọn
+//                                            " " + cn.giaVND_1 + " COIN\n " + cn.thoiVang_1 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_2 + " COIN\n " + cn.thoiVang_2 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_3 + " COIN\n " + cn.thoiVang_3 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_4 + " COIN\n " + cn.thoiVang_4 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_5 + " COIN\n " + cn.thoiVang_5 + " " + ItemService.gI().getTemplate(cn.thoivang).name);
+//                                } else {
+//                                    Service.gI().sendThongBaoOK(player, "Cần mở thành viên để sử dụng đổi thỏi");
+//                                }
+//                                break;
+//
+//                            case 4:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_5) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_5 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_5)) {
+//                                    if (InventoryServiceNew.gI().findItemBag(player, cn.thoivang) != null && InventoryServiceNew.gI().findItemBag(player, cn.thoivang).quantity > cn.ghThoiVang) {
+//                                        Service.gI().sendThongBaoOK(player, ItemService.gI().getTemplate(cn.thoivang).name + "của bạn đã đạt giới hạn vui lòng sử dụng bớt coi");
+//                                        return;
+//                                    }
+//                                    Item i = ItemService.gI().createNewItem(cn.thoivang, cn.thoiVang_5);
+//                                    i.itemOptions.add(new Item.ItemOption(93, 15));
+//                                    InventoryServiceNew.gI().addItemBag(player, i);
+//                                    InventoryServiceNew.gI().sendItemBags(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.thoiVang_5 + " " + ItemService.gI().getTemplate(cn.thoivang).name);
+//
+//                                }
+//                                if (player.getSession() != null && player.getSession().actived) {
+//                                    this.createOtherMenu(player, 778,
+//                                            "\b|1|Muốn đổi  " + ItemService.gI().getTemplate(cn.thoivang).name + " à?"
+//                                            + "\n\b|7|Bạn đang có : " + player.getSession().vnd + " COIN\n"
+//                                            + " Tổng nạp: " + player.getSession().totalvnd + " VND",
+//                                            //Menu Chọn
+//                                            " " + cn.giaVND_1 + " COIN\n " + cn.thoiVang_1 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_2 + " COIN\n " + cn.thoiVang_2 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_3 + " COIN\n " + cn.thoiVang_3 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_4 + " COIN\n " + cn.thoiVang_4 + " " + ItemService.gI().getTemplate(cn.thoivang).name,
+//                                            " " + cn.giaVND_5 + " COIN\n " + cn.thoiVang_5 + " " + ItemService.gI().getTemplate(cn.thoivang).name);
+//                                } else {
+//                                    Service.gI().sendThongBaoOK(player, "Cần mở thành viên để sử dụng đổi thỏi");
+//                                }
+//                                break;
+//
+//                        }
+//                    } else if (player.iDMark.getIndexMenu() == 779) {
+//                        switch (select) {
+//                            case 0:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_1) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_1 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_1)) {
+//                                    if (player.inventory != null && player.inventory.gem > cn.ghNgocXanh) {
+//                                        Service.gI().sendThongBao(player, "Số ngọc xanh của bạn đã vượt giới hạn vui lòng dùng bớt coi");
+//                                        return;
+//                                    }
+//                                    assert player.inventory != null;
+//                                    player.inventory.gem += cn.nx1;
+//                                    Service.gI().sendMoney(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.nx1 + " ngọc xanh");
+//                                }
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 779,
+//                                            "\b|1|Muốn đổi ngọc xanh à?"
+//                                            + "\n\b|7|Bạn đang có : " + player.getSession().vnd + " COIN\n"
+//                                            + " Tổng nạp: " + player.getSession().totalvnd + " VND",
+//                                            //Menu Chọn
+//                                            cn.giaVND_1 + " COIN\n" + cn.nx1 + " ngọc xanh",
+//                                            cn.giaVND_2 + " COIN\n" + cn.nx2 + " ngọc xanh",
+//                                            cn.giaVND_3 + " COIN\n" + cn.nx3 + " ngọc xanh",
+//                                            cn.giaVND_4 + " COIN\n" + cn.nx4 + " ngọc xanh");
+//                                }
+//                                break;
+//
+//                            case 1:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_2) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_2 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_2)) {
+//                                    if (player.inventory != null && player.inventory.gem > cn.ghNgocXanh) {
+//                                        Service.gI().sendThongBao(player, "Số ngọc xanh của bạn đã vượt giới hạn vui lòng dùng bớt coi");
+//                                        return;
+//                                    }
+//                                    assert player.inventory != null;
+//                                    player.inventory.gem += cn.nx2;
+//                                    Service.gI().sendMoney(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.nx2 + " ngọc xanh");
+//                                }
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 779,
+//                                            "\b|1|Muốn đổi ngọc xanh à?"
+//                                            + "\n\b|7|Bạn đang có : " + player.getSession().vnd + " COIN\n"
+//                                            + " Tổng nạp: " + player.getSession().totalvnd + " VND",
+//                                            //Menu Chọn
+//                                            cn.giaVND_1 + " COIN\n" + cn.nx1 + " ngọc xanh",
+//                                            cn.giaVND_2 + " COIN\n" + cn.nx2 + " ngọc xanh",
+//                                            cn.giaVND_3 + " COIN\n" + cn.nx3 + " ngọc xanh",
+//                                            cn.giaVND_4 + " COIN\n" + cn.nx4 + " ngọc xanh");
+//                                }
+//                                break;
+//
+//                            case 2:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_3) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_3 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_3)) {
+//                                    if (player.inventory != null && player.inventory.gem > cn.ghNgocXanh) {
+//                                        Service.gI().sendThongBao(player, "Số ngọc xanh của bạn đã vượt giới hạn vui lòng dùng bớt coi");
+//                                        return;
+//                                    }
+//                                    assert player.inventory != null;
+//                                    player.inventory.gem += cn.nx3;
+//                                    Service.gI().sendMoney(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.nx3 + " ngọc xanh");
+//                                }
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 779,
+//                                            "\b|1|Muốn đổi ngọc xanh à?"
+//                                            + "\n\b|7|Bạn đang có : " + player.getSession().vnd + " COIN\n"
+//                                            + " Tổng nạp: " + player.getSession().totalvnd + " VND",
+//                                            //Menu Chọn
+//                                            cn.giaVND_1 + " COIN\n" + cn.nx1 + " ngọc xanh",
+//                                            cn.giaVND_2 + " COIN\n" + cn.nx2 + " ngọc xanh",
+//                                            cn.giaVND_3 + " COIN\n" + cn.nx3 + " ngọc xanh",
+//                                            cn.giaVND_4 + " COIN\n" + cn.nx4 + " ngọc xanh");
+//                                }
+//                                break;
+//                            case 3:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_4) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_4 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_4)) {
+//                                    if (player.inventory != null && player.inventory.gem > cn.ghNgocXanh) {
+//                                        Service.gI().sendThongBao(player, "Số ngọc xanh của bạn đã vượt giới hạn vui lòng dùng bớt coi");
+//                                        return;
+//                                    }
+//                                    assert player.inventory != null;
+//                                    player.inventory.gem += cn.nx4;
+//                                    Service.gI().sendMoney(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.nx4 + " ngọc xanh");
+//                                }
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 779,
+//                                            "\b|1|Muốn đổi ngọc xanh à?"
+//                                            + "\n\b|7|Bạn đang có : " + player.getSession().vnd + " COIN\n"
+//                                            + " Tổng nạp: " + player.getSession().totalvnd + " VND",
+//                                            //Menu Chọn
+//                                            cn.giaVND_1 + " COIN\n" + cn.nx1 + " ngọc xanh",
+//                                            cn.giaVND_2 + " COIN\n" + cn.nx2 + " ngọc xanh",
+//                                            cn.giaVND_3 + " COIN\n" + cn.nx3 + " ngọc xanh",
+//                                            cn.giaVND_4 + " COIN\n" + cn.nx4 + " ngọc xanh");
+//                                }
+//                                break;
+//
+//                        }
+//                    } else if (player.iDMark.getIndexMenu() == 780) {
+//                        switch (select) {
+//                            case 0:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_1) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_1 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_1)) {
+//                                    if (player.inventory != null && player.inventory.ruby > cn.ghNgocHong) {
+//                                        Service.gI().sendThongBao(player, "Số ngọc hồng của bạn đã vượt giới hạn vui lòng dùng bớt coi");
+//                                        return;
+//                                    }
+//                                    assert player.inventory != null;
+//                                    player.inventory.ruby += cn.nh1;
+//                                    Service.gI().sendMoney(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.nh1 + " hồng ngọc");
+//                                }
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 780,
+//                                            "\b|1|Muốn đổi hồng ngọc à?"
+//                                            + "\n\b|7|Bạn đang có : " + player.getSession().vnd + " COIN\n"
+//                                            + " Tổng nạp: " + player.getSession().totalvnd + " VND",
+//                                            cn.giaVND_1 + " COIN\n" + cn.nh1 + " ngọc hồng",
+//                                            cn.giaVND_2 + " COIN\n" + cn.nh2 + " ngọc hồng",
+//                                            cn.giaVND_3 + " COIN\n" + cn.nh3 + " ngọc hồng",
+//                                            cn.giaVND_4 + " COIN\n" + cn.nh4 + " ngọc hồng");
+//                                }
+//                                break;
+//
+//                            case 1:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_2) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_2 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_2)) {
+//                                    if (player.inventory != null && player.inventory.ruby > cn.ghNgocHong) {
+//                                        Service.gI().sendThongBao(player, "Số ngọc hồng của bạn đã vượt giới hạn vui lòng dùng bớt coi");
+//                                        return;
+//                                    }
+//                                    assert player.inventory != null;
+//                                    player.inventory.ruby += cn.nh2;
+//                                    Service.gI().sendMoney(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.nh2 + " hồng ngọc");
+//                                }
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 780,
+//                                            "\b|1|Muốn đổi hồng ngọc à?"
+//                                            + "\n\b|7|Bạn đang có : " + player.getSession().vnd + " COIN\n"
+//                                            + " Tổng nạp: " + player.getSession().totalvnd + " VND",
+//                                            cn.giaVND_1 + " COIN\n" + cn.nh1 + " ngọc hồng",
+//                                            cn.giaVND_2 + " COIN\n" + cn.nh2 + " ngọc hồng",
+//                                            cn.giaVND_3 + " COIN\n" + cn.nh3 + " ngọc hồng",
+//                                            cn.giaVND_4 + " COIN\n" + cn.nh4 + " ngọc hồng");
+//                                }
+//                                break;
+//                            case 2:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_3) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_3 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_3)) {
+//                                    if (player.inventory != null && player.inventory.ruby > cn.ghNgocHong) {
+//                                        Service.gI().sendThongBao(player, "Số ngọc hồng của bạn đã vượt giới hạn vui lòng dùng bớt coi");
+//                                        return;
+//                                    }
+//                                    assert player.inventory != null;
+//                                    player.inventory.ruby += cn.nh3;
+//                                    Service.gI().sendMoney(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.nh3 + " hồng ngọc");
+//                                }
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 780,
+//                                            "\b|1|Muốn đổi hồng ngọc à?"
+//                                            + "\n\b|7|Bạn đang có : " + player.getSession().vnd + " COIN\n"
+//                                            + " Tổng nạp: " + player.getSession().totalvnd + " VND",
+//                                            cn.giaVND_1 + " COIN\n" + cn.nh1 + " ngọc hồng",
+//                                            cn.giaVND_2 + " COIN\n" + cn.nh2 + " ngọc hồng",
+//                                            cn.giaVND_3 + " COIN\n" + cn.nh3 + " ngọc hồng",
+//                                            cn.giaVND_4 + " COIN\n" + cn.nh4 + " ngọc hồng");
+//                                }
+//                                break;
+//                            case 3:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.giaVND_4) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.giaVND_4 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.giaVND_4)) {
+//                                    if (player.inventory != null && player.inventory.ruby > cn.ghNgocHong) {
+//                                        Service.gI().sendThongBao(player, "Số ngọc hồng của bạn đã vượt giới hạn vui lòng dùng bớt coi");
+//                                        return;
+//                                    }
+//                                    assert player.inventory != null;
+//                                    player.inventory.ruby += cn.nh4;
+//                                    Service.gI().sendMoney(player);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được " + cn.nh4 + " hồng ngọc");
+//                                }
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 780,
+//                                            "\b|1|Muốn đổi hồng ngọc à?"
+//                                            + "\n\b|7|Bạn đang có : " + player.getSession().vnd + " COIN\n"
+//                                            + " Tổng nạp: " + player.getSession().totalvnd + " VND",
+//                                            cn.giaVND_1 + " COIN\n" + cn.nh1 + " ngọc hồng",
+//                                            cn.giaVND_2 + " COIN\n" + cn.nh2 + " ngọc hồng",
+//                                            cn.giaVND_3 + " COIN\n" + cn.nh3 + " ngọc hồng",
+//                                            cn.giaVND_4 + " COIN\n" + cn.nh4 + " ngọc hồng");
+//                                }
+//                                break;
+//                        }
+//                    } else if (player.iDMark.getIndexMenu() == 781) {
+//                        switch (select) {
+//
+//                            case 0:
+//
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de1) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de1 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de1)) {
+//                                    PetService.gI().changeCellPet(player, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Xên");
+//                                }
+//                                break;
+//
+//                            case 1:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de2) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de2 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de2)) {
+//
+//                                    PetService.gI().changeCumberPet(player, player.gender);
+//
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Cumber");
+//                                }
+//                                break;
+//                            case 2:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de3) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de3 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de3)) {
+//
+//                                    PetService.gI().changeFideGoldPet(player, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Fide Vàng");
+//                                }
+//                                break;
+//                            case 3:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de4) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de4 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de4)) {
+//                                    PetService.gI().changeMaiPet(player, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Mai");
+//                                }
+//                                break;
+//
+//                            case 4:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de5) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de5 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de5)) {
+//                                    PetService.gI().changeHeartPet(player, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Heart");
+//                                }
+//                                break;
+//                            case 5:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de6) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de6 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de6)) {
+//                                    PetService.gI().changeBerusPet(player, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Beerus");
+//                                }
+//                                break;
+//
+//                            case 6:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de7) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de7 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de7)) {
+//
+//                                    PetService.gI().changeGohanPet(player, player.gender);
+//
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Gohan");
+//                                }
+//                                break;
+//
+//                            case 7:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de8) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de8 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de8)) {
+//
+//                                    PetService.gI().changeJirenPet(player, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Jiren");
+//                                }
+//                                break;
+//
+//                        }
+//                    } else if (player.iDMark.getIndexMenu() == 783) {
+//                        switch (select) {
+//                            case 0:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de9) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de9 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de9)) {
+//                                    PetService.gI().changeBlack3Pet(player, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Goku Black SSJ3");
+//                                }
+//                                break;
+//                            case 1:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de10) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de10 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de10)) {
+//                                    PetService.gI().changeGoku4Pet(player, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Goku SSJ4");
+//                                }
+//                                break;
+//
+//                            case 2:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de11) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de11 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de11)) {
+//
+//                                    PetService.gI().changeGokuUltraPet(player, player.gender);
+//
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Goku Vô Cực");
+//                                }
+//                                break;
+//                            case 3:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de12) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de12 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de12)) {
+//                                    PetService.gI().changeBerusBiNgoPet(player, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Berus Bí Ngô");
+//                                }
+//                                break;
+//                            case 4:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de13) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de13 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de13)) {
+//                                    PetService.gI().changeZamasuPet(player, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được Zamasu");
+//                                }
+//                                break;
+//
+//                            case 5:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de14) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de14 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de14)) {
+//
+//                                    PetService.gI().changeDaishinkanPet(player, player.gender);
+//
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Daisinkan");
+//                                }
+//                                break;
+//                            case 6:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de15) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de15 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de15)) {
+//
+//                                    PetService.gI().changeWhisPet(player, player.gender);
+//
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Whis");
+//                                }
+//                                break;
+//                            case 7:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de16) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de16 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de16)) {
+//                                    PetService.gI().createGlanola(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Granola");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//
+//                        }
+//                    } else if (player.iDMark.getIndexMenu() == 784) {
+//                        switch (select) {
+//                            case 0:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de17) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de17 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de17)) {
+//                                    PetService.gI().createOren(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Oren");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 1:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de18) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de18 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de18)) {
+//                                    PetService.gI().createKamin(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Kamin");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//
+//                            case 2:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de19) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de19 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de19)) {
+//                                    PetService.gI().createDrabura(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Drabura");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 3:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de20) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de20 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de20)) {
+//                                    PetService.gI().createKaminOren(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ KamiOren");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 4:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de21) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de21 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de21)) {
+//                                    PetService.gI().createGojo(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ GOJO");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//
+//                            case 5:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de22) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de22 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de22)) {
+//                                    PetService.gI().createJirenBaby(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Baby Jiren");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 6:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de23) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de23 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de23)) {
+//                                    PetService.gI().createHatchiyack(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Hatchiyack");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 7:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de24) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de24 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de24)) {
+//                                    PetService.gI().createGokuSSJ5(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Goku SSJ 5");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//
+//                        }
+//                    } else if (player.iDMark.getIndexMenu() == 785) {
+//                        switch (select) {
+//                            case 0:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de25) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de25 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de25)) {
+//                                    PetService.gI().createZamas2(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Zamas Cải Cách");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 1:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de26) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de26 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de26)) {
+//                                    PetService.gI().createBabyVegeta(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Baby Vegeta");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 2:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de27) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de27 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de27)) {
+//                                    PetService.gI().createKafula(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Kafula");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 3:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de28) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de28 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de28)) {
+//                                    PetService.gI().createUltraEgo(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Ultra Ego");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 4:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de29) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de29 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de29)) {
+//                                    PetService.gI().createCumberBase(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Cumber Base");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 5:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de30) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de30 + " VND");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de30)) {
+//                                    PetService.gI().createCumberSuper(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Cumber Super");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                        }
+//
+//                    } else if (player.iDMark.getIndexMenu() == 786) {
+//                        switch (select) {
+//                            case 0:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de31) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de31 + " COIN");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de31)) {
+//                                    PetService.gI().createDe3(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ OMEGA");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 1:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de31) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de31 + " COIN");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de31)) {
+//                                    PetService.gI().createDe1(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Zamasu DỊ");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 2:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de32) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de32 + " COIN");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de32)) {
+//                                    PetService.gI().createDe2(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ Yachiro");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 3:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de33) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de33 + " COIN");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de33)) {
+//                                    PetService.gI().createDe4(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ GOKU SSJ4");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 4:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de34) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de34 + " COIN");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de34)) {
+//                                    PetService.gI().createDe5(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ VEGETA SSJ4");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 5:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de35) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de35 + " COIN");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de35)) {
+//                                    PetService.gI().createDe6(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ GOGETA SSJ4");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 6:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de35) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de35 + " COIN");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de35)) {
+//                                    PetService.gI().createDe7(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ TÔPPO");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                            case 7:
+//                                if (player.getSession() != null && player.getSession().vnd < cn.de36) {
+//                                    Service.gI().sendThongBao(player, "Bạn không đủ " + cn.de36 + " COIN");
+//                                    return;
+//                                }
+//
+//                                if (PlayerDAO.subvnd(player, cn.de36)) {
+//                                    PetService.gI().createDe8(player, player.pet != null, player.gender);
+//                                    Service.gI().sendThongBao(player, "Bạn đã nhận được đệ ZENO");
+//                                } else {
+//                                    Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+//                                }
+//
+//                                break;
+//                        }
+//
+//                    } else if (player.iDMark.getIndexMenu() == 782) {
+//                        switch (select) {
+//                            case 0:
+//                                if (player.getSession() != null && player.getSession().actived) {
+//                                    Service.gI().sendThongBao(player, "Bạn đã mở thành viên rồi");
+//                                    return;
+//                                }
+//                                if (player.getSession() != null && player.getSession().totalvnd2 < 20000) {
+//                                    Service.gI().sendThongBao(player, "Cần nạp 20K để mở khóa giao dịch");
+//                                    return;
+//                                }
+//                                if (PlayerDAO.subvnd(player, 20000)) {
+//                                    player.getSession().actived = true;
+//
+//                                    if (PlayerDAO.activedUser(player)) {
+//                                        Service.gI().sendThongBao(player, "Bạn đã mở thành viên thành công");
+//                                    } else {
+//                                        Service.gI().sendThongBao(player, "Đã có lỗi xẩy ra khi kích hoạt tài khoản, vui long liên hệ admin nếu bị trừ tiền mà không kích hoạt được, chụp lại thông báo này");
+//                                    }
+//                                }
+//                                break;
+//                            case 1:
+//
+//                                break;
+//
+//                        }
+//                    }
+//                }
+//            }
+//        };
+//    }
+// end khaile comment
 
     public static Npc npc70(int mapId, int status, int cx, int cy, int tempId, int avartar) {
         return new Npc(mapId, status, cx, cy, tempId, avartar) {
@@ -3971,16 +5407,16 @@ public class NpcFactory {
                                 "\b|1|Đây là nơi ngươi có thể đổi bất cứ thứ gì"
                                 + "\nMiễn là ngươi có tiền"
                                 + "\b\n|3| Nạp COIN giá trị ( cứ 20k được <20.000 COIN> và <20.000 VND> trong game)"
-                                + "\b|5|MBBANK: " + cn.SDT + " \n"
-                                + "|1|Nội dung chuyển khoản: " + cn.MANAP + "" + pl.getSession().userId + "\n"
-                                + "\b|3|Lưu ý: Chỉ giao dịch nạp tiền qua duy nhất qua admin Emti,\n"
+                                + "\b|5|Sacombank: " + cn.Sacombank + " \n"
+                                //                                + "|1|Nội dung chuyển khoản: " + cn.MANAP + "" + pl.getSession().userId + "\n"
+                                + "\b|3|Lưu ý: Chỉ giao dịch nạp tiền qua duy nhất qua admin\n"
                                 + "mọi rủi ro tự chịu nếu không chấp hành."
                                 + "\n\b|7|Bạn đang có :" + pl.getSession().vnd + " COIN\n"
                                 + " Tổng nạp: " + pl.getSession().totalvnd + " VND",
                                 "Cửa hàng",
                                 "Menu COIN",
-                                "Đổi VND -> COIN",
-                                "Đổi đệ",
+                                "VND -> COIN",
+                                //                                "Đổi đệ",
                                 " Mở thành viên",
                                 "Đổi skill đệ");
                     } else {
@@ -4015,21 +5451,21 @@ public class NpcFactory {
                                             "\b|1|Có VND đỏi COIN tại đây nhá (10K VND = 9K COIN)\n"
                                             + " \n\b|7|Bạn đang có :" + player.getSession().totalvnd + " VND"
                                             + " \n\b|7|Bạn Có :" + player.getSession().vnd + " COIN",
-                                            "Đổi VND\n--> COIN");
+                                            "Đổi VND\n-> COIN");
                                 }
                                 break;
-                            case 3:
-                                if (player.getSession() != null) {
-                                    this.createOtherMenu(player, 13000,
-                                            "\b|1|Có tiền rồi đổi thôi!\n "
-                                            + "\n\b|3| Đổi đệ thì tháo cái đồ đệ ra, mất tự chịu nha!\n "
-                                            + "\n\b|4| Chỉ số hợp thể chỉ có tác dụng với bông tai cấp 3 trở lên!\n "
-                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN",
-                                            "Đổi đệ tầm trung", "Đổi đệ vip", "Đổi đệ vip pro", "Đổi đệ siêu cấp", "Đổi đệ siêu thần");
-                                }
-                                break;
+//                            case 3:
+//                                if (player.getSession() != null) {
+//                                    this.createOtherMenu(player, 13000,
+//                                            "\b|1|Có tiền rồi đổi thôi!\n "
+//                                            + "\n\b|3| Đổi đệ thì tháo cái đồ đệ ra, mất tự chịu nha!\n "
+//                                            + "\n\b|4| Chỉ số hợp thể chỉ có tác dụng với bông tai cấp 3 trở lên!\n "
+//                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN",
+//                                            "Đổi đệ tầm trung", "Đổi đệ vip", "Đổi đệ vip pro", "Đổi đệ siêu cấp", "Đổi đệ siêu thần");
+//                                }
+//                                break;
 
-                            case 4:
+                            case 3:
                                 if (player.getSession() != null) {
                                     this.createOtherMenu(player, 782,
                                             "\b|2|Mở thành viên giá 20k \n \b|7|Bạn đã nạp :"
@@ -4037,7 +5473,7 @@ public class NpcFactory {
                                             "Mở", "Đóng");
                                 }
                                 break;
-                            case 5:
+                            case 4:
                                 if (player.getSession() != null) {
                                     this.createOtherMenu(player, 888,
                                             "|3|Lưu ý: Đổi Skill đệ bằng tiền nạp sẽ mất COIN\n"
@@ -4055,205 +5491,206 @@ public class NpcFactory {
                                 Input.gI().createFormDoiVND(player);
                                 break;
                         }
-                    } else if (player.iDMark.getIndexMenu() == 13000) {
-                        switch (select) {
-                            case 0:
-                                if (player.pet == null) {
-                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
-                                    return;
-                                }
-                                for (Item item : player.pet.inventory.itemsBody) {
-                                    if (item.isNotNullItem()) {
-                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
-                                        return;
-                                    }
-                                }
-                                if (player.getSession() != null) {
-                                    this.createOtherMenu(player, 781,
-                                            "\b|2|Muốn đổi đệ mới bằng COIN à?\n"
-                                            + "|3|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)\n"
-                                            + "Tùy chọn 1: Đệ tử Cell: HP + " + cn.hpPet4 + "%, MP + " + cn.mpPet4 + "%, Dame + " + cn.damePet4 + " %\n"
-                                            + "Tùy chọn 2: Đệ tử Cumber: HP + " + cn.hpPet5 + "%, MP + " + cn.mpPet5 + "%, Dame + " + cn.damePet5 + " %\n"
-                                            + "Tùy chọn 3: Đệ tử Fide Vàng: HP + " + cn.hpPet6 + "%, MP + " + cn.mpPet6 + "%, Dame + " + cn.damePet6 + " %\n"
-                                            + "Tùy chọn 4: Đệ tử Mai: HP + " + cn.hpPet8 + "%, MP + " + cn.mpPet8 + "%, Dame + " + cn.damePet8 + " %\n"
-                                            + "Tùy chọn 5: Đệ tử Heart: HP + " + cn.hpPet7 + "%, MP + " + cn.mpPet7 + "%, Dame + " + cn.damePet7 + " %\n"
-                                            + "Tùy chọn 6: Đệ tử Beerus: HP + " + cn.hpPet2 + "%, MP + " + cn.mpPet2 + "%, Dame + " + cn.damePet2 + " %\n"
-                                            + "Tùy chọn 7: Đệ tử Gohan: HP + " + cn.hpPet9 + "%, MP + " + cn.mpPet9 + "%, Dame + " + cn.damePet9 + " %\n"
-                                            + "Tùy chọn 8: Đệ tử Jiren Full Power: HP + " + cn.hpPet10 + "%, MP + " + cn.mpPet10 + "%, Dame + " + cn.damePet10 + " %\n"
-                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
-                                            + "",
-                                            //                                            + "|6|\nChỉ số hợp thể đệ hiện tại :\n"
-                                            //                                            + ""
-                                            //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
-                                            //Menu Chọn
-                                            "Đệ cell\n " + cn.de1 + " COIN",
-                                            "Đệ Cumber\n " + cn.de2 + " COIN",
-                                            "Đệ Fide Vàng\n " + cn.de3 + " COIN",
-                                            "Đệ Mai\n " + cn.de4 + " COIN",
-                                            "Đệ Heart\n " + cn.de5 + " COIN",
-                                            "Đệ berus\n " + cn.de6 + " COIN",
-                                            "Đệ Gohan\n " + cn.de7 + " COIN",
-                                            "Đệ Jiren Full Power\n " + cn.de8 + " COIN");
-                                }
-                                break;
-                            case 1:
-                                if (player.pet == null) {
-                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
-                                    return;
-                                }
-                                for (Item item : player.pet.inventory.itemsBody) {
-                                    if (item.isNotNullItem()) {
-                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
-                                        return;
-                                    }
-                                }
-                                if (player.getSession() != null) {
-
-                                    this.createOtherMenu(player, 783,
-                                            "\b|2|Muốn đổi đệ Vip thì mua giá hơi chát nhá!!! "
-                                            + "\n|4|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)"
-                                            + "\n Tùy chọn 1: Đệ tử Goku Black SSJ3: HP + " + cn.hpPet11 + "%, MP + " + cn.mpPet11 + "%, Dame + " + cn.damePet11 + "% "
-                                            + "\n Tùy chọn 2: Đệ tử GOGETA SSJ4: HP + " + cn.hpPet12 + "%, MP + " + cn.mpPet12 + "%, Dame + " + cn.damePet12 + "% "
-                                            + "\n Tùy chọn 3: Đệ tử Goku VÔ CỰC: HP + " + cn.hpPet13 + "%, MP + " + cn.mpPet13 + "%, Dame + " + cn.damePet13 + "% "
-                                            + "\n Tùy chọn 4: Đệ tử Berus Bí Ngô: HP + " + cn.hpPet14 + "%, MP + " + cn.mpPet14 + "%, Dame + " + cn.damePet14 + "% "
-                                            + "\n Tùy chọn 5: Đệ tử Zamasu: HP + " + cn.hpPet15 + "%, MP + " + cn.mpPet15 + "%, Dame + " + cn.damePet15 + "% "
-                                            + "\n Tùy chọn 6: Đệ tử Daisinkan: HP + " + cn.hpPet16 + "%, MP + " + cn.mpPet16 + "%, Dame + " + cn.damePet16 + "% "
-                                            + "\n Tùy chọn 7: Đệ tử Whis: HP + " + cn.hpPet17 + "%, MP + " + cn.mpPet17 + "%, Dame + " + cn.damePet17 + "% "
-                                            + "\n Tùy chọn 8: Đệ tử Granola: HP + " + cn.hpPet18 + "%, MP + " + cn.mpPet18 + "%, Dame + " + cn.damePet18 + "% "
-                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
-                                            + "",
-                                            //                                            + "|6|\nChỉ số hợp thể đệ hiện tại :\n"
-                                            //                                            + ""
-                                            //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
-                                            //Menu Chọn
-                                            "Đệ Goku Black3\n " + cn.de9 + " COIN",
-                                            "Đệ Gogeta C4\n " + cn.de10 + " COIN",
-                                            "Đệ Goku VÔ CỰC\n " + cn.de11 + " COIN",
-                                            "Đệ Berus Bí\n " + cn.de12 + " COIN",
-                                            "Đệ Zamasu\n " + cn.de13 + " COIN",
-                                            "Đệ Daisinkan\n " + cn.de14 + " COIN",
-                                            "Đệ Whis\n " + cn.de15 + " COIN",
-                                            "Đệ Granlola\n " + cn.de16 + " COIN");
-                                }
-                                break;
-                            case 2:
-                                if (player.pet == null) {
-                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
-                                    return;
-                                }
-
-                                for (Item item : player.pet.inventory.itemsBody) {
-                                    if (item.isNotNullItem()) {
-                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
-                                        return;
-                                    }
-                                }
-                                if (player.getSession() != null) {
-                                    this.createOtherMenu(player, 784,
-                                            "\b|2|Muốn đổi đệ Vip thì mua giá hơi chát nhá!!! "
-                                            + "\n|5|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)"
-                                            + "\n Tùy chọn 1: Đệ tử Oren: HP + " + cn.hpPet20 + "%, MP + " + cn.mpPet20 + "%, Dame + " + cn.damePet20 + " %"
-                                            + "\n Tùy chọn 2: Đệ tử Kamin: HP + " + cn.hpPet19 + "%, MP + " + cn.mpPet19 + "%, Dame + " + cn.damePet19 + " %"
-                                            + "\n Tùy chọn 3: Đệ tử Drabura: HP + " + cn.hpPet25 + "%, MP + " + cn.mpPet25 + "%, Dame + " + cn.damePet25 + " %"
-                                            + "\n Tùy chọn 4: Đệ tử Kamin Oren: HP + " + cn.hpPet21 + "%, MP + " + cn.mpPet21 + "%, Dame + " + cn.damePet21 + " %"
-                                            + "\n Tùy chọn 5: Đệ tử Gojo: HP + " + cn.hpPet22 + "%, MP + " + cn.mpPet22 + "%, Dame + " + cn.damePet22 + " %"
-                                            + "\n Tùy chọn 6: Đệ tử Baby jiren: HP + " + cn.hpPet27 + "%, MP + " + cn.mpPet27 + "%, Dame + " + cn.damePet27 + " %"
-                                            + "\n Tùy chọn 7: Đệ tử Hachiyack: HP + " + cn.hpPet23 + "%, MP + " + cn.mpPet23 + "%, Dame + " + cn.damePet23 + " %"
-                                            + "\n Tùy chọn 8: Đệ tử Goku SSSJ5: HP + " + cn.hpPet26 + "%, MP + " + cn.mpPet26 + "%, Dame + " + cn.damePet26 + " %"
-                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
-                                            + "",
-                                            //                                            + "|6|\nChỉ số hợp thể đệ hiện tại :\n"
-                                            //                                            + ""
-                                            //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
-                                            //Menu Chọn
-                                            "Đệ Oren\n " + cn.de17 + " COIN",
-                                            "Đệ Kamin\n " + cn.de18 + " COIN",
-                                            "Đệ Drabura\n " + cn.de19 + " COIN",
-                                            "Đệ Kamin Oren\n " + cn.de20 + " COIN",
-                                            "Đệ Gôjo\n " + cn.de21 + " COIN",
-                                            "Đệ Baby jiren\n " + cn.de22 + " COIN",
-                                            "Đệ Hachiyack\n " + cn.de23 + " COIN",
-                                            "Đệ Goku SSJ5\n " + cn.de24 + " COIN");
-                                }
-                                break;
-                            case 3:
-                                if (player.pet == null) {
-                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
-                                    return;
-                                }
-                                for (Item item : player.pet.inventory.itemsBody) {
-                                    if (item.isNotNullItem()) {
-                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
-                                        return;
-                                    }
-                                }
-                                if (player.getSession() != null) {
-                                    this.createOtherMenu(player, 785,
-                                            "\b|2|Muốn đổi đệ Vip thì mua giá hơi chát nhá!!! "
-                                            + "\n|1|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)"
-                                            + "\n Tùy chọn 1: Đệ tử Zamas Cải Cách: HP + " + cn.hpPet29 + "%, MP + " + cn.mpPet29 + "%, Dame + " + cn.damePet29 + " %"
-                                            + "\n Tùy chọn 2: Đệ tử Baby Vegeta: HP + " + cn.hpPet28 + "%, MP + " + cn.mpPet28 + "%, Dame + " + cn.damePet28 + " %"
-                                            + "\n Tùy chọn 3: Đệ tử Kafula: HP + " + cn.hpPet30 + "%, MP + " + cn.mpPet30 + "%, Dame + " + cn.damePet30 + " %"
-                                            + "\n Tùy chọn 4: Đệ tử Ultra Ego: HP + " + cn.hpPet24 + "%, MP + " + cn.mpPet24 + "%, Dame + " + cn.damePet24 + " %"
-                                            + "\n Tùy chọn 5: Đệ tử Cumber Base: HP + " + cn.hpPet31 + "%, MP + " + cn.mpPet31 + "%, Dame + " + cn.damePet31 + " %"
-                                            + "\n Tùy chọn 6: Đệ tử Cumber Super: HP + " + cn.hpPet32 + "%, MP + " + cn.mpPet32 + "%, Dame + " + cn.damePet32 + " %"
-                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
-                                            + "",
-                                            //                                            + "|6|\nChỉ số hợp thể đệ hiện tại :\n"
-                                            //                                            + ""
-                                            //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
-                                            //Menu Chọn
-                                            "Đệ Zamas Cải\n " + cn.de25 + " COIN",
-                                            "Đệ Baby Vegeta\n " + cn.de26 + " COIN",
-                                            "Đệ Kafula\n " + cn.de27 + " COIN",
-                                            "Đệ Ultra Ego\n " + cn.de28 + " COIN",
-                                            "Đệ Cumber Base\n " + cn.de29 + " COIN",
-                                            "Đệ Cumber Super\n " + cn.de30 + " COIN");
-                                }
-                                break;
-                            case 4:
-                                if (player.pet == null) {
-                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
-                                    return;
-                                }
-                                for (Item item : player.pet.inventory.itemsBody) {
-                                    if (item.isNotNullItem()) {
-                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
-                                        return;
-                                    }
-                                }
-                                if (player.getSession() != null) {
-                                    this.createOtherMenu(player, 786,
-                                            "\b|2|Muốn đổi đệ Siêu Vip thì mua giá hơi chát nhá!!! "
-                                            + "\n|1|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)\n"
-                                            + "\n|3| Đây là đệ đặc biệt khi hợp thể sẽ ramdom chỉ số cộng không cố định"
-                                            + "\n Tùy chọn 0: Đệ tử OMEGA: Ramdom từ 100 - 200%"
-                                            + "\n Tùy chọn 1: Đệ tử ZAMASU DỊ: Ramdom từ 100 - 200%"
-                                            + "\n Tùy chọn 2: Đệ tử YACHIRO: Ramdom từ 120 - 220%"
-                                            + "\n Tùy chọn 3: Đệ tử Goku_SJJ4: Ramdom từ 140 - 240%"
-                                            + "\n Tùy chọn 4: Đệ tử VEGETA_SSJ4: Ramdom từ 160 - 260%"
-                                            + "\n Tùy chọn 5: Đệ tử GOGETA_SSJ4: Ramdom từ 180 - 280%"
-                                            + "\n Tùy chọn 6: Đệ tử TOPPO: Ramdom từ 180 - 280%"
-                                            + "\n Tùy chọn 7: Đệ tử Zeno: Ramdom từ 200 - 350%"
-                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
-                                            + ""
-                                            + "|6|\nChỉ số hợp thể đệ Ramdom :\n"
-                                            + ""
-                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
-                                            //Menu Chọn
-                                            "Đệ OMEGA\n " + cn.de31 + " COIN",
-                                            "Đệ ZAMASU DỊ\n " + cn.de31 + " COIN",
-                                            "Đệ YACHIRO\n " + cn.de32 + " COIN",
-                                            "Đệ Goku_SJJ4\n " + cn.de33 + " COIN",
-                                            "Đệ VEGETA_SSJ4\n " + cn.de34 + " COIN",
-                                            "Đệ GOGETA_SSJ4\n " + cn.de35 + " COIN",
-                                            "Đệ TOPPO\n " + cn.de35 + " COIN",
-                                            "Đệ Zeno\n " + cn.de36 + " COIN");
-                                }
-                                break;
-
-                        }
-                    } else if (player.iDMark.getIndexMenu() == 888) {
+                    } //else if (player.iDMark.getIndexMenu() == 13000) {
+                    //                        switch (select) {
+                    //                            case 0:
+                    //                                if (player.pet == null) {
+                    //                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
+                    //                                    return;
+                    //                                }
+                    //                                for (Item item : player.pet.inventory.itemsBody) {
+                    //                                    if (item.isNotNullItem()) {
+                    //                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
+                    //                                        return;
+                    //                                    }
+                    //                                }
+                    //                                if (player.getSession() != null) {
+                    //                                    this.createOtherMenu(player, 781,
+                    //                                            "\b|2|Muốn đổi đệ mới bằng COIN à?\n"
+                    //                                            + "|3|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)\n"
+                    //                                            + "Tùy chọn 1: Đệ tử Cell: HP + " + cn.hpPet4 + "%, MP + " + cn.mpPet4 + "%, Dame + " + cn.damePet4 + " %\n"
+                    //                                            + "Tùy chọn 2: Đệ tử Cumber: HP + " + cn.hpPet5 + "%, MP + " + cn.mpPet5 + "%, Dame + " + cn.damePet5 + " %\n"
+                    //                                            + "Tùy chọn 3: Đệ tử Fide Vàng: HP + " + cn.hpPet6 + "%, MP + " + cn.mpPet6 + "%, Dame + " + cn.damePet6 + " %\n"
+                    //                                            + "Tùy chọn 4: Đệ tử Mai: HP + " + cn.hpPet8 + "%, MP + " + cn.mpPet8 + "%, Dame + " + cn.damePet8 + " %\n"
+                    //                                            + "Tùy chọn 5: Đệ tử Heart: HP + " + cn.hpPet7 + "%, MP + " + cn.mpPet7 + "%, Dame + " + cn.damePet7 + " %\n"
+                    //                                            + "Tùy chọn 6: Đệ tử Beerus: HP + " + cn.hpPet2 + "%, MP + " + cn.mpPet2 + "%, Dame + " + cn.damePet2 + " %\n"
+                    //                                            + "Tùy chọn 7: Đệ tử Gohan: HP + " + cn.hpPet9 + "%, MP + " + cn.mpPet9 + "%, Dame + " + cn.damePet9 + " %\n"
+                    //                                            + "Tùy chọn 8: Đệ tử Jiren Full Power: HP + " + cn.hpPet10 + "%, MP + " + cn.mpPet10 + "%, Dame + " + cn.damePet10 + " %\n"
+                    //                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
+                    //                                            + "",
+                    //                                            //                                            + "|6|\nChỉ số hợp thể đệ hiện tại :\n"
+                    //                                            //                                            + ""
+                    //                                            //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
+                    //                                            //Menu Chọn
+                    //                                            "Đệ cell\n " + cn.de1 + " COIN",
+                    //                                            "Đệ Cumber\n " + cn.de2 + " COIN",
+                    //                                            "Đệ Fide Vàng\n " + cn.de3 + " COIN",
+                    //                                            "Đệ Mai\n " + cn.de4 + " COIN",
+                    //                                            "Đệ Heart\n " + cn.de5 + " COIN",
+                    //                                            "Đệ berus\n " + cn.de6 + " COIN",
+                    //                                            "Đệ Gohan\n " + cn.de7 + " COIN",
+                    //                                            "Đệ Jiren Full Power\n " + cn.de8 + " COIN");
+                    //                                }
+                    //                                break;
+                    //                            case 1:
+                    //                                if (player.pet == null) {
+                    //                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
+                    //                                    return;
+                    //                                }
+                    //                                for (Item item : player.pet.inventory.itemsBody) {
+                    //                                    if (item.isNotNullItem()) {
+                    //                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
+                    //                                        return;
+                    //                                    }
+                    //                                }
+                    //                                if (player.getSession() != null) {
+                    //
+                    //                                    this.createOtherMenu(player, 783,
+                    //                                            "\b|2|Muốn đổi đệ Vip thì mua giá hơi chát nhá!!! "
+                    //                                            + "\n|4|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)"
+                    //                                            + "\n Tùy chọn 1: Đệ tử Goku Black SSJ3: HP + " + cn.hpPet11 + "%, MP + " + cn.mpPet11 + "%, Dame + " + cn.damePet11 + "% "
+                    //                                            + "\n Tùy chọn 2: Đệ tử GOGETA SSJ4: HP + " + cn.hpPet12 + "%, MP + " + cn.mpPet12 + "%, Dame + " + cn.damePet12 + "% "
+                    //                                            + "\n Tùy chọn 3: Đệ tử Goku VÔ CỰC: HP + " + cn.hpPet13 + "%, MP + " + cn.mpPet13 + "%, Dame + " + cn.damePet13 + "% "
+                    //                                            + "\n Tùy chọn 4: Đệ tử Berus Bí Ngô: HP + " + cn.hpPet14 + "%, MP + " + cn.mpPet14 + "%, Dame + " + cn.damePet14 + "% "
+                    //                                            + "\n Tùy chọn 5: Đệ tử Zamasu: HP + " + cn.hpPet15 + "%, MP + " + cn.mpPet15 + "%, Dame + " + cn.damePet15 + "% "
+                    //                                            + "\n Tùy chọn 6: Đệ tử Daisinkan: HP + " + cn.hpPet16 + "%, MP + " + cn.mpPet16 + "%, Dame + " + cn.damePet16 + "% "
+                    //                                            + "\n Tùy chọn 7: Đệ tử Whis: HP + " + cn.hpPet17 + "%, MP + " + cn.mpPet17 + "%, Dame + " + cn.damePet17 + "% "
+                    //                                            + "\n Tùy chọn 8: Đệ tử Granola: HP + " + cn.hpPet18 + "%, MP + " + cn.mpPet18 + "%, Dame + " + cn.damePet18 + "% "
+                    //                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
+                    //                                            + "",
+                    //                                            //                                            + "|6|\nChỉ số hợp thể đệ hiện tại :\n"
+                    //                                            //                                            + ""
+                    //                                            //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
+                    //                                            //Menu Chọn
+                    //                                            "Đệ Goku Black3\n " + cn.de9 + " COIN",
+                    //                                            "Đệ Gogeta C4\n " + cn.de10 + " COIN",
+                    //                                            "Đệ Goku VÔ CỰC\n " + cn.de11 + " COIN",
+                    //                                            "Đệ Berus Bí\n " + cn.de12 + " COIN",
+                    //                                            "Đệ Zamasu\n " + cn.de13 + " COIN",
+                    //                                            "Đệ Daisinkan\n " + cn.de14 + " COIN",
+                    //                                            "Đệ Whis\n " + cn.de15 + " COIN",
+                    //                                            "Đệ Granlola\n " + cn.de16 + " COIN");
+                    //                                }
+                    //                                break;
+                    //                            case 2:
+                    //                                if (player.pet == null) {
+                    //                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
+                    //                                    return;
+                    //                                }
+                    //
+                    //                                for (Item item : player.pet.inventory.itemsBody) {
+                    //                                    if (item.isNotNullItem()) {
+                    //                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
+                    //                                        return;
+                    //                                    }
+                    //                                }
+                    //                                if (player.getSession() != null) {
+                    //                                    this.createOtherMenu(player, 784,
+                    //                                            "\b|2|Muốn đổi đệ Vip thì mua giá hơi chát nhá!!! "
+                    //                                            + "\n|5|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)"
+                    //                                            + "\n Tùy chọn 1: Đệ tử Oren: HP + " + cn.hpPet20 + "%, MP + " + cn.mpPet20 + "%, Dame + " + cn.damePet20 + " %"
+                    //                                            + "\n Tùy chọn 2: Đệ tử Kamin: HP + " + cn.hpPet19 + "%, MP + " + cn.mpPet19 + "%, Dame + " + cn.damePet19 + " %"
+                    //                                            + "\n Tùy chọn 3: Đệ tử Drabura: HP + " + cn.hpPet25 + "%, MP + " + cn.mpPet25 + "%, Dame + " + cn.damePet25 + " %"
+                    //                                            + "\n Tùy chọn 4: Đệ tử Kamin Oren: HP + " + cn.hpPet21 + "%, MP + " + cn.mpPet21 + "%, Dame + " + cn.damePet21 + " %"
+                    //                                            + "\n Tùy chọn 5: Đệ tử Gojo: HP + " + cn.hpPet22 + "%, MP + " + cn.mpPet22 + "%, Dame + " + cn.damePet22 + " %"
+                    //                                            + "\n Tùy chọn 6: Đệ tử Baby jiren: HP + " + cn.hpPet27 + "%, MP + " + cn.mpPet27 + "%, Dame + " + cn.damePet27 + " %"
+                    //                                            + "\n Tùy chọn 7: Đệ tử Hachiyack: HP + " + cn.hpPet23 + "%, MP + " + cn.mpPet23 + "%, Dame + " + cn.damePet23 + " %"
+                    //                                            + "\n Tùy chọn 8: Đệ tử Goku SSSJ5: HP + " + cn.hpPet26 + "%, MP + " + cn.mpPet26 + "%, Dame + " + cn.damePet26 + " %"
+                    //                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
+                    //                                            + "",
+                    //                                            //                                            + "|6|\nChỉ số hợp thể đệ hiện tại :\n"
+                    //                                            //                                            + ""
+                    //                                            //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
+                    //                                            //Menu Chọn
+                    //                                            "Đệ Oren\n " + cn.de17 + " COIN",
+                    //                                            "Đệ Kamin\n " + cn.de18 + " COIN",
+                    //                                            "Đệ Drabura\n " + cn.de19 + " COIN",
+                    //                                            "Đệ Kamin Oren\n " + cn.de20 + " COIN",
+                    //                                            "Đệ Gôjo\n " + cn.de21 + " COIN",
+                    //                                            "Đệ Baby jiren\n " + cn.de22 + " COIN",
+                    //                                            "Đệ Hachiyack\n " + cn.de23 + " COIN",
+                    //                                            "Đệ Goku SSJ5\n " + cn.de24 + " COIN");
+                    //                                }
+                    //                                break;
+                    //                            case 3:
+                    //                                if (player.pet == null) {
+                    //                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
+                    //                                    return;
+                    //                                }
+                    //                                for (Item item : player.pet.inventory.itemsBody) {
+                    //                                    if (item.isNotNullItem()) {
+                    //                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
+                    //                                        return;
+                    //                                    }
+                    //                                }
+                    //                                if (player.getSession() != null) {
+                    //                                    this.createOtherMenu(player, 785,
+                    //                                            "\b|2|Muốn đổi đệ Vip thì mua giá hơi chát nhá!!! "
+                    //                                            + "\n|1|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)"
+                    //                                            + "\n Tùy chọn 1: Đệ tử Zamas Cải Cách: HP + " + cn.hpPet29 + "%, MP + " + cn.mpPet29 + "%, Dame + " + cn.damePet29 + " %"
+                    //                                            + "\n Tùy chọn 2: Đệ tử Baby Vegeta: HP + " + cn.hpPet28 + "%, MP + " + cn.mpPet28 + "%, Dame + " + cn.damePet28 + " %"
+                    //                                            + "\n Tùy chọn 3: Đệ tử Kafula: HP + " + cn.hpPet30 + "%, MP + " + cn.mpPet30 + "%, Dame + " + cn.damePet30 + " %"
+                    //                                            + "\n Tùy chọn 4: Đệ tử Ultra Ego: HP + " + cn.hpPet24 + "%, MP + " + cn.mpPet24 + "%, Dame + " + cn.damePet24 + " %"
+                    //                                            + "\n Tùy chọn 5: Đệ tử Cumber Base: HP + " + cn.hpPet31 + "%, MP + " + cn.mpPet31 + "%, Dame + " + cn.damePet31 + " %"
+                    //                                            + "\n Tùy chọn 6: Đệ tử Cumber Super: HP + " + cn.hpPet32 + "%, MP + " + cn.mpPet32 + "%, Dame + " + cn.damePet32 + " %"
+                    //                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
+                    //                                            + "",
+                    //                                            //                                            + "|6|\nChỉ số hợp thể đệ hiện tại :\n"
+                    //                                            //                                            + ""
+                    //                                            //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
+                    //                                            //Menu Chọn
+                    //                                            "Đệ Zamas Cải\n " + cn.de25 + " COIN",
+                    //                                            "Đệ Baby Vegeta\n " + cn.de26 + " COIN",
+                    //                                            "Đệ Kafula\n " + cn.de27 + " COIN",
+                    //                                            "Đệ Ultra Ego\n " + cn.de28 + " COIN",
+                    //                                            "Đệ Cumber Base\n " + cn.de29 + " COIN",
+                    //                                            "Đệ Cumber Super\n " + cn.de30 + " COIN");
+                    //                                }
+                    //                                break;
+                    //                            case 4:
+                    //                                if (player.pet == null) {
+                    //                                    Service.gI().sendThongBao(player, "Ngươi cần phải có đệ mới sử dụng được chức năng này?");
+                    //                                    return;
+                    //                                }
+                    //                                for (Item item : player.pet.inventory.itemsBody) {
+                    //                                    if (item.isNotNullItem()) {
+                    //                                        Service.gI().sendThongBao(player, "Cần bỏ đồ đệ tử đang mặc để sử dụng chức năng?");
+                    //                                        return;
+                    //                                    }
+                    //                                }
+                    //                                if (player.getSession() != null) {
+                    //                                    this.createOtherMenu(player, 786,
+                    //                                            "\b|2|Muốn đổi đệ Siêu Vip thì mua giá hơi chát nhá!!! "
+                    //                                            + "\n|1|Tùy chọn đệ tử với chỉ số hợp thể tương đương HP-MP + DMG (%)\n"
+                    //                                            + "\n|3| Đây là đệ đặc biệt khi hợp thể sẽ ramdom chỉ số cộng không cố định"
+                    //                                            + "\n Tùy chọn 0: Đệ tử OMEGA: Ramdom từ 100 - 200%"
+                    //                                            + "\n Tùy chọn 1: Đệ tử ZAMASU DỊ: Ramdom từ 100 - 200%"
+                    //                                            + "\n Tùy chọn 2: Đệ tử YACHIRO: Ramdom từ 120 - 220%"
+                    //                                            + "\n Tùy chọn 3: Đệ tử Goku_SJJ4: Ramdom từ 140 - 240%"
+                    //                                            + "\n Tùy chọn 4: Đệ tử VEGETA_SSJ4: Ramdom từ 160 - 260%"
+                    //                                            + "\n Tùy chọn 5: Đệ tử GOGETA_SSJ4: Ramdom từ 180 - 280%"
+                    //                                            + "\n Tùy chọn 6: Đệ tử TOPPO: Ramdom từ 180 - 280%"
+                    //                                            + "\n Tùy chọn 7: Đệ tử Zeno: Ramdom từ 200 - 350%"
+                    //                                            + "\n\b|7|Bạn đang có :" + player.getSession().vnd + " COIN\n"
+                    //                                            + ""
+                    //                                            + "|6|\nChỉ số hợp thể đệ Ramdom :\n"
+                    //                                            + ""
+                    //                                            + "-HP:" + player.pointfusion.getHpFusion() + "\n-KI:" + player.pointfusion.getMpFusion() + "\n-DAME:" + player.pointfusion.getDameFusion() + "",
+                    //                                            //Menu Chọn
+                    //                                            "Đệ OMEGA\n " + cn.de31 + " COIN",
+                    //                                            "Đệ ZAMASU DỊ\n " + cn.de31 + " COIN",
+                    //                                            "Đệ YACHIRO\n " + cn.de32 + " COIN",
+                    //                                            "Đệ Goku_SJJ4\n " + cn.de33 + " COIN",
+                    //                                            "Đệ VEGETA_SSJ4\n " + cn.de34 + " COIN",
+                    //                                            "Đệ GOGETA_SSJ4\n " + cn.de35 + " COIN",
+                    //                                            "Đệ TOPPO\n " + cn.de35 + " COIN",
+                    //                                            "Đệ Zeno\n " + cn.de36 + " COIN");
+                    //                                }
+                    //                                break;
+                    //
+                    //                        }
+                    //    }
+                    else if (player.iDMark.getIndexMenu() == 888) {
                         switch (select) {
                             case 0: //thay chiêu 2-3 đệ tử
                                 if (player.getSession() != null && player.getSession().vnd < cn.skill23) {
@@ -5590,34 +7027,35 @@ public class NpcFactory {
             }
         };
     }
-
-    public static Npc TRUNGTHU(int mapId, int status, int cx, int cy, int tempId, int avartar) {
-        return new Npc(mapId, status, cx, cy, tempId, avartar) {
-            @Override
-            public void openBaseMenu(Player player) {
-                if (canOpenNpc(player)) {
-                    if (player.getSession() != null) {
-                        createOtherMenu(player, ConstNpc.BASE_MENU,
-                                "Xin chào, ta có một số vật phẩm đặt biệt cậu có muốn xem không?",
-                                "Cửa hàng");
-                    }
-                }
-            }
-
-            @Override
-            public void confirmMenu(Player player, int select) {
-                if (canOpenNpc(player)) {
-                    if (this.mapId == 0 || this.mapId == 14) {
-                        if (player.iDMark.isBaseMenu()) {
-                            if (select == 0) { //shop
-                                ShopServiceNew.gI().opendShop(player, "TRUNGTHU", true);
-                            }
-                        }
-                    }
-                }
-            }
-        };
-    }
+//khaile comment
+//    public static Npc TRUNGTHU(int mapId, int status, int cx, int cy, int tempId, int avartar) {
+//        return new Npc(mapId, status, cx, cy, tempId, avartar) {
+//            @Override
+//            public void openBaseMenu(Player player) {
+//                if (canOpenNpc(player)) {
+//                    if (player.getSession() != null) {
+//                        createOtherMenu(player, ConstNpc.BASE_MENU,
+//                                "Xin chào, ta có một số vật phẩm đặt biệt cậu có muốn xem không?",
+//                                "Cửa hàng");
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void confirmMenu(Player player, int select) {
+//                if (canOpenNpc(player)) {
+//                    if (this.mapId == 0 || this.mapId == 14) {
+//                        if (player.iDMark.isBaseMenu()) {
+//                            if (select == 0) { //shop
+//                                ShopServiceNew.gI().opendShop(player, "TRUNGTHU", true);
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        };
+//    }
+//end khaile comment
 
     public static Npc HungVuong(int mapId, int status, int cx, int cy, int tempId, int avartar) {
         return new Npc(mapId, status, cx, cy, tempId, avartar) {
@@ -8777,10 +10215,7 @@ public class NpcFactory {
                 }
                 if (canOpenNpc(player)) {
                     createOtherMenu(player, ConstNpc.BASE_MENU,
-                            "Shop sự kiện cho dân cày nạp vip ?"
-                            + "\b|2|Đây là chức năng thay admin bán đồ nên sẽ trừ tiền nạp nhé !!!"
-                            + "\b\n|3|Lưu ý: Chỉ giao dịch nạp tiền qua duy nhất admin Emti,\n"
-                            + "mọi rủi ro tự chịu nếu không chấp hành.",
+                            "Shop sự kiện cho dân săn boss ?",
                             "Shop đá\n ngũ sắc", "Đổi đá ngũ sắc");
                 }
             }
@@ -9374,9 +10809,9 @@ public class NpcFactory {
                 //khaile comment
                 case ConstNpc.GAU_PO:
                     return gauPo(mapId, status, cx, cy, tempId, avatar);
+//                case ConstNpc.TRUNGTHU:
+//                    return TRUNGTHU(mapId, status, cx, cy, tempId, avatar);
                 //end khaile comment
-                case ConstNpc.TRUNGTHU:
-                    return TRUNGTHU(mapId, status, cx, cy, tempId, avatar);
                 case ConstNpc.TRUNG_LINH_THU:
                     return trungLinhThu(mapId, status, cx, cy, tempId, avatar);
                 case ConstNpc.POTAGE:

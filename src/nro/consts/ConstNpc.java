@@ -96,7 +96,7 @@ public class ConstNpc {
     public static final byte OSIN = 44;
     public static final byte KIBIT = 45;
     public static final byte BABIDAY = 46;
-    public static final byte CAU_BE = 47;
+    public static final byte CAU_BE = 87;
     public static final byte NGO_KHONG = 48;
     public static final byte DUONG_TANG = 49;
     public static final byte QUA_TRUNG = 50;
@@ -124,7 +124,7 @@ public class ConstNpc {
     public static final byte TRUNG_LINH_THU = 97;
     public static final byte CAYTHONG = 102;
     public static final byte GAU_PO = 100;
-    public static final byte TRUNGTHU = 41;
+    // public static final byte TRUNGTHU = 41;
 //    public static final byte ONG_BUT = 103;
     public static final byte UNKNOW = 72;
     public static final byte FIDE = 73;

@@ -28,7 +28,8 @@ public class BinhCanhService {
     // Yêu cầu power theo capTT: [0]=Luyện Khí (capTT=1), [1]=Trúc Cơ (capTT=2)
     private static final long[][] REALM_POWER_REQUIRE = {
         {250_000_000_000L, 450_000_000_000L, 750_000_000_000L}, // capTT=1
-        {1_200_000_000_000L, 1_700_000_000_000L, 2_100_000_000_000L} // capTT=2
+        {1_200_000_000_000L, 1_700_000_000_000L, 2_100_000_000_000L},
+        {5_200_000_000_000L, 9_700_000_000_000L, 11_110_000_000_000L}// capTT=3
     };
 
     // Thêm bonus nếu Thiên Đạo Trúc Cơ
