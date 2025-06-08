@@ -137,7 +137,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                     opt.add(30); //id option cấm giao dịch
                     opt.add(1); //param option
                     item.add(2116); //id item
-                    item.add(10); //số lượng
+                    item.add(1); //số lượng
                     options.add(opt.toJSONString());
                     opt.clear();
                 } else {//Zalo: 0358124452//Name: EMTI 
@@ -396,26 +396,16 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             String info_phoban_cdrd = dataArray.toJSONString();
             dataArray.clear();
 
-//            dataArray.add(0); //event
-//            dataArray.add(0); //
-//            dataArray.add(0); //
-//            dataArray.add(0); //
-//            String diem_event = dataArray.toJSONString();
-//            dataArray.clear();
-//            int event_point = 0;            
-//            int event_point_boss = 0;
-//            int event_point_nhs = 0;
-//            int event_point_quai = 0;
-//            int hp_point_fusion = 0;
-//            int mp_point_fusion = 0;
-//            int dame_point_fusion = 0;
+            long time_dd = 0;
+            
+
             GirlkunDB.executeUpdate("insert into player"
                     + "(account_id, name, head, gender, have_tennis_space_ship, clan_id_sv" + Manager.SERVER + ", "
                     + "data_inventory, data_location, data_point, data_magic_tree, items_body, "
                     + "items_bag, items_box, items_box_lucky_round, friends, enemies, data_intrinsic, data_item_time,"
                     + "data_task, data_mabu_egg, data_charm, skills, skills_shortcut, pet,"
                     + "data_black_ball, data_giai_dau, data_side_task,minipet, data_card,info_phoban,info_phoban_cdrd,"
-                    + " data_item_time_sieu_cap,data_item_time_su_kien,data_item_time_tnsm,item_mails_box, items_ruong_phu,LastTimeDropTail,Achievement,mocsk20_10,Achievement_BoMong,isUseTrucCoDan,capTT,capCS,dotpha"
+                    + " data_item_time_sieu_cap,data_item_time_su_kien,data_item_time_tnsm,item_mails_box, items_ruong_phu,LastTimeDropTail,Achievement,mocsk20_10,Achievement_BoMong,isUseTrucCoDan,capTT,capCS,dotpha,time_dd"
                     //                    + ",event_point, event_point_boss, event_point_nhs, event_point_quai, hp_point_fusion, mp_point_fusion, dame_point_fusion"
                     + ") "
                     + "values ()", userId, name, hair, gender, 0, -1, inventory, location, point, magicTree,
@@ -423,7 +413,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                     itemTime, task, mabuEgg, charms, skills, skillsShortcut, petData, dataBlackBall,
                     dataGiaidau, dataSideTask, minipet, data_card, info_phoban, info_phoban_cdrd,
                     data_item_time_sieu_cap, data_item_time_su_kien, itemTimeTNSM, itemMailBox, itemRuongPhu, lastTimeDropTail,
-                    Achievement, Achievement_diem, Achievement_bomong, 0,0,0,0
+                    Achievement, Achievement_diem, Achievement_bomong, 0, 0, 0, 0, time_dd
             //                   , event_point, event_point_boss, event_point_nhs, event_point_quai, hp_point_fusion, mp_point_fusion, dame_point_fusion
             );
             Logger.success("Tạo player mới thành công!\n");
@@ -1257,9 +1247,9 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 String info_phoban_cdrd = dataArray.toJSONString();
                 dataArray.clear();
 
-//                dataArray.add(player.event.getEventPoint());
-//                String diemsk = dataArray.toJSONString();
-//                dataArray.clear();
+                dataArray.add(player.vip);
+                String data_diem = dataArray.toJSONString();
+                dataArray.clear();
 //
 //                dataArray.add(player.event.getEventPointBHM());
 //                String diemskbhm = dataArray.toJSONString();
@@ -1296,7 +1286,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                         + "skills_shortcut = ?, pointPvp = ?, data_card = ?, info_phoban = ?, info_phoban_cdrd = ?,"
                         + "event_point = ?,"
                         + "event_point_boss = ?, event_point_nhs = ?, event_point_quai = ?, diem_quy_lao = ?,diem_moc = ?,"
-                        + "hp_point_fusion = ?, mp_point_fusion = ?, dame_point_fusion = ?, isUseTrucCoDan = ?, capTT = ?, capCS=?, dotpha =?"
+                        + "hp_point_fusion = ?, mp_point_fusion = ?, dame_point_fusion = ?, isUseTrucCoDan = ?, capTT = ?, capCS=?, dotpha =?, time_dd =?, data_diem =?,diemtichluy =?"
                         //khaile add code
 
                         //end khaile add code
@@ -1339,7 +1329,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                         info_phoban,
                         info_phoban_cdrd,
                         player.event.getEventPoint(),
-                        player.event.getEventPointBHM(),
+                        player.event.getEventPointBoss(),
                         player.event.getEventPointNHS(),
                         player.event.getEventPointQuai(),
                         player.event.getEventPointQuyLao(),
@@ -1352,6 +1342,9 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                         player.capTT,
                         player.capCS,
                         player.dotpha,
+                        player.time_dd,
+                        data_diem,
+                        player.diemtichluy,
                         //end khaille add code
                         player.id);
 //                Logger.log(Logger.RED, "Cư dân: " + player.name + " đã lưu dữ liệu thành công! " + (System.currentTimeMillis() - st) + "\n");

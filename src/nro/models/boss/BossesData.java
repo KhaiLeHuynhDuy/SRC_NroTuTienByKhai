@@ -1101,8 +1101,8 @@ public class BossesData {
             "Super Cumber", //name
             ConstPlayer.XAYDA, //gender
             new short[]{1336, 1334, 1335, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            200000, //dame
-            new long[]{2000000000}, //hp
+            200_000_000, //dame
+            new long[]{5_000_000_000L}, //hp
             new int[]{155}, //map join
             new int[][]{
                 {Skill.DEMON, 3, 1000}, {Skill.DEMON, 6, 2000}, {Skill.LIEN_HOAN_CHUONG, 7, 10000}, {Skill.DRAGON, 1, 4000}, {Skill.GALICK, 5, 5000},
@@ -1124,8 +1124,8 @@ public class BossesData {
             "Xên con", //name
             ConstPlayer.XAYDA, //gender
             new short[]{264, 265, 266, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            150000, //dame
-            new long[]{15000000}, //hp
+            15_000_0000, //dame
+            new long[]{1_500_000_000}, //hp
             new int[]{103}, //map join
             (int[][]) Util.addArray(FULL_DEMON, FULL_MASENKO), //skill
             new String[]{"|-1|Hello cục cưng",

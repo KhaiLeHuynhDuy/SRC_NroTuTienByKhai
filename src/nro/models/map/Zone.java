@@ -771,7 +771,12 @@ public class Zone {
             } else {
                 for (Player pl : this.humanoids) {
                     if (pl != null && !player.equals(pl)) {
-                        infoPlayer(player, pl);
+//                        infoPlayer(player, pl);
+                        try {
+                            infoPlayer(player, pl);
+                        } catch (IndexOutOfBoundsException e) {
+                            Logger.logException(MapService.class, new Exception("Failed to infoPlayer: " + pl + " to " + player, e));                            // Continue with other players instead of breaking
+                        }
                     }
                 }
             }
@@ -815,7 +820,22 @@ public class Zone {
             msg.writer().writeByte(plInfo.gender);
             msg.writer().writeByte(plInfo.gender);
             msg.writer().writeShort(plInfo.getHead());
-            msg.writer().writeUTF(plInfo.clan != null ? "[" + plInfo.clan.name + "]" + plInfo.name != null ? plInfo.name : "null1" : plInfo.name != null ? plInfo.name : "null2");
+//            if (!plInfo.name.equals("name")) {
+//                msg.writer().writeUTF(
+//                        plInfo.isMiniPet ? "" : plInfo.isPet ? plInfo.name : plInfo.vip == 4 ? "[SS]" + plInfo.name
+//                                                : plInfo.vip < 4 ? "[S" + plInfo.vip + "]" + plInfo.name : plInfo.name);
+//            }
+//khaile nullcheck
+            if (!"name".equals(plInfo.name)) {
+                msg.writer().writeUTF(
+                        plInfo.isMiniPet ? ""
+                                : plInfo.isPet ? plInfo.name
+                                        : plInfo.vip == 4 ? "[SS]" + plInfo.name
+                                                : plInfo.vip < 4 ? "[S" + plInfo.vip + "]" + plInfo.name
+                                                        : plInfo.name
+                );
+            }
+//end khaile nullcheck
             if (plInfo.nPoint == null) {
 //                msg.writeFix(Util.maxIntValue(100));
 //                msg.writeFix(Util.maxIntValue(100));
@@ -854,10 +874,16 @@ public class Zone {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Service.gI().sendFlagPlayerToMe(plReceive, plInfo);
+
+        Service.gI()
+                .sendFlagPlayerToMe(plReceive, plInfo);
         if (!plInfo.isBoss && !plInfo.isPet && !plInfo.isNewPet && !plInfo.isMiniPet && !(plInfo instanceof BossDHVT) && !(plInfo instanceof Referee) & !(plInfo instanceof Yajiro)) {
             Service.gI().sendPetFollow(plReceive, (plReceive.getLinhThu()));
+            if (plInfo.inventory.itemsBody.get(11).isNotNullItem()) {
+                Service.gI().sendTitleRv(plInfo, plReceive, (short) plInfo.inventory.itemsBody.get(11).template.id);
+            }
         }
+
         try {
             if (plInfo.isDie()) {
                 msg = new Message(-8);
@@ -993,7 +1019,9 @@ public class Zone {
 
         } catch (Exception e) {
             e.printStackTrace();
-            Logger.logException(Service.class, e);
+            Logger
+                    .logException(Service.class,
+                            e);
         }
     }
 

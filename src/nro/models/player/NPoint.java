@@ -1244,6 +1244,9 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
             this.hpMax += calPercent(this.hpMax, 750);
         }
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setThienMa == 5) {//Zalo: 0358124452//Name: EMTI 
+            this.hpMax += calPercent(this.hpMax, 100);
+        }
 //end khaile add
         // Set nappa
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.nappa
@@ -1457,33 +1460,33 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
         //set nhật ấn
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.nhatan == 5) {
-            this.hpMax += calPercent(this.hpMax, 30);
+            this.hpMax += calPercent(this.hpMax, 45);
         }
-        //mèo mun
-        if (player.capCS
-                > 0) {//Zalo: 0358124452//Name: EMTI 
-            if (player.capCS <= 10) {//Zalo: 0358124452//Name: EMTI 
-                hpMax += (10000) * player.capCS;
-            }
-            if (player.capCS <= 20 && player.capCS > 10) {//Zalo: 0358124452//Name: EMTI 
-                hpMax += (15000) * (player.capCS);
-            }
-            if (player.capCS > 20) {//Zalo: 0358124452//Name: EMTI 
-                hpMax += (17000) * (player.capCS);
-            }
-        }
-        if (player.capTT
-                > 0) {//Zalo: 0358124452//Name: EMTI 
-            if (player.capTT <= 10) {//Zalo: 0358124452//Name: EMTI 
-                hpMax += (17000) * player.capTT;
-            }
-            if (player.capTT <= 20 && player.capTT > 10) {//Zalo: 0358124452//Name: EMTI 
-                hpMax += (25000) * (player.capTT);
-            }
-            if (player.capTT > 20) {//Zalo: 0358124452//Name: EMTI 
-                hpMax += (32000) * (player.capTT);
-            }
-        }
+//        //mèo mun
+//        if (player.capCS
+//                > 0) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capCS <= 10) {//Zalo: 0358124452//Name: EMTI 
+//                hpMax += (10000) * player.capCS;
+//            }
+//            if (player.capCS <= 20 && player.capCS > 10) {//Zalo: 0358124452//Name: EMTI 
+//                hpMax += (15000) * (player.capCS);
+//            }
+//            if (player.capCS > 20) {//Zalo: 0358124452//Name: EMTI 
+//                hpMax += (17000) * (player.capCS);
+//            }
+//        }
+//        if (player.capTT
+//                > 0) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capTT <= 10) {//Zalo: 0358124452//Name: EMTI 
+//                hpMax += (17000) * player.capTT;
+//            }
+//            if (player.capTT <= 20 && player.capTT > 10) {//Zalo: 0358124452//Name: EMTI 
+//                hpMax += (25000) * (player.capTT);
+//            }
+//            if (player.capTT > 20) {//Zalo: 0358124452//Name: EMTI 
+//                hpMax += (32000) * (player.capTT);
+//            }
+//        }
 
         //mèo mun
         if (this.player.effectFlagBag.useMeoMun) {//Zalo: 0358124452//Name: EMTI 
@@ -1523,6 +1526,9 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
             this.mpMax += calPercent(this.mpMax, 750);
         }
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setThienMa == 5) {//Zalo: 0358124452//Name: EMTI 
+            this.mpMax += calPercent(this.mpMax, 100);
+        }
 //end khaile add
         // Set picolo
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.picolo == 5) {//Zalo: 0358124452//Name: EMTI 
@@ -1530,7 +1536,7 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
         //set nguyệt ấn
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.nguyetan == 5) {
-            this.mpMax += calPercent(this.mpMax, 30);
+            this.mpMax += calPercent(this.mpMax, 45);
         }
         // Check if the "ngọc rồng đen" reward with 2 stars is still valid
         if (this.player.rewardBlackBall.timeOutOfDateReward[1] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
@@ -1711,18 +1717,18 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         if (this.player.zone != null && MapService.gI().isMapBlackBallWar(this.player.zone.map.mapId)) {//Zalo: 0358124452//Name: EMTI 
             this.mpMax *= this.player.effectSkin.xHPKI;
         }
-        //xiên cá
-        if (player.capCS > 0) {//Zalo: 0358124452//Name: EMTI 
-            if (player.capCS <= 10) {//Zalo: 0358124452//Name: EMTI 
-                mpMax += (13000) * player.capCS;
-            }
-            if (player.capCS <= 20 && player.capCS > 10) {//Zalo: 0358124452//Name: EMTI 
-                mpMax += (15000) * (player.capCS);
-            }
-            if (player.capCS > 20) {//Zalo: 0358124452//Name: EMTI 
-                mpMax += (17500) * (player.capCS);
-            }
-        }
+//        //xiên cá
+//        if (player.capCS > 0) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capCS <= 10) {//Zalo: 0358124452//Name: EMTI 
+//                mpMax += (13000) * player.capCS;
+//            }
+//            if (player.capCS <= 20 && player.capCS > 10) {//Zalo: 0358124452//Name: EMTI 
+//                mpMax += (15000) * (player.capCS);
+//            }
+//            if (player.capCS > 20) {//Zalo: 0358124452//Name: EMTI 
+//                mpMax += (17500) * (player.capCS);
+//            }
+//        }
 
         //xiên cá
         if (this.player.effectFlagBag.useXienCa) {//Zalo: 0358124452//Name: EMTI 
@@ -1765,6 +1771,9 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
 //khaile add
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
             this.dame += calPercent(this.dame, 750);
+        }
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setThienMa == 5) {//Zalo: 0358124452//Name: EMTI 
+            this.dame += calPercent(this.dame, 100);
         }
 //end khaile add
         if (this.player.isPet// chi so lam sao bac tu cho dj
@@ -1952,34 +1961,34 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
 
         //set tinh ấn
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.tinhan == 5) {
-            this.dame += calPercent(this.dame, 20);
+            this.dame += calPercent(this.dame, 25);
         }
         //phóng heo
         if (this.player.effectFlagBag.usePhongHeo) {//Zalo: 0358124452//Name: EMTI 
             this.dame += calPercent(this.dame, 15);
         }
-        if (player.capCS > 0) {//Zalo: 0358124452//Name: EMTI 
-            if (player.capCS <= 10) {//Zalo: 0358124452//Name: EMTI 
-                dame += (5000) * player.capCS;
-            }
-            if (player.capCS <= 20 && player.capCS > 10) {//Zalo: 0358124452//Name: EMTI 
-                dame += (7000) * (player.capCS);
-            }
-            if (player.capCS > 20) {//Zalo: 0358124452//Name: EMTI 
-                dame += (9000) * (player.capCS);
-            }
-        }
-        if (player.capTT > 0) {//Zalo: 0358124452//Name: EMTI 
-            if (player.capTT <= 10) {//Zalo: 0358124452//Name: EMTI 
-                dame += (9000) * player.capTT;
-            }
-            if (player.capTT <= 20 && player.capTT > 10) {//Zalo: 0358124452//Name: EMTI 
-                dame += (11000) * (player.capTT);
-            }
-            if (player.capTT > 20) {//Zalo: 0358124452//Name: EMTI 
-                dame += (15000) * (player.capTT);
-            }
-        }
+//        if (player.capCS > 0) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capCS <= 10) {//Zalo: 0358124452//Name: EMTI 
+//                dame += (5000) * player.capCS;
+//            }
+//            if (player.capCS <= 20 && player.capCS > 10) {//Zalo: 0358124452//Name: EMTI 
+//                dame += (7000) * (player.capCS);
+//            }
+//            if (player.capCS > 20) {//Zalo: 0358124452//Name: EMTI 
+//                dame += (9000) * (player.capCS);
+//            }
+//        }
+//        if (player.capTT > 0) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capTT <= 10) {//Zalo: 0358124452//Name: EMTI 
+//                dame += (9000) * player.capTT;
+//            }
+//            if (player.capTT <= 20 && player.capTT > 10) {//Zalo: 0358124452//Name: EMTI 
+//                dame += (11000) * (player.capTT);
+//            }
+//            if (player.capTT > 20) {//Zalo: 0358124452//Name: EMTI 
+//                dame += (15000) * (player.capTT);
+//            }
+//        }
         if (this.player.lastTimeTitle1 > 0 && player.isTitleUse) {//Zalo: 0358124452//Name: EMTI 
             this.dame += calPercent(this.dame, 10);
         }

@@ -120,6 +120,7 @@ public class ConstNpc {
     public static final byte MR_POPO = 67;
     public static final byte PANCHY = 68;
     public static final byte THO_DAI_CA = 69;
+    public static final byte THO_NGOC = 88;
     public static final byte GRANO_LA = 96;
     public static final byte TRUNG_LINH_THU = 97;
     public static final byte CAYTHONG = 102;
@@ -197,6 +198,7 @@ public class ConstNpc {
     public static final int MENU_NANG_BONG_TAI2 = 528;
     public static final int MENU_MO_CHI_SO_BONG_TAI2 = 529;
     public static final int MENU_DAP_DO = 507;
+    public static final int MENU_DAP_BOI = 5088;
 
     //index menu linh canh
     public static final int MENU_JOIN_DOANH_TRAI = 502;

@@ -524,7 +524,7 @@ public class ShopServiceNew {//Name: EMTI
         Shop shop = player.iDMark.getShopOpen();
         ItemShop is = shop.getItemShop(itemTempId);
         int pointExchange = 0;
-        int evPoint = player.event.getEventPointBHM();
+        int evPoint = player.event.getEventPointBoss();
         if (is == null) {//Name: EMTI 
             Service.gI().sendThongBao(player, "Item shop bị lỗi vui lòng báo admin");
             return;

@@ -899,7 +899,7 @@ public class Mob {
         if (ConstDataEvent.isRunningSK16) {
             try {
                 if (player.isPl() && player.itemTime.isUseMayDoSK) {
-                    if (Util.isTrue(1, 200)) {
+                    if (Util.isTrue(10, 100)) {
 //                        Service.gI().dropItemMap(this.zone, new ItemMap(zone, ConstDataEvent.getRandomFromList(), 1, this.location.x, this.location.y, player.id));
                         ItemMap spl = Util.ItemRotTuQuai(zone, ConstDataEvent.getRandomFromList(), 1, this.location.x, this.location.y, player.id);
                         //khaile comment hsd spl
@@ -928,7 +928,7 @@ public class Mob {
         if (SK20_10.isRunningSK2010) {
             try {
 
-                if (Util.isTrue(1, 150)) {
+                if (Util.isTrue(10, 100)) {
 //                        Service.gI().dropItemMap(this.zone, new ItemMap(zone, ConstDataEvent.getRandomFromList(), 1, this.location.x, this.location.y, player.id));
                     ItemMap spl = Util.ItemRotTuQuai(zone, SK20_10.getRandomFromList(), 1, this.location.x, this.location.y, player.id);
                     //khaile comment hsd spl
@@ -952,11 +952,20 @@ public class Mob {
 //        }
         //end khaile comment
         int mapid = this.zone.map.mapId;
-        if (mapid == 156 || mapid == 157 || mapid == 159 || mapid == 158) {
-            if (Util.isTrue(99, 100)) {
+        if (mapid == 156 || mapid == 157 || mapid == 158 || mapid == 159) {
+            if (Util.isTrue(50, 100)) {
+                // Rớt vật phẩm 933
                 list.add(new ItemMap(zone, 933, 1, x, player.location.y, player.id));
+            } else {
+                // Nếu không rớt 933 thì xét rớt 934 hoặc 935
+                if (Util.isTrue(30, 100)) {
+                    list.add(new ItemMap(zone, 934, 1, x, player.location.y, player.id));
+                } else if (Util.isTrue(30, 100)) {
+                    list.add(new ItemMap(zone, 935, 1, x, player.location.y, player.id));
+                }
             }
         }
+
 //        if (player.isPl() && player.getSession() != null) {
 //            if (mapid == 165 || mapid == 167 || mapid == 168) {
 //                boolean diemsk = false;
@@ -982,22 +991,27 @@ public class Mob {
 //                }
 //            }
 //        }
-
 //khaile add
         if (mapid == 155) {
             if (!player.isPet && Util.isTrue(30, 100)) { // bi kiep tuyet ky
                 Service.gI().dropItemMapForMe(player, new ItemMap(zone, 2120, 1, x, player.location.y, player.id));
             }
         }
+        if (mapid == 204) { // thien ma thạch
+            if (!player.isPet && Util.isTrue(40, 100)) {
+                Service.gI().dropItemMapForMe(player, new ItemMap(zone, 1707, 1, x, player.location.y, player.id));
+            }
+        }
         if (mapid == 216) { // ln 1
             if (!player.isPet && Util.isTrue(20, 100)) {
                 int itemId = Util.nextInt(1672, 1680); // tan dan 
+                Service.gI().dropItemMapForMe(player, new ItemMap(zone, 457, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
                 Service.gI().dropItemMapForMe(player, new ItemMap(zone, itemId, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
             }
 
         }
         if (mapid == 217) { //ln 2
-            if (!player.isPet && Util.isTrue(55, 100)) {
+            if (!player.isPet && Util.isTrue(60, 100)) {
                 int itemId = Util.nextInt(1672, 1680); // tan dan 
                 Service.gI().dropItemMapForMe(player, new ItemMap(zone, itemId, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
             }
@@ -1068,13 +1082,13 @@ public class Mob {
 //                list.add(new ItemMap(zone, 225, 1, x, player.location.y, player.id));
 //            }
 //        }
-        //khaile xoa manh da vun
-        if (!player.isPet) {
-            if (Util.isTrue(1, 300)) {
-                list.add(new ItemMap(zone, 226, 1, x, player.location.y, player.id));
-            }
-        }
 
+//        if (!player.isPet) {
+//            if (Util.isTrue(1, 300)) {
+//                list.add(new ItemMap(zone, 226, 1, x, player.location.y, player.id));
+//            }
+//        }
+        //end khaile xoa manh da vun
 //        if (player.isPet && player.getSession().actived && Util.isTrue(1, 300)) {
 //            list.add(new ItemMap(zone, 874, 1, x, player.location.y, player.id));
 //        }
@@ -1089,7 +1103,7 @@ public class Mob {
 
 //                System.out.println("ok");
             byte randomDo = (byte) new Random().nextInt(Manager.spl.length);
-            if (Util.isTrue(2, 200)) {
+            if (Util.isTrue(10, 100)) {
 //                    System.out.println("ok2");
                 ItemMap spl = Util.ItemRotTuQuai(zone, Manager.spl[randomDo], 1, this.location.x, this.location.y, player.id);
 //                Service.gI().dropItemMap(this.zone, spl);
