@@ -47,12 +47,12 @@ public class PlayerEvent {
         this.eventPoint = eventPoint;
     }
 
-    public int getEventPointBHM() {
-        return eventPointBHM;
+    public int getEventPointBoss() {
+        return eventPointBoss;
     }
 
-    public void setEventPointBHM(int eventPointBHM) {
-        this.eventPointBHM = eventPointBHM;
+    public void setEventPointBoss(int eventPointBHM) {
+        this.eventPointBoss = eventPointBHM;
     }
 
     public int getEventPointNHS() {
@@ -138,7 +138,7 @@ public class PlayerEvent {
     private int diemTichLuy;
     private int mocNapDaNhan;
     private int eventPoint;
-    private int eventPointBHM;
+    private int eventPointBoss;
     private int eventPointNHS;
     private int eventPointQuai;
     private int eventPointQuyLao;
@@ -164,11 +164,11 @@ public class PlayerEvent {
     }
 
     public void addEventPointBoss(int num) {
-        eventPointBHM += num;
+        eventPointBoss += num;
     }
 
     public void subEventPointBHM(int num) {
-        eventPointBHM -= num;
+        eventPointBoss -= num;
     }
 
     public void addEventPointNHS(int num) {

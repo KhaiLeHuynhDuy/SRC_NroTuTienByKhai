@@ -266,7 +266,7 @@ public class InventoryServiceNew {
                     itemThrow = player.inventory.itemsBag.get(index);
                     if (itemThrow != null && itemThrow.template != null) {
 
-                        if (itemThrow.template.id == 457|| itemThrow.template.id == 1708) {
+                        if (itemThrow.template.id == 457 || itemThrow.template.id == 1708) {
                             Service.gI().sendThongBao(player, "Thưa ngài không thể vứt được item này ạ");
                         } else {
                             removeItemBag(player, index);
@@ -458,15 +458,18 @@ public class InventoryServiceNew {
             case 3:
             case 4:
             case 5:
-            case 32:
-            case 23:
+            case 32://giap luyen tap
+            case 23:// van bay su kien
             case 35:
             case 53:
-            case 24:
-            case 11:
-            case 72:
-            case 21:
-            case 25:
+            case 24: // van bay binh thuong
+            case 11: // vp bang hoi
+            case 72: // linh thu
+            case 21: // pet
+            case 25: // chan menh
+            case 90: // danh hieu
+            case 92: // ngoc boi
+
                 break;
             default:
                 Service.gI().sendThongBaoOK(player.isPet ? ((Pet) player).master : player, "Trang bị không phù hợp!");
@@ -504,34 +507,26 @@ public class InventoryServiceNew {
                 index = 6;
                 break;
             case 11:
-                if (player.isPet) {
-                    Service.gI().sendThongBaoOK(((Pet) player).master, "Đệ chưa sử dụng được item này");
-                    return sItem;
-                }
                 index = 8;
                 break;
             case 72:
-                if (player.isPet) {
-                    Service.gI().sendThongBaoOK(((Pet) player).master, "Đệ chưa sử dụng được item này");
-                    return sItem;
-                }
                 index = 10;
                 break;
             case 21:
-                if (player.isPet) {
-                    Service.gI().sendThongBaoOK(((Pet) player).master, "Đệ chưa sử dụng được item này");
-                    return sItem;
-                }
                 index = 7;
                 break;
             case 25:
             case 23:
             case 24:
-                if (player.isPet) {
-                    Service.gI().sendThongBaoOK(((Pet) player).master, "Đệ chưa sử dụng được item này");
-                    return sItem;
-                }
                 index = 9;
+                break;
+            case 90:
+                index = 11;
+                break;
+            case 92:
+                index = 12;
+                break;
+
         }
         sItem = player.inventory.itemsBody.get(index);
         player.inventory.itemsBody.set(index, item);
@@ -542,6 +537,8 @@ public class InventoryServiceNew {
         Item item = player.inventory.itemsBag.get(index);
         if (item.isNotNullItem()) {
             player.inventory.itemsBag.set(index, putItemBody(player, item));
+            Service.gI().removeTitle(player);
+            Service.gI().sendTitle(player, item.template.id);
             sendItemBags(player);
             sendItemBody(player);
             Service.gI().sendFlagBag(player);
@@ -556,23 +553,13 @@ public class InventoryServiceNew {
         if (item.isNotNullItem()) {
             if (index == 10) {
                 Service.gI().sendPetFollow(player, (short) 0);
-                player.isPetFollow = false;
+//                player.isPetFollow = false;
             }
             if (index == 6) {
                 Service.gI().removeAlleff(player);
                 Service.gI().sendEffChanMenh(player, player.getEffectchar2(), 0, -1, 1, -1);
             }
-            if (index == 9) {
-                Service.gI().removeAlleff(player);
-                Service.gI().sendEffDanhHieu(player, player.getEffectchar(), 1, -1, 50, -1, -1);
-            }
-//            if (index == 7) {
-//                if (player.newpet != null) {
-//                    ChangeMapService.gI().exitMap(player.newpet);
-//                    player.newpet.dispose();
-//                    player.newpet = null;
-//                }
-//            }
+
             if (index == 7) {
                 player.minipet.changeStatus(MiniPet.VENHA);
             }

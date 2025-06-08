@@ -120,7 +120,7 @@ import java.util.HashMap;
             try {
                 Socket socket = this.serverListen.accept();
                 String ip = socket.getInetAddress().getHostAddress();
-                if (firewall.containsKey(ip) && firewall.get(ip).intValue() > 12) {
+                if (firewall.containsKey(ip) && firewall.get(ip).intValue() > 999999) {
                     socket.close();
                 } else {
                     ISession session = SessionFactory.gI().cloneSession(this.sessionClone, socket);

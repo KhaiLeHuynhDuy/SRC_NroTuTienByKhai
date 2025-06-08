@@ -94,8 +94,8 @@ public class Manager {
 //    public static int EVENT_COUNT_THAN_VU_TRU = 0;
     public static byte SERVER = 1;
     public static byte SECOND_WAIT_LOGIN = 5;
-    public static int MAX_PER_IP = 10000;
-    public static int MAX_PLAYER = 10000;
+    public static int MAX_PER_IP = 99999;
+    public static int MAX_PLAYER = 99999;
     public static byte RATE_EXP_SERVER = 1;
     public static boolean LOCAL = false;
 
@@ -611,8 +611,7 @@ public class Manager {
             Logger.logException(Manager.class, ex, "Lỗi load properites");
             System.exit(0);
         }
-//        ImageUtil.initImage();
-        this.initSmallVersion();
+//        ImageUtil.initImage();      
         this.loadDatabase();
         initRandomItem();
         nro.TamBaoService.loadItem();
@@ -620,6 +619,7 @@ public class Manager {
         NpcFactory.createNpcRongThieng();
         NpcFactory.createNpcRongXuong();
         this.initMap();
+        this.initSmallVersion();
     }
 
     private void initRandomItem() {

@@ -50,7 +50,7 @@ public class HuyetMa extends Boss {
         Service.gI().sendThongBao(pl, "Bạn nhận được 1 điểm săn boss");
 
         int itemId = 1707;
-        int quantity = 1000;
+        int quantity = 500;
 
         Service.gI().dropItemMap(this.zone, new ItemMap(zone, itemId, quantity, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 

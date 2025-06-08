@@ -357,6 +357,8 @@ public class MiniPet extends Player {
                 return 69;
             case 1650:
                 return 70;
+            case 1565:
+                return 71;
 
         }
         return -1;
@@ -517,6 +519,8 @@ public class MiniPet extends Player {
                 return 1783;
             case 70:
                 return 1786;
+            case 71:
+                return 2009;
 
         }
         return -1;
@@ -668,6 +672,8 @@ public class MiniPet extends Player {
                 return 1784;
             case 70:
                 return 1787;
+            case 71:
+                return 2010;
         }
         return -1;
     }
@@ -807,7 +813,7 @@ public class MiniPet extends Player {
                 return 1737;
             case 65:
                 return 1745;
-                
+
             case 66:
                 return 1769;
             case 67:
@@ -818,6 +824,8 @@ public class MiniPet extends Player {
                 return 1785;
             case 70:
                 return 1788;
+            case 71:
+                return 2011;
         }
         return -1;
     }

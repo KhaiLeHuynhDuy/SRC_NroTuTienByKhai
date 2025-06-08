@@ -594,7 +594,7 @@ public class Controller implements IMessageHandler {
                     Logger.error("ip " + ip + " dang tai du lieu");
                     if (nro.network.server.GirlkunServer.firewallDownDataGame.containsKey(ip)) {
                         int soLanConnect = nro.network.server.GirlkunServer.firewallDownDataGame.get(ip).intValue();
-                        if (soLanConnect > 12) {
+                        if (soLanConnect > 999999) {
                             Service.gI().sendThongBaoOK(_session, "Bạn đã tải dữ liệu nhiều lần, đợi bảo trì rồi quay lại");
                             return;
                         } else {
@@ -999,10 +999,12 @@ public class Controller implements IMessageHandler {
                     case 18:
                         byte type2 = _msg.reader().readByte();
                         short point2 = _msg.reader().readShort();
-                        if (player != null && player.getSession().totalvnd2 < 1000000) {
-                            Service.gI().sendThongBaoOK(player, "Cần duy trì VND ở mức 1.000.000 để sử dụng chức năng này!");
-                            return;
-                        }
+                        //khaile comment
+//                        if (player != null && player.getSession().totalvnd2 < 1000000) {
+//                            Service.gI().sendThongBaoOK(player, "Cần duy trì VND ở mức 1.000.000 để sử dụng chức năng này!");
+//                            return;
+//                        }
+                        //end khaile comment
                         if (player != null && player.pet != null) {
                             player.pet.nPoint.increasePoint(type2, point2, true);
                         }
@@ -1184,23 +1186,32 @@ public class Controller implements IMessageHandler {
                 }
             }, "Pet update").start();
         }
-        if (player.inventory.itemsBody.get(10).isNotNullItem() && !player.isPetFollow) {
+        if (player.inventory.itemsBody.get(10).isNotNullItem()) {
             new Thread(() -> {
                 try {
                     Thread.sleep(1000);
                     Service.gI().sendPetFollow(player, (player.getLinhThu()));
-                    player.isPetFollow = true;
+//                    player.isPetFollow = true;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }, "Linh thu update").start();
         }
+        if (player.inventory.itemsBody.get(11).isNotNullItem()) {
+            new Thread(() -> {
+                try {
+                    Thread.sleep(1000);
+                    Service.gI().sendTitle(player, (short) player.inventory.itemsBody.get(11).template.id);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }, "Danh hiệu update").start();
+        }
 
         if (TaskService.gI().getIdTask(player) == ConstTask.TASK_0_0) {
             NpcService.gI().createTutorial(player, -1,
-                    "Chào mừng " + player.name + " đến với Ngọc Rồng Emti\n"
-                    + "Nhiệm vụ đầu tiên của bạn là di chuyển\n"
-                    + "Bạn hãy di chuyển nhân vật theo mũi tên chỉ hướng");
+                    "Chào mừng " + player.name + " đến với Ngọc Rồng Bát Hoang\n"
+                    + "Nhiệm vụ đầu tiên của bạn là di chuyển");
         }
         if (GoiRongXuong.gI().playerRongXuong != null
                 && GoiRongXuong.gI().playerRongXuong.id == player.id) {
@@ -1215,10 +1226,8 @@ public class Controller implements IMessageHandler {
     }
 
     private void sendThongBaoServer(Player player) {
-        Service.gI().sendThongBaoFromAdmin(player, "\b|6|Ngọc Rồng EMTI Thông Báo\n"
-                + "\n|2|Sự kiện đua top đang diễn ra tại đảo Kame"
-                + "\n|5|Tại các làng sẽ có Gấu Po , sự kiện vô cùng hấp dẫn"
-                + "\n|4|Chú ý: Update bản mới nhất <12-9-2024> tại NREMTI.COM để cập nhật mới nhất!!!");
+        Service.gI().sendThongBaoFromAdmin(player, "\b|7|Ngọc Rồng Bát Hoang Thông Báo"
+                + "\n|2|Chúc Anh Em Chơi Game Vui Vẻ");
     }
 
     private void clearVTSK(Player player) {
@@ -1311,7 +1320,8 @@ public class Controller implements IMessageHandler {
                 item.itemOptions.add(new Item.ItemOption(14, Util.nextInt(10, 18)));
                 item.itemOptions.add(new Item.ItemOption(5, Util.nextInt(10, 25)));
             }
-        }); player.inventory.itemsBag.stream().filter(item -> item.isNotNullItem() && (item.template.type == 11||item.template.type == 35)).forEach(item -> {
+        });
+        player.inventory.itemsBag.stream().filter(item -> item.isNotNullItem() && (item.template.type == 11 || item.template.type == 35)).forEach(item -> {
             if (item.isBUg2()) {
                 item.itemOptions.clear();
                 item.itemOptions.add(new Item.ItemOption(50, Util.nextInt(12, 22)));
@@ -1321,9 +1331,9 @@ public class Controller implements IMessageHandler {
                 item.itemOptions.add(new Item.ItemOption(5, Util.nextInt(10, 12)));
             }
         });
-        player.inventory.itemsBody.stream().filter(item -> item.isNotNullItem() && (item.template.type == 11||item.template.type == 35)).forEach(item -> {
+        player.inventory.itemsBody.stream().filter(item -> item.isNotNullItem() && (item.template.type == 11 || item.template.type == 35)).forEach(item -> {
             if (item.isBUg2()) {
-                   item.itemOptions.clear();
+                item.itemOptions.clear();
                 item.itemOptions.add(new Item.ItemOption(50, Util.nextInt(12, 22)));
                 item.itemOptions.add(new Item.ItemOption(77, Util.nextInt(12, 22)));
                 item.itemOptions.add(new Item.ItemOption(103, Util.nextInt(12, 22)));
@@ -1331,9 +1341,9 @@ public class Controller implements IMessageHandler {
                 item.itemOptions.add(new Item.ItemOption(5, Util.nextInt(10, 12)));
             }
         });
-        player.inventory.itemsBox.stream().filter(item -> item.isNotNullItem() && (item.template.type == 11||item.template.type == 35)).forEach(item -> {
+        player.inventory.itemsBox.stream().filter(item -> item.isNotNullItem() && (item.template.type == 11 || item.template.type == 35)).forEach(item -> {
             if (item.isBUg2()) {
-                  item.itemOptions.clear();
+                item.itemOptions.clear();
                 item.itemOptions.add(new Item.ItemOption(50, Util.nextInt(12, 22)));
                 item.itemOptions.add(new Item.ItemOption(77, Util.nextInt(12, 22)));
                 item.itemOptions.add(new Item.ItemOption(103, Util.nextInt(12, 22)));

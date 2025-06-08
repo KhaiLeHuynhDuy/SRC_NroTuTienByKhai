@@ -48,8 +48,8 @@ public class cn {//Zalo: 0358124452//Name: EMTI
     public static short get_sl_cr = 10;
     public static int slnx = 5000;
     public static int slnh = 5000;
-    public static int slbd = 5;
-    public static int slthoiVang_ = 5;
+    public static int slbd = 1;
+    public static int slthoiVang_ = 20;
 
     private static class ________________________NPC_GOHAN_PAGUSU_NAMEC_____________________ {//Zalo: 0358124452//Name: EMTI 
 

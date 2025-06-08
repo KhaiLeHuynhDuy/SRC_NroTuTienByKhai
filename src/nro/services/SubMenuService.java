@@ -47,7 +47,7 @@ public class SubMenuService {
     }
 
     public void showMenuForAdmin(Player player) {
-        showSubMenu(player, new SubMenu(BAN, "Ban người chơi", ""));
+//        showSubMenu(player, new SubMenu(BAN, "Ban người chơi", ""));
     }
 
     public void showSubMenu(Player player, SubMenu... subMenus) {

@@ -34,6 +34,7 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
     public byte nguyetan;
     public byte nhatan;
     public byte setVoCucTuTai;
+    public byte setThienMa;
 //    public boolean chanmenh;
 
     public boolean huydietClothers;
@@ -307,6 +308,10 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
                             xayda++;
                             break;
 //khaile add
+                        case 190:
+                            isActSet = true;
+                            setThienMa++;
+                            break;
                         case 192:
                             isActSet = true;
                             setVoCucTuTai++;
@@ -353,7 +358,8 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
         this.nguyetan = 0;
         this.godClothes = false;
         this.ctHaiTac = -1;
-        this.setVoCucTuTai =0;
+        this.setVoCucTuTai = 0;
+        this.setThienMa = 0;
     }
 
     public void dispose() {//Zalo: 0358124452//Name: EMTI 

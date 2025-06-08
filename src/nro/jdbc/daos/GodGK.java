@@ -87,7 +87,6 @@ public class GodGK {
                 session.lastTimeLogout = rs.getTimestamp("last_time_logout").getTime();
                 session.actived = rs.getBoolean("active");
                 session.isAdmin1 = rs.getBoolean("is_admin1");
-
                 session.nhanngocxanh = rs.getBoolean("nhanngocxanh");
                 session.nhanngochong = rs.getBoolean("nhanngochong");
                 session.nhanvang = rs.getBoolean("nhanvang");
@@ -99,6 +98,8 @@ public class GodGK {
                 session.totalvnd3 = rs.getInt("account.tongnap3");
                 session.sk20_10 = rs.getInt("account.sk20_10");
                 session.SKHE = rs.getInt("account.topsk16");
+
+//                player.vip = rs.getByte("vip");
 //                session.NHS = rs.getInt("account.NguHanhSonPoint");
                 long lastTimeLogin = rs.getTimestamp("last_time_login").getTime();
                 int secondsPass1 = (int) ((System.currentTimeMillis() - lastTimeLogin) / 1000);
@@ -180,7 +181,7 @@ public class GodGK {
                             player.pointPvp = rs.getInt("pointPvp");
 
                             player.event.setEventPoint(rs.getInt("event_point"));
-                            player.event.setEventPointBHM(rs.getInt("event_point_boss"));
+                            player.event.setEventPointBoss(rs.getInt("event_point_boss"));
                             player.event.setEventPointNHS(rs.getInt("event_point_nhs"));
                             player.event.setEventPointQuai(rs.getInt("event_point_quai"));
                             player.event.setEventPointQuyLao(rs.getInt("diem_quy_lao"));
@@ -197,6 +198,8 @@ public class GodGK {
                             player.capTT = rs.getByte("capTT");
                             player.capCS = rs.getByte("capCS");
                             player.dotpha = rs.getByte("dotpha"); // Add this line
+                            player.time_dd = rs.getLong("time_dd");
+                            player.diemtichluy = rs.getInt("diemtichluy");
                             //end khaile add code
                             int clanId = rs.getInt("clan_id_sv" + Manager.SERVER);
                             if (clanId != -1) {
@@ -358,6 +361,21 @@ public class GodGK {
                                 player.inventory.itemsBody.add(item);
                             }
                             if (player.inventory.itemsBody.size() == 10) {
+                                player.inventory.itemsBody.add(ItemService.gI().createItemNull());
+                            }
+                            if (player.inventory.itemsBody.size() == 11) {
+                                player.inventory.itemsBody.add(ItemService.gI().createItemNull());
+                            }
+                            if (player.inventory.itemsBody.size() == 12) {
+                                player.inventory.itemsBody.add(ItemService.gI().createItemNull());
+                            }
+                            if (player.inventory.itemsBody.size() == 13) {
+                                player.inventory.itemsBody.add(ItemService.gI().createItemNull());
+                            }
+                            if (player.inventory.itemsBody.size() == 14) {
+                                player.inventory.itemsBody.add(ItemService.gI().createItemNull());
+                            }
+                            if (player.inventory.itemsBody.size() == 15) {
                                 player.inventory.itemsBody.add(ItemService.gI().createItemNull());
                             }
                             dataArray.clear();
@@ -697,21 +715,14 @@ public class GodGK {
                             }
                             dataArray.clear();
 
-                            // data trứng bill
-//                            dataArray = (JSONArray) JSONValue.parse(rs.getString("data_bill_egg"));
-//                            if (dataArray.size() != 0) {
-//                                player.billEgg = new BillEgg(player, Long.parseLong(String.valueOf(dataArray.get(0))),
-//                                        Long.parseLong(String.valueOf(dataArray.get(1))));
-//                            }
-//                            dataArray.clear();
-////
-//                            // data trứng Babugay
-//                            dataArray = (JSONArray) JSONValue.parse(rs.getString("data_mabugay_egg"));
-//                            if (dataArray.size() != 0) {
-//                                player.BuugayEgg = new MabuGayEgg(player, Long.parseLong(String.valueOf(dataArray.get(0))),
-//                                        Long.parseLong(String.valueOf(dataArray.get(1))));
-//                            }
-//                            dataArray.clear();
+                            try {
+                                dataArray = (JSONArray) JSONValue.parse(rs.getString("data_diem"));
+                                player.vip = Byte.parseByte(String.valueOf(dataArray.get(0)));
+                                dataArray.clear();
+                            } catch (Exception e) {
+
+                            }
+
                             //data bùa
                             dataArray = (JSONArray) JSONValue.parse(rs.getString("data_charm"));
                             player.charms.tdTriTue = Long.parseLong(String.valueOf(dataArray.get(0)));
@@ -1402,6 +1413,13 @@ public class GodGK {
                     dataBlackBall.clear();
                 }
                 dataArray.clear();
+                try {
+                    dataArray = (JSONArray) JSONValue.parse(rs.getString("data_diem"));
+                    player.vip = Byte.parseByte(String.valueOf(dataArray.get(0)));
+                    dataArray.clear();
+                } catch (Exception e) {
+
+                }
 
                 //data phần thưởng giai dau
                 dataArray = (JSONArray) JSONValue.parse(rs.getString("data_giai_dau"));

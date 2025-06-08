@@ -208,6 +208,10 @@ public class Player {
     public int rubyChallenge;
     public int ThoiVangChallenge;
 
+    public int diemtichluy;
+    public long time_dd;
+    public byte vip;
+
     public byte capCS;
     public byte capTT;
     //khaile add
@@ -1543,7 +1547,7 @@ public class Player {
 //                return 1757;
 //            }
 //            } else {
-                return 1778;
+            return 1778;
 //            }
         }
         if (effectSkill != null && effectSkill.isMonkey) {
@@ -1683,7 +1687,7 @@ public class Player {
 //                return -1;
 //            }
 //            } else {
-                return 1781;
+            return 1781;
 //            }
         }
         if (effectSkill != null && effectSkill.isMonkey) {
@@ -1824,7 +1828,7 @@ public class Player {
 //                return -1;
 //            }
 //            } else {
-                return 1782;
+            return 1782;
 //            }
         }
         if (effectSkill != null && effectSkill.isMonkey) {

@@ -47,6 +47,7 @@ import java.util.Random;
 import nro.consts.ConstEvent;
 import nro.consts.ConstItem;
 import nro.lib.RandomCollection;
+import nro.models.boss.BossManager;
 import static nro.models.player.MiniPet.DITHEO;
 import nro.server.Manager;
 
@@ -255,15 +256,14 @@ public class UseItem {
                 case 24: //thú cưỡi cũ 
                     InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
                     break;
-//                case 11: //item bag
-//                    InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
-//                    Service.gI().sendFlagBag(pl);
-//                    break;
-//                case 5: //item bag
-//                    InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
-//                    Service.gI().Send_Caitrang(pl);
-//                    break;
-
+                case 11: //item bag
+                    InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
+                    Service.gI().sendFlagBag(pl);
+                    break;
+                case 5: //item bag
+                    InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
+                    Service.gI().Send_Caitrang(pl);
+                    break;
                 case 35:
                     InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
                     Service.gI().sendEffDanhHieu(pl, pl.getEffectchar(), 1, -1, 50, -1, -1);
@@ -275,7 +275,14 @@ public class UseItem {
                 case 72:
                     InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
                     Service.gI().sendPetFollow(pl, pl.getLinhThu());
-                    break;                              //Zalo: 0358124452                                //Name: EMTI 
+                    break;
+                case 90:
+                    InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
+                    Service.gI().sendTitle(pl, item.template.id);
+                    break;
+                case 92:
+                    InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
+                    break;
                 default:
 
                     switch (item.template.id) {
@@ -1341,6 +1348,9 @@ public class UseItem {
                             }
                             UseItem.gI().usePorata4(pl);
                             break;
+                        case 1552:
+                            maydobosss(pl);
+                            break;
                         case 1324:
                             if (pl.nPoint.power < 200000000000L) {
                                 Service.gI().sendThongBao(pl, "Bạn cần 200 tỷ sm để sử dụng");
@@ -1560,7 +1570,8 @@ public class UseItem {
                             }
                             if (pl.capTT == requiredCap) {
                                 int damegIncrease = 10_000;
-                                int hpMpIncrease = 30_000;
+                                int hpMpIncrease = damegIncrease * 3;
+
                                 int maxDameg = 3_600_000;
                                 int maxHpMp = maxDameg * 3;
                                 boolean avaiable = true;
@@ -1576,21 +1587,21 @@ public class UseItem {
 
                                 // Tăng chỉ số nếu chưa đạt giới hạn
                                 if (avaiable) {
-                                    if (!damegMaxed) {
-                                        pl.nPoint.dameg = Math.min(pl.nPoint.dameg + damegIncrease, maxDameg);
-                                    }
-                                    if (!hpMpMaxed) {
-                                        pl.nPoint.hpg = Math.min(pl.nPoint.hpg + hpMpIncrease, maxHpMp);
-                                        pl.nPoint.mpg = Math.min(pl.nPoint.mpg + hpMpIncrease, maxHpMp);
-                                    }
+
+                                    pl.nPoint.dameg = Math.min(pl.nPoint.dameg + damegIncrease, maxDameg);
+                                    pl.nPoint.hpg = Math.min(pl.nPoint.hpg + hpMpIncrease, maxHpMp);
+                                    pl.nPoint.mpg = Math.min(pl.nPoint.mpg + hpMpIncrease, maxHpMp);
+
                                     // Cập nhật trạng thái
                                     Service.gI().point(pl);
                                     InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
                                     InventoryServiceNew.gI().sendItemBags(pl);
                                     Service.gI().sendThongBao(pl, "Bạn nhận được SD, HP và KI");
+                                    break;
                                 }
-                                break;
+
                             }
+                            break;
                         }
                         case 1667: // Trúc Cơ Đan
                         {
@@ -1626,9 +1637,9 @@ public class UseItem {
                                 }
 
                                 // Kiểm tra nếu đã vượt ngưỡng yêu cầu
-                                boolean alreadyBeyond = pl.nPoint.dameg >= requiredDame
-                                        || pl.nPoint.hpg >= requiredHpKi
-                                        || pl.nPoint.mpg >= requiredHpKi;
+                                boolean alreadyBeyond = pl.nPoint.dameg > requiredDame
+                                        || pl.nPoint.hpg > requiredHpKi
+                                        || pl.nPoint.mpg > requiredHpKi;
 
                                 if (alreadyBeyond) {
                                     avaiable = false;
@@ -1651,6 +1662,7 @@ public class UseItem {
                                     break;
                                 }
                             }
+                            break;
                         }
                         case 1664:// truc co so ky
                         {
@@ -1689,7 +1701,7 @@ public class UseItem {
                                         || pl.nPoint.mpg >= maxHpMp;
 
                                 if (alreadyBeyond) {
-                                    Service.gI().sendThongBao(pl, "Mạnh rồi !!!");
+                                    Service.gI().sendThongBao(pl, "Đạt giới hạn Trúc Cơ sơ kỳ rồi em!! Đột phá bình cảnh đi !!!");
                                     break;
                                 }
                                 pl.nPoint.dameg = Math.min(pl.nPoint.dameg + damegIncrease, maxDameg);
@@ -1739,7 +1751,7 @@ public class UseItem {
                                         || pl.nPoint.mpg >= maxHpMp;
 
                                 if (alreadyBeyond) {
-                                    Service.gI().sendThongBao(pl, "Mạnh rồi !!!");
+                                    Service.gI().sendThongBao(pl, "Đạt giới hạn Trúc Cơ trung kỳ rồi em!! Đột phá bình cảnh đi !!!");
                                     break;
                                 }
                                 pl.nPoint.dameg = Math.min(pl.nPoint.dameg + damegIncrease, maxDameg);
@@ -1789,7 +1801,7 @@ public class UseItem {
                                         || pl.nPoint.mpg >= maxHpMp;
 
                                 if (alreadyBeyond) {
-                                    Service.gI().sendThongBao(pl, "Mạnh rồi !!!");
+                                    Service.gI().sendThongBao(pl, "Đạt giới hạn Trúc Cơ hậu kỳ rồi em!! Đột phá bình cảnh đi !!!");
                                     return;
                                 }
                                 pl.nPoint.dameg = Math.min(pl.nPoint.dameg + damegIncrease, maxDameg);
@@ -1809,7 +1821,7 @@ public class UseItem {
                                 Service.gI().sendThongBao(pl, "Bạn bị ban thành công");
                                 return;
                             } else {
-                                  ChangeMapService.gI().changeMapBySpaceShip(pl, 222, -1, 552);
+                                ChangeMapService.gI().changeMapBySpaceShip(pl, 222, -1, 552);
                             }
                         }
                         //end khaile add
@@ -3716,8 +3728,8 @@ public class UseItem {
     }
 
     private void openCSKB(Player pl, Item item) {
-        if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 0) {
-            short[] temp = {20, 19, 18, 190, 381, 382, 383, 384, 385};
+        if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 7) {
+            short[] temp = {16, 17, 18, 190, 381, 382, 383, 384, 385};
             int[][] gold = {{1000000, 2000000}};
             byte index = (byte) Util.nextInt(0, temp.length - 1);
             short[] icon = new short[2];
@@ -3740,7 +3752,7 @@ public class UseItem {
 
             CombineServiceNew.gI().sendEffectOpenItem(pl, icon[0], icon[1]);
         } else {
-            Service.gI().sendThongBao(pl, "Hàng trang đã đầy");
+            Service.gI().sendThongBao(pl, "Hàng trang đã đầy, cần ít nhất 8 ô trống hành trang");
         }
     }
 
@@ -4868,6 +4880,15 @@ public class UseItem {
         } else {
             ItemTimeService.gI().turnOnTDLT(pl, item);
         }
+    }
+
+    public boolean maydobosss(Player pl) {
+        try {
+            BossManager.gI().showListBoss(pl);
+            return true;
+        } catch (Exception e) {
+        }
+        return false;
     }
 
     private void usePorata(Player pl) {

@@ -455,7 +455,7 @@ public class Archivement_BoMong {
         if (index == 3 && pl.nPoint.mpMax >= 100000000) {
             return true;
         }
-        if (index == 4 && pl.event.getEventPointBHM() >= 1000) {
+        if (index == 4 && pl.event.getEventPointBoss() >= 1000) {
             return true;
         }
         if (index == 5 && pl.event.getEventPointNHS() >= 2000) {
@@ -521,7 +521,7 @@ public class Archivement_BoMong {
             case 3:
                 return "" + pl.nPoint.mpMax + "";
             case 4:
-                return "" + pl.event.getEventPointBHM() + "";
+                return "" + pl.event.getEventPointBoss() + "";
             case 5:
                 return "" + pl.event.getEventPointNHS() + "";
             case 6:

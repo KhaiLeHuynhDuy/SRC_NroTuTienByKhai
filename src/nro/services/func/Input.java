@@ -1074,7 +1074,8 @@ public class Input {
                 break;
                 case DOI_NGOC_HONG: {
                     int coin = Integer.parseInt(text[0]);
-                    int sl = coin;
+                    int slhn = (int) (coin * 3.8);
+
                     if (player.getSession() != null && player.getSession().vnd < coin) {
                         Service.gI().sendThongBao(player, "Bạn không đủ " + coin + " COIN");
                         return;
@@ -1085,11 +1086,11 @@ public class Input {
                     }
                     if (coin >= 20000 && coin <= 100000000) {
                         PlayerDAO.subvnd(player, coin);
-                        Item thoiVang = ItemService.gI().createNewItem((short) 861, sl);
-                        InventoryServiceNew.gI().addItemBag(player, thoiVang);
+                        Item hongngoc = ItemService.gI().createNewItem((short) 861, slhn);
+                        InventoryServiceNew.gI().addItemBag(player, hongngoc);
                         InventoryServiceNew.gI().sendItemBags(player);
-                        Service.gI().sendThongBao(player, "bạn nhận được " + sl
-                                + " " + thoiVang.template.name);
+                        Service.gI().sendThongBao(player, "bạn nhận được " + slhn
+                                + " " + hongngoc.template.name);
                     } else {
                         Service.gI().sendThongBao(player, "Chọn 1 con số từ 20000 đến 100000000");
                     }
@@ -1484,7 +1485,7 @@ public class Input {
 
     public void createFormDoiNgocHong(Player pl) {
 
-        createForm(pl, DOI_NGOC_HONG, "Đổi COIN --> Ngọc hồng < COIN x 1 >",
+        createForm(pl, DOI_NGOC_HONG, "Đổi COIN --> Ngọc hồng < COIN x 3.8 >",
                 new SubInput("Nhập số lượng COIN muốn đổi ra ngọc hồng", NUMERIC));
     }
 

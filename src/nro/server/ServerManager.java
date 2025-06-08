@@ -64,7 +64,7 @@ public class ServerManager {
     public static final Map CLIENTS = new HashMap();
 
     public static String NAME = "Girlkun75";
-    public static int PORT = 14445;
+    public static int PORT = 8878;
 
     private static ServerManager instance;
 
@@ -166,7 +166,7 @@ public class ServerManager {
         activeCommandLine();
         activeGame();
         activeServerSocket();
-        Logger.log(Logger.PURPLE, "\n      ▄█████ ]▄▄▄▄▄▄▃\n ▂▄▅███████▅▄▃▂\nI████[EMTI]████]\n ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤\n");
+//        Logger.log(Logger.PURPLE, "\n      ▄█████ ]▄▄▄▄▄▄▃\n ▂▄▅███████▅▄▃▂\nI████[EMTI]████]\n ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤\n");
 
 //        MaQuaTangManager.gI().init();
         new Thread(DaiHoiVoThuat.getInstance(), "Thread DHVT").start();
@@ -204,10 +204,10 @@ public class ServerManager {
                 try {
 
                     long start = System.currentTimeMillis();
-                    ConstDataEvent.isRunningSK16 = ConstDataEvent.isActiveEvent();
-                    SK20_10.isRunningSK2010 = SK20_10.isActiveEvent();
-                    ConstDataEventSM.isRunningSK = ConstDataEventSM.isActiveEvent();
-                    ConstDataEventNAP.isRunningSK = ConstDataEventNAP.isActiveEvent();
+//                    ConstDataEvent.isRunningSK16 = ConstDataEvent.isActiveEvent();
+//                    SK20_10.isRunningSK2010 = SK20_10.isActiveEvent();
+//                    ConstDataEventSM.isRunningSK = ConstDataEventSM.isActiveEvent();
+//                    ConstDataEventNAP.isRunningSK = ConstDataEventNAP.isActiveEvent();
                     TaskTraoQua.startTask();
                     TaskTraoQuaNHS.startTask();
 //                    TaskTraoQuaNap.startTask();
