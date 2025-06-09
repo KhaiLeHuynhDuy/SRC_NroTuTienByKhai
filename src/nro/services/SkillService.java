@@ -1261,26 +1261,34 @@ public class SkillService {
         }
     }
 
-    private void phanSatThuong(Player plAtt, Player plTarget, double dame) {
-
-        int percentPST = plTarget.nPoint.tlPST;
+    private void phanSatThuong(Player nguoiDanh, Player nguoiBiDanh, double dame) {
+        int percentPST = nguoiBiDanh.nPoint.tlPST;
+        if (nguoiBiDanh.dotpha == 2) {
+            percentPST += 25;
+        }
+        System.out.println("=> tỷ lệ phản sát thương: " + percentPST); // debug
+        System.out.println("=> dotpha của người bị đánh: " + nguoiBiDanh.dotpha);
+        System.out.println("=> ne don của người bị đánh: " + nguoiBiDanh.nPoint.tlNeDon);
         if (percentPST != 0) {
             double damePST = dame * percentPST / 100;
+
+            System.out.println("=> Gọi phanSatThuong, người bị phản: " + nguoiDanh.name);
+            System.out.println("=> dame gốc: " + dame);
+            System.out.println("=> dame phản (25%): " + damePST);
+
             Message msg;
             try {
                 msg = new Message(56);
-                msg.writer().writeInt((int) plAtt.id);
-                if (damePST >= plAtt.nPoint.hp) {
-                    damePST = Util.maxIntValue(plAtt.nPoint.hp - 1);
-                }
+                msg.writer().writeInt((int) nguoiDanh.id);
 
-                damePST = plAtt.injured(null, damePST, true, false);
+                // Tính sát thương phản thực tế
+                damePST = nguoiDanh.injured(null, damePST, true, false);
 
-                msg.writeFix(Util.maxIntValue(plAtt.nPoint.hp));
+                msg.writeFix(Util.maxIntValue(nguoiDanh.nPoint.hp));
                 msg.writeFix(Util.maxIntValue(damePST));
-                msg.writer().writeBoolean(false);
-                msg.writer().writeByte(36);
-                Service.gI().sendMessAllPlayerInMap(plAtt.zone, msg);
+                msg.writer().writeBoolean(false); // unknown flag
+                msg.writer().writeByte(36); // hiệu ứng phản sát thương
+                Service.gI().sendMessAllPlayerInMap(nguoiDanh.zone, msg);
                 msg.cleanup();
             } catch (Exception e) {
                 e.printStackTrace();

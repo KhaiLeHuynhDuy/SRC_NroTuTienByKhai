@@ -893,16 +893,28 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         setPotara6();
     }
 
-    private void setNeDon() {//Zalo: 0358124452//Name: EMTI 
-        if (this.tlNeDon > 90) {//Zalo: 0358124452//Name: EMTI 
+    private void setNeDon() {
+        // Thiết lập tối đa né đòn là 90%
+        if (this.tlNeDon > 90) {
             this.tlNeDon = 90;
         }
-//set vo cuc tu tai
-//khaile add
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+
+        // ======= Bonus né đòn từ Set Vô Cực Tự Tại =======
+        if (this.player != null
+                && this.player.setClothes != null
+                && this.player.setClothes.setVoCucTuTai == 5) {
             this.tlNeDon += 20;
         }
-//end khaile add
+
+        // ======= Bonus né đòn từ đột phá (Pháp Tu - dotpha = 1) =======
+        if (this.player != null && this.player.dotpha == 1) {
+            this.tlNeDon += 15;
+        }
+
+        // Đảm bảo sau khi cộng bonus, tlNeDon không vượt quá 90%
+        if (this.tlNeDon > 90) {
+            this.tlNeDon = 90;
+        }
     }
 
     public void setPotara2() {//Zalo: 0358124452//Name: EMTI 
