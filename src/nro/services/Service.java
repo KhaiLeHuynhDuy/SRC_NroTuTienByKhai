@@ -942,9 +942,18 @@ public class Service {
                     .append("/").append(Util.getFormatNumber(player.nPoint.hpMax))
                     .append("\nKi: ").append(Util.getFormatNumber(player.nPoint.mp))
                     .append("/").append(Util.getFormatNumber(player.nPoint.mpMax))
-                    .append("\nSức đánh: ").append(Util.getFormatNumber(player.nPoint.dame))
-                    .append("\nTỉ lệ né: ").append(Util.getFormatNumber(player.nPoint.tlNeDon))
-                    .append("\nPhản sát thương: ").append(Util.getFormatNumber(player.nPoint.tlPST));
+                    .append("\nSức đánh: ").append(Util.getFormatNumber(player.nPoint.dame));
+
+            // ======= Né đòn ========
+            int tiLeNe = player.nPoint.tlNeDon;
+            info.append("\nTỉ lệ né: ").append(Util.getFormatNumber(tiLeNe));
+
+            // ======= Phản sát thương ========
+            int tiLePST = player.nPoint.tlPST;
+            if (player.dotpha == 2) {
+                tiLePST += 20;
+            }
+            info.append("\nPhản sát thương: ").append(Util.getFormatNumber(tiLePST));
 
             sendThongBaoOK(player, info.toString());
         }

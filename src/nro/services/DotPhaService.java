@@ -54,7 +54,6 @@ public class DotPhaService {
                         player.nPoint.hpg = player.nPoint.hpg + 3_000_000;
                         player.nPoint.mpg = player.nPoint.mpg + 3_000_000;
                         player.nPoint.tlNeDon += 15;
-
                         player.inventory.ruby -= 1_000_000;
                         Service.gI().sendMoney(player);
 
@@ -70,7 +69,6 @@ public class DotPhaService {
                         player.nPoint.dameg = player.nPoint.dameg + 1_000_000;
                         player.nPoint.hpg = player.nPoint.hpg + 18_000_000;
                         player.nPoint.mpg = player.nPoint.mpg + 18_000_000;
-                        player.nPoint.tlPST += 25;
                         Service.gI().sendThongBaoOK(player, "Bạn đã đột phá thành Thể Tu!");
                     }
                 }

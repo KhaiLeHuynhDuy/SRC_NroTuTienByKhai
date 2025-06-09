@@ -747,6 +747,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 dataArray.add(mp);
                 dataArray.add(player.numKillSieuHang);
                 dataArray.add(player.rankSieuHang);
+                dataArray.add(player.dotpha);
                 String point = dataArray.toJSONString();
                 dataArray.clear();
 
