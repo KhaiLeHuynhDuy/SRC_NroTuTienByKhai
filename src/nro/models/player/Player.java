@@ -488,6 +488,8 @@ public class Player {
 //                        pointfusion.update();
 //                    }
 
+                  
+
                     if (this.lastTimeTitle1 != 0 && Util.canDoWithTime(this.lastTimeTitle1, 6000)) {
                         lastTimeTitle1 = 0;
                         isTitleUse = false;

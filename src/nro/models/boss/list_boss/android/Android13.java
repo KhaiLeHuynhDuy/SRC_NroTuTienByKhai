@@ -48,6 +48,8 @@ public class Android13 extends Boss {
 
         //Item roi
         Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 
         if (Util.isTrue(99, 100)) {
             Service.gI().dropItemMap(this.zone, Util.RaitiDoc12(zone, Manager.itemDC12[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));

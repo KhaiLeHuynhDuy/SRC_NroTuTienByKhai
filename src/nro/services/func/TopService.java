@@ -65,7 +65,7 @@ public class TopService implements Runnable {
                 //                + "   OR account_id > 53447 \n"
                 //                + "ORDER BY sm DESC \n"
                 //                + "LIMIT 20;" ;
-                "SELECT name, CAST( split_str(data_point,',',2) AS UNSIGNED) AS sm FROM player WHERE create_time > '2024-" + ConstDataEventSM.MONTH_OPEN + "-" + ConstDataEventSM.DATE_OPEN + " "+ConstDataEventSM.HOUR_OPEN+":"+ConstDataEventSM.MIN_OPEN+":00' ORDER BY CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 20;";
+                "SELECT name, CAST( split_str(data_point,',',2) AS UNSIGNED) AS sm FROM player WHERE create_time > '2024-" + ConstDataEventSM.MONTH_OPEN + "-" + ConstDataEventSM.DATE_OPEN + " " + ConstDataEventSM.HOUR_OPEN + ":" + ConstDataEventSM.MIN_OPEN + ":00' ORDER BY CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 20;";
         PreparedStatement ps;
         ResultSet rs;
         try {
@@ -349,8 +349,11 @@ public class TopService implements Runnable {
             try {
                 if (Manager.timeRealTop + (30 * 60 * 1000) < System.currentTimeMillis()) {
                     Manager.timeRealTop = System.currentTimeMillis();
-                    try ( Connection con = GirlkunDB.getConnection()) {
+                    try (Connection con = GirlkunDB.getConnection()) {
                         Manager.topSieuHang = Manager.realTopSieuHang(con);
+                        //khaile add
+                        Manager.topSD = Manager.realTop(Manager.queryTopSD, con);
+                        //end khaile add
                         Manager.topNV = Manager.realTop(Manager.queryTopNV, con);
                         Manager.topSM = Manager.realTop(Manager.queryTopSM, con);
                         Manager.topSM2 = Manager.realTop(Manager.queryTopSM2, con);
@@ -359,7 +362,7 @@ public class TopService implements Runnable {
 //                        Manager.topNHS = Manager.realTop(Manager.queryTopNHS, con);
                         Manager.topSKHE = Manager.realTop(Manager.queryTopSKHE2, con);
                         Manager.topTV = Manager.realTop(Manager.queryTopTV, con);
-                         Manager.topDauThan = Manager.realTop(Manager.queryTopDauThan, con);
+                        Manager.topDauThan = Manager.realTop(Manager.queryTopDauThan, con);
 //                        Manager.topSKNEW = Manager.realTop(Manager.queryTopSKNEW, con);
                     } catch (SQLException e) {
                         e.printStackTrace();

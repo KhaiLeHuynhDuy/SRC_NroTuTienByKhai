@@ -397,7 +397,6 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             dataArray.clear();
 
             long time_dd = 0;
-            
 
             GirlkunDB.executeUpdate("insert into player"
                     + "(account_id, name, head, gender, have_tennis_space_ship, clan_id_sv" + Manager.SERVER + ", "
@@ -747,6 +746,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 dataArray.add(mp);
                 dataArray.add(player.numKillSieuHang);
                 dataArray.add(player.rankSieuHang);
+                dataArray.add(player.dotpha);
                 String point = dataArray.toJSONString();
                 dataArray.clear();
 

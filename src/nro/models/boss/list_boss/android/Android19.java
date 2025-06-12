@@ -20,8 +20,6 @@ import nro.utils.Util;
 
 public class Android19 extends Boss {
 
-    boolean isReady;
-
     public Android19() throws Exception {
         super(BossType.ANDROID_19, BossesData.ANDROID_19);
     }
@@ -35,6 +33,8 @@ public class Android19 extends Boss {
 
         //Item roi
         Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 
         if (Util.isTrue(99, 100)) {
             Service.gI().dropItemMap(this.zone, Util.RaitiDoc12(zone, Manager.itemDC12[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
@@ -74,7 +74,7 @@ public class Android19 extends Boss {
         }
         try {
         } catch (Exception ex) {
-            Logger.logException(Android19.class, ex);
+            Logger.logException(Pic.class, ex);
         }
         this.attack();
         if (Util.canDoWithTime(st, 900000)) {
@@ -84,36 +84,40 @@ public class Android19 extends Boss {
 
     @Override
     public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
-        if (plAtt != null) {
-            switch (plAtt.playerSkill.skillSelect.template.id) {
-                case Skill.KAMEJOKO:
-                case Skill.MASENKO:
-                case Skill.ANTOMIC:
-                    int hpHoi = (int) ((long) damage * 80 / 100);
-                    PlayerService.gI().hoiPhuc(this, hpHoi, 0);
-                    if (Util.isTrue(1, 5)) {
-                        this.chat("Hấp thụ.. các ngươi nghĩ sao vậy?");
-                    }
-                    return 0;
+        if (!this.isDie()) {
+            if (!piercing && Util.isTrue(40, 1000)) {
+                this.chat("Xí hụt");
+                return 0;
             }
-        }
-        damage = this.nPoint.subDameInjureWithDeff(damage);
-        if (plAtt != null && !piercing && effectSkill.isShielding) {
-            if (damage > nPoint.hpMax) {
-                EffectSkillService.gI().breakShield(this);
+            if (plAtt != null) {
+                switch (plAtt.playerSkill.skillSelect.template.id) {
+                    case Skill.KAMEJOKO:
+                        damage = damage / 2;
+                    case Skill.LIEN_HOAN:
+                        damage = damage * 75 / 100;
+                    case Skill.MASENKO:
+                        damage = damage * 130 / 100;
+                    case Skill.GALICK:
+                        damage = damage * 70 / 100;
+                }
             }
-            damage = damage * 0.5;
+            damage = this.nPoint.subDameInjureWithDeff(damage);
+            if (plAtt != null && !piercing && effectSkill.isShielding) {
+                if (damage > nPoint.hpMax) {
+                    EffectSkillService.gI().breakShield(this);
+                }
+                damage = damage * 0.5;
+            }
+            this.nPoint.subHP(damage);
+            if (isDie()) {
+                this.setDie(plAtt);
+                die(plAtt);
+            }
+            return damage;
+        } else {
+            return 0;
         }
-        return super.injured(plAtt, damage, piercing, isMobAttack);
     }
-
-    @Override
-    public void wakeupAnotherBossWhenDisappear() {
-        if (this.getParentBoss() != null) {
-            this.getParentBoss().changeToTypePK();
-        }
-    }
-
 }
 
 /**

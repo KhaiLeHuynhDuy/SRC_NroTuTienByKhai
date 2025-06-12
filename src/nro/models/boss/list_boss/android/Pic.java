@@ -22,22 +22,10 @@ import nro.services.func.ChangeMapService;
 import nro.utils.Logger;
 import nro.utils.Util;
 
-public class Pic extends SmallBoss {
-
-    protected boolean isReady;
-    private short x;
-    private short y;
+public class Pic extends Boss {
 
     public Pic() throws Exception {
         super(BossType.PIC, BossesData.PIC);
-    }
-
-    public Pic(Boss bigBoss, Zone zone, short x, short y, BossData data) throws Exception {
-        super(BossType.PIC, bigBoss, data);
-        this.isReady = false;
-        this.zone = zone;
-        this.x = x;
-        this.y = y;
     }
 
     @Override
@@ -49,6 +37,8 @@ public class Pic extends SmallBoss {
 
         //Item roi
         Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 
         if (Util.isTrue(99, 100)) {
             Service.gI().dropItemMap(this.zone, Util.RaitiDoc12(zone, Manager.itemDC12[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
@@ -209,7 +199,6 @@ public class Pic extends SmallBoss {
             if (plAtt != null) {
                 switch (plAtt.playerSkill.skillSelect.template.id) {
                     case Skill.KAMEJOKO:
-
                         damage = damage / 2;
                     case Skill.LIEN_HOAN:
                         damage = damage * 75 / 100;

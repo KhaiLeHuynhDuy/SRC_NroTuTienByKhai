@@ -53,11 +53,9 @@ public class DotPhaService {
                         player.nPoint.dameg = player.nPoint.dameg + 6_000_000;
                         player.nPoint.hpg = player.nPoint.hpg + 3_000_000;
                         player.nPoint.mpg = player.nPoint.mpg + 3_000_000;
-                        player.nPoint.tlNeDon += 15;
-
                         player.inventory.ruby -= 1_000_000;
                         Service.gI().sendMoney(player);
-
+                        Service.gI().point(player);
                         Service.gI().sendThongBaoOK(player, "Bạn đã đột phá thành Pháp Tu!");
                     }
                 }
@@ -70,7 +68,7 @@ public class DotPhaService {
                         player.nPoint.dameg = player.nPoint.dameg + 1_000_000;
                         player.nPoint.hpg = player.nPoint.hpg + 18_000_000;
                         player.nPoint.mpg = player.nPoint.mpg + 18_000_000;
-                        player.nPoint.tlPST += 25;
+                        Service.gI().point(player);
                         Service.gI().sendThongBaoOK(player, "Bạn đã đột phá thành Thể Tu!");
                     }
                 }
@@ -84,7 +82,7 @@ public class DotPhaService {
                         player.nPoint.defg = player.nPoint.defg + 10_000_000;
                         player.nPoint.hpg = player.nPoint.hpg + 10_000_000;
                         player.nPoint.mpg = player.nPoint.mpg + 10_000_000;
-
+                        Service.gI().point(player);
                         Item newItem = ItemService.gI().createNewItem((short) 1708);
                         newItem.itemOptions.add(new Item.ItemOption(30, 1));
                         newItem.itemOptions.add(new Item.ItemOption(202, 0));

@@ -332,7 +332,7 @@ public class ShopKyGuiService {
                 this.openShopKyGui(pl);
             } else {
                 pl.iDMark.setIdItemUpTop((short) id);
-                NpcService.gI().createMenuConMeo(pl, 527, -1, "Bạn có muốn đưa vật phẩm ['" + ItemService.gI().createNewItem(it.itemId).template.name + "'] của bản thân lên trang đầu?\nYêu cầu "+costThoiVangUpTop+" thỏi vàng.", new String[]{"Đồng ý", "Từ Chối"});
+                NpcService.gI().createMenuConMeo(pl, 527, -1, "Bạn có muốn đưa vật phẩm ['" + ItemService.gI().createNewItem(it.itemId).template.name + "'] của bản thân lên trang đầu?\nYêu cầu " + costThoiVangUpTop + " thỏi vàng.", new String[]{"Đồng ý", "Từ Chối"});
             }
         } else {
             Service.gI().sendThongBao(pl, "Vật phẩm không tồn tại hoặc đã được bán");
@@ -482,7 +482,7 @@ public class ShopKyGuiService {
             }
 
             if (!this.SubThoiVang(pl, costThoiVangKiGui)) {
-                Service.gI().sendThongBao(pl, "Bạn cần có ít nhất "+costThoiVangKiGui+" thỏi vàng để làm phí đăng bán");
+                Service.gI().sendThongBao(pl, "Bạn cần có ít nhất " + costThoiVangKiGui + " thỏi vàng để làm phí đăng bán");
                 this.openShopKyGui(pl);
                 return;
             }
@@ -624,7 +624,10 @@ public class ShopKyGuiService {
                         msg.writer().writeInt(itk.gemSell);
                         msg.writer().writeByte(0);
                         msg.writer().writeInt(itk.quantity);
-                        msg.writer().writeByte((long) itk.player_sell == pl.id ? 1 : 0);
+                        //khaile thu fix
+                        //msg.writer().writeByte((long) itk.player_sell == pl.id ? 1 : 0);
+                        msg.writer().writeByte(itk.player_sell == pl.id ? 1 : 0);
+
                         msg.writer().writeByte(it.itemOptions.size());
 
                         for (int b = 0; b < it.itemOptions.size(); ++b) {

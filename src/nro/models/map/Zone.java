@@ -879,8 +879,11 @@ public class Zone {
                 .sendFlagPlayerToMe(plReceive, plInfo);
         if (!plInfo.isBoss && !plInfo.isPet && !plInfo.isNewPet && !plInfo.isMiniPet && !(plInfo instanceof BossDHVT) && !(plInfo instanceof Referee) & !(plInfo instanceof Yajiro)) {
             Service.gI().sendPetFollow(plReceive, (plReceive.getLinhThu()));
+            if (plInfo.inventory.itemsBody.get(13).isNotNullItem()) {
+                Service.gI().sendTitleRv(plInfo, plReceive, (short) plInfo.inventory.itemsBody.get(13).template.id);
+            }
             if (plInfo.inventory.itemsBody.get(11).isNotNullItem()) {
-                Service.gI().sendTitleRv(plInfo, plReceive, (short) plInfo.inventory.itemsBody.get(11).template.id);
+                Service.gI().sendFootRv(plInfo, plReceive, (short) plInfo.inventory.itemsBody.get(11).template.id);
             }
         }
 

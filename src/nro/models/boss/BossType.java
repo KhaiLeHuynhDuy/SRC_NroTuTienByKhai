@@ -87,8 +87,7 @@ public class BossType {
     public static final int BLACK1 = 56;
     public static final int BLACK2 = 57;
     public static final int ZAMAS_KAIO = 58;
-    public static final int ZAMAS_ZIN = 59;
-    public static final int ZAMAS_TOITHUONG = 115;
+    public static final int ZAMAS = 59;
     public static final int THAN_HUY_DIET = 60;
     public static final int THIEN_SU_WHIS = 61;
     public static final int THAN_HUY_DIET_CHAMPA = 62;
@@ -166,7 +165,7 @@ public class BossType {
     public static final byte MATROI = 112;
     public static final byte XUONG = 113;
     public static final byte GOKU_VOCUC = 114;
-
+    public static final int ZAMAS_TOITHUONG = 115;
     public static final byte SUPER_BLACK_GOKU_2 = 116;
     public static final int AN_TROM_TV = 117;
 
@@ -179,7 +178,9 @@ public class BossType {
     public static final int MABUGAY = 124;
     public static final int XIAO = 125;
     public static final int AKAYA = 126;
-    public static final int HuyetMa = 127;
+    public static final int HUYET_MA = 127;
+    public static final int SUPER_BLACK_GOKU = 128;
+    public static final int MAVUONG = 129;
     //    public static boolean isBossNinjaClone(int id) {
 //        return (id >= NINJA_AO_TIM_CLONE && id <= NINJA_AO_TIM_CLONE_MAX);
 //    }

@@ -1028,7 +1028,7 @@ public class Input {
                 break;
                 case DOI_THOI_VANG: {
                     int coin = Integer.parseInt(text[0]);
-                    int sl = coin / 1000;
+                    int sl = (int) ((int)coin * 0.5f);
                     if (player.getSession() != null && player.getSession().vnd < coin) {
                         Service.gI().sendThongBao(player, "Bạn không đủ " + coin + " COIN");
                         return;
@@ -1074,7 +1074,7 @@ public class Input {
                 break;
                 case DOI_NGOC_HONG: {
                     int coin = Integer.parseInt(text[0]);
-                    int slhn = (int) (coin * 3.8);
+                    int slhn = (int) (coin * 15);
 
                     if (player.getSession() != null && player.getSession().vnd < coin) {
                         Service.gI().sendThongBao(player, "Bạn không đủ " + coin + " COIN");
@@ -1473,7 +1473,7 @@ public class Input {
 
     public void createFormDoiThoiVang(Player pl) {
 
-        createForm(pl, DOI_THOI_VANG, "Đổi COIN --> Thỏi vàng < COIN / 1000 >",
+        createForm(pl, DOI_THOI_VANG, "Đổi COIN --> Thỏi vàng < COIN x 0.5 >",
                 new SubInput("Nhập số lượng COIN muốn đổi ra thỏi vàng", NUMERIC));
     }
 
@@ -1485,7 +1485,7 @@ public class Input {
 
     public void createFormDoiNgocHong(Player pl) {
 
-        createForm(pl, DOI_NGOC_HONG, "Đổi COIN --> Ngọc hồng < COIN x 3.8 >",
+        createForm(pl, DOI_NGOC_HONG, "Đổi COIN --> Ngọc hồng < COIN x 15 >",
                 new SubInput("Nhập số lượng COIN muốn đổi ra ngọc hồng", NUMERIC));
     }
 

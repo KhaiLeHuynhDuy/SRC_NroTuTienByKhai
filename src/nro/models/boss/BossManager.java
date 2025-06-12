@@ -26,7 +26,7 @@ import nro.models.boss.list_boss.Doraemon.Xeko;
 import nro.models.boss.list_boss.Doraemon.Xuka;
 import nro.models.boss.list_boss.fide.Fide;
 import nro.models.boss.list_boss.Doraemon.Chaien;
-import nro.models.boss.list_boss.GoHanZoomBi;
+import nro.models.boss.list_boss.GoHan_Ta_Hoa;
 //import nro.models.boss.list_boss.MaTroi;
 import nro.models.boss.list_boss.Mabu12h.MabuBoss;
 import nro.models.boss.list_boss.Mabu12h.BuiBui;
@@ -126,55 +126,57 @@ public class BossManager {
 //        ExecutorService executor = Executors.newFixedThreadPool(10); // Số lượng threads có thể được điều chỉnh
 
             int[] bossTypes = {
-                BossType.TIEU_DOI_TRUONG,
-                BossType.KING_KONG, BossType.PIC, BossType.POC,
+                BossType.TIEU_DOI_TRUONG, BossType.SO_1, BossType.SO_2, BossType.SO_3, BossType.SO_4,
+                BossType.KING_KONG, BossType.PIC, BossType.POC, BossType.SUPER_ANDROID_17,
                 BossType.CUMBER,
                 BossType.MA_TROI,
                 BossType.SIEU_BO_HUNG, BossType.XEN_BO_HUNG,
-                BossType.BLACK,
+                BossType.BLACK, BossType.SUPER_BLACK_GOKU, BossType.SUPER_BLACK_GOKU_2,
                 BossType.BU_MAP,
                 BossType.KUKU, BossType.MAP_DAU_DINH, BossType.RAMBO,
                 BossType.FIDE,
-                BossType.DR_KORE,
-                BossType.ANDROID_13, BossType.ANDROID_14, BossType.ANDROID_15,// BossType.SUPER_ANDROID_17,
+                BossType.DR_KORE, BossType.ANDROID_19,
+                BossType.ANDROID_13, BossType.ANDROID_14, BossType.ANDROID_15,
                 BossType.DORAEMON, BossType.NOBITA, BossType.CHAIEN, BossType.XUKA, BossType.XEKO,
                 BossType.GOKU_VOCUC,
-                BossType.ZAMAS_ZIN, BossType.ZAMAS_KAIO, BossType.ZAMAS_TOITHUONG,
-                BossType.SUPER_BLACK_GOKU_2,
+                BossType.ZAMAS, BossType.ZAMAS_KAIO, BossType.ZAMAS_TOITHUONG,
                 BossType.CHILL,
                 BossType.DOI,
                 BossType.MATROI,
                 BossType.XUONG,
-                BossType.HuyetMa,
+                BossType.MAVUONG,
+                BossType.HUYET_MA,
                 BossType.NHAT_THAN, BossType.NGUYET_THAN,
                 BossType.FIDE2, BossType.HEART,
                 BossType.HUTAO, BossType.XIAO, BossType.AKAYA,
                 BossType.JEM_NI_BA, BossType.TOP_PO,
-                BossType.GRANONA, BossType.GOHAN, BossType.COOLER, BossType.BROLY, BossType.BROLY_SUPER, BossType.AN_TROM, BossType.AN_TROM_TV
+                BossType.GRANONA, BossType.GOHAN, BossType.COOLER,
+                BossType.BROLY, BossType.BROLY_SUPER,
+                BossType.AN_TROM, BossType.AN_TROM_TV
             };
             for (int i = 0; i < bossTypes.length; i++) {
                 switch (bossTypes[i]) {
-                    case BossType.KUKU:
-                    case BossType.MAP_DAU_DINH:
-                    case BossType.RAMBO:
-                        for (int j = 0; j < 1; j++) {
-                            createBoss(bossTypes[i]);
-                            Thread.sleep(1000);
-                        }
-                        break;
-                    case BossType.DOI:
-                    case BossType.AN_TROM:
-                    case BossType.MATROI:
-                    case BossType.XUONG:
-                    case BossType.NHAT_THAN:
-                    case BossType.NGUYET_THAN:
-                    case BossType.AN_TROM_TV:
-
-                        for (int k = 0; k < 4; k++) {
-                            createBoss(bossTypes[i]);
-                            Thread.sleep(1000);
-                        }
-                        break;
+//                    case BossType.KUKU:
+//                    case BossType.MAP_DAU_DINH:
+//                    case BossType.RAMBO:
+//                        for (int j = 0; j < 1; j++) {
+//                            createBoss(bossTypes[i]);
+//                            Thread.sleep(1000);
+//                        }
+//                        break;
+//                    case BossType.DOI:
+//                    case BossType.AN_TROM:
+//                    case BossType.MATROI:
+//                    case BossType.XUONG:
+//                    case BossType.NHAT_THAN:
+//                    case BossType.NGUYET_THAN:
+//                    case BossType.AN_TROM_TV:
+//
+//                        for (int k = 0; k < 4; k++) {
+//                            createBoss(bossTypes[i]);
+//                            Thread.sleep(1000);
+//                        }
+//                        break;
                     case BossType.BROLY_THUONG:
                         for (int q = 0; q < 2; q++) {
                             createBoss(BossType.BROLY_THUONG);
@@ -184,6 +186,12 @@ public class BossManager {
                     case BossType.BROLY_SUPER:
                         for (int q = 0; q < 2; q++) {
                             createBoss(BossType.BROLY_SUPER);
+                            Thread.sleep(1000);
+                        }
+                        break;
+                    case BossType.HUYET_MA:
+                        for (int q = 0; q < 3; q++) {
+                            createBoss(BossType.HUYET_MA);
                             Thread.sleep(1000);
                         }
                         break;
@@ -451,6 +459,8 @@ public class BossManager {
                     return new Cooler();
                 case BossType.BLACK:
                     return new Black();
+                case BossType.MAVUONG:
+                    return new MaVuong();
                 case BossType.CUMBER:
                     return new Cumber();
 //                case BossType.DOI:
@@ -463,20 +473,22 @@ public class BossManager {
 //                    return new NhatThan();
 //                case BossType.NGUYET_THAN:
 //                    return new NguyetThan();
-                case BossType.HuyetMa:
+                case BossType.HUYET_MA:
                     return new HuyetMa();
 //                case BossType.CHILL:
 //                    return new Chill();
-//                case BossType.GOHAN:
-//                    return new GoHanZoomBi();
+                case BossType.GOHAN:
+                    return new GoHan_Ta_Hoa();
                 case BossType.GOKU_VOCUC:
                     return new Gokuvc();
-                case BossType.ZAMAS_ZIN:
+                case BossType.ZAMAS:
                     return new Zamas();
                 case BossType.ZAMAS_KAIO:
                     return new ZamasKaio();
                 case BossType.ZAMAS_TOITHUONG:
                     return new ZamasToiThuong();
+                case BossType.SUPER_BLACK_GOKU:
+                    return new SuperBlack();
                 case BossType.SUPER_BLACK_GOKU_2:
                     return new SuperBlack2();
                 case BossType.BROLY:

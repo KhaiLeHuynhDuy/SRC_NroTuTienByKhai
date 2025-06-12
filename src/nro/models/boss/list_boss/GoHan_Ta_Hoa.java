@@ -1,35 +1,34 @@
-package nro.models.boss.list_boss.NgucTu;
+package nro.models.boss.list_boss;
 
 import nro.models.boss.Boss;
 import nro.models.boss.BossType;
 import nro.models.boss.BossesData;
+import nro.models.item.Item;
 import nro.models.map.ItemMap;
 import nro.models.player.Player;
-import nro.server.Manager;
 import nro.services.Service;
 import nro.utils.Util;
 import java.util.Random;
 import nro.consts.ConstPlayer;
 import nro.models.boss.BossStatus;
-import nro.models.boss.list_boss.BLACK.Black;
+import nro.models.boss.list_boss.android.Pic;
 import nro.models.skill.Skill;
+import nro.server.Manager;
 import nro.services.EffectSkillService;
-import nro.services.PlayerService;
 import nro.services.TaskService;
 import nro.utils.Logger;
 
-public class Cumber extends Boss {
+public class GoHan_Ta_Hoa extends Boss {
 
-    public Cumber() throws Exception {
-        super(BossType.CUMBER, BossesData.CUMBER, BossesData.SP_CUMBER);
+    public GoHan_Ta_Hoa() throws Exception {
+        super(BossType.GOHAN, BossesData.GOHAN_TA_HOA);
     }
 
     @Override
     public void reward(Player pl) {
-        pl.event.addEventPointBoss(3);
-        Service.gI().sendThongBao(pl, "Bạn nhận được 3 điểm săn boss");
-        byte randomDo = (byte) new Random().nextInt(Manager.itemIds_TL.length - 1);
-        byte randomDo2 = (byte) new Random().nextInt(Manager.manhts.length - 1);
+        pl.event.addEventPointBoss(1);
+        Service.gI().sendThongBao(pl, "Bạn nhận được 1 điểm săn boss");
+        byte randomDo = (byte) new Random().nextInt(Manager.itemDC12.length - 1);
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length - 1);
 
         //Item roi
@@ -37,13 +36,13 @@ public class Cumber extends Boss {
         Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 
-        if (Util.isTrue(9, 10)) {
-            Service.gI().dropItemMap(this.zone, Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        if (Util.isTrue(99, 100)) {
+            Service.gI().dropItemMap(this.zone, Util.RaitiDoc12(zone, Manager.itemDC12[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         } else {
             Service.gI().dropItemMap(this.zone, new ItemMap(zone, Manager.itemIds_NR_SB[randomNR], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         }
-        if (Util.isTrue(9, 10)) {
-            Service.gI().dropItemMap(this.zone, new ItemMap(zone, Manager.manhts[randomDo2], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        if (Util.isTrue(1, 100)) {
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1466, 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         } else {
             Service.gI().dropItemMap(this.zone, new ItemMap(zone, 462, 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 
@@ -75,7 +74,7 @@ public class Cumber extends Boss {
         }
         try {
         } catch (Exception ex) {
-            Logger.logException(Cumber.class, ex);
+            Logger.logException(Pic.class, ex);
         }
         this.attack();
         if (Util.canDoWithTime(st, 900000)) {
@@ -84,30 +83,32 @@ public class Cumber extends Boss {
     }
 
     @Override
-
     public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
+            if (!piercing && Util.isTrue(40, 1000)) {
+                this.chat("Xí hụt");
+                return 0;
+            }
             if (plAtt != null) {
                 switch (plAtt.playerSkill.skillSelect.template.id) {
                     case Skill.KAMEJOKO:
+                        damage = damage / 2;
+                    case Skill.LIEN_HOAN:
+                        damage = damage * 75 / 100;
                     case Skill.MASENKO:
-                    case Skill.ANTOMIC:
-                        int hpHoi = (int) ((long) damage * 30 / 100);
-                        PlayerService.gI().hoiPhuc(this, hpHoi, 0);
-                        PlayerService.gI().hoiPhuc(plAtt, hpHoi / 3, 0);
-                        if (Util.isTrue(1, 5)) {
-                            this.chat("Hấp thụ.. các ngươi nghĩ sao vậy?");
-                        }
-                        return 0;
+                        damage = damage * 130 / 100;
+                    case Skill.GALICK:
+                        damage = damage * 70 / 100;
                 }
             }
+            damage = this.nPoint.subDameInjureWithDeff(damage);
             if (plAtt != null && !piercing && effectSkill.isShielding) {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
                 }
                 damage = damage * 0.5;
             }
-            this.nPoint.subHP(damage / 10);
+            this.nPoint.subHP(damage);
             if (isDie()) {
                 this.setDie(plAtt);
                 die(plAtt);

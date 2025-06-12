@@ -151,41 +151,45 @@ public class TransactionService implements Runnable {
                             }
                         }
                         break;
-//                     case ADD_ITEM_TRADE:
-//                        if (trade != null) {
-//                            byte index = msg.reader().readByte();
-//                            int quantity = msg.reader().readInt();
-//                            if( quantity <0){
-//                                Service.gI().sendThongBao(pl, "Không thể thực hiện");
-//                                trade.cancelTrade();
-//                                break;
-//                            }
-//                            if (quantity == 0) {//do
-//                                quantity = 1;
-//                            }
-//                            trade.addItemTrade(pl, index, quantity);
-//                        }
-//                        break;
                     case ADD_ITEM_TRADE:
                         if (trade != null) {
                             byte index = msg.reader().readByte();
                             int quantity = msg.reader().readInt();
-                            // Kiểm tra index hợp lệ
-                            if (index < 0 || index >= pl.inventory.itemsBag.size()) {
-                                Service.gI().sendThongBao(pl, "Vật phẩm không tồn tại");
+                            if (quantity < 0) {
+                                Service.gI().sendThongBao(pl, "Không thể thực hiện");
                                 trade.cancelTrade();
                                 break;
                             }
-                            // Kiểm tra số lượng hợp lệ
-                            Item item = pl.inventory.itemsBag.get(index);
-                            if (quantity <= 0 || quantity > item.quantity) {
-                                Service.gI().sendThongBao(pl, "Số lượng không hợp lệ");
-                                trade.cancelTrade();
-                                break;
+                            if (quantity == 0) {//do
+                                quantity = 1;
                             }
+                            if (index != 1 && quantity > 999999) {
+                                Service.gI().sendThongBao(pl, "Đã quá giới hạn giao dịch");
+                                trade.cancelTrade();
+                            }                     
                             trade.addItemTrade(pl, index, quantity);
                         }
                         break;
+                    //  case ADD_ITEM_TRADE:
+                    //   if (trade != null) {
+                    ///   byte index = msg.reader().readByte();
+                    // int quantity = msg.reader().readInt();
+                    // Kiểm tra index hợp lệ
+                    //      if (index < 0 || index >= pl.inventory.itemsBag.size()) {
+                    //     Service.gI().sendThongBao(pl, "Vật phẩm không tồn tại");
+                    //    trade.cancelTrade();
+                    //     break;
+                    /// }
+                    // Kiểm tra số lượng hợp lệ
+                    ///   Item item = pl.inventory.itemsBag.get(index);
+                    ///  if (quantity <= 0 || quantity > item.quantity) {
+                    /////      Service.gI().sendThongBao(pl, "Số lượng không hợp lệ");
+                    // trade.cancelTrade();
+                    //    break;
+                    //  }
+                    //  trade.addItemTrade(pl, index, quantity);
+                    //  }
+                    ///   break;
                     case CANCEL_TRADE:
                         if (trade != null) {
                             trade.cancelTrade();

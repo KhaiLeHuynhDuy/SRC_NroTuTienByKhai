@@ -48,6 +48,8 @@ public class Cooler extends Boss {
             }
             //Item roi
             Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 
             if (Util.isTrue(9, 10)) {
                 Service.gI().dropItemMap(zone, Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x + X, this.location.y, pl.id));

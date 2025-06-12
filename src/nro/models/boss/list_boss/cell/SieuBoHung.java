@@ -65,6 +65,8 @@ public class SieuBoHung extends Boss {
 
         int randomNR = new Random().nextInt(NRs.length);
         Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
 
         if (Util.isTrue(cn.tileroinr, 100)) {
             ItemMap it = new ItemMap(this.zone, 14, 1, this.location.x, this.zone.map.yPhysicInTop(this.location.x,
@@ -132,8 +134,8 @@ public class SieuBoHung extends Boss {
                 "Xên con " + (XEN_CON_1 - BossType.XEN_CON_1), //name
                 ConstPlayer.XAYDA, //gender
                 new short[]{264, 265, 266, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-                150000, //dame
-                new long[]{15000000}, //hp
+                15000000, //dame
+                new long[]{1_500_000_000}, //hp
                 new int[]{1}, //map join
                 new int[][]{
                     {Skill.DRAGON, 7, 1000},

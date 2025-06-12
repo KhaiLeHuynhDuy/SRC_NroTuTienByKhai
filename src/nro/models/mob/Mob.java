@@ -377,44 +377,12 @@ public class Mob {
 
         if (isDie() && (tempId == 71 || tempId == 72)) {
 //
-////            int trai = 0;
-////            int phai = 1;
-////            int next = 0;
-////
-////            for (int i = 0; i < 10; i++) {
-////                int X = next == 0 ? -5 * trai : 5 * phai;
-////                if (next == 0) {
-////                    trai++;
-////                } else {
-////                    phai++;
-////                }
-////                next = next == 0 ? 1 : 0;
-////                if (trai > 10) {
-////                    trai = 0;
-////                }
-////                if (phai > 10) {
-////                    phai = 1;
-////                }
 //                //Item roi
             if (Util.isTrue(1, 20)) {
 
                 ItemMap itemMap = new ItemMap(zone, Util.nextInt(1099, 1102), 1, location.x, location.y, -1);
                 Service.gI().dropItemMap(zone, itemMap);
             }
-//                else {
-////
-////                    ItemMap itemMap = new ItemMap(zone, 861, 30, location.x + X, location.y, -1);
-////                    Service.gI().dropItemMap(zone, itemMap);
-////                }
-////                if (Util.isTrue(1, 20)) {
-////                    ItemMap itemMap = new ItemMap(zone, Util.nextInt(18, 20), 1, location.x + X, location.y, -1);
-////                    Service.gI().dropItemMap(zone, itemMap);
-////
-////                } else {
-////                    ItemMap itemMap = new ItemMap(zone, 457, 1, location.x + X, location.y, -1);
-////                    Service.gI().dropItemMap(zone, itemMap);
-////                }
-//            }
             Service.gI().sendBigBoss(this.zone, tempId == 71 ? 7 : 6, 0, -1, -1);
         }
 
@@ -424,7 +392,8 @@ public class Mob {
                 level = 1;
                 action = 6;
                 point.hp = this.point.maxHp;
-            } else if (level == 1) {
+            }
+            else if (level == 1) {
                 level = 2;
                 action = 5;
                 point.hp = this.point.maxHp;
@@ -436,7 +405,7 @@ public class Mob {
             int phai = 1;
             int next = 0;
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 20; i++) {
                 int X = next == 0 ? -5 * trai : 5 * phai;
                 if (next == 0) {
                     trai++;
@@ -452,21 +421,23 @@ public class Mob {
                 }
                 //Item roi
                 if (Util.isTrue(1, 20)) {
-
                     ItemMap itemMap = new ItemMap(zone, Util.nextInt(1099, 1102), 1, location.x + X, location.y, -1);
                     Service.gI().dropItemMap(zone, itemMap);
                 } else {
-
-                    ItemMap itemMap = new ItemMap(zone, 861, 30, location.x + X, location.y, -1);
+                    ItemMap hongngoc = new ItemMap(zone, 457, 1, location.x + X, location.y, -1);
+                    Service.gI().dropItemMap(zone, hongngoc);
+                }
+                if (Util.isTrue(1, 20)) {
+                    ItemMap itemMap = new ItemMap(zone, 1525, 1, location.x + X, location.y, -1);
                     Service.gI().dropItemMap(zone, itemMap);
                 }
+                
                 if (Util.isTrue(1, 20)) {
                     ItemMap itemMap = new ItemMap(zone, Util.nextInt(17, 20), 1, location.x + X, location.y, -1);
                     Service.gI().dropItemMap(zone, itemMap);
-
                 }
-                if (Util.isTrue(1, 200)) {
-                    ItemMap itemMap = new ItemMap(zone, 457, 1, location.x + X, location.y, -1);
+                if (Util.isTrue(1, 20)) {
+                    ItemMap itemMap = new ItemMap(zone, 861, Util.nextInt(10, 20), location.x + X, location.y, -1);
                     Service.gI().dropItemMap(zone, itemMap);
                 }
             }
@@ -883,6 +854,33 @@ public class Mob {
 //        return itemReward;
 //    }
 
+    public void dropTanDanGroup(Player player, Zone zone, Location location, int quantity) {
+        int[][] tanDanGroups = {
+            {1672, 1673, 1674}, // Nhóm 1: Tàn đan 1–3
+            {1675, 1676, 1677}, // Nhóm 2: Tàn đan 4–6
+            {1678, 1679, 1680} // Nhóm 3: Tàn đan 7–9
+        };
+
+        Random random = new Random(); // Khởi tạo Random
+
+        int groupIndex = random.nextInt(3); // random 0, 1 hoặc 2
+        int[] selectedGroup = tanDanGroups[groupIndex];
+
+        for (int itemId : selectedGroup) {
+            Service.gI().dropItemMapForMe(
+                    player,
+                    new ItemMap(
+                            zone,
+                            itemId,
+                            quantity,
+                            location.x + random.nextInt(11) - 5, // x dao động ±5 cho đẹp
+                            zone.map.yPhysicInTop(location.x, location.y - 24),
+                            player.id
+                    )
+            );
+        }
+    }
+
     public List<ItemMap> getItemMobReward(Player player, int x, int yEnd) {
         List<ItemMap> list = new ArrayList<>();
         MobReward mobReward = Manager.MOB_REWARDS.get(this.tempId);
@@ -1002,18 +1000,33 @@ public class Mob {
                 Service.gI().dropItemMapForMe(player, new ItemMap(zone, 1707, 1, x, player.location.y, player.id));
             }
         }
+        if (mapid == 123) { // nhs 1
+            if (!player.isPet && Util.isTrue(5, 100)) {
+                Service.gI().dropItemMapForMe(player, new ItemMap(zone, Util.nextInt(1672, 1674), 1, x, player.location.y, player.id));
+            }
+        }
+        if (mapid == 124) { //nhs 2
+            if (!player.isPet && Util.isTrue(5, 100)) {
+                Service.gI().dropItemMapForMe(player, new ItemMap(zone, Util.nextInt(1675, 1677), 1, x, player.location.y, player.id));
+            }
+        }
+        if (mapid == 122) { //nhs 3
+            if (!player.isPet && Util.isTrue(5, 100)) {
+                Service.gI().dropItemMapForMe(player, new ItemMap(zone, Util.nextInt(1678, 1680), 1, x, player.location.y, player.id));
+            }
+        }
         if (mapid == 216) { // ln 1
             if (!player.isPet && Util.isTrue(20, 100)) {
-                int itemId = Util.nextInt(1672, 1680); // tan dan 
+                dropTanDanGroup(player, zone, this.location, 1);
                 Service.gI().dropItemMapForMe(player, new ItemMap(zone, 457, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
-                Service.gI().dropItemMapForMe(player, new ItemMap(zone, itemId, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
             }
-
         }
         if (mapid == 217) { //ln 2
             if (!player.isPet && Util.isTrue(60, 100)) {
-                int itemId = Util.nextInt(1672, 1680); // tan dan 
-                Service.gI().dropItemMapForMe(player, new ItemMap(zone, itemId, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
+                dropTanDanGroup(player, zone, this.location, 2);
+            }
+            if (!player.isPet && Util.isTrue(20, 100)) {
+                Service.gI().dropItemMapForMe(player, new ItemMap(zone, 1671, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));// linh khi
             }
             Service.gI().dropItemMapForMe(player, new ItemMap(zone, 457, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
         }
@@ -1030,7 +1043,6 @@ public class Mob {
                 Service.gI().dropItemMapForMe(player,
                         new ItemMap(zone, 1701, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
             }
-
         }
 //end khaile add
         if (mapid == 159) {

@@ -689,7 +689,6 @@ public class Util {
 //    }
     //khaile comment
 //    public static List<Integer> listVPSK = Arrays.asList(1918, 1917, 886, 887, 888, 889);
-
 //    public static int getRandomFromListSKtrungthu() {//Zalo: 0358124452//Name: EMTI 
 //        int tile_item1 = 10;
 //        int tile_item2 = 20;
@@ -718,11 +717,13 @@ public class Util {
     public static ItemMap ItemRotTuQuai(Zone zone, int tempId, int quantity, int x, int y, long playerId) {
         ItemMap it = new ItemMap(zone, tempId, quantity, x, zone.map.yPhysicInTop(x, y - 24), playerId);
         List<Integer> thucan = Arrays.asList(663, 664, 665, 666, 667);
-        List<Integer> itemhe2023 = Arrays.asList(2192, 2193, 2194, 2157, 2158, 2159, 2160, 695, 697, 698);
+        // List<Integer> itemhe2023 = Arrays.asList(2192, 2193, 2194, 2157, 2158, 2159, 2160, 695, 697, 698);
+        List<Integer> itemhe2023 = Arrays.asList(2157, 2158, 2159, 2160);
+
         List<Integer> ca = Arrays.asList(1001, 1002, 1003, 1004, 1010, 1011, 1012);
         List<Integer> itembuff = Arrays.asList(462, 569, 74, 191, 192, 211, 212);
         List<Integer> chu = Arrays.asList(537, 538, 539, 540);
-        List<Integer> trungthu = Arrays.asList(886, 887, 888, 889, 1132, 1133);
+        //List<Integer> trungthu = Arrays.asList(886, 887, 888, 889, 1132, 1133);
         List<Integer> item = Arrays.asList(457, 77, 76, 17, 1067, 1068, 1069, 1070, 1066, 18, 19, 20);
         List<Integer> tinhan = Arrays.asList(1314, 1315, 1316);
         List<Integer> tinhthach = Arrays.asList(1360, 1361, 1362, 1363, 1364, 1365, 1366);
@@ -751,10 +752,10 @@ public class Util {
 //            it.options.add(new Item.ItemOption(93, 10));//còn lại # ngày
 //        }
 //khaile comment
-        if (trungthu.contains(tempId)) {
-            it.options.add(new Item.ItemOption(93, 3));//còn lại # ngày
-            it.options.add(new Item.ItemOption(30, 1));//còn lại # ngày
-        }
+//        if (trungthu.contains(tempId)) {
+//            it.options.add(new Item.ItemOption(93, 3));//còn lại # ngày
+//            it.options.add(new Item.ItemOption(30, 1));//còn lại # ngày
+//        }
         if (thucan.contains(tempId)) {
             it.options.add(new Item.ItemOption(93, 20));//còn lại # ngày
         }

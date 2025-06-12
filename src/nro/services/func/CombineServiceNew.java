@@ -4693,22 +4693,33 @@ public class CombineServiceNew {
                         bongTai.itemOptions.clear();
 
                         int rdUp = Util.nextInt(0, 7);
-                        if (rdUp == 0) {
-                            bongTai.itemOptions.add(new Item.ItemOption(50, (indexBongTai + 1) * Util.nextInt(5, 10)));
-                        } else if (rdUp == 1) {
-                            bongTai.itemOptions.add(new Item.ItemOption(77, (indexBongTai + 1) * Util.nextInt(5, 10)));
-                        } else if (rdUp == 2) {
-                            bongTai.itemOptions.add(new Item.ItemOption(103, (indexBongTai + 1) * Util.nextInt(5, 10)));
-                        } else if (rdUp == 3) {
-                            bongTai.itemOptions.add(new Item.ItemOption(108, (indexBongTai + 1) * Util.nextInt(5, 10)));
-                        } else if (rdUp == 4) {
-                            bongTai.itemOptions.add(new Item.ItemOption(94, (indexBongTai + 1) * Util.nextInt(5, 10)));
-                        } else if (rdUp == 5) {
-                            bongTai.itemOptions.add(new Item.ItemOption(14, (indexBongTai + 1) * Util.nextInt(5, 10)));
-                        } else if (rdUp == 6) {
-                            bongTai.itemOptions.add(new Item.ItemOption(80, (indexBongTai + 1) * Util.nextInt(5, 10)));
-                        } else if (rdUp == 7) {
-                            bongTai.itemOptions.add(new Item.ItemOption(81, (indexBongTai + 1) * Util.nextInt(5, 10)));
+                        switch (rdUp) {
+                            case 0:
+                                bongTai.itemOptions.add(new Item.ItemOption(50, (indexBongTai + 1) * Util.nextInt(5, 10)));
+                                break;
+                            case 1:
+                                bongTai.itemOptions.add(new Item.ItemOption(77, (indexBongTai + 1) * Util.nextInt(5, 10)));
+                                break;
+                            case 2:
+                                bongTai.itemOptions.add(new Item.ItemOption(103, (indexBongTai + 1) * Util.nextInt(5, 10)));
+                                break;
+                            case 3:
+                                bongTai.itemOptions.add(new Item.ItemOption(108, (indexBongTai + 1) * Util.nextInt(5, 10)));
+                                break;
+                            case 4:
+                                bongTai.itemOptions.add(new Item.ItemOption(94, (indexBongTai + 1) * Util.nextInt(5, 10)));
+                                break;
+                            case 5:
+                                bongTai.itemOptions.add(new Item.ItemOption(14, (indexBongTai + 1) * Util.nextInt(5, 10)));
+                                break;
+                            case 6:
+                                bongTai.itemOptions.add(new Item.ItemOption(80, (indexBongTai + 1) * Util.nextInt(5, 10)));
+                                break;
+                            case 7:
+                                bongTai.itemOptions.add(new Item.ItemOption(81, (indexBongTai + 1) * Util.nextInt(5, 10)));
+                                break;
+                            default:
+                                break;
                         }
                         sendEffectSuccessCombine(player);
                     } else {
@@ -7409,7 +7420,7 @@ public class CombineServiceNew {
                         + "- 99.999 Linh khí\n"
                         + "- 10000 Thỏi vàng\n"
                         + "- 5M Hồng ngọc\n"
-                        + "- 250k COIN\n";
+                        + "- 300k COIN\n";
             case CHE_TAO_NGOAI_TRANG_VO_CUC_TU_TAI:
                 return "Vào hành trang\n"
                         + "- Chọn 5 phiếu đổi ngoại trang (Áo - Quần - Găng - Giày - Nhẫn)\n";

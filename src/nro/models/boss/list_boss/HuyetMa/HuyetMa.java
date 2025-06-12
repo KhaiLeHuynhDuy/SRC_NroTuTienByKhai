@@ -33,7 +33,7 @@ import nro.utils.Logger;
 public class HuyetMa extends Boss {
 
     public HuyetMa() throws Exception {
-        super(BossType.HuyetMa, BossesData.HuyetMa);
+        super(BossType.HUYET_MA, BossesData.HuyetMa);
     }
 
 //   @Override
@@ -53,7 +53,8 @@ public class HuyetMa extends Boss {
         int quantity = 500;
 
         Service.gI().dropItemMap(this.zone, new ItemMap(zone, itemId, quantity, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
-
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 
     }

@@ -1136,43 +1136,15 @@ public class Controller implements IMessageHandler {
 
         //clear vt sk
         clearVTSK(player);
-//        if (player.inventory.itemsBody.get(8).isNotNullItem()) {
-//            new Thread(() -> {
-//                try {
-//                    Thread.sleep(1000);
-//                    Service.gI().sendFlagBag(player);
-//                } catch (Exception e) {
-//                }
-//            }, "flagbag update").start();
-//        }
-//        if (player.inventory.itemsBody.get(5).isNotNullItem()) {
-//            new Thread(() -> {
-//                try {
-//                    Thread.sleep(1000);
-//                    Service.gI().Send_Caitrang(player);
-//                } catch (Exception e) {
-//                }
-//            }, "cai trang update").start();
-//        }
-        if (player.inventory.itemsBody.get(6).isNotNullItem()) {
+   
+        if (player.inventory.itemsBody.get(11).isNotNullItem()) {
             new Thread(() -> {
                 try {
                     Thread.sleep(1000);
-                    Service.gI().sendEffDanhHieu(player, player.getEffectchar(), 1, -1, 50, -1, -1);
+                    Service.gI().sendFoot(player, (short) player.inventory.itemsBody.get(11).template.id);
                 } catch (Exception e) {
-                    e.printStackTrace();
                 }
-            }, "danh hieu update").start();
-        }
-        if (player.inventory.itemsBody.get(9).isNotNullItem()) {
-            new Thread(() -> {
-                try {
-                    Thread.sleep(1000);
-                    Service.gI().sendEffChanMenh(player, player.getEffectchar2(), 0, -1, 1, -1);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }, "chan menh update").start();
+            }).start();
         }
         if (player.inventory.itemsBody.get(7).isNotNullItem()) {
             new Thread(() -> {
@@ -1197,11 +1169,11 @@ public class Controller implements IMessageHandler {
                 }
             }, "Linh thu update").start();
         }
-        if (player.inventory.itemsBody.get(11).isNotNullItem()) {
+        if (player.inventory.itemsBody.get(13).isNotNullItem()) {
             new Thread(() -> {
                 try {
                     Thread.sleep(1000);
-                    Service.gI().sendTitle(player, (short) player.inventory.itemsBody.get(11).template.id);
+                    Service.gI().sendTitle(player, (short) player.inventory.itemsBody.get(13).template.id);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -1226,7 +1198,7 @@ public class Controller implements IMessageHandler {
     }
 
     private void sendThongBaoServer(Player player) {
-        Service.gI().sendThongBaoFromAdmin(player, "\b|7|Ngọc Rồng Bát Hoang Thông Báo"
+        Service.gI().sendThongBaoFromAdmin(player, "\n|7|Ngọc Rồng Bát Hoang Thông Báo"
                 + "\n|2|Chúc Anh Em Chơi Game Vui Vẻ");
     }
 

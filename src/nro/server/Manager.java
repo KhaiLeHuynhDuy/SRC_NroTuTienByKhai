@@ -1592,7 +1592,7 @@ public class Manager {
             topPVP = realTop(queryTopPVP, con);
             Logger.success("TOP RUBY (" + topSK.size() + ")  --> Success !!\n");
             topSD = realTop(queryTopSD, con);
-
+            Logger.success("TOP Sức đánh (" + topSD.size() + ")  --> Success !!\n");
             topSKHE = realTop(queryTopSKHE2, con);
             Logger.success("TOP SKHE (" + topSKHE.size() + ")  --> Success !!\n");
 

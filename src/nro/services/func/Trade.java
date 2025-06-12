@@ -171,22 +171,19 @@ public class Trade {
                 return true;
             }
         }
+
         switch (item.template.type) {
             case 27: //
-                if (item.template.id != 457) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return item.template.id == 457;
             case 5: //cải trang
             case 6: //đậu thần
             case 7: //sách skill
             case 8: //vật phẩm nhiệm vụ
-            case 11: //flag bag
+            // case 11: //flag bag
             case 13: //bùa
             case 22: //vệ tinh
-            case 23: //ván bay
-            case 24: //ván bay vip
+            //  case 23: //ván bay
+            //      case 24: //ván bay vip
             case 25: //rada dò ngọc
             case 29: //vật phẩm thời gian
             case 28: //cờ
@@ -220,6 +217,7 @@ public class Trade {
         }
     }
 //0358124452
+
     public void dispose() {
         if (player1 != null) {
             player1.iDMark.setPlayerTradeId(-1);
@@ -284,7 +282,7 @@ public class Trade {
             e.printStackTrace();
             Logger
                     .logException(Trade.class,
-                             e);
+                            e);
         }
     }
 

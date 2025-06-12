@@ -35,6 +35,8 @@ public class DrKore extends Boss {
 
         //Item roi
         Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1699, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        Service.gI().dropItemMap(this.zone, new ItemMap(zone, Util.nextInt(1688, 1692), 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 
         if (Util.isTrue(99, 100)) {
             Service.gI().dropItemMap(this.zone, Util.RaitiDoc12(zone, Manager.itemDC12[randomDo], 1, this.location.x + 5, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
@@ -61,24 +63,6 @@ public class DrKore extends Boss {
     }
 
     @Override
-    public void chatM() {
-        if (Util.isTrue(60, 61)) {
-            super.chatM();
-            return;
-        }
-        if (this.getBossAppearTogether() == null || this.getBossAppearTogether()[this.getCurrentLevel()] == null) {
-            return;
-        }
-        for (Boss boss : this.getBossAppearTogether()[this.getCurrentLevel()]) {
-            if (boss.id == BossType.ANDROID_19 && !boss.isDie()) {
-                this.chat("Hút năng lượng của nó, mau lên");
-                boss.chat("Tuân lệnh đại ca, hê hê hê");
-                break;
-            }
-        }
-    }
-
-    @Override
     public void joinMap() {
         super.joinMap();
         st = System.currentTimeMillis();
@@ -92,7 +76,7 @@ public class DrKore extends Boss {
         }
         try {
         } catch (Exception ex) {
-            Logger.logException(DrKore.class, ex);
+            Logger.logException(Pic.class, ex);
         }
         this.attack();
         if (Util.canDoWithTime(st, 900000)) {
@@ -102,42 +86,39 @@ public class DrKore extends Boss {
 
     @Override
     public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
-        if (plAtt != null) {
-            switch (plAtt.playerSkill.skillSelect.template.id) {
-                case Skill.KAMEJOKO:
-                case Skill.MASENKO:
-                case Skill.ANTOMIC:
-                    PlayerService.gI().hoiPhuc(this, (long) damage, 0);
-                    if (Util.isTrue(1, 5)) {
-                        this.chat("Hấp thụ.. các ngươi nghĩ sao vậy?");
-                    }
-                    return 0;
+        if (!this.isDie()) {
+            if (!piercing && Util.isTrue(40, 1000)) {
+                this.chat("Xí hụt");
+                return 0;
             }
-        }
-        damage = this.nPoint.subDameInjureWithDeff(damage);
-        if (plAtt != null && !piercing && effectSkill.isShielding) {
-            if (damage > nPoint.hpMax) {
-                EffectSkillService.gI().breakShield(this);
+            if (plAtt != null) {
+                switch (plAtt.playerSkill.skillSelect.template.id) {
+                    case Skill.KAMEJOKO:
+                        damage = damage / 2;
+                    case Skill.LIEN_HOAN:
+                        damage = damage * 75 / 100;
+                    case Skill.MASENKO:
+                        damage = damage * 130 / 100;
+                    case Skill.GALICK:
+                        damage = damage * 70 / 100;
+                }
             }
-            damage = damage * 0.5;
-        }
-        return super.injured(plAtt, damage, piercing, isMobAttack);
-    }
-
-    @Override
-    public void doneChatS() {
-        for (Boss boss : this.getBossAppearTogether()[this.getCurrentLevel()]) {
-            if (boss.id == BossType.ANDROID_19) {
-                boss.changeToTypePK();
-                break;
+            damage = this.nPoint.subDameInjureWithDeff(damage);
+            if (plAtt != null && !piercing && effectSkill.isShielding) {
+                if (damage > nPoint.hpMax) {
+                    EffectSkillService.gI().breakShield(this);
+                }
+                damage = damage * 0.5;
             }
+            this.nPoint.subHP(damage);
+            if (isDie()) {
+                this.setDie(plAtt);
+                die(plAtt);
+            }
+            return damage;
+        } else {
+            return 0;
         }
-    }
-
-    @Override
-    public void changeToTypePK() {
-        super.changeToTypePK();
-        this.chat("Mau đền mạng cho thằng em trai ta");
     }
 }
 

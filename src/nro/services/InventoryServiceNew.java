@@ -459,14 +459,14 @@ public class InventoryServiceNew {
             case 4:
             case 5:
             case 32://giap luyen tap
-            case 23:// van bay su kien
             case 35:
-            case 53:
-            case 24: // van bay binh thuong
-            case 11: // vp bang hoi
-            case 72: // linh thu
             case 21: // pet
+            case 11: // vp bang hoi
             case 25: // chan menh
+            case 24: // van bay binh thuong
+            case 23:// van bay su kien
+            case 53:
+            case 72: // linh thu
             case 90: // danh hieu
             case 92: // ngoc boi
 
@@ -506,27 +506,28 @@ public class InventoryServiceNew {
             case 32:
                 index = 6;
                 break;
-            case 11:
-                index = 8;
-                break;
-            case 72:
-                index = 10;
-                break;
             case 21:
                 index = 7;
                 break;
-            case 25:
+            case 11:
+                index = 8;
+                break;
+            case 25: // chân mệnh
+                index = 11;
+                break;
             case 23:
             case 24:
                 index = 9;
                 break;
-            case 90:
-                index = 11;
+            case 72:
+                index = 10;
+                break;
+            case 90:// danh hieu
+                index = 13;
                 break;
             case 92:
                 index = 12;
                 break;
-
         }
         sItem = player.inventory.itemsBody.get(index);
         player.inventory.itemsBody.set(index, item);
@@ -537,8 +538,8 @@ public class InventoryServiceNew {
         Item item = player.inventory.itemsBag.get(index);
         if (item.isNotNullItem()) {
             player.inventory.itemsBag.set(index, putItemBody(player, item));
-            Service.gI().removeTitle(player);
-            Service.gI().sendTitle(player, item.template.id);
+//            Service.gI().removeTitle(player);
+//            Service.gI().sendTitle(player, item.template.id);
             sendItemBags(player);
             sendItemBody(player);
             Service.gI().sendFlagBag(player);
@@ -547,23 +548,50 @@ public class InventoryServiceNew {
 
         }
     }
+    //khaile thu fix
 
+//    public void itemBodyToBag(Player player, int index) {
+//        Item item = player.inventory.itemsBody.get(index);
+//        if (item.isNotNullItem()) {
+//            if (index == 10) {
+//                Service.gI().sendPetFollow(player, (short) 0);
+////                player.isPetFollow = false;
+//            }
+//            if (index == 6) {
+//                Service.gI().removeAlleff(player);
+//                Service.gI().sendEffChanMenh(player, player.getEffectchar2(), 0, -1, 1, -1);
+//            }
+//
+//            if (index == 7) {
+//                player.minipet.changeStatus(MiniPet.VENHA);
+//            }
+//            player.inventory.itemsBody.set(index, putItemBag(player, item));
+//            sendItemBags(player);
+//            sendItemBody(player);
+//            Service.gI().point(player);
+//            Service.gI().sendFlagBag(player);
+//            Service.gI().Send_Caitrang(player);
+//        }
+//    }
     public void itemBodyToBag(Player player, int index) {
+        if (index <= -1) {
+            Service.gI().sendThongBaoOK(player, "Có lỗi xãy ra");
+            return;
+        }
         Item item = player.inventory.itemsBody.get(index);
         if (item.isNotNullItem()) {
-            if (index == 10) {
+            if (index == 11) {
+                player.idAura = -1;
+            } else if (index == 10) {
                 Service.gI().sendPetFollow(player, (short) 0);
-//                player.isPetFollow = false;
-            }
-            if (index == 6) {
-                Service.gI().removeAlleff(player);
-                Service.gI().sendEffChanMenh(player, player.getEffectchar2(), 0, -1, 1, -1);
-            }
-
-            if (index == 7) {
+            } else if (index == 7) {
                 player.minipet.changeStatus(MiniPet.VENHA);
             }
             player.inventory.itemsBody.set(index, putItemBag(player, item));
+            if (item.isNotNullItem()) {
+                Service.gI().removeTitle(player);
+                Service.gI().sendFoot(player, item.template.id);
+            }
             sendItemBags(player);
             sendItemBody(player);
             Service.gI().point(player);
@@ -571,6 +599,7 @@ public class InventoryServiceNew {
             Service.gI().Send_Caitrang(player);
         }
     }
+    //end khaile thu fix
 
     public void itemBagToPetBody(Player player, int index) {
         if (player.pet != null && player.pet.nPoint.power >= 1500000) {

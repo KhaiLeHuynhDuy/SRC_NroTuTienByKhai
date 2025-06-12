@@ -264,13 +264,13 @@ public class UseItem {
                     InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
                     Service.gI().Send_Caitrang(pl);
                     break;
-                case 35:
-                    InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
-                    Service.gI().sendEffDanhHieu(pl, pl.getEffectchar(), 1, -1, 50, -1, -1);
-                    break;
+//                case 35:
+//                    InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
+//                    Service.gI().sendEffDanhHieu(pl, pl.getEffectchar(), 1, -1, 50, -1, -1);
+//                    break;
                 case 25:
                     InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
-                    Service.gI().sendEffChanMenh(pl, pl.getEffectchar2(), 0, -1, 1, -1);
+                    Service.gI().sendFoot(pl, item.template.id);
                     break;
                 case 72:
                     InventoryServiceNew.gI().itemBagToBody(pl, indexBag);

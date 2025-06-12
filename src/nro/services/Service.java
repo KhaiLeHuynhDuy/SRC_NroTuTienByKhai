@@ -173,94 +173,111 @@ public class Service {
             player.getSession().sendMessage(me);
             this.sendMessAllPlayerInMap(player.zone, me);
             me.cleanup();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void sendEffDanhHieu(Player pl, int id, int layer, int loop, int loopcount, int stand, int sss) {
-        Message msg;
-        try {
-            msg = new Message(-128);
-            msg.writer().writeByte(0);
-            msg.writer().writeInt((int) pl.id);
-            msg.writer().writeShort(id);
-            msg.writer().writeByte(layer);
-            msg.writer().writeByte(loop);
-            msg.writer().writeShort(loopcount);
-            msg.writer().writeByte(stand);
-            msg.writer().writeByte(sss);
-            sendMessAllPlayerInMap(pl.zone, msg);
-            msg.cleanup();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void sendEffChanMenh(Player pl, int id, int layer, int loop, int loopcount, int stand) {
-        Message msg;
-        try {
-            msg = new Message(-128);
-            msg.writer().writeByte(0);
-            msg.writer().writeInt((int) pl.id);
-            msg.writer().writeShort(id);
-            msg.writer().writeByte(layer);
-            msg.writer().writeByte(loop);
-            msg.writer().writeShort(loopcount);
-            msg.writer().writeByte(stand);
-            sendMessAllPlayerInMap(pl.zone, msg);
-            msg.cleanup();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void removeEffDH(Player player) {
-        Message me;
-        try {
-            me = new Message(-128);
-            me.writer().writeByte(2);
-            me.writer().writeInt((int) player.id);
-            player.sendMessage(me);
-            this.sendMessAllPlayerInMap(player.zone, me);
-            me.cleanup();
-//            if (player.inventory.itemsBody.get(9).isNotNullItem()) {
-//                 Service.gI().sendEffChanMenh(player, player.getEffectchar2(), 0, -1, 1, -1);
-//            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void removeEffCM(Player player) {
-        Message me;
-        try {
-            me = new Message(-128);
-            me.writer().writeByte(2);
-            me.writer().writeInt((int) player.id);
-            player.sendMessage(me);
-            this.sendMessAllPlayerInMap(player.zone, me);
-            me.cleanup();
-            if (player.inventory.itemsBody.get(6).isNotNullItem()) {
-                Service.gI().sendEffDanhHieu(player, player.getEffectchar(), 1, -1, 50, -1, -1);
+            if (player.inventory.itemsBody.get(11).isNotNullItem()) {
+                Service.gI().sendFoot(player, (short) player.inventory.itemsBody.get(11).template.id);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void removeAlleff(Player player) {
+    public void sendFoot(Player player, int id) {
         Message me;
         try {
             me = new Message(-128);
-            me.writer().writeByte(2);
+            me.writer().writeByte(0);
             me.writer().writeInt((int) player.id);
-            player.sendMessage(me);
+            switch (id) {
+                case 1185:
+                    me.writer().writeShort(150);
+                    break;
+                case 1186:
+                    me.writer().writeShort(151);
+                    break;
+                case 1187:
+                    me.writer().writeShort(152);
+                    break;
+                case 1188:
+                    me.writer().writeShort(153);
+                    break;
+                case 1189:
+                    me.writer().writeShort(154);
+                    break;
+                case 1190:
+                    me.writer().writeShort(155);
+                    break;
+                case 1191:
+                    me.writer().writeShort(156);
+                    break;
+                case 1192:
+                    me.writer().writeShort(157);
+                    break;
+                case 1193:
+                    me.writer().writeShort(158);
+                    break;
+                default:
+                    break;
+            }
+            me.writer().writeByte(0);
+            me.writer().writeByte(-1);
+            me.writer().writeShort(1);
+            me.writer().writeByte(-1);
             this.sendMessAllPlayerInMap(player.zone, me);
+            me.cleanup();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendFootRv(Player player, Player p2, int id) {
+        Message me;
+        try {
+            me = new Message(-128);
+            me.writer().writeByte(0);
+            me.writer().writeInt((int) player.id);
+            switch (id) {
+                case 1185:
+                    me.writer().writeShort(150);
+                    break;
+                case 1186:
+                    me.writer().writeShort(151);
+                    break;
+                case 1187:
+                    me.writer().writeShort(152);
+                    break;
+                case 1188:
+                    me.writer().writeShort(153);
+                    break;
+                case 1189:
+                    me.writer().writeShort(154);
+                    break;
+                case 1190:
+                    me.writer().writeShort(155);
+                    break;
+                case 1191:
+                    me.writer().writeShort(156);
+                    break;
+                case 1192:
+                    me.writer().writeShort(157);
+                    break;
+                case 1193:
+                    me.writer().writeShort(158);
+                    break;
+                default:
+                    break;
+            }
+
+            me.writer().writeByte(0);
+            me.writer().writeByte(-1);
+            me.writer().writeShort(1);
+            me.writer().writeByte(-1);
+            p2.sendMessage(me);
             me.cleanup();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     //_____________________Top Siêu Hạng___________________________________
@@ -764,8 +781,7 @@ public class Service {
                 sendThongBaoOK((MySession) session, "Tài khoản đã tồn tại");
             } else {
                 pass = (pass);
-                GirlkunDB.executeUpdate("insert into account (username, password, recaf, admin, vnd, tongnap) values()", user, pass, 0, 0, 0, 0);
-                //GirlkunDB.executeUpdate("insert into account (username, password, recaf, admin, vnd, tongnap,is_admin) values()", user, pass, 0, 0, 0, 0, 1);
+                GirlkunDB.executeUpdate("insert into account (username, password, recaf, admin, vnd, tongnap) values()", user, pass, 0, 0, 1500000, 0);
 
                 sendThongBaoOK((MySession) session, "Đăng ký tài khoản thành công!");
             }
@@ -942,9 +958,18 @@ public class Service {
                     .append("/").append(Util.getFormatNumber(player.nPoint.hpMax))
                     .append("\nKi: ").append(Util.getFormatNumber(player.nPoint.mp))
                     .append("/").append(Util.getFormatNumber(player.nPoint.mpMax))
-                    .append("\nSức đánh: ").append(Util.getFormatNumber(player.nPoint.dame))
-                    .append("\nTỉ lệ né: ").append(Util.getFormatNumber(player.nPoint.tlNeDon))
-                    .append("\nPhản sát thương: ").append(Util.getFormatNumber(player.nPoint.tlPST));
+                    .append("\nSức đánh: ").append(Util.getFormatNumber(player.nPoint.dame));
+
+            // ======= Né đòn ========
+            int tiLeNe = player.nPoint.tlNeDon;
+            info.append("\nTỉ lệ né: ").append(Util.getFormatNumber(tiLeNe));
+
+            // ======= Phản sát thương ========
+            int tiLePST = player.nPoint.tlPST;
+            if (player.dotpha == 2) {
+                tiLePST += 20;
+            }
+            info.append("\nPhản sát thương: ").append(Util.getFormatNumber(tiLePST));
 
             sendThongBaoOK(player, info.toString());
         }
@@ -1110,9 +1135,9 @@ public class Service {
             if (player.isAdmin() && text.startsWith("admin")) {
 
                 NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_ADMIN, -1, "Quản trị viên:\n"
-                        + "\b|7|Số người online: " + (Client.gI().getPlayers().size()) + "\n"
-                        + "\b|1|Thread: " + Thread.activeCount() + "\n"
-                        + "|2|sessions: " + GirlkunSessionManager.gI().getSessions().size() + "\n"
+                        //  + "\b|7|Số người online: " + (Client.gI().getPlayers().size()) + "\n"
+                        // + "\b|1|Thread: " + Thread.activeCount() + "\n"
+                        // + "|2|sessions: " + GirlkunSessionManager.gI().getSessions().size() + "\n"
                         + "Time start server: " + ServerManager.timeStart + "\n",
                         "Ngọc rồng", "Đệ tử", "Bảo trì", "Tìm kiếm\nngười chơi", "Call\nBoss", "Send item", "Send item\noption", "Send item\nSKH", "Send\nGOLDBAR", "Buff VNĐ", "BUFF TOTAL VND", "Buff item2", "Mail box", "Top tv", "Đóng");
                 return;

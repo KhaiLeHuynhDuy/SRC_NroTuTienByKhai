@@ -1260,27 +1260,28 @@ public class SkillService {
                 break;
         }
     }
-
-    private void phanSatThuong(Player plAtt, Player plTarget, double dame) {
-
-        int percentPST = plTarget.nPoint.tlPST;
+//khaile modify code
+    private void phanSatThuong(Player nguoiDanh, Player nguoiBiDanh, double dame) {
+        int percentPST = nguoiBiDanh.nPoint.tlPST;
+        if (nguoiBiDanh.dotpha == 2) {
+            percentPST += 20;
+        }
+      
         if (percentPST != 0) {
             double damePST = dame * percentPST / 100;
             Message msg;
             try {
                 msg = new Message(56);
-                msg.writer().writeInt((int) plAtt.id);
-                if (damePST >= plAtt.nPoint.hp) {
-                    damePST = Util.maxIntValue(plAtt.nPoint.hp - 1);
-                }
+                msg.writer().writeInt((int) nguoiDanh.id);
 
-                damePST = plAtt.injured(null, damePST, true, false);
+                // Tính sát thương phản thực tế
+                damePST = nguoiDanh.injured(null, damePST, true, false);
 
-                msg.writeFix(Util.maxIntValue(plAtt.nPoint.hp));
+                msg.writeFix(Util.maxIntValue(nguoiDanh.nPoint.hp));
                 msg.writeFix(Util.maxIntValue(damePST));
-                msg.writer().writeBoolean(false);
-                msg.writer().writeByte(36);
-                Service.gI().sendMessAllPlayerInMap(plAtt.zone, msg);
+                msg.writer().writeBoolean(false); // unknown flag
+                msg.writer().writeByte(36); // hiệu ứng phản sát thương
+                Service.gI().sendMessAllPlayerInMap(nguoiDanh.zone, msg);
                 msg.cleanup();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -1288,7 +1289,7 @@ public class SkillService {
             }
         }
     }
-
+//end khaile modify
     private void hutHPMP(Player player, double dame, boolean attackMob) {
         int tiLeHutHp = player.nPoint.getTileHutHp(attackMob);
         int tiLeHutMp = player.nPoint.getTiLeHutMp();
