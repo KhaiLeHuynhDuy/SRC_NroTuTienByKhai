@@ -18,18 +18,18 @@ import java.util.Arrays;
 import java.util.List;
 
 // su kien 1/6
-public class ConstDataEventNAP {//Zalo: 0358124452//Name: EMTI 
+public class ConstDataEventNAP {  
 
     public static ConstDataEventNAP gI;
 
-    public static ConstDataEventNAP gI() {//Zalo: 0358124452//Name: EMTI 
-        if (gI == null) {//Zalo: 0358124452//Name: EMTI 
+    public static ConstDataEventNAP gI() {  
+        if (gI == null) {  
             gI = new ConstDataEventNAP();
         }
         return gI;
     }
 
-    public static boolean isEventActive() {//Zalo: 0358124452//Name: EMTI 
+    public static boolean isEventActive() {  
         return false;
     }
 

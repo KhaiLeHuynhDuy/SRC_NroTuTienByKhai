@@ -2,7 +2,7 @@ package nro.consts;
 
 import nro.models.player.Player;
 
-public class cn {//Zalo: 0358124452//Name: EMTI 
+public class cn {  
 
     private Player player;
     public final static int GIA_X = 1;
@@ -16,7 +16,7 @@ public class cn {//Zalo: 0358124452//Name: EMTI
     public final static String MANAP = "beo ";
     public static boolean readInt = false;
 
-    private static class ________________________GHBUG______________________ {//Zalo: 0358124452//Name: EMTI 
+    private static class ________________________GHBUG______________________ {  
 
     }
     public static int ghVnd = 2_000_000_000;
@@ -25,12 +25,12 @@ public class cn {//Zalo: 0358124452//Name: EMTI
     public static int ghNgocHong = 1_000_000_000;
     public static int ghThoiVang = 1_000_000_000;
 
-    private static class ________________________POTAGE______________________ {//Zalo: 0358124452//Name: EMTI 
+    private static class ________________________POTAGE______________________ {  
 
     }
     public static int costNhanBan = 1000;
 
-    private static class ________________________NPC_TRUNGLINHTHU______________________ {//Zalo: 0358124452//Name: EMTI 
+    private static class ________________________NPC_TRUNGLINHTHU______________________ {  
 
     }
     public static int slItemSub = 99;
@@ -39,7 +39,7 @@ public class cn {//Zalo: 0358124452//Name: EMTI
     public static int giaTrung = 5000;
 //
 
-    private static class ________________________NPC_THODAICA______________________ {//Zalo: 0358124452//Name: EMTI 
+    private static class ________________________NPC_THODAICA______________________ {  
 
     }
     public static short cr = 462;
@@ -49,16 +49,16 @@ public class cn {//Zalo: 0358124452//Name: EMTI
     public static int slnx = 5000;
     public static int slnh = 5000;
     public static int slbd = 1;
-    public static int slthoiVang_ = 20;
+    public static int slthoiVang_ = 50;
 
-    private static class ________________________NPC_GOHAN_PAGUSU_NAMEC_____________________ {//Zalo: 0358124452//Name: EMTI 
+    private static class ________________________NPC_GOHAN_PAGUSU_NAMEC_____________________ {  
 
     }
-    public static int slnx1 = 5_000_000;
+    public static int slnx1 = 50_000_000;
     public static int slnh1 = 10000;
 //
 
-    private static class ________________________NPC_BARDOCK______________________ {//Zalo: 0358124452//Name: EMTI 
+    private static class ________________________NPC_BARDOCK______________________ {  
 
     }
     // giá đệ 1
@@ -133,7 +133,7 @@ public class cn {//Zalo: 0358124452//Name: EMTI
     public static int nx5 = 20000000;
     public static int nh5 = 40;
 
-    private static class ________________________NPC_BAHATMIT______________________ {//Zalo: 0358124452//Name: EMTI 
+    private static class ________________________NPC_BAHATMIT______________________ {  
 
     }
 
@@ -154,7 +154,7 @@ public class cn {//Zalo: 0358124452//Name: EMTI
     //ép sao trang bị
     public static short thoiVang_EpSao = 2;
 
-    private static class ________________________Chỉ_số_hợp_thể_đệ______________________ {//Zalo: 0358124452//Name: EMTI 
+    private static class ________________________Chỉ_số_hợp_thể_đệ______________________ {  
 
     }
     public static short hpPet = 20;
@@ -306,7 +306,7 @@ public class cn {//Zalo: 0358124452//Name: EMTI
     public static short mpPet37 = 34;
     public static short damePet37 = 34;
 
-    private static class ________________________QUÀ_SK_QUY_LAO______________________ {//Zalo: 0358124452//Name: EMTI 
+    private static class ________________________QUÀ_SK_QUY_LAO______________________ {  
 
     }
     public static int daquy1 = 2162;

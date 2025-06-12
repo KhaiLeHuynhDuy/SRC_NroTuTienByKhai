@@ -490,14 +490,6 @@ public class CombineServiceNew {
                 break;
             }
         }
-        InventoryServiceNew.gI().subQuantityItemsBag(player, manhTrangBi, 99);
-        // Trừ nguyên liệu
-        thoiVang.quantity -= 10_000;
-        InventoryServiceNew.gI().subQuantityItemsBag(player, linhKhi, 99_999);
-        player.inventory.ruby -= 5_000_000;
-        // cập nhật hồng ngọc hành trang
-        Service.gI().sendMoney(player);
-        PlayerDAO.subvnd(player, 300_000);
         // Trừ 4 loại đan dược
         int removedCount = 0;
         for (Item item : validItems) {
@@ -509,23 +501,34 @@ public class CombineServiceNew {
                 }
             }
         }
-
-        // Tạo trang bị mới
         // TẠO TRANG BỊ DỰA TRÊN MẢNH
         short idThanhPham = getIdTrangBi(manhTrangBi.template.id);
         Item newItem = ItemService.gI().createNewItem(idThanhPham);
         newItem.itemOptions.addAll(itemOptions);
         InventoryServiceNew.gI().addItemBag(player, newItem);
+
         // Thêm phiếu đổi cải trang tương ứng
         short voucherId = getVoucherVoCucTuTaiById(manhTrangBi.template.id);
         Item voucherItem = ItemService.gI().createNewItem(voucherId);
         InventoryServiceNew.gI().addItemBag(player, voucherItem);
+
+        // Trừ nguyên liệu
+        thoiVang.quantity -= 10_000;
+        player.inventory.ruby -= 5_000_000;
+        PlayerDAO.subvnd(player, 300_000);
+        InventoryServiceNew.gI().subQuantityItemsBag(player, linhKhi, 99_999);
+        InventoryServiceNew.gI().subQuantityItemsBag(player, manhTrangBi, 99);
+
+        // cập nhật hồng ngọc hành trang
+        Service.gI().sendMoney(player);
         // Cập nhật hành trang
         InventoryServiceNew.gI().sendItemBags(player);
+
         // Thông báo thành công
         String tenTrangBi = getTenTuIdThanhPham(itemId);
         String tenVoucher = voucherItem.template.name;
         Service.gI().sendThongBao(player, "Chúc mừng! Chế tạo thành công " + "" + tenTrangBi + " và nhận được " + "" + tenVoucher);
+        sendEffectSuccessCombine(player);
 
     }
 
@@ -561,7 +564,7 @@ public class CombineServiceNew {
             return;
         }
 
-        if (InventoryServiceNew.gI().getCountEmptyBag(player) == 0) {
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) < 1) {
             Service.gI().sendThongBao(player, "Không đủ ô trống trong túi đồ!");
             return;
         }
@@ -656,7 +659,7 @@ public class CombineServiceNew {
             return;
         }
 
-        if (InventoryServiceNew.gI().getCountEmptyBag(player) == 0) {
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) < 2) {
             Service.gI().sendThongBao(player, "Không đủ ô trống!");
             return;
         }
@@ -690,15 +693,15 @@ public class CombineServiceNew {
             return;
         }
 
-        // Trừ nguyên liệu
-        InventoryServiceNew.gI().subQuantityItemsBag(player, thienMaThach, 100_000);
-        InventoryServiceNew.gI().subQuantityItemsBag(player, manhTrangBi, 19);
-
         // Tạo trang bị mới
         short idThanhPham = getIdTrangBiThienMaTuManhTrangBi(manhTrangBi.template.id);
         Item newItem = ItemService.gI().createNewItem(idThanhPham);
         newItem.itemOptions.addAll(itemOptions);
         InventoryServiceNew.gI().addItemBag(player, newItem);
+
+        // Trừ nguyên liệu
+        InventoryServiceNew.gI().subQuantityItemsBag(player, thienMaThach, 100_000);
+        InventoryServiceNew.gI().subQuantityItemsBag(player, manhTrangBi, 19);
 
         // Cập nhật hành trang
         InventoryServiceNew.gI().sendItemBags(player);
@@ -706,6 +709,7 @@ public class CombineServiceNew {
         // Thông báo thành công
         String tenTrangBi = getTenThienMaTuIdThanhPham(itemId);
         Service.gI().sendThongBao(player, "Chúc mừng! Chế tạo thành công " + tenTrangBi);
+        sendEffectSuccessCombine(player);
     }
 
     private void conditionHoangCucDan(Player player) {
@@ -740,8 +744,8 @@ public class CombineServiceNew {
             return;
         }
 
-        if (InventoryServiceNew.gI().getCountEmptyBag(player) == 0) {
-            Service.gI().sendThongBao(player, "Không đủ ô trống trong túi đồ!");
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) < 2) {
+            Service.gI().sendThongBao(player, "Không đủ ô trống!");
             return;
         }
 
@@ -834,8 +838,8 @@ public class CombineServiceNew {
             return;
         }
 
-        if (InventoryServiceNew.gI().getCountEmptyBag(player) == 0) {
-            Service.gI().sendThongBao(player, "Không đủ ô trống trong túi đồ!");
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) < 2) {
+            Service.gI().sendThongBao(player, "Không đủ ô trống!");
             return;
         }
 
@@ -941,8 +945,8 @@ public class CombineServiceNew {
 //                    "Có vật phẩm không hợp lệ hoặc số lượng không đủ!", "Đóng");
 //            return;
 //        }
-        if (InventoryServiceNew.gI().getCountEmptyBag(player) == 0) {
-            Service.gI().sendThongBao(player, "Không đủ ô trống trong túi đồ!");
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) < 2) {
+            Service.gI().sendThongBao(player, "Không đủ ô trống!");
             return;
         }
 
@@ -1020,8 +1024,8 @@ public class CombineServiceNew {
             return;
         }
 
-        if (InventoryServiceNew.gI().getCountEmptyBag(player) == 0) {
-            Service.gI().sendThongBao(player, "Không đủ ô trống trong túi đồ!");
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) < 2) {
+            Service.gI().sendThongBao(player, "Không đủ ô trống!");
             return;
         }
 
@@ -1099,8 +1103,8 @@ public class CombineServiceNew {
             return;
         }
 
-        if (InventoryServiceNew.gI().getCountEmptyBag(player) == 0) {
-            Service.gI().sendThongBao(player, "Không đủ ô trống trong túi đồ!");
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) < 2) {
+            Service.gI().sendThongBao(player, "Không đủ ô trống!");
             return;
         }
 
@@ -3041,7 +3045,6 @@ public class CombineServiceNew {
         List<ItemOption> options = createItemVoCucTuTaiOptions(manhTrangBi.template.id);
 
         // Thực hiện chế tạo
-        sendEffectSuccessCombine(player);
         createTuTaiItem(player, itemId, options);
         player.combineNew.updateItemsCombine(player.inventory.itemsBag);
         reOpenItemCombine(player);
@@ -3133,7 +3136,6 @@ public class CombineServiceNew {
         List<ItemOption> options = createItemThienMaOptions(manhTrangBi.template.id);
 
         // Thực hiện chế tạo
-        sendEffectSuccessCombine(player);
         createThienMaItem(player, itemId, options);
         player.combineNew.updateItemsCombine(player.inventory.itemsBag);
         reOpenItemCombine(player);

@@ -18,18 +18,18 @@ import java.util.Arrays;
 import java.util.List;
 
 // su kien 1/6
-public class ConstDataEventSM {//Zalo: 0358124452//Name: EMTI 
+public class ConstDataEventSM {  
 
     public static ConstDataEventSM gI;
 
-    public static ConstDataEventSM gI() {//Zalo: 0358124452//Name: EMTI 
-        if (gI == null) {//Zalo: 0358124452//Name: EMTI 
+    public static ConstDataEventSM gI() {  
+        if (gI == null) {  
             gI = new ConstDataEventSM();
         }
         return gI;
     }
 
-    public static boolean isEventActive() {//Zalo: 0358124452//Name: EMTI 
+    public static boolean isEventActive() {  
         return false;
     }
 

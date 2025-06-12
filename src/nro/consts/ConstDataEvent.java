@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 // su kien 1/6
-public class ConstDataEvent {//Zalo: 0358124452//Name: EMTI 
+public class ConstDataEvent {  
 
     public static final int ID_ITEM_1 = 1002;
     public static final int ID_ITEM_2 = 1003;
@@ -59,31 +59,31 @@ public class ConstDataEvent {//Zalo: 0358124452//Name: EMTI
 
     public static List<Integer> listVPSK = Arrays.asList(ID_ITEM_3, ID_ITEM_1, ID_ITEM_2, ID_ITEM_4, ID_ITEM_5);
 
-    public static int getRandomFromList() {//Zalo: 0358124452//Name: EMTI 
+    public static int getRandomFromList() {  
         int tile_saoBien = 30;
         int tile_ConCua = 50;
         int tile_VoOc = 40;
         int tile = Util.nextInt(0, 100);
-        if (tile < tile_ConCua) {//Zalo: 0358124452//Name: EMTI 
+        if (tile < tile_ConCua) {  
             return listVPSK.get(0);
-        } else if (tile < tile_VoOc) {//Zalo: 0358124452//Name: EMTI 
+        } else if (tile < tile_VoOc) {  
             return listVPSK.get(1);
-        } else if (tile < tile_saoBien) {//Zalo: 0358124452//Name: EMTI 
+        } else if (tile < tile_saoBien) {  
             return listVPSK.get(2);
-        } else {//Zalo: 0358124452//Name: EMTI 
+        } else {  
             return listVPSK.get(Util.nextInt(listVPSK.size()));
         }
     }
 
     public static ConstDataEvent gI;
 
-    public static ConstDataEvent gI() {//Zalo: 0358124452//Name: EMTI 
-        if (gI == null) {//Zalo: 0358124452//Name: EMTI 
+    public static ConstDataEvent gI() {  
+        if (gI == null) {  
             gI = new ConstDataEvent();
         }
         return gI;
     }
-    public static final String[] Huongdannaubanh = new String[]{//Zalo: 0358124452//Name: EMTI 
+    public static final String[] Huongdannaubanh = new String[]{  
         "|3|Sử dụng đuôi khỉ để up quái rơi ra củi lửa và nước nấu hoặc up mộc nhân"
         + "\n |6|Hành tinh trái đất sử dụng tuyệt kĩ Quả cầu kinh khí hành tinh Xayda để cướp đuôi khỉ"
         + "\nMỗi lần đun củi sẽ giảm 3 giây nấu nguyên liệu"
@@ -91,7 +91,7 @@ public class ConstDataEvent {//Zalo: 0358124452//Name: EMTI
 
     };
 
-    public static boolean isEventActive() {//Zalo: 0358124452//Name: EMTI 
+    public static boolean isEventActive() {  
         return false;
     }
 
@@ -273,7 +273,7 @@ public class ConstDataEvent {//Zalo: 0358124452//Name: EMTI
 
     public static boolean isRunningSK16 = isActiveEvent();
 
-    public static final String[] Textskquylao = new String[]{//Zalo: 0358124452//Name: EMTI 
+    public static final String[] Textskquylao = new String[]{  
         "- Đua top Điểm bằng cách làm nhiệm vụ lấy " + ItemService.gI().getTemplate(ID_ITEM_6).name + "\n"
         + "_______Quà Top Sự Kiện________:\n|3| "
         + "Nhận quà vào ngày " + HOUR_END + "H" + MIN_END + " ngày " + DATE_END + "/" + MONTH_END + "/2024\n"

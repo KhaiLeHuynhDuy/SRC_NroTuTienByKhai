@@ -24,10 +24,10 @@ import nro.utils.Util;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONValue;
 
-public class PlayerDAO {//Zalo: 0358124452//Name: EMTI 
+public class PlayerDAO {  
 
-    public static boolean createNewPlayer(int userId, String name, byte gender, int hair) {//Zalo: 0358124452//Name: EMTI //Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean createNewPlayer(int userId, String name, byte gender, int hair) {    
+        try {  
             JSONArray dataArray = new JSONArray();
 
             dataArray.add(200_000_000); //vàng
@@ -71,11 +71,11 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             /**
              *
              * [
-             * {//Zalo: 0358124452//Name: EMTI
+             * { 
              * "temp_id":"1","option":[[5,7],[7,3]],"create_time":"49238749283748957""},
-             * {//Zalo: 0358124452//Name: EMTI
+             * { 
              * "temp_id":"1","option":[[5,7],[7,3]],"create_time":"49238749283748957""},
-             * {//Zalo: 0358124452//Name: EMTI
+             * { 
              * "temp_id":"-1","option":[],"create_time":"0""}, ... ]
              */
 
@@ -88,22 +88,22 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             JSONArray options = new JSONArray();
             JSONArray opt = new JSONArray();
             JSONArray opt2 = new JSONArray();
-            for (int i = 0; i < 11; i++) {//Zalo: 0358124452//Name: EMTI 
-                if (i == 0) {//Zalo: 0358124452//Name: EMTI  //áo
+            for (int i = 0; i < 11; i++) {  
+                if (i == 0) {   //áo
                     opt.add(47); //id option
                     opt.add(def); //param option
                     item.add(idAo); //id item
                     item.add(1); //số lượng
                     options.add(opt.toJSONString());
                     opt.clear();
-                } else if (i == 1) {//Zalo: 0358124452//Name: EMTI  //quần
+                } else if (i == 1) {   //quần
                     opt.add(6); //id option
                     opt.add(hp); //param option
                     item.add(idQuan); //id item
                     item.add(1); //số lượng
                     options.add(opt.toJSONString());
                     opt.clear();
-                } else {//Zalo: 0358124452//Name: EMTI 
+                } else {  
                     item.add(-1); //id item
                     item.add(0); //số lượng
                 }
@@ -116,8 +116,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             String itemsBody = dataArray.toJSONString();
             dataArray.clear();
 
-            for (int i = 0; i < 20; i++) {//Zalo: 0358124452//Name: EMTI  // item tạo player 
-                if (i == 0) {//Zalo: 0358124452//Name: EMTI  //thỏi vàng
+            for (int i = 0; i < 20; i++) {   // item tạo player 
+                if (i == 0) {   //thỏi vàng
                     opt.add(30); //id option cấm giao dịch
                     opt.add(1); //param option
                     item.add(457); //id item
@@ -126,21 +126,21 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                     //options.add(opt2.toJSONString());
                     opt.clear();
                     // opt2.clear();
-                } else if (i == 1) {//Zalo: 0358124452//Name: EMTI  //capsule
+                } else if (i == 1) {   //capsule
                     opt.add(30); //id option cấm giao dịch
                     opt.add(1); //param option
                     item.add(194); //id item
                     item.add(1); //số lượng
                     options.add(opt.toJSONString());
                     opt.clear();
-                } else if (i == 2) {//Zalo: 0358124452//Name: EMTI  //hop qua ts kh
+                } else if (i == 2) {   //hop qua ts kh
                     opt.add(30); //id option cấm giao dịch
                     opt.add(1); //param option
                     item.add(2116); //id item
                     item.add(1); //số lượng
                     options.add(opt.toJSONString());
                     opt.clear();
-                } else {//Zalo: 0358124452//Name: EMTI 
+                } else {  
                     item.add(-1); //id item
                     item.add(0); //số lượng
                 }
@@ -153,15 +153,15 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             String itemsBag = dataArray.toJSONString();
             dataArray.clear();
 
-            for (int i = 0; i < 20; i++) {//Zalo: 0358124452//Name: EMTI 
-                if (i == 0) {//Zalo: 0358124452//Name: EMTI  //rada
+            for (int i = 0; i < 20; i++) {  
+                if (i == 0) {   //rada
                     opt.add(14); //id option
                     opt.add(1); //param option
                     item.add(12); //id item
                     item.add(1); //số lượng
                     options.add(opt.toJSONString());
                     opt.clear();
-                } else {//Zalo: 0358124452//Name: EMTI 
+                } else {  
                     item.add(-1); //id item
                     item.add(0); //số lượng
                 }
@@ -174,7 +174,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             String itemsBox = dataArray.toJSONString();
             dataArray.clear();
 
-            for (int i = 0; i < 110; i++) {//Zalo: 0358124452//Name: EMTI 
+            for (int i = 0; i < 110; i++) {  
                 item.add(-1); //id item
                 item.add(0); //số lượng
                 item.add(options.toJSONString()); //full option item
@@ -186,7 +186,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             String itemMailBox = dataArray.toJSONString();
             dataArray.clear();
 
-            for (int i = 0; i < 110; i++) {//Zalo: 0358124452//Name: EMTI 
+            for (int i = 0; i < 110; i++) {  
                 item.add(-1); //id item
                 item.add(0); //số lượng
                 item.add(options.toJSONString()); //full option item
@@ -198,7 +198,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             String itemsBoxLuckyRound = dataArray.toJSONString();
             dataArray.clear();
 
-            for (int i = 0; i < 110; i++) {//Zalo: 0358124452//Name: EMTI 
+            for (int i = 0; i < 110; i++) {  
                 item.add(-1); //id item
                 item.add(0); //số lượng
                 item.add(options.toJSONString()); //full option item
@@ -298,22 +298,22 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             String charms = dataArray.toJSONString();
             dataArray.clear();
 
-            int[] skillsArr = gender == 0 ? new int[]{//Zalo: 0358124452//Name: EMTI 
+            int[] skillsArr = gender == 0 ? new int[]{  
                 0, 1, 6, 9, 10, 20, 22, 24, 27, 19}
-                    : gender == 1 ? new int[]{//Zalo: 0358124452//Name: EMTI
+                    : gender == 1 ? new int[]{ 
                         2, 3, 7, 11, 12, 17, 18, 26, 27, 19}
-                    : new int[]{//Zalo: 0358124452//Name: EMTI 
+                    : new int[]{  
                         4, 5, 8, 13, 14, 21, 23, 25, 27, 19};
             //[{
-//Zalo: 0358124452//Name: EMTI 
+  
 //"temp_id":"4","point":0,"last_time_use":0},]
 
             JSONArray skill = new JSONArray();
-            for (int i = 0; i < skillsArr.length; i++) {//Zalo: 0358124452//Name: EMTI 
+            for (int i = 0; i < skillsArr.length; i++) {  
                 skill.add(skillsArr[i]); //id skill
-                if (i == 0) {//Zalo: 0358124452//Name: EMTI 
+                if (i == 0) {  
                     skill.add(1); //level skill
-                } else {//Zalo: 0358124452//Name: EMTI 
+                } else {  
                     skill.add(0); //level skill
                 }
                 skill.add(0); //thời gian sử dụng trước đó
@@ -336,7 +336,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             dataArray.clear();
 
             JSONArray blackBall = new JSONArray();
-            for (int i = 1; i <= 7; i++) {//Zalo: 0358124452//Name: EMTI 
+            for (int i = 1; i <= 7; i++) {  
                 blackBall.add(0);
                 blackBall.add(0);
                 blackBall.add(0);
@@ -347,7 +347,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             dataArray.clear();
 
             JSONArray blackGiaidau = new JSONArray();
-            for (int i = 1; i <= 7; i++) {//Zalo: 0358124452//Name: EMTI 
+            for (int i = 1; i <= 7; i++) {  
                 blackGiaidau.add(0);
                 blackGiaidau.add(0);
                 blackGiaidau.add(0);
@@ -418,7 +418,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             Logger.success("Tạo player mới thành công!\n");
             return true;
 
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Thông báo lỗi lưu cư dân: ");
 
@@ -426,8 +426,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
         return false;
     }
 
-    public static boolean activedUser(Player player) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean activedUser(Player player) {  
+        try {  
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set active = ? where id = ?");
@@ -437,14 +437,14 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             return false;
         }
     }
 
-    public static boolean subvnd(Player player, int num) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean subvnd(Player player, int num) {  
+        try {  
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set vnd = (vnd - ?) where id = ?");
@@ -455,7 +455,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -463,8 +463,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public static boolean addvnd(Player player, int num) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean addvnd(Player player, int num) {  
+        try {  
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set vnd = (vnd + ?) where id = ?");
@@ -475,7 +475,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm addvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -483,8 +483,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public static boolean subtotalvnd(Player player, int num) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean subtotalvnd(Player player, int num) {  
+        try {  
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set tongnap = (tongnap - ?) where id = ?");
@@ -495,7 +495,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subtotalvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -503,8 +503,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public static boolean addtotalvnd(Player player, int num) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean addtotalvnd(Player player, int num) {  
+        try {  
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set tongnap = (tongnap + ?) where id = ?");
@@ -515,7 +515,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm addtotalvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -523,8 +523,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public static boolean Addvnd(String username, int num) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean Addvnd(String username, int num) {  
+        try {  
             username = username.trim();
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
@@ -535,7 +535,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -543,8 +543,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public static boolean VND(Player player, int vnd) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean VND(Player player, int vnd) {  
+        try {  
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set vnd = (vnd - ?) where id = ?");
@@ -556,7 +556,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -564,8 +564,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public static boolean Addtotalvnd(String username, int num) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean Addtotalvnd(String username, int num) {  
+        try {  
             username = username.trim();
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
@@ -576,7 +576,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -584,8 +584,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public static boolean Addtotalvnd2(String username, int num) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean Addtotalvnd2(String username, int num) {  
+        try {  
             username = username.trim();
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
@@ -596,7 +596,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -604,8 +604,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public static boolean Subtotalvnd(String username, int num) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean Subtotalvnd(String username, int num) {  
+        try {  
             username = username.trim();
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
@@ -616,7 +616,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -624,8 +624,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public static boolean updatenhanngocxanh(Player player) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean updatenhanngocxanh(Player player) {  
+        try {  
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set nhanngocxanh = ? where id = ?");
@@ -636,7 +636,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
 
             return false;
@@ -644,8 +644,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public static boolean updatenhanngochong(Player player) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean updatenhanngochong(Player player) {  
+        try {  
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set nhanngochong = ? where id = ?");
@@ -656,7 +656,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
 
             return false;
@@ -664,8 +664,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public static boolean updatenhanvang(Player player) {//Zalo: 0358124452//Name: EMTI 
-        try {//Zalo: 0358124452//Name: EMTI 
+    public static boolean updatenhanvang(Player player) {  
+        try {  
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set nhanvang = ? where id = ?");
@@ -676,7 +676,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
 
             return false;
@@ -684,8 +684,8 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public static void updatePlayer(Player player) {//Zalo: 0358124452//Name: EMTI 
-        if (player.iDMark.isLoadedAllDataPlayer()) {//Zalo: 0358124452//Name: EMTI 
+    public static void updatePlayer(Player player) {  
+        if (player.iDMark.isLoadedAllDataPlayer()) {  
             long st = System.currentTimeMillis();
             try {
                 JSONArray dataArray = new JSONArray();
@@ -706,15 +706,15 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 int y = player.location.y;
                 long hp = Util.TamkjllGH(player.nPoint.hp);
                 long mp = Util.TamkjllGH(player.nPoint.mp);
-                if (player.isDie()) {//Zalo: 0358124452//Name: EMTI 
+                if (player.isDie()) {  
                     mapId = player.gender + 21;
                     x = 300;
                     y = 336;
                     hp = 1;
                     mp = 1;
-                } else {//Zalo: 0358124452//Name: EMTI 
+                } else {  
                     if (MapService.gI().isMapDoanhTrai(mapId) || MapService.gI().isNguHanhSon(mapId) || MapService.gI().isMapBlackBallWar(mapId) || MapService.gI().isMapGiaidauvutru(mapId)
-                            || MapService.gI().isMapKhiGas(mapId) || MapService.gI().isMapConDuongRanDoc(mapId) || MapService.gI().isMapBanDoKhoBau(mapId) || MapService.gI().isMapMaBu(mapId)) {//Zalo: 0358124452//Name: EMTI 
+                            || MapService.gI().isMapKhiGas(mapId) || MapService.gI().isMapConDuongRanDoc(mapId) || MapService.gI().isMapBanDoKhoBau(mapId) || MapService.gI().isMapMaBu(mapId)) {  
                         mapId = player.gender + 21;
                         x = 300;
                         y = 336;
@@ -761,20 +761,20 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
                 //data body
                 JSONArray dataItem = new JSONArray();
-                for (Item item : player.inventory.itemsBody) {//Zalo: 0358124452//Name: EMTI 
+                for (Item item : player.inventory.itemsBody) {  
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
+                    if (item.isNotNullItem()) {  
                         dataItem.add(item.template.id);
                         dataItem.add(item.quantity);
                         JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
+                        for (Item.ItemOption io : item.itemOptions) {  
                             opt.add(io.optionTemplate.id);
                             opt.add(io.param);
                             options.add(opt.toJSONString());
                             opt.clear();
                         }
                         dataItem.add(options.toJSONString());
-                    } else {//Zalo: 0358124452//Name: EMTI 
+                    } else {  
                         dataItem.add(-1);
                         dataItem.add(0);
                         dataItem.add(opt.toJSONString());
@@ -787,20 +787,20 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 dataArray.clear();
 
                 //data bag
-                for (Item item : player.inventory.itemsBag) {//Zalo: 0358124452//Name: EMTI 
+                for (Item item : player.inventory.itemsBag) {  
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
+                    if (item.isNotNullItem()) {  
                         dataItem.add(item.template.id);
                         dataItem.add(item.quantity);
                         JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
+                        for (Item.ItemOption io : item.itemOptions) {  
                             opt.add(io.optionTemplate.id);
                             opt.add(io.param);
                             options.add(opt.toJSONString());
                             opt.clear();
                         }
                         dataItem.add(options.toJSONString());
-                    } else {//Zalo: 0358124452//Name: EMTI 
+                    } else {  
                         dataItem.add(-1);
                         dataItem.add(0);
                         dataItem.add(opt.toJSONString());
@@ -814,20 +814,20 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
                 //data card
                 //data box
-                for (Item item : player.inventory.itemsBox) {//Zalo: 0358124452//Name: EMTI 
+                for (Item item : player.inventory.itemsBox) {  
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
+                    if (item.isNotNullItem()) {  
                         dataItem.add(item.template.id);
                         dataItem.add(item.quantity);
                         JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
+                        for (Item.ItemOption io : item.itemOptions) {  
                             opt.add(io.optionTemplate.id);
                             opt.add(io.param);
                             options.add(opt.toJSONString());
                             opt.clear();
                         }
                         dataItem.add(options.toJSONString());
-                    } else {//Zalo: 0358124452//Name: EMTI 
+                    } else {  
                         dataItem.add(-1);
                         dataItem.add(0);
                         dataItem.add(opt.toJSONString());
@@ -840,20 +840,20 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 dataArray.clear();
 
                 //data box crack ball
-                for (Item item : player.inventory.itemsBoxCrackBall) {//Zalo: 0358124452//Name: EMTI 
+                for (Item item : player.inventory.itemsBoxCrackBall) {  
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
+                    if (item.isNotNullItem()) {  
                         dataItem.add(item.template.id);
                         dataItem.add(item.quantity);
                         JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
+                        for (Item.ItemOption io : item.itemOptions) {  
                             opt.add(io.optionTemplate.id);
                             opt.add(io.param);
                             options.add(opt.toJSONString());
                             opt.clear();
                         }
                         dataItem.add(options.toJSONString());
-                    } else {//Zalo: 0358124452//Name: EMTI 
+                    } else {  
                         dataItem.add(-1);
                         dataItem.add(0);
                         dataItem.add(opt.toJSONString());
@@ -866,20 +866,20 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 dataArray.clear();
 
                 //data box mail
-                for (Item item : player.inventory.itemsMailBox) {//Zalo: 0358124452//Name: EMTI 
+                for (Item item : player.inventory.itemsMailBox) {  
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
+                    if (item.isNotNullItem()) {  
                         dataItem.add(item.template.id);
                         dataItem.add(item.quantity);
                         JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
+                        for (Item.ItemOption io : item.itemOptions) {  
                             opt.add(io.optionTemplate.id);
                             opt.add(io.param);
                             options.add(opt.toJSONString());
                             opt.clear();
                         }
                         dataItem.add(options.toJSONString());
-                    } else {//Zalo: 0358124452//Name: EMTI 
+                    } else {  
                         dataItem.add(-1);
                         dataItem.add(0);
                         dataItem.add(opt.toJSONString());
@@ -892,20 +892,20 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 dataArray.clear();
 
                 //data box mail
-                for (Item item : player.inventory.itemsRuongPhu) {//Zalo: 0358124452//Name: EMTI 
+                for (Item item : player.inventory.itemsRuongPhu) {  
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
+                    if (item.isNotNullItem()) {  
                         dataItem.add(item.template.id);
                         dataItem.add(item.quantity);
                         JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
+                        for (Item.ItemOption io : item.itemOptions) {  
                             opt.add(io.optionTemplate.id);
                             opt.add(io.param);
                             options.add(opt.toJSONString());
                             opt.clear();
                         }
                         dataItem.add(options.toJSONString());
-                    } else {//Zalo: 0358124452//Name: EMTI 
+                    } else {  
                         dataItem.add(-1);
                         dataItem.add(0);
                         dataItem.add(opt.toJSONString());
@@ -919,7 +919,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
                 //data bạn bè
                 JSONArray dataFE = new JSONArray();
-                for (Friend f : player.friends) {//Zalo: 0358124452//Name: EMTI 
+                for (Friend f : player.friends) {  
                     dataFE.add(f.id);
                     dataFE.add(f.name);
                     dataFE.add(f.head);
@@ -934,7 +934,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 dataArray.clear();
 
                 //data kẻ thù
-                for (Friend e : player.enemies) {//Zalo: 0358124452//Name: EMTI 
+                for (Friend e : player.enemies) {  
                     dataFE.add(e.id);
                     dataFE.add(e.name);
                     dataFE.add(e.head);
@@ -992,7 +992,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 dataArray.clear();
 
                 //data trứng bư
-                if (player.mabuEgg != null) {//Zalo: 0358124452//Name: EMTI 
+                if (player.mabuEgg != null) {  
                     dataArray.add(player.mabuEgg.lastTimeCreate);
                     dataArray.add(player.mabuEgg.timeDone);
                 }
@@ -1000,13 +1000,13 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 dataArray.clear();
 
 //                data trứng bill
-//                if (player.billEgg != null) {//Zalo: 0358124452//Name: EMTI 
+//                if (player.billEgg != null) {  
 //                    dataArray.add(player.billEgg.lastTimeCreate);
 //                    dataArray.add(player.billEgg.timeDone);
 //                }
 //                String billEgg = dataArray.toJSONString();
 //                dataArray.clear();
-//                if (player.BuugayEgg != null) {//Zalo: 0358124452//Name: EMTI 
+//                if (player.BuugayEgg != null) {  
 //                    dataArray.add(player.BuugayEgg.lastTimeCreate);
 //                    dataArray.add(player.BuugayEgg.timeDone);
 //                }
@@ -1028,7 +1028,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 
                 //data skill
                 JSONArray dataSkill = new JSONArray();
-                for (Skill skill : player.playerSkill.skills) {//Zalo: 0358124452//Name: EMTI 
+                for (Skill skill : player.playerSkill.skills) {  
                     dataSkill.add(skill.template.id);
                     dataSkill.add(skill.point);
                     dataSkill.add(skill.lastTimeUseThisSkill);
@@ -1041,7 +1041,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
 //                dataArray.clear();
 
                 //data skill shortcut
-                for (int skillId : player.playerSkill.skillShortCut) {//Zalo: 0358124452//Name: EMTI 
+                for (int skillId : player.playerSkill.skillShortCut) {  
                     dataArray.add(skillId);
                 }
                 String skillShortcut = dataArray.toJSONString();
@@ -1131,7 +1131,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 dataArray.clear();
 
                 //data thưởng ngọc rồng đen
-                for (int i = 0; i < player.rewardBlackBall.timeOutOfDateReward.length; i++) {//Zalo: 0358124452//Name: EMTI 
+                for (int i = 0; i < player.rewardBlackBall.timeOutOfDateReward.length; i++) {  
                     JSONArray dataBlackBall = new JSONArray();
                     dataBlackBall.add(player.rewardBlackBall.timeOutOfDateReward[i]);
                     dataBlackBall.add(player.rewardBlackBall.lastTimeGetReward[i]);
@@ -1143,7 +1143,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 dataArray.clear();
 
                 //data thưởng giai dau
-                for (int i = 0; i < player.rewardGiaidau.timeOutOfDateReward.length; i++) {//Zalo: 0358124452//Name: EMTI 
+                for (int i = 0; i < player.rewardGiaidau.timeOutOfDateReward.length; i++) {  
                     JSONArray dataGiaidau = new JSONArray();
                     dataGiaidau.add(player.rewardGiaidau.timeOutOfDateReward[i]);
                     dataGiaidau.add(player.rewardGiaidau.lastTimeGetReward[i]);
@@ -1173,7 +1173,7 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                 String minipet = dataArray.toJSONString();
                 String minipetInfo = dataArray.toJSONString();
                 String minipetPoint = dataArray.toJSONString();
-                if (player.minipet != null) {//Zalo: 0358124452//Name: EMTI 
+                if (player.minipet != null) {  
                     dataArray.add(player.minipet.gender);
                     dataArray.add(player.minipet.name);
                     dataArray.add(player.minipet.status);
@@ -1348,16 +1348,16 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
                         //end khaille add code
                         player.id);
 //                Logger.log(Logger.RED, "Cư dân: " + player.name + " đã lưu dữ liệu thành công! " + (System.currentTimeMillis() - st) + "\n");
-            } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+            } catch (Exception e) {  
                 e.printStackTrace();
                 Logger.logException(PlayerDAO.class, e, "Thông báo lỗi lưu cư dân: " + player.name);
             }
         }
     }
 
-    public static boolean subGoldBar(Player player, int num) {//Zalo: 0358124452//Name: EMTI 
+    public static boolean subGoldBar(Player player, int num) {  
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {//Zalo: 0358124452//Name: EMTI 
+        try (Connection con = GirlkunDB.getConnection();) {  
             ps = con.prepareStatement("update account set thoi_vang = (thoi_vang - ?), active = ? where id = ?");
             ps.setInt(1, num);
             ps.setInt(2, player.getSession().actived ? 1 : 0);
@@ -1365,18 +1365,18 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.executeUpdate();
             ps.close();
             player.getSession().goldBar -= num;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi update thỏi vàng " + player.name);
             return false;
-        } finally {//Zalo: 0358124452//Name: EMTI 
+        } finally {  
         }
         return false;
     }
 
-    public static boolean subvndBar(Player player, int num) {//Zalo: 0358124452//Name: EMTI 
+    public static boolean subvndBar(Player player, int num) {  
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {//Zalo: 0358124452//Name: EMTI 
+        try (Connection con = GirlkunDB.getConnection();) {  
             ps = con.prepareStatement("update account set vnd = (vnd - ?), active = ? where id = ?");
             ps.setInt(1, num);
             ps.setInt(2, player.getSession().actived ? 1 : 0);
@@ -1384,18 +1384,18 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.executeUpdate();
             ps.close();
             player.getSession().vnd -= num;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi update vnd " + player.name);
             return false;
-        } finally {//Zalo: 0358124452//Name: EMTI 
+        } finally {  
         }
         return false;
     }
 
-    public static boolean subcoinBar(Player player, int num) {//Zalo: 0358124452//Name: EMTI 
+    public static boolean subcoinBar(Player player, int num) {  
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {//Zalo: 0358124452//Name: EMTI 
+        try (Connection con = GirlkunDB.getConnection();) {  
             ps = con.prepareStatement("update account set coin = (coin - ?), active = ? where id = ?");
             ps.setInt(1, num);
             ps.setInt(2, player.getSession().actived ? 1 : 0);
@@ -1403,26 +1403,26 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.executeUpdate();
             ps.close();
             player.getSession().coinBar -= num;
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi update Coin " + player.name);
             return false;
-        } finally {//Zalo: 0358124452//Name: EMTI 
+        } finally {  
         }
-        if (num > 1000) {//Zalo: 0358124452//Name: EMTI 
+        if (num > 1000) {  
             insertHistoryGold(player, num);
         }
         return true;
     }
 
-    public static boolean setIs_gift_box(Player player) {//Zalo: 0358124452//Name: EMTI 
+    public static boolean setIs_gift_box(Player player) {  
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {//Zalo: 0358124452//Name: EMTI 
+        try (Connection con = GirlkunDB.getConnection();) {  
             ps = con.prepareStatement("update account set is_gift_box = 0 where id = ?");
             ps.setInt(1, player.getSession().userId);
             ps.executeUpdate();
             ps.close();
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi update new_reg " + player.name);
             return false;
@@ -1431,9 +1431,9 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
     }
 
     public static void addHistoryReceiveGoldBar(Player player, int goldBefore, int goldAfter,
-            int goldBagBefore, int goldBagAfter, int goldBoxBefore, int goldBoxAfter) {//Zalo: 0358124452//Name: EMTI 
+            int goldBagBefore, int goldBagAfter, int goldBoxBefore, int goldBoxAfter) {  
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {//Zalo: 0358124452//Name: EMTI 
+        try (Connection con = GirlkunDB.getConnection();) {  
             ps = con.prepareStatement("insert into history_receive_goldbar(player_id,player_name,gold_before_receive,"
                     + "gold_after_receive,gold_bag_before,gold_bag_after,gold_box_before,gold_box_after) values (?,?,?,?,?,?,?,?)");
             ps.setInt(1, (int) player.id);
@@ -1445,26 +1445,26 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.setInt(7, goldBoxBefore);
             ps.setInt(8, goldBoxAfter);
             ps.executeUpdate();
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi update thỏi vàng " + player.name);
-        } finally {//Zalo: 0358124452//Name: EMTI 
-            try {//Zalo: 0358124452//Name: EMTI 
+        } finally {  
+            try {  
                 ps.close();
-            } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+            } catch (Exception e) {  
                 e.printStackTrace();
             }
         }
     }
 
-    public static void updateItemReward(Player player) {//Zalo: 0358124452//Name: EMTI 
+    public static void updateItemReward(Player player) {  
         String dataItemReward = "";
-        for (Item item : player.getSession().itemsReward) {//Zalo: 0358124452//Name: EMTI 
-            if (item.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
-                dataItemReward += "{//Zalo: 0358124452//Name: EMTI " + item.template.id + ":" + item.quantity;
-                if (!item.itemOptions.isEmpty()) {//Zalo: 0358124452//Name: EMTI 
+        for (Item item : player.getSession().itemsReward) {  
+            if (item.isNotNullItem()) {  
+                dataItemReward += "{  " + item.template.id + ":" + item.quantity;
+                if (!item.itemOptions.isEmpty()) {  
                     dataItemReward += "|";
-                    for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
+                    for (Item.ItemOption io : item.itemOptions) {  
                         dataItemReward += "[" + io.optionTemplate.id + ":" + io.param + "],";
                     }
                     dataItemReward = dataItemReward.substring(0, dataItemReward.length() - 1) + "};";
@@ -1473,33 +1473,33 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
         }
         PreparedStatement ps = null;
         ResultSet rs = null;
-        try (Connection con = GirlkunDB.getConnection();) {//Zalo: 0358124452//Name: EMTI 
+        try (Connection con = GirlkunDB.getConnection();) {  
             ps = con.prepareStatement("update account set reward = ? where id = ?");
             ps.setString(1, dataItemReward);
             ps.setInt(2, player.getSession().userId);
             ps.executeUpdate();
             ps.close();
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi update phần thưởng " + player.name);
-        } finally {//Zalo: 0358124452//Name: EMTI 
-            try {//Zalo: 0358124452//Name: EMTI 
+        } finally {  
+            try {  
                 ps.close();
-            } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+            } catch (Exception e) {  
                 e.printStackTrace();
             }
         }
     }
 
-    public static boolean insertHistoryGold(Player player, int quantily) {//Zalo: 0358124452//Name: EMTI 
+    public static boolean insertHistoryGold(Player player, int quantily) {  
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {//Zalo: 0358124452//Name: EMTI 
+        try (Connection con = GirlkunDB.getConnection();) {  
             ps = con.prepareStatement("insert into history_gold(name,gold) values (?,?)");
             ps.setString(1, player.name);
             ps.setInt(2, quantily);
             ps.executeUpdate();
             ps.close();
-        } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (Exception e) {  
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi insert history_gold " + player.name);
             return false;
@@ -1507,32 +1507,32 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
         return true;
     }
 
-    public static boolean checkLogout(Connection con, Player player) {//Zalo: 0358124452//Name: EMTI 
-        if (player.getSession() == null) {//Zalo: 0358124452//Name: EMTI 
+    public static boolean checkLogout(Connection con, Player player) {  
+        if (player.getSession() == null) {  
             // Handle the case when the session is null
             return false;
         }
 
         long lastTimeLogout = 0;
         long lastTimeLogin = 0;
-        try (PreparedStatement ps = con.prepareStatement("select * from account where id = ? limit 1")) {//Zalo: 0358124452//Name: EMTI 
+        try (PreparedStatement ps = con.prepareStatement("select * from account where id = ? limit 1")) {  
             ps.setInt(1, player.getSession().userId);
-            try (ResultSet rs = ps.executeQuery()) {//Zalo: 0358124452//Name: EMTI 
-                while (rs.next()) {//Zalo: 0358124452//Name: EMTI 
+            try (ResultSet rs = ps.executeQuery()) {  
+                while (rs.next()) {  
                     lastTimeLogout = rs.getTimestamp("last_time_logout").getTime();
                     lastTimeLogin = rs.getTimestamp("last_time_login").getTime();
                 }
             }
-        } catch (SQLException e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (SQLException e) {  
             e.printStackTrace();
             return false;
         }
         return lastTimeLogout > lastTimeLogin;
     }
 
-    public static void LogNapTIen(String uid, String menhgia, String seri, String code, String tranid) {//Zalo: 0358124452//Name: EMTI 
+    public static void LogNapTIen(String uid, String menhgia, String seri, String code, String tranid) {  
         String UPDATE_PASS = "INSERT INTO naptien(uid,sotien,seri,code,loaithe,time,noidung,tinhtrang,tranid,magioithieu) VALUES(?,?,?,?,?,?,?,?,?,?)";
-        try {//Zalo: 0358124452//Name: EMTI 
+        try {  
             Connection conn = GirlkunDB.getConnection();
             PreparedStatement ps = null;
             //UPDATE NRSD,
@@ -1550,13 +1550,13 @@ public class PlayerDAO {//Zalo: 0358124452//Name: EMTI
             ps.setString(8, "0");
             ps.setString(9, tranid);
             ps.setString(10, "0");
-            if (ps.executeUpdate() == 1) {//Zalo: 0358124452//Name: EMTI 
+            if (ps.executeUpdate() == 1) {  
             }
 
             conn.commit();
             //UPDATE NRSD
             conn.close();
-        } catch (SQLException e) {//Zalo: 0358124452//Name: EMTI 
+        } catch (SQLException e) {  
             e.printStackTrace();
         }
     }

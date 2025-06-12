@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 // su kien 1/6
-public class SK20_10 {//Zalo: 0358124452//Name: EMTI 
+public class SK20_10 {  
 
     public static final int id1 = 1606;
     public static final int id2 = 1607;
@@ -97,37 +97,37 @@ public class SK20_10 {//Zalo: 0358124452//Name: EMTI
     //TOP 4
     public static int sl_nr_top4 = 3;
 
-    public static int getRandomFromList() {//Zalo: 0358124452//Name: EMTI 
+    public static int getRandomFromList() {  
         int tile_id1 = 10;
         int tile_id2 = 20;
         int tile_id3 = 30;
         int tile_id4 = 40;
         int tile_id5 = 50;
         int tile = Util.nextInt(0, 100);
-        if (tile < tile_id1) {//Zalo: 0358124452//Name: EMTI 
+        if (tile < tile_id1) {  
             return listVPSK.get(0);
-        } else if (tile < tile_id2) {//Zalo: 0358124452//Name: EMTI 
+        } else if (tile < tile_id2) {  
             return listVPSK.get(1);
-        } else if (tile < tile_id3) {//Zalo: 0358124452//Name: EMTI 
+        } else if (tile < tile_id3) {  
             return listVPSK.get(2);
-        } else if (tile < tile_id4) {//Zalo: 0358124452//Name: EMTI 
+        } else if (tile < tile_id4) {  
             return listVPSK.get(3);
-        } else if (tile < tile_id5) {//Zalo: 0358124452//Name: EMTI 
+        } else if (tile < tile_id5) {  
             return listVPSK.get(4);
-        } else {//Zalo: 0358124452//Name: EMTI 
+        } else {  
             return listVPSK.get(Util.nextInt(listVPSK.size()));
         }
     }
 
     public static SK20_10 gI;
 
-    public static SK20_10 gI() {//Zalo: 0358124452//Name: EMTI 
-        if (gI == null) {//Zalo: 0358124452//Name: EMTI 
+    public static SK20_10 gI() {  
+        if (gI == null) {  
             gI = new SK20_10();
         }
         return gI;
     }
-    public static final String[] Textskquylao = new String[]{//Zalo: 0358124452//Name: EMTI 
+    public static final String[] Textskquylao = new String[]{  
         "Sự kiện diễn ra 29/12 - 00h00 ngày 3/1/2024: \n"
         + "____x2 tnsm trong thời gian diễn ra sự kiện______\n"
         + "- Đua top sự kiện bằng cách nấu " + ItemService.gI().getTemplate(iddoi1).name + ", " + ItemService.gI().getTemplate(iddoi2).name + "\n"
@@ -149,7 +149,7 @@ public class SK20_10 {//Zalo: 0358124452//Name: EMTI
 
     };
 
-    public static boolean isEventActive() {//Zalo: 0358124452//Name: EMTI 
+    public static boolean isEventActive() {  
         return false;
     }
 

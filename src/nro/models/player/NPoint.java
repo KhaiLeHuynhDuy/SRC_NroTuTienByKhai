@@ -25,13 +25,13 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-public class NPoint {//Zalo: 0358124452//Name: EMTI 
+public class NPoint {  
 
     public static final byte MAX_LIMIT = 12;
     private Player player;
     private PointFusion ps;
 
-    public NPoint(Player player) {//Zalo: 0358124452//Name: EMTI 
+    public NPoint(Player player) {  
 
         this.player = player;
         this.tlHp = new ArrayList<>();
@@ -175,8 +175,8 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
     /**
      * Tính toán mọi chỉ số sau khi có thay đổi
      */
-    public void calPoint() {//Zalo: 0358124452//Name: EMTI 
-        if (this.player.pet != null) {//Zalo: 0358124452//Name: EMTI 
+    public void calPoint() {  
+        if (this.player.pet != null) {  
             this.player.pet.nPoint.setPointWhenWearClothes();
         }
         this.setPointWhenWearClothes();
@@ -186,31 +186,31 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         return param * percent / 150;
     }
 
-    private void setPointWhenWearClothes() {//Zalo: 0358124452//Name: EMTI 
+    private void setPointWhenWearClothes() {  
         resetPoint();
-        if (this.player.rewardBlackBall.timeOutOfDateReward[0] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.rewardBlackBall.timeOutOfDateReward[0] > System.currentTimeMillis()) {  
             dame += RewardBlackBall.R2S_1;
 
         }
-        if (this.player.rewardBlackBall.timeOutOfDateReward[1] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.rewardBlackBall.timeOutOfDateReward[1] > System.currentTimeMillis()) {  
             hp += RewardBlackBall.R2S_1;
             mp += RewardBlackBall.R2S_1;
         }
-        if (this.player.rewardBlackBall.timeOutOfDateReward[2] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.rewardBlackBall.timeOutOfDateReward[2] > System.currentTimeMillis()) {  
             tlDameAttMob.add(RewardBlackBall.R3S_2);
         }
-        if (this.player.rewardBlackBall.timeOutOfDateReward[3] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.rewardBlackBall.timeOutOfDateReward[3] > System.currentTimeMillis()) {  
             tlPST += RewardBlackBall.R4S_2;
         }
-        if (this.player.rewardBlackBall.timeOutOfDateReward[4] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.rewardBlackBall.timeOutOfDateReward[4] > System.currentTimeMillis()) {  
 
             tlNeDon += RewardBlackBall.R5S_2;
         }
-        if (this.player.rewardBlackBall.timeOutOfDateReward[5] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.rewardBlackBall.timeOutOfDateReward[5] > System.currentTimeMillis()) {  
             tlHpHoi += RewardBlackBall.R6S_2;
             tlHutHp += RewardBlackBall.R6S_2;
         }
-        if (this.player.rewardBlackBall.timeOutOfDateReward[6] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.rewardBlackBall.timeOutOfDateReward[6] > System.currentTimeMillis()) {  
             tlMpHoi += RewardBlackBall.R7S_2;
             tlHutMp += RewardBlackBall.R7S_2;
         }
@@ -315,13 +315,13 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
             }
         }
 
-        if (this.player != null && this.player.setClothes != null) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player != null && this.player.setClothes != null) {  
             this.player.setClothes.worldcup = 0;
         }
 //        0358124452
-        for (Item item : this.player.inventory.itemsBody) {//Zalo: 0358124452//Name: EMTI 
+        for (Item item : this.player.inventory.itemsBody) {  
             if (item != null && item.template != null) {
-                switch (item.template.id) {//Zalo: 0358124452//Name: EMTI 
+                switch (item.template.id) {  
                     case 966:
                     case 982:
                     case 983:
@@ -330,168 +330,168 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                         player.setClothes.worldcup++;
                 }
 
-                if (item.template.id >= 592 && item.template.id <= 594) {//Zalo: 0358124452//Name: EMTI 
+                if (item.template.id >= 592 && item.template.id <= 594) {  
                     teleport = true;
                 }
 
-                for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
-                    switch (io.optionTemplate.id) {//Zalo: 0358124452//Name: EMTI 
+                for (Item.ItemOption io : item.itemOptions) {  
+                    switch (io.optionTemplate.id) {  
                         case 232:
                         case 226:
                         case 0: //Tấn công +#
                             this.dameAdd += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2: //HP, KI+#000
                             this.hpAdd += io.param * 1000;
                             this.mpAdd += io.param * 1000;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 3:// fake
                             this.voHieuChuong += io.param;
-                            break;                            //Name: EMTI 
+                            break;                              
                         case 224:
                         case 246:
                         case 5: //+#% sức đánh chí mạng
                             this.tlDameCrit.add(io.param);
                             break;
-                        case 233://Zalo: 0358124452                                //Name: EMTI 
+                        case 233:                                   
                         case 6: //HP+#
                         case 227:
                             this.hpAdd += io.param;
                             break;
-                        case 234://Zalo: 0358124452                                //Name: EMTI 
+                        case 234:                                   
                         case 7: //KI+#
                         case 228:
                             this.mpAdd += io.param;
                             break;
-                        case 230://Zalo: 0358124452                                //Name: EMTI 
+                        case 230:                                   
                         case 8: //Hút #% HP, KI xung quanh mỗi 5 giây
                             this.tlHutHpMpXQ += io.param;
                             break;
-                        case 247://Name: EMTI 
+                        case 247:  
                         case 14: //Chí mạng+#%
                             this.critAdd += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 19: //Tấn công+#% khi đánh quái
                             this.tlDameAttMob.add(io.param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 22: //HP+#K
                             this.hpAdd += io.param * 1000;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 23: //MP+#K
                             this.mpAdd += io.param * 1000;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 27: //+# HP/30s
                             this.hpHoiAdd += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 28: //+# KI/30s
                             this.mpHoiAdd += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 33: //dịch chuyển tức thời
                             this.teleport = true;
                             break;
-                        case 235://Zalo: 0358124452         //Zalo: 0358124452                                //Name: EMTI 
+                        case 235:                                             
                         case 47: //Giáp+#
                         case 229:
                             this.defAdd += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 48: //HP/KI+#
                             this.hpAdd += io.param;
                             this.mpAdd += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 221:
 
                         case 49: //Tấn công+#%
                         case 50: //Sức đánh+#%
                         case 242:
                             this.tlDame.add(io.param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 222:
 
                         case 77: //HP+#%
                         case 244:
                             this.tlHp.add(io.param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 80: //HP+#%/30s
                             this.tlHpHoi += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 81: //MP+#%/30s
                             this.tlMpHoi += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 88: //Cộng #% exp khi đánh quái
                             this.tlTNSM.add(io.param);
                             break;
-                        case 241://Zalo: 0358124452     
+                        case 241:      
                         case 94: //Giáp #%
                             this.tlDef.add(io.param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 95: //Biến #% tấn công thành HP
                             this.tlHutHp += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 96: //Biến #% tấn công thành MP
                             this.tlHutMp += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 97: //Phản #% sát thương
                             this.tlPST += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 100: //+#% vàng từ quái
                             this.tlGold += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 101: //+#% TN,SM
                             this.tlTNSM.add(io.param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 223:
                         case 103: //KI +#%
                         case 245:
                             this.tlMp.add(io.param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 104: //Biến #% tấn công quái thành HP
                             this.tlHutHpMob += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 105: //Vô hình khi không đánh quái và boss
                             this.wearingVoHinh = true;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 106: //Không ảnh hưởng bởi cái lạnh
                             this.isKhongLanh = true;
                             break;
-                        case 243://Zalo: 0358124452                                //Name: EMTI 
+                        case 243:                                   
                         case 108: //#% Né đòn
                             this.tlNeDon += io.param;// đối nghịch
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 109: //Hôi, giảm #% HP
                             this.tlHpGiamODo += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 116: //Kháng thái dương hạ san
                             this.khangTDHS = true;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 117: //Đẹp +#% SĐ cho mình và người xung quanh
                             this.tlSDDep.add(io.param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 147: //+#% sức đánh
                             this.tlDame.add(io.param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 75: //Giảm 50% sức đánh, HP, KI và +#% SM, TN, vàng từ quái
                             this.tlSubSD += 50;
 
                             this.tlTNSM.add(io.param);
                             this.tlGold += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 162: //Cute hồi #% KI/s bản thân và xung quanh
                             this.mpHoiCute += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 173: //Phục hồi #% HP và KI cho đồng đội
                             this.tlHpHoiBanThanVaDongDoi += io.param;
                             this.tlMpHoiBanThanVaDongDoi += io.param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 115: //Thỏ Đại Ca
                             this.isThoDaiCa = true;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 26: //Dracula hóa đá
                             this.isDrabura = true;
                             break;
-                        case 231://Zalo: 0358124452                                //Name: EMTI 
+                        case 231:                                   
                         case 218: // Dracula Frost
                             this.isDraburaFrost = true;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 219: // Blackfide
                             this.isSoHai = true;
                             break;
@@ -513,256 +513,256 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                 }
             }
         }
-        for (Item item : this.player.inventory.itemsBag) {//Zalo: 0358124452//Name: EMTI 
+        for (Item item : this.player.inventory.itemsBag) {  
 
-            if (this.player.isPl() && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {//Zalo: 0358124452//Name: EMTI 
-//            for (Item item : this.player.inventory.itemsBag) {//Zalo: 0358124452//Name: EMTI 
-                if (item.isNotNullItem() && item.template.id == 921) {//Zalo: 0358124452//Name: EMTI 
-                    for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
-                        switch (io.optionTemplate.id) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.isPl() && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {  
+//            for (Item item : this.player.inventory.itemsBag) {  
+                if (item.isNotNullItem() && item.template.id == 921) {  
+                    for (Item.ItemOption io : item.itemOptions) {  
+                        switch (io.optionTemplate.id) {  
                             case 232:
                                 this.dameAdd += io.param;
                                 break;
-                            case 233://Zalo: 0358124452                                //Name: EMTI 
+                            case 233:                                   
                                 this.hpAdd += io.param;
                                 break;
-                            case 234://Zalo: 0358124452                                //Name: EMTI 
+                            case 234:                                   
                                 this.mpAdd += io.param;
                                 break;
-                            case 235://Zalo: 0358124452         //Zalo: 0358124452                                //Name: EMTI 
+                            case 235:                                             
                                 this.defAdd += io.param;
                                 break;
                             case 5: //+#% sức đánh chí mạng
                                 this.tlDameCrit.add(io.param / 2);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 14: //Chí mạng+#%
                                 this.critAdd += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 50: //Sức đánh+#%
                                 this.tlDame.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 77: //HP+#%
                                 this.tlHp.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 80: //HP+#%/30s
                                 this.tlHpHoi += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 81: //MP+#%/30s
                                 this.tlMpHoi += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 94: //Giáp #%
                                 this.tlDef.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 103: //KI +#%
                                 this.tlMp.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 108: //#% Né đòn
                                 this.tlNeDon += io.param;
                                 break;
-                            //Zalo: 0358124452                                //Name: EMTI 
+                                                               
                         }
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
 //        }
 
-            if (this.player.isPl() && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {//Zalo: 0358124452//Name: EMTI 
-//            for (Item item : this.player.inventory.itemsBag) {//Zalo: 0358124452//Name: EMTI 
-                if (item.isNotNullItem() && item.template.id == 2064) {//Zalo: 0358124452//Name: EMTI 
-                    for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
-                        switch (io.optionTemplate.id) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.isPl() && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {  
+//            for (Item item : this.player.inventory.itemsBag) {  
+                if (item.isNotNullItem() && item.template.id == 2064) {  
+                    for (Item.ItemOption io : item.itemOptions) {  
+                        switch (io.optionTemplate.id) {  
                             case 5:
                                 this.tlDameCrit.add(io.param / 2);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 14: //Chí mạng+#%
                                 this.critAdd += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 50: //Sức đánh+#%
                                 this.tlDame.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 77: //HP+#%
                                 this.tlHp.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 80: //HP+#%/30s
                                 this.tlHpHoi += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 81: //MP+#%/30s
                                 this.tlMpHoi += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 94: //Giáp #%
                                 this.tlDef.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 103: //KI +#%
                                 this.tlMp.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 108: //#% Né đòn
                                 this.tlNeDon += io.param;
                                 break;
                             case 232:
                                 this.dameAdd += io.param;
                                 break;
-                            case 233://Zalo: 0358124452                                //Name: EMTI 
+                            case 233:                                   
                                 this.hpAdd += io.param;
                                 break;
-                            case 234://Zalo: 0358124452                                //Name: EMTI 
+                            case 234:                                   
                                 this.mpAdd += io.param;
                                 break;
-                            case 235://Zalo: 0358124452         //Zalo: 0358124452                                //Name: EMTI 
+                            case 235:                                             
                                 this.defAdd += io.param;
-                                break;//Zalo: 0358124452                                //Name: EMTI 
+                                break;                                   
                         }
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
 //        }
-            if (this.player.isPl() && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA4) {//Zalo: 0358124452//Name: EMTI 
-//            for (Item item : this.player.inventory.itemsBag) {//Zalo: 0358124452//Name: EMTI 
-                if (item.isNotNullItem() && item.template.id == 2113) {//Zalo: 0358124452//Name: EMTI 
-                    for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
-                        switch (io.optionTemplate.id) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.isPl() && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA4) {  
+//            for (Item item : this.player.inventory.itemsBag) {  
+                if (item.isNotNullItem() && item.template.id == 2113) {  
+                    for (Item.ItemOption io : item.itemOptions) {  
+                        switch (io.optionTemplate.id) {  
                             case 5:
                                 this.tlDameCrit.add(io.param / 2);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 14: //Chí mạng+#%
                                 this.critAdd += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 50: //Sức đánh+#%
                                 this.tlDame.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 77: //HP+#%
                                 this.tlHp.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 80: //HP+#%/30s
                                 this.tlHpHoi += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 81: //MP+#%/30s
                                 this.tlMpHoi += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 94: //Giáp #%
                                 this.tlDef.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 103: //KI +#%
                                 this.tlMp.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 108: //#% Né đòn
                                 this.tlNeDon += io.param;
                                 break;
                             case 232:
                                 this.dameAdd += io.param;
                                 break;
-                            case 233://Zalo: 0358124452                                //Name: EMTI 
+                            case 233:                                   
                                 this.hpAdd += io.param;
                                 break;
-                            case 234://Zalo: 0358124452                                //Name: EMTI 
+                            case 234:                                   
                                 this.mpAdd += io.param;
                                 break;
-                            case 235://Zalo: 0358124452         //Zalo: 0358124452                                //Name: EMTI 
+                            case 235:                                             
                                 this.defAdd += io.param;
-                                break;//Zalo: 0358124452                                //Name: EMTI 
+                                break;                                   
                         }
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
 //        }
-            if (this.player.isPl() && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA5) {//Zalo: 0358124452//Name: EMTI 
-//            for (Item item : this.player.inventory.itemsBag) {//Zalo: 0358124452//Name: EMTI 
-                if (item.isNotNullItem() && item.template.id == 1324) {//Zalo: 0358124452//Name: EMTI 
-                    for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
-                        switch (io.optionTemplate.id) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.isPl() && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA5) {  
+//            for (Item item : this.player.inventory.itemsBag) {  
+                if (item.isNotNullItem() && item.template.id == 1324) {  
+                    for (Item.ItemOption io : item.itemOptions) {  
+                        switch (io.optionTemplate.id) {  
                             case 5:
                                 this.tlDameCrit.add(io.param / 2);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 14: //Chí mạng+#%
                                 this.critAdd += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 50: //Sức đánh+#%
                                 this.tlDame.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 77: //HP+#%
                                 this.tlHp.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 80: //HP+#%/30s
                                 this.tlHpHoi += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 81: //MP+#%/30s
                                 this.tlMpHoi += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 94: //Giáp #%
                                 this.tlDef.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 103: //KI +#%
                                 this.tlMp.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 108: //#% Né đòn
                                 this.tlNeDon += io.param;
                                 break;
                             case 232:
                                 this.dameAdd += io.param;
                                 break;
-                            case 233://Zalo: 0358124452                                //Name: EMTI 
+                            case 233:                                   
                                 this.hpAdd += io.param;
                                 break;
-                            case 234://Zalo: 0358124452                                //Name: EMTI 
+                            case 234:                                   
                                 this.mpAdd += io.param;
                                 break;
-                            case 235://Zalo: 0358124452         //Zalo: 0358124452                                //Name: EMTI 
+                            case 235:                                             
                                 this.defAdd += io.param;
-                                break;//Zalo: 0358124452                                //Name: EMTI 
+                                break;                                   
                         }
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
-            if (this.player.isPl() && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA6) {//Zalo: 0358124452//Name: EMTI 
-//            for (Item item : this.player.inventory.itemsBag) {//Zalo: 0358124452//Name: EMTI 
-                if (item.isNotNullItem() && item.template.id == 1472) {//Zalo: 0358124452//Name: EMTI 
-                    for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
-                        switch (io.optionTemplate.id) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.isPl() && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA6) {  
+//            for (Item item : this.player.inventory.itemsBag) {  
+                if (item.isNotNullItem() && item.template.id == 1472) {  
+                    for (Item.ItemOption io : item.itemOptions) {  
+                        switch (io.optionTemplate.id) {  
                             case 5:
                                 this.tlDameCrit.add(io.param / 2);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 14: //Chí mạng+#%
                                 this.critAdd += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 50: //Sức đánh+#%
                                 this.tlDame.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 77: //HP+#%
                                 this.tlHp.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 80: //HP+#%/30s
                                 this.tlHpHoi += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 81: //MP+#%/30s
                                 this.tlMpHoi += io.param;
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 94: //Giáp #%
                                 this.tlDef.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 103: //KI +#%
                                 this.tlMp.add(io.param);
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 108: //#% Né đòn
                                 this.tlNeDon += io.param;
                                 break;
                             case 232:
                                 this.dameAdd += io.param;
                                 break;
-                            case 233://Zalo: 0358124452                                //Name: EMTI 
+                            case 233:                                   
                                 this.hpAdd += io.param;
                                 break;
-                            case 234://Zalo: 0358124452                                //Name: EMTI 
+                            case 234:                                   
                                 this.mpAdd += io.param;
                                 break;
-                            case 235://Zalo: 0358124452         //Zalo: 0358124452                                //Name: EMTI 
+                            case 235:                                             
                                 this.defAdd += io.param;
-                                break;//Zalo: 0358124452                                //Name: EMTI 
+                                break;                                   
                         }
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
         }
@@ -827,14 +827,14 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         setBasePoint();
     }
 
-    private void setDameTrainArmor() {//Zalo: 0358124452//Name: EMTI 
-        if (!this.player.isPet && !this.player.isBoss) {//Zalo: 0358124452//Name: EMTI 
-            if (this.player.inventory.itemsBody.size() < 7) {//Zalo: 0358124452//Name: EMTI 
+    private void setDameTrainArmor() {  
+        if (!this.player.isPet && !this.player.isBoss) {  
+            if (this.player.inventory.itemsBody.size() < 7) {  
                 return;
             }
-            try {//Zalo: 0358124452//Name: EMTI 
+            try {  
                 Item gtl = this.player.inventory.itemsBody.get(6);
-                if (gtl.isNotNullItem() && gtl.template.type != 35) {//Zalo: 0358124452//Name: EMTI 
+                if (gtl.isNotNullItem() && gtl.template.type != 35) {  
                     this.wearingTrainArmor = true;
                     this.wornTrainArmor = true;
                     this.player.inventory.trainArmor = gtl;
@@ -846,20 +846,20 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                         }
                     }
                     this.tlSubSD += ItemService.gI().getPercentTrainArmor(gtl);
-                } else {//Zalo: 0358124452//Name: EMTI 
-                    if (this.wornTrainArmor) {//Zalo: 0358124452//Name: EMTI 
+                } else {  
+                    if (this.wornTrainArmor) {  
                         this.wearingTrainArmor = false;
 
                         if (this.player.inventory.trainArmor.itemOptions != null) {
-                            for (Item.ItemOption io : this.player.inventory.trainArmor.itemOptions) {//Zalo: 0358124452//Name: EMTI 
-                                if (io.optionTemplate.id == 9 && io.param > 0) {//Zalo: 0358124452//Name: EMTI 
+                            for (Item.ItemOption io : this.player.inventory.trainArmor.itemOptions) {  
+                                if (io.optionTemplate.id == 9 && io.param > 0) {  
 //                                    for (Item.ItemOption io2 : this.player.inventory.trainArmor.itemOptions) {
 //                                        if (io.optionTemplate.id == 50) {
 //                                            this.tlDame.add(io2.param);
 //                                        }
 //                                    }
                                     this.tlDame.add(ItemService.gI().getPercentTrainArmor(this.player.inventory.trainArmor));
-                                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                    break;                                                                   
                                 }
 
                             }
@@ -868,14 +868,14 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                         }
                     }
                 }
-            } catch (Exception e) {//Zalo: 0358124452//Name: EMTI 
+            } catch (Exception e) {  
                 e.printStackTrace();
                 Logger.error("Lỗi get giáp tập luyện " + this.player.name + "\n");
             }
         }
     }
 
-    public void setBasePoint() {//Zalo: 0358124452//Name: EMTI 
+    public void setBasePoint() {  
         setHpMax();
         setHp();
         setMpMax();
@@ -917,56 +917,56 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
     }
 
-    public void setPotara2() {//Zalo: 0358124452//Name: EMTI 
-        if (!this.player.isPet && !this.player.isBoss) {//Zalo: 0358124452//Name: EMTI 
+    public void setPotara2() {  
+        if (!this.player.isPet && !this.player.isBoss) {  
             Item btc2 = InventoryServiceNew.gI().findItemBag(this.player, 921);
-            if (btc2 != null && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {//Zalo: 0358124452//Name: EMTI 
-                if (!btc2.itemOptions.isEmpty()) {//Zalo: 0358124452//Name: EMTI 
+            if (btc2 != null && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {  
+                if (!btc2.itemOptions.isEmpty()) {  
                     int param = btc2.itemOptions.get(0).param;
                     int option_id = btc2.itemOptions.get(0).optionTemplate.id;
-                    switch (option_id) {//Zalo: 0358124452//Name: EMTI 
+                    switch (option_id) {  
                         case 50:
 
                             this.dame += calPercent(this.dame, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 77:
                             this.hp += calPercent(this.hpMax, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 103:
                             this.mp += calPercent(this.mpMax, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 94:
                             this.def += (int) calPercent(this.def, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 108:
                             this.tlNeDon += (byte) calPercent(this.tlNeDon, param);
-                            break;                             //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                
                         case 14:
                             this.crit += param;
                         case 5:
                             this.tlDameCrit.add(param / 2);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
+                                                           
                         case 80: //HP+#%/30s
                             this.tlHpHoi += param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 81: //MP+#%/30s
                             this.tlMpHoi += param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
+                                                           
                         case 232:
                             this.dameAdd += param;
                             break;
-                        case 233://Zalo: 0358124452                                //Name: EMTI 
+                        case 233:                                   
                             this.hpAdd += param;
                             break;
-                        case 234://Zalo: 0358124452                                //Name: EMTI 
+                        case 234:                                   
                             this.mpAdd += param;
                             break;
-                        case 235://Zalo: 0358124452         //Zalo: 0358124452                                //Name: EMTI 
+                        case 235:                                             
                             this.defAdd += param;
-                            break;//Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                   
+                                                           
 
                     }
                 }
@@ -975,63 +975,63 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public void setPotara3() {//Zalo: 0358124452//Name: EMTI 
-        if (!this.player.isPet && !this.player.isBoss) {//Zalo: 0358124452//Name: EMTI 
+    public void setPotara3() {  
+        if (!this.player.isPet && !this.player.isBoss) {  
             Item btc3 = InventoryServiceNew.gI().findItemBag(this.player, 2064);
 
-            if (btc3 != null && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {//Zalo: 0358124452//Name: EMTI 
-                if (!btc3.itemOptions.isEmpty()) {//Zalo: 0358124452//Name: EMTI 
+            if (btc3 != null && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {  
+                if (!btc3.itemOptions.isEmpty()) {  
                     int param = btc3.itemOptions.get(0).param;
                     int option_id = btc3.itemOptions.get(0).optionTemplate.id;
                     // System.out.println("Name " + player.name + "option id" + option_id + "Param " + param);
-                    switch (option_id) {//Zalo: 0358124452//Name: EMTI 
+                    switch (option_id) {  
                         case 50:
 
                             this.dame += calPercent(this.dame, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 77:
                             this.hp += calPercent(this.hpMax, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 103:
                             this.mp += calPercent(this.mpMax, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 94:
                             this.def += (int) calPercent(this.def, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 108:
                             this.tlNeDon += (byte) calPercent(this.tlNeDon, param);
 
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 14:
 
                             this.crit += param;
                             break;
                         case 5:
                             this.tlDameCrit.add(param / 2);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
+                                                           
                         case 80: //HP+#%/30s
                             this.tlHpHoi += param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 81: //MP+#%/30s
                             this.tlMpHoi += param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
+                                                           
                         case 232:
                             this.dameAdd += param;
                             break;
-                        case 233://Zalo: 0358124452                                //Name: EMTI 
+                        case 233:                                   
                             this.hpAdd += param;
                             break;
-                        case 234://Zalo: 0358124452                                //Name: EMTI 
+                        case 234:                                   
                             this.mpAdd += param;
                             break;
-                        case 235://Zalo: 0358124452         //Zalo: 0358124452                                //Name: EMTI 
+                        case 235:                                             
                             this.defAdd += param;
-                            break;//Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                   
+                                                                                                                             
                         default:
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                     }
                 }
             }
@@ -1039,62 +1039,62 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public void setPotara4() {//Zalo: 0358124452//Name: EMTI 
-        if (!this.player.isPet && !this.player.isBoss) {//Zalo: 0358124452//Name: EMTI 
+    public void setPotara4() {  
+        if (!this.player.isPet && !this.player.isBoss) {  
             Item btc4 = InventoryServiceNew.gI().findItemBag(this.player, 2113);
 
-            if (btc4 != null && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA4) {//Zalo: 0358124452//Name: EMTI 
-                if (!btc4.itemOptions.isEmpty()) {//Zalo: 0358124452//Name: EMTI 
+            if (btc4 != null && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA4) {  
+                if (!btc4.itemOptions.isEmpty()) {  
                     int param = btc4.itemOptions.get(0).param;
                     int option_id = btc4.itemOptions.get(0).optionTemplate.id;
                     //    System.out.println("Name " + player.name + "option id" + option_id + "Param " + param);
-                    switch (option_id) {//Zalo: 0358124452//Name: EMTI 
+                    switch (option_id) {  
                         case 50:
 
                             this.dame += calPercent(this.dame, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 77:
                             this.hp += calPercent(this.hpMax, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 103:
                             this.mp += calPercent(this.mpMax, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 94:
                             this.def += (int) calPercent(this.def, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 108:
                             this.tlNeDon += (byte) calPercent(this.tlNeDon, param);
-                            break;                                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                           
                         case 14:
 
                             this.crit += param;
                             break;
                         case 5:
                             this.tlDameCrit.add(param / 2);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
+                                                           
                         case 80: //HP+#%/30s
                             this.tlHpHoi += param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 81: //MP+#%/30s
                             this.tlMpHoi += param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
+                                                           
                         case 232:
                             this.dameAdd += param;
                             break;
-                        case 233://Zalo: 0358124452                                //Name: EMTI 
+                        case 233:                                   
                             this.hpAdd += param;
                             break;
-                        case 234://Zalo: 0358124452                                //Name: EMTI 
+                        case 234:                                   
                             this.mpAdd += param;
                             break;
-                        case 235://Zalo: 0358124452         //Zalo: 0358124452                                //Name: EMTI 
+                        case 235:                                             
                             this.defAdd += param;
-                            break;//Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI                             //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                   
+                                                                                                                          
                         default:
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                     }
                 }
             }
@@ -1102,62 +1102,62 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public void setPotara5() {//Zalo: 0358124452//Name: EMTI 
-        if (!this.player.isPet && !this.player.isBoss) {//Zalo: 0358124452//Name: EMTI 
+    public void setPotara5() {  
+        if (!this.player.isPet && !this.player.isBoss) {  
             Item btc4 = InventoryServiceNew.gI().findItemBag(this.player, 1324);
 
-            if (btc4 != null && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA5) {//Zalo: 0358124452//Name: EMTI 
-                if (!btc4.itemOptions.isEmpty()) {//Zalo: 0358124452//Name: EMTI 
+            if (btc4 != null && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA5) {  
+                if (!btc4.itemOptions.isEmpty()) {  
                     int param = btc4.itemOptions.get(0).param;
                     int option_id = btc4.itemOptions.get(0).optionTemplate.id;
                     //    System.out.println("Name " + player.name + "option id" + option_id + "Param " + param);
-                    switch (option_id) {//Zalo: 0358124452//Name: EMTI 
+                    switch (option_id) {  
                         case 50:
 
                             this.dame += calPercent(this.dame, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 77:
                             this.hp += calPercent(this.hpMax, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 103:
                             this.mp += calPercent(this.mpMax, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 94:
                             this.def += (int) calPercent(this.def, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 108:
                             this.tlNeDon += (byte) calPercent(this.tlNeDon, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 14:
 
                             this.crit += param;
                             break;
                         case 5:
                             this.tlDameCrit.add(param / 2);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
+                                                           
                         case 80: //HP+#%/30s
                             this.tlHpHoi += param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 81: //MP+#%/30s
                             this.tlMpHoi += param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
+                                                           
                         case 232:
                             this.dameAdd += param;
                             break;
-                        case 233://Zalo: 0358124452                                //Name: EMTI 
+                        case 233:                                   
                             this.hpAdd += param;
                             break;
-                        case 234://Zalo: 0358124452                                //Name: EMTI 
+                        case 234:                                   
                             this.mpAdd += param;
                             break;
-                        case 235://Zalo: 0358124452         //Zalo: 0358124452                                //Name: EMTI 
+                        case 235:                                             
                             this.defAdd += param;
-                            break;//Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI                             //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                   
+                                                                                                                          
                         default:
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                     }
                 }
             }
@@ -1165,62 +1165,62 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    public void setPotara6() {//Zalo: 0358124452//Name: EMTI 
-        if (!this.player.isPet && !this.player.isBoss) {//Zalo: 0358124452//Name: EMTI 
+    public void setPotara6() {  
+        if (!this.player.isPet && !this.player.isBoss) {  
             Item btc4 = InventoryServiceNew.gI().findItemBag(this.player, 1472);
 
-            if (btc4 != null && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA6) {//Zalo: 0358124452//Name: EMTI 
-                if (!btc4.itemOptions.isEmpty()) {//Zalo: 0358124452//Name: EMTI 
+            if (btc4 != null && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA6) {  
+                if (!btc4.itemOptions.isEmpty()) {  
                     int param = btc4.itemOptions.get(0).param;
                     int option_id = btc4.itemOptions.get(0).optionTemplate.id;
                     //    System.out.println("Name " + player.name + "option id" + option_id + "Param " + param);
-                    switch (option_id) {//Zalo: 0358124452//Name: EMTI 
+                    switch (option_id) {  
                         case 50:
 
                             this.dame += calPercent(this.dame, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 77:
                             this.hp += calPercent(this.hpMax, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 103:
                             this.mp += calPercent(this.mpMax, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 94:
                             this.def += (int) calPercent(this.def, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 108:
                             this.tlNeDon += (byte) calPercent(this.tlNeDon, param);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 14:
 
                             this.crit += param;
                             break;
                         case 5:
                             this.tlDameCrit.add(param / 2);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
+                                                           
                         case 80: //HP+#%/30s
                             this.tlHpHoi += param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 81: //MP+#%/30s
                             this.tlMpHoi += param;
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
+                                                           
                         case 232:
                             this.dameAdd += param;
                             break;
-                        case 233://Zalo: 0358124452                                //Name: EMTI 
+                        case 233:                                   
                             this.hpAdd += param;
                             break;
-                        case 234://Zalo: 0358124452                                //Name: EMTI 
+                        case 234:                                   
                             this.mpAdd += param;
                             break;
-                        case 235://Zalo: 0358124452         //Zalo: 0358124452                                //Name: EMTI 
+                        case 235:                                             
                             this.defAdd += param;
-                            break;//Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI                               //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                   
+                                                                                                                            
                         default:
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                     }
                 }
             }
@@ -1228,14 +1228,14 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    private void setHpHoi() {//Zalo: 0358124452//Name: EMTI 
+    private void setHpHoi() {  
         this.hpHoi = Util.maxIntValue(this.hpMax / 100);
         this.hpHoi += this.hpHoiAdd;
         this.hpHoi += ((long) this.hpMax * this.tlHpHoi / 100);
         this.hpHoi += ((long) this.hpMax * this.tlHpHoiBanThanVaDongDoi / 100);
     }
 
-    private void setMpHoi() {//Zalo: 0358124452//Name: EMTI 
+    private void setMpHoi() {  
         this.mpHoi = Util.maxIntValue(this.mpMax / 100);
         this.mpHoi += this.mpHoiAdd;
         this.mpHoi += ((long) this.mpMax * this.tlMpHoi / 100);
@@ -1253,34 +1253,34 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
 //set vo cuc tu tai
 //khaile add
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {  
             this.hpMax += calPercent(this.hpMax, 750);
         }
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setThienMa == 5) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setThienMa == 5) {  
             this.hpMax += calPercent(this.hpMax, 100);
         }
 //end khaile add
         // Set nappa
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.nappa
-                == 5) {//Zalo: 0358124452//Name: EMTI 
+                == 5) {  
             this.hpMax += calPercent(this.hpMax, 80);
         }
 
         // Set worldcup
         if (this.player != null && this.player.setClothes != null && this.player.setClothes.worldcup
-                == 2) {//Zalo: 0358124452//Name: EMTI 
+                == 2) {  
             this.hpMax += calPercent(this.hpMax, 10);
         }
 
         // Check if the "ngọc rồng đen" reward with 2 stars is still valid
-        if (this.player.rewardBlackBall.timeOutOfDateReward[1] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.rewardBlackBall.timeOutOfDateReward[1] > System.currentTimeMillis()) {  
             this.hpMax += calPercent(this.hpMax, RewardBlackBall.R2S_1);
         }
 
         // Check if the "Monkey" skill effect is active and apply the bonus to hpMax
-        if (this.player.effectSkill.isMonkey) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.effectSkill.isMonkey) {  
             // Ensure that the player is not a pet or is a pet but not in fusion status
-            if (!this.player.isPet || (this.player.isPet && ((Pet) this.player).status != Pet.FUSION)) {//Zalo: 0358124452//Name: EMTI 
+            if (!this.player.isPet || (this.player.isPet && ((Pet) this.player).status != Pet.FUSION)) {  
                 int percent = SkillUtil.getPercentHpMonkey(player.effectSkill.levelMonkey);
                 this.hpMax += calPercent(this.hpMax, percent);
             }
@@ -1395,11 +1395,11 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         //phù
         if (this.player.zone
                 != null && MapService.gI()
-                        .isMapBlackBallWar(this.player.zone.map.mapId)) {//Zalo: 0358124452//Name: EMTI 
+                        .isMapBlackBallWar(this.player.zone.map.mapId)) {  
             this.hpMax *= this.player.effectSkin.xHPKI;
         }
         //+hp đệ
-        if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {  
             if ((this.player.pet.typePet >= 34)) {
                 this.hpMax += calPercent(this.player.pet.nPoint.hpMax, this.player.getPointfusion().getHpFusion());
             }
@@ -1408,66 +1408,66 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         //huýt sáo
         if (!this.player.isPet
                 || (this.player.isPet
-                && ((Pet) this.player).status != Pet.FUSION)) {//Zalo: 0358124452//Name: EMTI 
-            if (this.player.effectSkill != null && this.player.effectSkill.tiLeHPHuytSao != 0) {//Zalo: 0358124452//Name: EMTI 
+                && ((Pet) this.player).status != Pet.FUSION)) {  
+            if (this.player.effectSkill != null && this.player.effectSkill.tiLeHPHuytSao != 0) {  
                 this.hpMax += calPercent(this.hpMax, player.effectSkill.tiLeHPHuytSao);
 
             }
         }
 
         //bổ huyết
-        if (this.player.itemTime != null && this.player.itemTime.isUseBoHuyet) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseBoHuyet) {  
             this.hpMax += calPercent(this.hpMax, 100);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseSupBi) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseSupBi) {  
             this.hpMax += calPercent(this.hpMax, 10);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseBoHuyetSC) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseBoHuyetSC) {  
             this.hpMax += calPercent(this.hpMax, 120);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseBanhTet) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseBanhTet) {  
             this.hpMax += calPercent(this.hpMax, 15);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseBanhChung) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseBanhChung) {  
             this.hpMax += calPercent(this.hpMax, 15);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseBanhNgot) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseBanhNgot) {  
             this.hpMax += calPercent(this.hpMax, 12);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseKeoTrongGoi) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseKeoTrongGoi) {  
             this.hpMax += calPercent(this.hpMax, 12);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseVooc) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseVooc) {  
             this.hpMax += calPercent(this.hpMax, 20);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseGaQuay) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseGaQuay) {  
             this.hpMax += calPercent(this.hpMax, 50);
         }
         if (this.player.itemTime != null && this.player.itemTime.isBiNgo) {
             this.hpMax += calPercent(this.hpMax, 20);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseVooc) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseVooc) {  
             this.hpMax += calPercent(this.hpMax, 20);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx2) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx2) {  
             this.hpMax -= calPercent(this.hpMax, 50);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx5) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx5) {  
             this.hpMax -= calPercent(this.hpMax, 55);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx7) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx7) {  
             this.hpMax -= calPercent(this.hpMax, 60);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx10) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx10) {  
             this.hpMax -= calPercent(this.hpMax, 65);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx15) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx15) {  
             this.hpMax -= calPercent(this.hpMax, 70);
         }
         if (this.player.zone
                 != null && MapService.gI()
                         .isMapCold(this.player.zone.map)
-                && !this.isKhongLanh) {//Zalo: 0358124452//Name: EMTI 
+                && !this.isKhongLanh) {  
             this.hpMax -= calPercent(this.hpMax, 50);
         }
         //set nhật ấn
@@ -1476,41 +1476,41 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
 //        //mèo mun
 //        if (player.capCS
-//                > 0) {//Zalo: 0358124452//Name: EMTI 
-//            if (player.capCS <= 10) {//Zalo: 0358124452//Name: EMTI 
+//                > 0) {  
+//            if (player.capCS <= 10) {  
 //                hpMax += (10000) * player.capCS;
 //            }
-//            if (player.capCS <= 20 && player.capCS > 10) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capCS <= 20 && player.capCS > 10) {  
 //                hpMax += (15000) * (player.capCS);
 //            }
-//            if (player.capCS > 20) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capCS > 20) {  
 //                hpMax += (17000) * (player.capCS);
 //            }
 //        }
 //        if (player.capTT
-//                > 0) {//Zalo: 0358124452//Name: EMTI 
-//            if (player.capTT <= 10) {//Zalo: 0358124452//Name: EMTI 
+//                > 0) {  
+//            if (player.capTT <= 10) {  
 //                hpMax += (17000) * player.capTT;
 //            }
-//            if (player.capTT <= 20 && player.capTT > 10) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capTT <= 20 && player.capTT > 10) {  
 //                hpMax += (25000) * (player.capTT);
 //            }
-//            if (player.capTT > 20) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capTT > 20) {  
 //                hpMax += (32000) * (player.capTT);
 //            }
 //        }
 
         //mèo mun
-        if (this.player.effectFlagBag.useMeoMun) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.effectFlagBag.useMeoMun) {  
             this.hpMax += calPercent(this.hpMax, 15);
         }
-        if (this.player.lastTimeTitle1 > 0 && player.isTitleUse) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.lastTimeTitle1 > 0 && player.isTitleUse) {  
             this.hpMax += calPercent(this.hpMax, 10);
         }
-        if (this.player.lastTimeTitle2 > 0 && player.isTitleUse2) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.lastTimeTitle2 > 0 && player.isTitleUse2) {  
             this.hpMax += calPercent(this.hpMax, 10);
         }
-        if (this.player.lastTimeTitle3 > 0 && player.isTitleUse3) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.lastTimeTitle3 > 0 && player.isTitleUse3) {  
             this.hpMax += calPercent(this.hpMax, 20);
         }
 
@@ -1518,13 +1518,13 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
     // (hp sư phụ + hp đệ tử ) + 15%
     // (hp sư phụ + 15% +hp đệ tử)
 
-    private void setHp() {//Zalo: 0358124452//Name: EMTI 
-        if (this.hp > this.hpMax) {//Zalo: 0358124452//Name: EMTI 
+    private void setHp() {  
+        if (this.hp > this.hpMax) {  
             this.hp = this.hpMax;
         }
     }
 
-    private void setMpMax() {//Zalo: 0358124452//Name: EMTI 
+    private void setMpMax() {  
 
         this.mpMax = this.mpg + this.mpAdd;
 
@@ -1535,15 +1535,15 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
 //set vo cuc tu tai
 //khaile add
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {  
             this.mpMax += calPercent(this.mpMax, 750);
         }
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setThienMa == 5) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setThienMa == 5) {  
             this.mpMax += calPercent(this.mpMax, 100);
         }
 //end khaile add
         // Set picolo
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.picolo == 5) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.picolo == 5) {  
             this.mpMax += calPercent(this.mpMax, 100);
         }
         //set nguyệt ấn
@@ -1551,18 +1551,18 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
             this.mpMax += calPercent(this.mpMax, 45);
         }
         // Check if the "ngọc rồng đen" reward with 2 stars is still valid
-        if (this.player.rewardBlackBall.timeOutOfDateReward[1] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.rewardBlackBall.timeOutOfDateReward[1] > System.currentTimeMillis()) {  
 
             this.mpMax += calPercent(this.mpMax, RewardBlackBall.R2S_1);
         }
 //        if (this.player.zone
 //                != null && MapService.gI()
 //                        .isMapCold(this.player.zone.map)
-//                && !this.isKhongLanh) {//Zalo: 0358124452//Name: EMTI 
+//                && !this.isKhongLanh) {  
 //            this.mpMax -= calPercent(this.mpMax, 50);
 //        }
         // Set worldcup
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.worldcup == 2) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.worldcup == 2) {  
             this.mpMax += calPercent(this.mpMax, 10);
         }
         if (this.player.isPet// chi so lam sao bac tu cho dj
@@ -1672,93 +1672,93 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
         //hợp thể
 
-        if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {  
             if ((this.player.pet.typePet >= 34)) {
                 this.mpMax += calPercent(this.player.pet.nPoint.mpMax, this.player.getPointfusion().getMpFusion());
             }
             this.mpMax += this.player.pet.nPoint.mpMax;
         }
         //bổ khí
-        if (this.player.itemTime != null && this.player.itemTime.isUseBanhTet) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseBanhTet) {  
             this.mpMax += calPercent(this.mpMax, 120);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseBoKhi) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseBoKhi) {  
             this.mpMax += calPercent(this.mpMax, 100);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseBoKhiSC) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseBoKhiSC) {  
             this.mpMax += calPercent(this.mpMax, 120);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseKeoMotMat) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseKeoMotMat) {  
             this.mpMax += calPercent(this.mpMax, 20);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseBanhChung) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseBanhChung) {  
             this.mpMax += calPercent(this.mpMax, 30);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseKeoDeo) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseKeoDeo) {  
             this.mpMax += calPercent(this.mpMax, 12);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseKeoTrongGoi) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseKeoTrongGoi) {  
             this.mpMax += calPercent(this.mpMax, 12);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseVooc) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseVooc) {  
             this.mpMax += calPercent(this.mpMax, 20);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseGaQuay) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseGaQuay) {  
             this.mpMax += calPercent(this.mpMax, 80);
         }
         if (this.player.itemTime != null && this.player.itemTime.isBiNgo) {
             this.mpMax += calPercent(this.mpMax, 12);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx2) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx2) {  
             this.mpMax -= calPercent(this.mpMax, 50);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx5) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx5) {  
             this.mpMax -= calPercent(this.mpMax, 55);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx7) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx7) {  
             this.mpMax -= calPercent(this.mpMax, 60);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx10) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx10) {  
             this.mpMax -= calPercent(this.mpMax, 65);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx15) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx15) {  
             this.mpMax -= calPercent(this.mpMax, 70);
         }
 
         //phù
-        if (this.player.zone != null && MapService.gI().isMapBlackBallWar(this.player.zone.map.mapId)) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.zone != null && MapService.gI().isMapBlackBallWar(this.player.zone.map.mapId)) {  
             this.mpMax *= this.player.effectSkin.xHPKI;
         }
 //        //xiên cá
-//        if (player.capCS > 0) {//Zalo: 0358124452//Name: EMTI 
-//            if (player.capCS <= 10) {//Zalo: 0358124452//Name: EMTI 
+//        if (player.capCS > 0) {  
+//            if (player.capCS <= 10) {  
 //                mpMax += (13000) * player.capCS;
 //            }
-//            if (player.capCS <= 20 && player.capCS > 10) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capCS <= 20 && player.capCS > 10) {  
 //                mpMax += (15000) * (player.capCS);
 //            }
-//            if (player.capCS > 20) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capCS > 20) {  
 //                mpMax += (17500) * (player.capCS);
 //            }
 //        }
 
         //xiên cá
-        if (this.player.effectFlagBag.useXienCa) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.effectFlagBag.useXienCa) {  
             this.mpMax += calPercent(this.mpMax, 15);
         }
-        if (this.player.lastTimeTitle1 > 0 && player.isTitleUse) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.lastTimeTitle1 > 0 && player.isTitleUse) {  
             this.mpMax += calPercent(this.mpMax, 10);
         }
-        if (this.player.lastTimeTitle2 > 0 && player.isTitleUse2) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.lastTimeTitle2 > 0 && player.isTitleUse2) {  
             this.mpMax += calPercent(this.mpMax, 10);
         }
-        if (this.player.lastTimeTitle3 > 0 && player.isTitleUse3) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.lastTimeTitle3 > 0 && player.isTitleUse3) {  
             this.mpMax += calPercent(this.mpMax, 20);
         }
     }
 
-    private void setMp() {//Zalo: 0358124452//Name: EMTI 
-        if (this.mp > this.mpMax) {//Zalo: 0358124452//Name: EMTI 
+    private void setMp() {  
+        if (this.mp > this.mpMax) {  
             this.mp = this.mpMax;
         }
     }
@@ -1781,10 +1781,10 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
 //set vo cuc tu tai
 //khaile add
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setVoCucTuTai == 5) {  
             this.dame += calPercent(this.dame, 750);
         }
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setThienMa == 5) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.setThienMa == 5) {  
             this.dame += calPercent(this.dame, 100);
         }
 //end khaile add
@@ -1894,7 +1894,7 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
             }
         }
 
-        if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {  
             if ((this.player.pet.typePet >= 34)) {
                 this.dame += calPercent(this.player.pet.nPoint.dame, this.player.getPointfusion().getDameFusion());
             }
@@ -1902,53 +1902,53 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
         //thức ăn
         if (!this.player.isPet && this.player.itemTime != null && this.player.itemTime.isEatMeal
-                || this.player.isPet && ((Pet) this.player).master.itemTime.isEatMeal) {//Zalo: 0358124452//Name: EMTI 
+                || this.player.isPet && ((Pet) this.player).master.itemTime.isEatMeal) {  
             this.dame += calPercent(this.dame, 10);
         }
         //cuồng nộ
-        if (this.player.itemTime != null && this.player.itemTime.isUseCuongNo) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseCuongNo) { 
             this.dame += calPercent(this.dame, 100);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseCuongNoSC) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseCuongNoSC) {  
             this.dame += calPercent(this.dame, 120);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseBanhSau) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseBanhSau) {  
             this.dame += calPercent(this.dame, 10);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseBanhTet) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseBanhTet) {  
             this.dame += calPercent(this.dame, 20);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseBanhChung) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseBanhChung) {  
             this.dame += calPercent(this.dame, 20);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseKemOcQue) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseKemOcQue) {  
             this.dame += calPercent(this.dame, 12);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseKeoTrongGoi) {//Zalo: 0358124452//Name: EMTI 
-            this.dame -= calPercent(this.dame, 90);
+        if (this.player.itemTime != null && this.player.itemTime.isUseKeoTrongGoi) {  
+            this.dame += calPercent(this.dame, 12);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseSaoBien) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseSaoBien) {  
             this.dame += calPercent(this.dame, 20);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isUseThapCap) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isUseThapCap) {  
             this.dame += calPercent(this.dame, 20);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isBiNgo) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isBiNgo) {  
             this.dame += calPercent(this.dame, 10);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx2) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx2) {  
             this.dame -= calPercent(this.dame, 50);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx5) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx5) {  
             this.dame -= calPercent(this.dame, 55);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx7) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx7) {  
             this.dame -= calPercent(this.dame, 60);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx10) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx10) {  
             this.dame -= calPercent(this.dame, 65);
         }
-        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx15) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx15) {  
             this.dame -= calPercent(this.dame, 70);
         }
 
@@ -1956,17 +1956,17 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         this.dame -= calPercent(this.dame, tlSubSD);
         //map cold
         if (this.player.zone != null && MapService.gI().isMapCold(this.player.zone.map)
-                && !this.isKhongLanh) {//Zalo: 0358124452//Name: EMTI 
+                && !this.isKhongLanh) {  
             this.dame -= calPercent(this.dame, 60);
         }
         //ngọc rồng đen 1 sao
-        if (this.player.rewardBlackBall.timeOutOfDateReward[0] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.rewardBlackBall.timeOutOfDateReward[0] > System.currentTimeMillis()) {  
 
             this.dame += calPercent(this.dame, RewardBlackBall.R2S_1);
         }
 
         //set worldcup
-        if (this.player != null && this.player.setClothes != null && this.player.setClothes.worldcup == 2) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player != null && this.player.setClothes != null && this.player.setClothes.worldcup == 2) {  
             this.dame += calPercent(this.dame, 10);
             this.tlDameCrit.add(20);
         }
@@ -1976,44 +1976,44 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
             this.dame += calPercent(this.dame, 25);
         }
         //phóng heo
-        if (this.player.effectFlagBag.usePhongHeo) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.effectFlagBag.usePhongHeo) {  
             this.dame += calPercent(this.dame, 15);
         }
-//        if (player.capCS > 0) {//Zalo: 0358124452//Name: EMTI 
-//            if (player.capCS <= 10) {//Zalo: 0358124452//Name: EMTI 
+//        if (player.capCS > 0) {  
+//            if (player.capCS <= 10) {  
 //                dame += (5000) * player.capCS;
 //            }
-//            if (player.capCS <= 20 && player.capCS > 10) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capCS <= 20 && player.capCS > 10) {  
 //                dame += (7000) * (player.capCS);
 //            }
-//            if (player.capCS > 20) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capCS > 20) {  
 //                dame += (9000) * (player.capCS);
 //            }
 //        }
-//        if (player.capTT > 0) {//Zalo: 0358124452//Name: EMTI 
-//            if (player.capTT <= 10) {//Zalo: 0358124452//Name: EMTI 
+//        if (player.capTT > 0) {  
+//            if (player.capTT <= 10) {  
 //                dame += (9000) * player.capTT;
 //            }
-//            if (player.capTT <= 20 && player.capTT > 10) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capTT <= 20 && player.capTT > 10) {  
 //                dame += (11000) * (player.capTT);
 //            }
-//            if (player.capTT > 20) {//Zalo: 0358124452//Name: EMTI 
+//            if (player.capTT > 20) {  
 //                dame += (15000) * (player.capTT);
 //            }
 //        }
-        if (this.player.lastTimeTitle1 > 0 && player.isTitleUse) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.lastTimeTitle1 > 0 && player.isTitleUse) {  
             this.dame += calPercent(this.dame, 10);
         }
-        if (this.player.lastTimeTitle2 > 0 && player.isTitleUse2) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.lastTimeTitle2 > 0 && player.isTitleUse2) {  
             this.dame += calPercent(this.dame, 10);
         }
-        if (this.player.lastTimeTitle3 > 0 && player.isTitleUse3) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.lastTimeTitle3 > 0 && player.isTitleUse3) {  
             this.dame += calPercent(this.dame, 20);
         }
         //khỉ
-        if (this.player.effectSkill.isMonkey) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.effectSkill.isMonkey) {  
             if (!this.player.isPet || (this.player.isPet
-                    && ((Pet) this.player).status != Pet.FUSION)) {//Zalo: 0358124452//Name: EMTI 
+                    && ((Pet) this.player).status != Pet.FUSION)) {  
                 int percent = SkillUtil.getPercentDameMonkey(player.effectSkill.levelMonkey);
                 this.dame += calPercent(this.dame, percent);
             }
@@ -2021,19 +2021,19 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
 
     }
 
-    private void setDef() {//Zalo: 0358124452//Name: EMTI 
+    private void setDef() {  
         this.def = this.defg * 4;
         this.def += this.defAdd;
         //đồ
-        for (Integer tl : this.tlDef) {//Zalo: 0358124452//Name: EMTI 
+        for (Integer tl : this.tlDef) {  
             this.def += calPercent(this.def, tl);
         }
 //        if (this.player.isPet && (((Pet) this.player).typePet == 33)// chi so lam sao bac tu cho dj
-//                ) {//Zalo: 0358124452//Name: EMTI 
+//                ) {  
 //            this.def += (this.def * cn.damePet33 / 100);//chi so hp
 //        }
         //ngọc rồng đen 2 sao
-        if (this.player.rewardBlackBall.timeOutOfDateReward[1] > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.rewardBlackBall.timeOutOfDateReward[1] > System.currentTimeMillis()) {  
 
             this.def += calPercent(this.def, RewardBlackBall.R2S_2);
         }
@@ -2062,7 +2062,7 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
     }
 //end khaile modify
 
-    private void resetPoint() {//Zalo: 0358124452//Name: EMTI 
+    private void resetPoint() {  
         this.voHieuChuong = 0;
         this.hpAdd = 0;
         this.isThoDaiCa = false; //Cải trang Thỏ Đại Ca
@@ -2106,50 +2106,50 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         this.khangTDHS = false;
     }
 
-    public void addHp(long hp) {//Zalo: 0358124452//Name: EMTI 
+    public void addHp(long hp) {  
         this.hp += hp;
-        if (this.hp > this.hpMax) {//Zalo: 0358124452//Name: EMTI 
+        if (this.hp > this.hpMax) {  
             this.hp = this.hpMax;
         }
     }
 
-    public void addMp(long mp) {//Zalo: 0358124452//Name: EMTI 
+    public void addMp(long mp) {  
         this.mp += mp;
-        if (this.mp > this.mpMax) {//Zalo: 0358124452//Name: EMTI 
+        if (this.mp > this.mpMax) {  
             this.mp = this.mpMax;
         }
     }
 
-    public void setHp(long hp) {//Zalo: 0358124452//Name: EMTI 
-        if (hp > this.hpMax) {//Zalo: 0358124452//Name: EMTI 
+    public void setHp(long hp) {  
+        if (hp > this.hpMax) {  
             this.hp = this.hpMax;
-        } else {//Zalo: 0358124452//Name: EMTI 
+        } else {  
             this.hp = hp;
         }
     }
 
-    public void setMp(long mp) {//Zalo: 0358124452//Name: EMTI 
-        if (mp > this.mpMax) {//Zalo: 0358124452//Name: EMTI 
+    public void setMp(long mp) {  
+        if (mp > this.mpMax) {  
             this.mp = this.mpMax;
-        } else {//Zalo: 0358124452//Name: EMTI 
+        } else {  
             this.mp = mp;
         }
     }
 
-    private void setIsCrit() {//Zalo: 0358124452//Name: EMTI 
+    private void setIsCrit() {  
         if (intrinsic != null && intrinsic.id == 25
-                && this.getCurrPercentHP() <= intrinsic.param1) {//Zalo: 0358124452//Name: EMTI 
+                && this.getCurrPercentHP() <= intrinsic.param1) {  
             isCrit = true;
-        } else if (isCrit100) {//Zalo: 0358124452//Name: EMTI 
+        } else if (isCrit100) {  
             isCrit100 = false;
             isCrit = true;
-        } else {//Zalo: 0358124452//Name: EMTI 
+        } else {  
             isCrit = Util.isTrue(this.crit, ConstRatio.PER100);
         }
     }
 //khaile add set vo cuc tu tai
 
-    public double getDameAttack(boolean isAttackMob) {//Zalo: 0358124452//Name: EMTI 
+    public double getDameAttack(boolean isAttackMob) {  
         setIsCrit();
         double dameAttack = this.dame;
         double dameMP = this.mpMax;
@@ -2158,104 +2158,104 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         long percentDameSkill = 0;
         long percentXDame = 0;
         Skill skillSelect = player.playerSkill.skillSelect;
-        switch (skillSelect.template.id) {//Zalo: 0358124452//Name: EMTI 
+        switch (skillSelect.template.id) {  
             case Skill.DRAGON:
-                if (intrinsic.id == 1) {//Zalo: 0358124452//Name: EMTI 
+                if (intrinsic.id == 1) {  
                     percentDameIntrinsic = intrinsic.param1;
                 }
-                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.setVoCucTuTai == 5) {  
                     percentXDame = 100;
                 }
                 percentDameSkill = skillSelect.damage;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case Skill.KAMEJOKO:
-                if (intrinsic.id == 2) {//Zalo: 0358124452//Name: EMTI 
+                if (intrinsic.id == 2) {  
                     percentDameIntrinsic = intrinsic.param1;
                 }
-                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.setVoCucTuTai == 5) {  
                     percentXDame = 100;
                 }
                 percentDameSkill = skillSelect.damage;
-                if (this.player.setClothes.songoku == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.songoku == 5) {  
                     percentXDame = 100;
                 }
                 if (this.player.isPet && (((Pet) this.player).typePet == 33)) {
                     percentXDame = 100;
                 }
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case Skill.GALICK:
-                if (intrinsic.id == 16) {//Zalo: 0358124452//Name: EMTI 
+                if (intrinsic.id == 16) {  
                     percentDameIntrinsic = intrinsic.param1;
                 }
-                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.setVoCucTuTai == 5) {  
                     percentXDame = 100;
                 }
                 percentDameSkill = skillSelect.damage;
-                if (this.player.setClothes.kakarot == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.kakarot == 5) {  
                     percentXDame = 100;
                 }
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case Skill.ANTOMIC:
-                if (intrinsic.id == 17) {//Zalo: 0358124452//Name: EMTI 
+                if (intrinsic.id == 17) {  
                     percentDameIntrinsic = intrinsic.param1;
                 }
-                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.setVoCucTuTai == 5) {  
                     percentXDame = 100;
                 }
                 percentDameSkill = skillSelect.damage;
                 if (this.player.isPet && (((Pet) this.player).typePet == 33)) {
                     percentXDame = 100;
                 }
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case Skill.DEMON:
-                if (intrinsic.id == 8) {//Zalo: 0358124452//Name: EMTI 
+                if (intrinsic.id == 8) {  
                     percentDameIntrinsic = intrinsic.param1;
                 }
-                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.setVoCucTuTai == 5) {  
                     percentXDame = 100;
                 }
                 percentDameSkill = skillSelect.damage;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case Skill.MASENKO:
-                if (intrinsic.id == 9) {//Zalo: 0358124452//Name: EMTI 
+                if (intrinsic.id == 9) {  
                     percentDameIntrinsic = intrinsic.param1;
                 }
-                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.setVoCucTuTai == 5) {  
                     percentXDame = 100;
                 }
                 percentDameSkill = skillSelect.damage;
-                if (this.player.setClothes.masenko == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.masenko == 5) {  
                     percentXDame = 100;
                 }
                 if (this.player.isPet && (((Pet) this.player).typePet == 33)) {
                     percentXDame = 100;
                 }
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case Skill.KAIOKEN:
-                if (intrinsic.id == 26) {//Zalo: 0358124452//Name: EMTI 
+                if (intrinsic.id == 26) {  
                     percentDameIntrinsic = intrinsic.param1;
                 }
-                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.setVoCucTuTai == 5) {  
                     percentXDame = 100;
                 }
                 percentDameSkill = skillSelect.damage;
-                if (this.player.setClothes.kaioken == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.kaioken == 5) {  
                     percentXDame = 25;
                 }
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case Skill.LIEN_HOAN:
-                if (intrinsic.id == 13) {//Zalo: 0358124452//Name: EMTI 
+                if (intrinsic.id == 13) {  
                     percentDameIntrinsic = intrinsic.param1;
                 }
-                if (this.player.setClothes.setVoCucTuTai == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.setVoCucTuTai == 5) {  
                     percentXDame = 100;
                 }
                 percentDameSkill = skillSelect.damage;
-                if (this.player.setClothes.ocTieu == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.ocTieu == 5) {  
                     percentXDame = 80;
                 }
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case Skill.DICH_CHUYEN_TUC_THOI:
                 dameAttack *= 2;
                 dameAttack = Util.nextInt((int) (dameAttack - (dameAttack * 5 / 100)),
@@ -2268,7 +2268,7 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
                 return dameSkill;
             case Skill.QUA_CAU_KENH_KHI:
                 long damekk = calPercent(this.dame, 2000);
-                if (this.player.setClothes.kirin == 5) {//Zalo: 0358124452//Name: EMTI 
+                if (this.player.setClothes.kirin == 5) {  
                     damekk *= 2;
                 }
 //                dame = dame + (Util.nextInt(-5, 5) * dame / 100);
@@ -2277,36 +2277,36 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
         if (intrinsic.id == 18
                 && this.player.effectSkill.isMonkey //                && this.player.effectSkill.isBienHinh
-                ) {//Zalo: 0358124452//Name: EMTI 
+                ) {  
             percentDameIntrinsic = intrinsic.param1;
         }
 
-        if (percentDameSkill != 0) {//Zalo: 0358124452//Name: EMTI 
+        if (percentDameSkill != 0) {  
             dameAttack = dameAttack * percentDameSkill / 100;
         }
         dameAttack += (dameAttack * percentDameIntrinsic / 100);
         dameAttack += (dameAttack * dameAfter / 100);
 
-        if (isAttackMob) {//Zalo: 0358124452//Name: EMTI 
-            for (Integer tl : this.tlDameAttMob) {//Zalo: 0358124452//Name: EMTI 
+        if (isAttackMob) {  
+            for (Integer tl : this.tlDameAttMob) {  
                 dameAttack += (dameAttack * tl / 100);
             }
         }
         dameAfter = 0;
-        if (this.player.isPet && ((Pet) this.player).master.charms.tdDeTu > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.isPet && ((Pet) this.player).master.charms.tdDeTu > System.currentTimeMillis()) {  
             dameAttack *= 2;
         }
-        if (isCrit) {//Zalo: 0358124452//Name: EMTI 
+        if (isCrit) {  
             dameAttack *= 2;
-            for (Integer tl : this.tlDameCrit) {//Zalo: 0358124452//Name: EMTI 
+            for (Integer tl : this.tlDameCrit) {  
                 dameAttack += (dameAttack * tl / 100);
             }
         }
         dameAttack += ((long) dameAttack * percentXDame / 100);
         dameAttack = Util.Tamkjllnext((dameAttack - (dameAttack * 5 / 100)), (dameAttack + (dameAttack * 5 / 100)));
-        if (player.isPl()) {//Zalo: 0358124452//Name: EMTI 
-            if (player.inventory.haveOption(player.inventory.itemsBody, 5, 159)) {//Zalo: 0358124452//Name: EMTI 
-                if (Util.canDoWithTime(player.lastTimeUseOption, 60000) && (player.playerSkill.skillSelect.skillId == Skill.KAMEJOKO || player.playerSkill.skillSelect.skillId == Skill.ANTOMIC || player.playerSkill.skillSelect.skillId == Skill.MASENKO)) {//Zalo: 0358124452//Name: EMTI 
+        if (player.isPl()) {  
+            if (player.inventory.haveOption(player.inventory.itemsBody, 5, 159)) {  
+                if (Util.canDoWithTime(player.lastTimeUseOption, 60000) && (player.playerSkill.skillSelect.skillId == Skill.KAMEJOKO || player.playerSkill.skillSelect.skillId == Skill.ANTOMIC || player.playerSkill.skillSelect.skillId == Skill.MASENKO)) {  
                     dameAttack *= player.inventory.getParam(player.inventory.itemsBody.get(5), 159);
                     player.lastTimeUseOption = System.currentTimeMillis();
                 }
@@ -2317,116 +2317,116 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         return dameAttack;
     }
 
-    public int getCurrPercentHP() {//Zalo: 0358124452//Name: EMTI 
-        if (this.hpMax == 0) {//Zalo: 0358124452//Name: EMTI 
+    public int getCurrPercentHP() {  
+        if (this.hpMax == 0) {  
             return 100;
         }
         return (int) ((long) this.hp * 100 / this.hpMax);
     }
 
-    public int getCurrPercentMP() {//Zalo: 0358124452//Name: EMTI 
+    public int getCurrPercentMP() {  
         return (int) ((long) this.mp * 100 / this.mpMax);
     }
 
-    public void setFullHpMp() {//Zalo: 0358124452//Name: EMTI 
+    public void setFullHpMp() {  
         this.hp = this.hpMax;
         this.mp = this.mpMax;
     }
 
-    public void setFullHp() {//Zalo: 0358124452//Name: EMTI 
+    public void setFullHp() {  
         this.hp = this.hpMax;
     }
 
-    public void setFullMp() {//Zalo: 0358124452//Name: EMTI 
+    public void setFullMp() {  
         this.mp = this.mpMax;
     }
 
-    public void setFullStamina() {//Zalo: 0358124452//Name: EMTI 
+    public void setFullStamina() {  
         this.stamina = this.maxStamina;
     }
 
-    public void setF20Stamina() {//Zalo: 0358124452//Name: EMTI 
+    public void setF20Stamina() {  
         this.stamina += (short) (this.maxStamina * 20 / 100);
     }
 
-    public void subHP(double sub) {//Zalo: 0358124452//Name: EMTI 
+    public void subHP(double sub) {  
         this.hp -= sub;
-        if (this.hp < 0) {//Zalo: 0358124452//Name: EMTI 
+        if (this.hp < 0) {  
             this.hp = 0;
         }
     }
 
-    public void subMP(double sub) {//Zalo: 0358124452//Name: EMTI 
+    public void subMP(double sub) {  
         this.mp -= sub;
-        if (this.mp < 0) {//Zalo: 0358124452//Name: EMTI 
+        if (this.mp < 0) {  
             this.mp = 0;
         }
     }
 
-    public long calSucManhTiemNang(long tiemNang) {//Zalo: 0358124452//Name: EMTI 
-        if (power < getPowerLimit()) {//Zalo: 0358124452//Name: EMTI 
-            for (Integer tl : this.tlTNSM) {//Zalo: 0358124452//Name: EMTI 
+    public long calSucManhTiemNang(long tiemNang) {  
+        if (power < getPowerLimit()) {  
+            for (Integer tl : this.tlTNSM) {  
                 tiemNang += ((long) tiemNang * tl / 100);
             }
-            if (this.player.cFlag != 0) {//Zalo: 0358124452//Name: EMTI 
-                if (this.player.cFlag == 8) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.cFlag != 0) {  
+                if (this.player.cFlag == 8) {  
                     tiemNang += ((long) tiemNang * 10 / 100);
-                } else {//Zalo: 0358124452//Name: EMTI 
+                } else {  
                     tiemNang += ((long) tiemNang * 5 / 100);
                 }
             }
             long tn = tiemNang;
-            if (this.player.charms.tdTriTue > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.charms.tdTriTue > System.currentTimeMillis()) {  
                 tiemNang += tn;
             }
-            if (this.player.charms.tdTriTue3 > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.charms.tdTriTue3 > System.currentTimeMillis()) {  
                 tiemNang += tn * 2;
             }
-            if (this.player.charms.tdTriTue4 > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.charms.tdTriTue4 > System.currentTimeMillis()) {  
                 tiemNang += tn * 3;
             }
-            if (this.player.itemTime != null && this.player.itemTime.isUseVooc) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.itemTime != null && this.player.itemTime.isUseVooc) {  
                 tiemNang += ((long) tn * 20 / 100);
             }
-            if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx2) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx2) {  
                 tiemNang += ((long) tn * 100 / 100);
             }
-            if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx5) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx5) {  
                 tiemNang += ((long) tn * 250 / 100);
             }
-            if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx7) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx7) {  
                 tiemNang += ((long) tn * 350 / 100);
             }
-            if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx10) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx10) {  
                 tiemNang += ((long) tn * 500 / 100);
             }
-            if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx15) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.itemTime != null && this.player.itemTime.isLoNuocThanhx15) {  
                 tiemNang += ((long) tn * 750 / 100);
             }
 
-            if (this.intrinsic != null && this.intrinsic.id == 24) {//Zalo: 0358124452//Name: EMTI 
+            if (this.intrinsic != null && this.intrinsic.id == 24) {  
                 tiemNang += ((long) tn * this.intrinsic.param1 / 100);
             }
 ////khaile comment
-//            if (this.power >= 900000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            if (this.power >= 900000000000L) {  
 //                tiemNang -= ((long) tn * 999999 / 1000000);
-//            } else if (this.power >= 800000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            } else if (this.power >= 800000000000L) {  
 //                tiemNang -= ((long) tn * 99999 / 100000);
-//            } else if (this.power >= 700000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            } else if (this.power >= 700000000000L) {  
 //                tiemNang -= ((long) tn * 99995 / 100000);
-//            } else if (this.power >= 600000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            } else if (this.power >= 600000000000L) {  
 //                tiemNang -= ((long) tn * 9999 / 10000);
-//            } else if (this.power >= 250000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            } else if (this.power >= 250000000000L) {  
 //                tiemNang -= ((long) tn * 9990 / 10000);
-//            } else if (this.power >= 200000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            } else if (this.power >= 200000000000L) {  
 //                tiemNang -= ((long) tn * 9960 / 10000);
-//            } else if (this.power >= 150000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            } else if (this.power >= 150000000000L) {  
 //                tiemNang -= ((long) tn * 995 / 1000);
-//            } else if (this.power >= 60000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            } else if (this.power >= 60000000000L) {  
 //                tiemNang -= ((long) tn * 955 / 1000);
-//            } else if (this.power >= 40000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            } else if (this.power >= 40000000000L) {  
 //                tiemNang -= ((long) tn * 900 / 1000);
-//            } else if (this.power >= 20000000000L) {//Zalo: 0358124452//Name: EMTI 
+//            } else if (this.power >= 20000000000L) {  
 //                tiemNang -= ((long) tn * 800 / 1000);
 //            }
 //end khaile comment
@@ -2447,8 +2447,8 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
 
                 System.err.print("Eror x tnsm");
             }
-            if (this.player.isPet) {//Zalo: 0358124452//Name: EMTI 
-                if (((Pet) this.player).master.charms.tdDeTu > System.currentTimeMillis()) {//Zalo: 0358124452//Name: EMTI 
+            if (this.player.isPet) {  
+                if (((Pet) this.player).master.charms.tdDeTu > System.currentTimeMillis()) {  
                     tiemNang += tn * 2;
                 }
 
@@ -2456,78 +2456,78 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
             tiemNang *= Manager.RATE_EXP_SERVER;
 
             tiemNang = calSubTNSM(tiemNang);
-            if (tiemNang <= 0) {//Zalo: 0358124452//Name: EMTI 
+            if (tiemNang <= 0) {  
                 tiemNang = 1;
             }
 
-        } else {//Zalo: 0358124452//Name: EMTI 
+        } else {  
             tiemNang = 10;
         }
         return tiemNang;
     }
 
-    public long calSubTNSM(long tiemNang) {//Zalo: 0358124452//Name: EMTI 
+    public long calSubTNSM(long tiemNang) {  
         //khaile comment
-//        if (power >= 701000000000L) {//Zalo: 0358124452//Name: EMTI 
+//        if (power >= 701000000000L) {  
 //            tiemNang -= ((long) tiemNang * 999 / 1000);
-//        } else if (power >= 501000000000L) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (power >= 501000000000L) {  
 //            tiemNang -= ((long) tiemNang * 980 / 1000);
-//        } else if (power >= 301000000000L) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (power >= 301000000000L) {  
 //            tiemNang -= ((long) tiemNang * 98 / 100);
-//        } else if (power >= 201000000000L) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (power >= 201000000000L) {  
 //            tiemNang -= ((long) tiemNang * 97 / 100);
-//        } else if (power >= 150000000000L) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (power >= 150000000000L) {  
 //            tiemNang -= ((long) tiemNang * 95 / 100);
-//        } else if (power >= 109000000000L) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (power >= 109000000000L) {  
 //            tiemNang -= ((long) tiemNang * 91 / 100);
-//        } else if (power >= 180000000000L) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (power >= 180000000000L) {  
 //            tiemNang -= ((long) tiemNang * 90 / 100);
-//        } else if (power >= 110000000000L) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (power >= 110000000000L) {  
 //            tiemNang -= ((long) tiemNang * 85 / 100);
-//        } else if (power >= 100000000000L) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (power >= 100000000000L) {  
 //            tiemNang -= ((long) tiemNang * 80 / 100);
-//        } else if (power >= 90000000000L) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (power >= 90000000000L) {  
 //            tiemNang -= ((long) tiemNang * 75 / 100);
-//        } else if (power >= 80000000000L) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (power >= 80000000000L) {  
 //            tiemNang -= ((long) tiemNang * 70 / 100);
 //        }
 //end khaile comment
         return tiemNang;
     }
 
-    public short getTileHutHp(boolean isMob) {//Zalo: 0358124452//Name: EMTI 
-        if (isMob) {//Zalo: 0358124452//Name: EMTI 
+    public short getTileHutHp(boolean isMob) {  
+        if (isMob) {  
             return (short) (this.tlHutHp + this.tlHutHpMob);
-        } else {//Zalo: 0358124452//Name: EMTI 
+        } else {  
             return this.tlHutHp;
         }
     }
 
-    public short getTiLeHutMp() {//Zalo: 0358124452//Name: EMTI 
+    public short getTiLeHutMp() {  
 
         return this.tlHutMp;
 
     }
 
-    public double subDameInjureWithDeff(double dame) {//Zalo: 0358124452//Name: EMTI 
+    public double subDameInjureWithDeff(double dame) {  
         long def = this.def;
         dame -= def;
-        if (this.player.itemTime.isUseGiapXen) {//Zalo: 0358124452//Name: EMTI 
+        if (this.player.itemTime.isUseGiapXen) {  
             dame /= 2;
         }
-        if (dame < 0) {//Zalo: 0358124452//Name: EMTI 
+        if (dame < 0) {  
             dame = 1;
         }
         return dame;
     }
 
     /*------------------------------------------------------------------------*/
-    public boolean canOpenPower() {//Zalo: 0358124452//Name: EMTI 
+    public boolean canOpenPower() {  
         return this.power >= getPowerLimit();
     }
 
-    public long getPowerLimit() {//Zalo: 0358124452//Name: EMTI 
-        switch (limitPower) {//Zalo: 0358124452//Name: EMTI 
+    public long getPowerLimit() {  
+        switch (limitPower) {  
             case 0:
                 return 17999999999L;
             case 1:
@@ -2576,8 +2576,8 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
     }
 
-    public long getPowerNextLimit() {//Zalo: 0358124452//Name: EMTI 
-        switch (limitPower + 1) {//Zalo: 0358124452//Name: EMTI 
+    public long getPowerNextLimit() {  
+        switch (limitPower + 1) {  
             case 0:
                 return 17999999999L;
             case 1:
@@ -2626,275 +2626,275 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
     }
 
-    public int getHpMpLimit() {//Zalo: 0358124452//Name: EMTI 
-        if (limitPower == 0) {//Zalo: 0358124452//Name: EMTI 
+    public int getHpMpLimit() {  
+        if (limitPower == 0) {  
             return 220000;
         }
-        if (limitPower == 1) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 1) {  
             return 240000;
         }
-        if (limitPower == 2) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 2) {  
             return 260000;
         }
-        if (limitPower == 3) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 3) {  
             return 280000;
         }
-        if (limitPower == 4) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 4) {  
             return 300000;
         }
-        if (limitPower == 5) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 5) {  
             return 350000;
         }
-        if (limitPower == 6) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 6) {  
             return 370000;
         }
-        if (limitPower == 7) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 7) {  
             return 400000;
         }
-        if (limitPower == 8) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 8) {  
             return 450000;
         }
-        if (limitPower == 9) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 9) {  
             return 500000;
         }
-        if (limitPower == 10) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 10) {  
             return 550000;
         }
-        if (limitPower == 11) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 11) {  
             return 620000;
         }
-        if (limitPower == 12) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 12) {  
             return 700000;
         }
-        if (limitPower == 13) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 13) {  
             return 740000;
         }
-        if (limitPower == 14) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 14) {  
             return 800000;
         }
-        if (limitPower == 15) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 15) {  
             return 850000;
         }
-        if (limitPower == 16) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 16) {  
             return 900000;
         }
-        if (limitPower == 17) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 17) {  
             return 1000000;
         }
-        if (limitPower == 18) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 18) {  
             return 1100000;
         }
-        if (limitPower == 19) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 19) {  
             return 1200000;
         }
-        if (limitPower == 20) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 20) {  
             return 1300000;
         }
         return 0;
     }
 
-    public int getDameLimit() {//Zalo: 0358124452//Name: EMTI 
-        if (limitPower == 0) {//Zalo: 0358124452//Name: EMTI 
+    public int getDameLimit() {  
+        if (limitPower == 0) {  
             return 11000;
         }
-        if (limitPower == 1) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 1) {  
             return 12000;
         }
-        if (limitPower == 2) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 2) {  
             return 13000;
         }
-        if (limitPower == 3) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 3) {  
             return 14000;
         }
-        if (limitPower == 4) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 4) {  
             return 14000;
         }
-        if (limitPower == 5) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 5) {  
             return 16000;
         }
-        if (limitPower == 6) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 6) {  
             return 17000;
         }
-        if (limitPower == 7) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 7) {  
             return 22000;
         }
-        if (limitPower == 8) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 8) {  
             return 25000;
         }
-        if (limitPower == 9) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 9) {  
             return 32000;
         }
-        if (limitPower == 10) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 10) {  
             return 33000;
         }
-        if (limitPower == 11) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 11) {  
             return 34000;
         }
-        if (limitPower == 12) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 12) {  
             return 37000;
 
         }
-        if (limitPower == 13) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 13) {  
             return 38000;
         }
-        if (limitPower == 14) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 14) {  
             return 39000;
         }
-        if (limitPower == 15) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 15) {  
             return 40000;
         }
-        if (limitPower == 16) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 16) {  
             return 41000;
         }
-        if (limitPower == 17) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 17) {  
             return 42000;
         }
-        if (limitPower == 18) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 18) {  
             return 43000;
         }
-        if (limitPower == 19) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 19) {  
             return 44000;
         }
-        if (limitPower == 20) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 20) {  
             return 45000;
         }
 
         return 0;
     }
 
-    public int getDefLimit() {//Zalo: 0358124452//Name: EMTI 
-        if (limitPower == 0) {//Zalo: 0358124452//Name: EMTI 
+    public int getDefLimit() {  
+        if (limitPower == 0) {  
             return 5500;
         }
-        if (limitPower == 1) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 1) {  
             return 6000;
         }
-        if (limitPower == 2) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 2) {  
             return 7000;
         }
-        if (limitPower == 3) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 3) {  
             return 8000;
         }
-        if (limitPower == 4) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 4) {  
             return 10000;
         }
-        if (limitPower == 5) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 5) {  
             return 12000;
         }
-        if (limitPower == 6) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 6) {  
             return 14000;
         }
-        if (limitPower == 7) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 7) {  
             return 16000;
         }
-        if (limitPower == 8) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 8) {  
             return 17000;
         }
-        if (limitPower == 9) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 9) {  
             return 18000;
         }
-        if (limitPower == 10) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 10) {  
             return 20000;
         }
-        if (limitPower == 11) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 11) {  
             return 25000;
         }
-        if (limitPower == 12) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 12) {  
             return 30000;
 
         }
-        if (limitPower == 13) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 13) {  
             return 40000;
         }
-        if (limitPower == 14) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 14) {  
             return 50000;
         }
-        if (limitPower == 15) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 15) {  
             return 60000;
         }
-        if (limitPower == 16) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 16) {  
             return 70000;
         }
-        if (limitPower == 17) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 17) {  
             return 80000;
         }
-        if (limitPower == 18) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 18) {  
             return 90000;
         }
-        if (limitPower == 19) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 19) {  
             return 100000;
         }
-        if (limitPower == 20) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 20) {  
             return 200000;
         }
 
         return 0;
     }
 
-    public byte getCritLimit() {//Zalo: 0358124452//Name: EMTI 
-        if (limitPower == 0) {//Zalo: 0358124452//Name: EMTI 
+    public byte getCritLimit() {  
+        if (limitPower == 0) {  
             return 5;
         }
-        if (limitPower == 1) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 1) {  
             return 6;
         }
-        if (limitPower == 2) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 2) {  
             return 7;
         }
-        if (limitPower == 3) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 3) {  
             return 8;
         }
-        if (limitPower == 4) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 4) {  
             return 9;
         }
-        if (limitPower == 5) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 5) {  
             return 10;
         }
-        if (limitPower == 6) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 6) {  
             return 10;
         }
-        if (limitPower == 7) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 7) {  
             return 10;
         }
-        if (limitPower == 8) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 8) {  
             return 10;
         }
-        if (limitPower == 9) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 9) {  
             return 10;
         }
-        if (limitPower == 10) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 10) {  
             return 10;
         }
-        if (limitPower == 11) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 11) {  
             return 10;
         }
-        if (limitPower == 12) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 12) {  
             return 10;
 
         }
-        if (limitPower == 13) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 13) {  
             return 11;
         }
-        if (limitPower == 14) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 14) {  
             return 11;
         }
-        if (limitPower == 15) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 15) {  
             return 11;
         }
-        if (limitPower == 16) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 16) {  
             return 11;
         }
-        if (limitPower == 17) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 17) {  
             return 11;
         }
-        if (limitPower == 18) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 18) {  
             return 12;
         }
-        if (limitPower == 19) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 19) {  
             return 12;
 
         }
-        if (limitPower == 20) {//Zalo: 0358124452//Name: EMTI 
+        if (limitPower == 20) {  
             return 12;
 
         }
@@ -2903,12 +2903,12 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
 
     //**************************************************************************
     //POWER - TIEM NANG
-    public void powerUp(long power) {//Zalo: 0358124452//Name: EMTI 
+    public void powerUp(long power) {  
         this.power += power;
         TaskService.gI().checkDoneTaskPower(player, this.power);
     }
 
-    public void tiemNangUp(long tiemNang) {//Zalo: 0358124452//Name: EMTI 
+    public void tiemNangUp(long tiemNang) {  
         this.tiemNang += tiemNang;
     }
 
@@ -2987,12 +2987,12 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         }
     }
 
-    private boolean doUseTiemNang(long tiemNang) {//Zalo: 0358124452//Name: EMTI 
-        if (this.tiemNang < tiemNang) {//Zalo: 0358124452//Name: EMTI 
+    private boolean doUseTiemNang(long tiemNang) {  
+        if (this.tiemNang < tiemNang) {  
             Service.gI().sendThongBao(player, "Bạn không đủ tiềm năng");
             return false;
         }
-        if (this.tiemNang >= tiemNang && this.tiemNang - tiemNang >= 0) {//Zalo: 0358124452//Name: EMTI 
+        if (this.tiemNang >= tiemNang && this.tiemNang - tiemNang >= 0) {  
             this.tiemNang -= tiemNang;
             TaskService.gI().checkDoneTaskUseTiemNang(player);
             return true;
@@ -3004,32 +3004,32 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
     private long lastTimeHoiPhuc;
     private long lastTimeHoiStamina;
 
-    public void update() {//Zalo: 0358124452//Name: EMTI 
-        if (player != null && player.effectSkill != null) {//Zalo: 0358124452//Name: EMTI 
-            if (player.effectSkill.isCharging && player.effectSkill.countCharging < 10) {//Zalo: 0358124452//Name: EMTI 
+    public void update() {  
+        if (player != null && player.effectSkill != null) {  
+            if (player.effectSkill.isCharging && player.effectSkill.countCharging < 10) {  
                 int tiLeHoiPhuc = SkillUtil.getPercentCharge(player.playerSkill.skillSelect.point);
                 if (player.effectSkill.isCharging && !player.isDie() && !player.effectSkill.isHaveEffectSkill()
-                        && (hp < hpMax || mp < mpMax)) {//Zalo: 0358124452//Name: EMTI 
+                        && (hp < hpMax || mp < mpMax)) {  
                     PlayerService.gI().hoiPhuc(player, hpMax / 100 * tiLeHoiPhuc,
                             mpMax / 100 * tiLeHoiPhuc);
-                    if (player.effectSkill.countCharging % 3 == 0) {//Zalo: 0358124452//Name: EMTI 
+                    if (player.effectSkill.countCharging % 3 == 0) {  
                         Service.gI().chat(player, "Phục hồi năng lượng " + getCurrPercentHP() + "%");
                     }
-                } else {//Zalo: 0358124452//Name: EMTI 
+                } else {  
                     EffectSkillService.gI().stopCharge(player);
                 }
-                if (++player.effectSkill.countCharging >= 10) {//Zalo: 0358124452//Name: EMTI 
+                if (++player.effectSkill.countCharging >= 10) {  
                     EffectSkillService.gI().stopCharge(player);
                 }
             }
-            if (Util.canDoWithTime(lastTimeHoiPhuc, 30000)) {//Zalo: 0358124452//Name: EMTI 
+            if (Util.canDoWithTime(lastTimeHoiPhuc, 30000)) {  
                 PlayerService.gI().hoiPhuc(this.player, hpHoi, mpHoi);
                 this.lastTimeHoiPhuc = System.currentTimeMillis();
             }
-            if (Util.canDoWithTime(lastTimeHoiStamina, 60000) && this.stamina < this.maxStamina) {//Zalo: 0358124452//Name: EMTI 
+            if (Util.canDoWithTime(lastTimeHoiStamina, 60000) && this.stamina < this.maxStamina) {  
                 this.stamina++;
                 this.lastTimeHoiStamina = System.currentTimeMillis();
-                if (!this.player.isBoss && !this.player.isPet) {//Zalo: 0358124452//Name: EMTI 
+                if (!this.player.isBoss && !this.player.isPet) {  
                     PlayerService.gI().sendCurrentStamina(this.player);
                 }
             }
@@ -3038,7 +3038,7 @@ public class NPoint {//Zalo: 0358124452//Name: EMTI
         //hồi phục thể lực
     }
 
-    public void dispose() {//Zalo: 0358124452//Name: EMTI 
+    public void dispose() {  
         this.intrinsic = null;
         this.player = null;
         this.tlHp = null;

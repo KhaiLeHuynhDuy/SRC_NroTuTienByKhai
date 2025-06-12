@@ -85,7 +85,7 @@ public class DotPhaService {
                         Service.gI().point(player);
                         Item newItem = ItemService.gI().createNewItem((short) 1708);
                         newItem.itemOptions.add(new Item.ItemOption(30, 1));
-                        newItem.itemOptions.add(new Item.ItemOption(202, 0));
+                        newItem.itemOptions.add(new Item.ItemOption(202, 1));
 
                         PlayerDAO.subvnd(player, 250_000);
                         InventoryServiceNew.gI().addItemBag(player, newItem);

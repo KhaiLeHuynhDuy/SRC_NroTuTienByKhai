@@ -689,7 +689,7 @@ public class Util {
 //    }
     //khaile comment
 //    public static List<Integer> listVPSK = Arrays.asList(1918, 1917, 886, 887, 888, 889);
-//    public static int getRandomFromListSKtrungthu() {//Zalo: 0358124452//Name: EMTI 
+//    public static int getRandomFromListSKtrungthu() {  
 //        int tile_item1 = 10;
 //        int tile_item2 = 20;
 //        int tile_item3 = 40;
@@ -697,19 +697,19 @@ public class Util {
 //        int tile_item5 = 5;
 //        int tile_item6 = 5;
 //        int tile = Util.nextInt(0, 100);
-//        if (tile < tile_item1) {//Zalo: 0358124452//Name: EMTI 
+//        if (tile < tile_item1) {  
 //            return listVPSK.get(0);
-//        } else if (tile < tile_item2) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (tile < tile_item2) {  
 //            return listVPSK.get(1);
-//        } else if (tile < tile_item3) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (tile < tile_item3) {  
 //            return listVPSK.get(2);
-//        } else if (tile < tile_item4) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (tile < tile_item4) {  
 //            return listVPSK.get(3);
-//        } else if (tile < tile_item5) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (tile < tile_item5) {  
 //            return listVPSK.get(4);
-//        } else if (tile < tile_item6) {//Zalo: 0358124452//Name: EMTI 
+//        } else if (tile < tile_item6) {  
 //            return listVPSK.get(5);
-//        } else {//Zalo: 0358124452//Name: EMTI 
+//        } else {  
 //            return listVPSK.get(Util.nextInt(listVPSK.size()));
 //        }
 //    }

@@ -1135,7 +1135,7 @@ public class Controller implements IMessageHandler {
         Service.gI().sendTimeSkill(player);
 
         //clear vt sk
-        clearVTSK(player);
+//        clearVTSK(player);
    
         if (player.inventory.itemsBody.get(11).isNotNullItem()) {
             new Thread(() -> {

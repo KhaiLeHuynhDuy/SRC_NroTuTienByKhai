@@ -2,11 +2,11 @@ package nro.models.player;
 
 import nro.models.item.Item;
 
-public class SetClothes {//Zalo: 0358124452//Name: EMTI 
+public class SetClothes {  
 
     private Player player;
 
-    public SetClothes(Player player) {//Zalo: 0358124452//Name: EMTI 
+    public SetClothes(Player player) {  
         this.player = player;
     }
 
@@ -41,7 +41,7 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
     public boolean godClothes;
     public int ctHaiTac = -1;
 
-    public void setup() {//Zalo: 0358124452//Name: EMTI 
+    public void setup() {  
         setDefault();
         setupSKT();
         setupAN();
@@ -50,36 +50,36 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
         setupDTL();
 //        setChanmenh();
         this.godClothes = true;
-        for (int i = 0; i < 6; i++) {//Zalo: 0358124452//Name: EMTI 
+        for (int i = 0; i < 6; i++) {  
             Item item = this.player.inventory.itemsBody.get(i);
-            if (item.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
-                if (item.template.id > 567 || item.template.id < 555) {//Zalo: 0358124452//Name: EMTI 
+            if (item.isNotNullItem()) {  
+                if (item.template.id > 567 || item.template.id < 555) {  
                     this.godClothes = false;
                     break;
                 }
-            } else {//Zalo: 0358124452//Name: EMTI 
+            } else {  
                 this.godClothes = false;
                 break;
             }
         }
 
         this.huydietClothers = true;
-        for (int i = 0; i < 6; i++) {//Zalo: 0358124452//Name: EMTI 
+        for (int i = 0; i < 6; i++) {  
             Item item = this.player.inventory.itemsBody.get(i);
-            if (item.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
-                if (item.template.id >= 649 || item.template.id <= 663) {//Zalo: 0358124452//Name: EMTI 
+            if (item.isNotNullItem()) {  
+                if (item.template.id >= 649 || item.template.id <= 663) {  
                     this.huydietClothers = true;
                     break;
                 }
-            } else {//Zalo: 0358124452//Name: EMTI 
+            } else {  
                 this.huydietClothers = false;
                 break;
             }
         }
 
         Item ct = this.player.inventory.itemsBody.get(5);
-        if (ct.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
-            switch (ct.template.id) {//Zalo: 0358124452//Name: EMTI 
+        if (ct.isNotNullItem()) {  
+            switch (ct.template.id) {  
                 case 618:
                 case 619:
                 case 620:
@@ -101,17 +101,17 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
         }
     }
 
-    public boolean setGod14() {//Zalo: 0358124452//Name: EMTI 
-        for (int i = 0; i < 6; i++) {//Zalo: 0358124452//Name: EMTI 
+    public boolean setGod14() {  
+        for (int i = 0; i < 6; i++) {  
             Item item = this.player.inventory.itemsBody.get(i);
-            if (item.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
-                if (item.template.id >= 650 && item.template.id <= 663) {//Zalo: 0358124452//Name: EMTI 
+            if (item.isNotNullItem()) {  
+                if (item.template.id >= 650 && item.template.id <= 663) {  
                     i++;
-                } else if (i == 5) {//Zalo: 0358124452//Name: EMTI 
+                } else if (i == 5) {  
                     this.huydietClothers = true;
                     break;
                 }
-            } else {//Zalo: 0358124452//Name: EMTI 
+            } else {  
                 this.huydietClothers = false;
                 break;
             }
@@ -193,16 +193,16 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
     }
 
 //    private boolean setChanmenh() {
-//        for (int i = 0; i < 2; i++) {//Zalo: 0358124452//Name: EMTI 
+//        for (int i = 0; i < 2; i++) {  
 //            Item item = this.player.inventory.itemsBody.get(i);
-//            if (item.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
-//                if (item.template.id >= 1185 && item.template.id <= 1193) {//Zalo: 0358124452//Name: EMTI 
+//            if (item.isNotNullItem()) {  
+//                if (item.template.id >= 1185 && item.template.id <= 1193) {  
 //                    i++;
-//                } else if (i == 1) {//Zalo: 0358124452//Name: EMTI 
+//                } else if (i == 1) {  
 //                    this.chanmenh = true;
 //                    break;
 //                }
-//            } else {//Zalo: 0358124452//Name: EMTI 
+//            } else {  
 //                this.chanmenh = false;
 //                break;
 //            }
@@ -240,13 +240,13 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
         }
     }
 
-    private void setupSKT() {//Zalo: 0358124452//Name: EMTI 
-        for (int i = 0; i < 6; i++) {//Zalo: 0358124452//Name: EMTI 
+    private void setupSKT() {  
+        for (int i = 0; i < 6; i++) {  
             Item item = this.player.inventory.itemsBody.get(i);
-            if (item.isNotNullItem()) {//Zalo: 0358124452//Name: EMTI 
+            if (item.isNotNullItem()) {  
                 boolean isActSet = false;
-                for (Item.ItemOption io : item.itemOptions) {//Zalo: 0358124452//Name: EMTI 
-                    switch (io.optionTemplate.id) {//Zalo: 0358124452//Name: EMTI 
+                for (Item.ItemOption io : item.itemOptions) {  
+                    switch (io.optionTemplate.id) {  
                         case 129:
                         case 141:
                             isActSet = true;
@@ -322,23 +322,23 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
                             setDHD++;
                             break;
                         case 21:
-                            if (io.param == 80) {//Zalo: 0358124452//Name: EMTI 
+                            if (io.param == 80) {  
                                 setDHD++;
                             }
                             break;
                     }
 
-                    if (isActSet) {//Zalo: 0358124452//Name: EMTI 
+                    if (isActSet) {  
                         break;
                     }
                 }
-            } else {//Zalo: 0358124452//Name: EMTI 
+            } else {  
                 break;
             }
         }
     }
 
-    private void setDefault() {//Zalo: 0358124452//Name: EMTI 
+    private void setDefault() {  
         this.songoku = 0;
         this.kaioken = 0;
         this.thienXinHang = 0;
@@ -362,7 +362,7 @@ public class SetClothes {//Zalo: 0358124452//Name: EMTI
         this.setThienMa = 0;
     }
 
-    public void dispose() {//Zalo: 0358124452//Name: EMTI 
+    public void dispose() {  
         this.player = null;
     }
 }

@@ -488,8 +488,6 @@ public class Player {
 //                        pointfusion.update();
 //                    }
 
-                  
-
                     if (this.lastTimeTitle1 != 0 && Util.canDoWithTime(this.lastTimeTitle1, 6000)) {
                         lastTimeTitle1 = 0;
                         isTitleUse = false;
@@ -570,7 +568,8 @@ public class Player {
 //                    MabuWar.gI().update(this);
 //                    MabuWar14h.gI().update(this);
                     TranhNgoc.gI().update(this);
-                    updateSupportTime(this);
+                    //khaile comment
+//                     updateSupportTime(this);
                     BanDoKhoBauService.gI().updatePlayer(this);
                     DoanhTraiService.gI().updatePlayer(this);
                     Giaidauvutru.gI().update(this);
@@ -862,19 +861,19 @@ public class Player {
 //                    }
                     if (this.isPl() && this.isDie()) {
                         if (this.nPoint.power > 1500000) {
-                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx2) {//Zalo: 0358124452//Name: EMTI 
+                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx2) {  
                                 this.nPoint.power -= ((long) this.nPoint.power * 10 / 1000);
                             }
-                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx5) {//Zalo: 0358124452//Name: EMTI 
+                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx5) {  
                                 this.nPoint.power -= ((long) this.nPoint.power * 30 / 1000);
                             }
-                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx7) {//Zalo: 0358124452//Name: EMTI 
+                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx7) {  
                                 this.nPoint.power -= ((long) this.nPoint.power * 50 / 1000);
                             }
-                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx10) {//Zalo: 0358124452//Name: EMTI 
+                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx10) {  
                                 this.nPoint.power -= ((long) this.nPoint.power * 70 / 1000);
                             }
-                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx15) {//Zalo: 0358124452//Name: EMTI 
+                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx15) {  
                                 this.nPoint.power -= ((long) this.nPoint.power * 100 / 1000);
                             }
                         }
@@ -1404,35 +1403,35 @@ public class Player {
                 if (io.optionTemplate.id == 72) {
                     levelAo = io.param;
                     optionLevelAo = io;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             for (Item.ItemOption io : itemQuan.itemOptions) {
                 if (io.optionTemplate.id == 72) {
                     levelQuan = io.param;
                     optionLevelQuan = io;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             for (Item.ItemOption io : itemGang.itemOptions) {
                 if (io.optionTemplate.id == 72) {
                     levelGang = io.param;
                     optionLevelGang = io;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             for (Item.ItemOption io : itemGiay.itemOptions) {
                 if (io.optionTemplate.id == 72) {
                     levelGiay = io.param;
                     optionLevelGiay = io;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             for (Item.ItemOption io : itemNhan.itemOptions) {
                 if (io.optionTemplate.id == 72) {
                     levelNhan = io.param;
                     optionLevelNhan = io;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (optionLevelAo != null && optionLevelQuan != null && optionLevelGang != null && optionLevelGiay != null && optionLevelNhan != null

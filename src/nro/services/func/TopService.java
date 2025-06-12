@@ -354,15 +354,15 @@ public class TopService implements Runnable {
                         //khaile add
                         Manager.topSD = Manager.realTop(Manager.queryTopSD, con);
                         //end khaile add
-                        Manager.topNV = Manager.realTop(Manager.queryTopNV, con);
-                        Manager.topSM = Manager.realTop(Manager.queryTopSM, con);
-                        Manager.topSM2 = Manager.realTop(Manager.queryTopSM2, con);
-                        Manager.topSK = Manager.realTop(Manager.queryTopSK, con);
+//                        Manager.topNV = Manager.realTop(Manager.queryTopNV, con);
+//                        Manager.topSM = Manager.realTop(Manager.queryTopSM, con);
+//                        Manager.topSM2 = Manager.realTop(Manager.queryTopSM2, con);
+//                        Manager.topSK = Manager.realTop(Manager.queryTopSK, con);
                         Manager.topPVP = Manager.realTop(Manager.queryTopPVP, con);
 //                        Manager.topNHS = Manager.realTop(Manager.queryTopNHS, con);
-                        Manager.topSKHE = Manager.realTop(Manager.queryTopSKHE2, con);
+                        //Manager.topSKHE = Manager.realTop(Manager.queryTopSKHE2, con);
                         Manager.topTV = Manager.realTop(Manager.queryTopTV, con);
-                        Manager.topDauThan = Manager.realTop(Manager.queryTopDauThan, con);
+                        // Manager.topDauThan = Manager.realTop(Manager.queryTopDauThan, con);
 //                        Manager.topSKNEW = Manager.realTop(Manager.queryTopSKNEW, con);
                     } catch (SQLException e) {
                         e.printStackTrace();

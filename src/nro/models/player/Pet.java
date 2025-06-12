@@ -454,11 +454,11 @@ public class Pet extends Player {
             switch (status) {
                 case FOLLOW:
                     followMaster(60);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
-//                                           //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
+//                                                                              
                 case PROTECT:
                     if (useSkill3() || useSkill4()) {
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     }
                     boolean attackPl = false;
                     if (this.zone != null) {
@@ -564,10 +564,10 @@ public class Pet extends Player {
                             idle = true;
                         }
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case ATTACK:
                     if (useSkill3() || useSkill4()) {
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     }
                     boolean attackPl2 = false;
                     if (this.zone != null) {
@@ -682,7 +682,7 @@ public class Pet extends Player {
                             idle = true;
                         }
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case GOHOME:
                     if (this.zone != null && (this.zone.map.mapId == 21 || this.zone.map.mapId == 22 || this.zone.map.mapId == 23)) {
                         if (System.currentTimeMillis() - lastTimeMoveAtHome <= 5000) {
@@ -718,7 +718,7 @@ public class Pet extends Player {
                             lastTimeMoveAtHome = System.currentTimeMillis();
                         }
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
             }
 
         } catch (Exception e) {
@@ -913,12 +913,12 @@ public class Pet extends Player {
         switch (this.status) {
             case ATTACK:
                 if ((mobAttack != null && Util.getDistance(this, master) <= 1500)) {
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             case FOLLOW:
             case PROTECT:
                 followMaster(60);
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
         }
     }
 
@@ -1514,23 +1514,23 @@ public class Pet extends Player {
                     if (this.nPoint.power >= 150000000) {
                         openSkill2();
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case 2:
                     if (this.nPoint.power >= 1500000000) {
                         openSkill3();
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case 3:
                     if (this.nPoint.power >= 20000000000L) {
                         openSkill4();
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
 
                 case 4:
                     if (this.nPoint.power >= 150000000000L) {
 //                        openSkill5();
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
             }
         }
     }
@@ -1657,162 +1657,162 @@ public class Pet extends Player {
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "!! Bư..Bư..Bư..Ma..Nhân..Bư....");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 2:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Ta là Thần Hủy Diệt, có tin ta cho ngươi bay màu không?");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 3:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Ta là Thần Hủy Diệt, có tin ta cho ngươi bay màu không?");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 4:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Ta thật hoàn hảo!!!!");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 5:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Ta cân tất gruuu");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 6:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Hố hố hố hãy chiêm ngưỡng sức mạnh\nFide Đại Đế ta");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 7:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Ta sẽ là người đánh bại ngươi\n Zeno tối thượng hhhhh");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 8:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Sư phụ thấy con đáng yêu không ><");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 9:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Ka....me....ha....me\n....HAaaaaaa");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 10:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Sức mạnh là công lý\n không có tình yêu hay tình bạn gì hết !!!");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 11:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Đúng là con người sao có thể sánh với thần được chứ!");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 12:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ka....me....ha....me\n....HAaaaaaa");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 13:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 14:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Sức mạnh là công lý\n không có tình yêu hay tình bạn gì hết !!!");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 15:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Đúng là con người sao có thể sánh với thần được chứ!");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 16:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ka....me....ha....me\n....HAaaaaaa");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 17:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 18:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 19:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 20:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 21:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 22:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 23:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 24:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 25:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 26:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 27:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 28:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 29:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 30:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 31:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 32:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "\n|7|Ta đã phải luyện tập rất nhiều để trở lên mạnh mẽ");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 33:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
@@ -1822,50 +1822,50 @@ public class Pet extends Player {
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "!! Bư..Bư..Bư..Ma..Nhân..Bư....");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 35:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Ta là Thần Hủy Diệt, có tin ta cho ngươi bay màu không?");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 36:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Ta là Thần Hủy Diệt, có tin ta cho ngươi bay màu không?");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 37:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Ta thật hoàn hảo!!!!");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 38:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Ta cân tất gruuu");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 39:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Hố hố hố hãy chiêm ngưỡng sức mạnh\nFide Đại Đế ta");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 40:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Ta sẽ là người đánh bại ngươi\n Zeno tối thượng hhhhh");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 41:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Sư phụ thấy con đáng yêu không ><");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 42:
                 this.isTransform = !this.isTransform;
                 Service.gI().Send_Caitrang(this);
                 Service.gI().chat(this, "Ka....me....ha....me\n....HAaaaaaa");
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
 
             default:
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
         }
     }
 

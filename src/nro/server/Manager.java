@@ -285,20 +285,20 @@ public class Manager {
     public static final List<Integer> MapMocnhan = Arrays.asList(0,
             7,
             14);
-    public static final String queryTopSM = "SELECT id, CAST( split_str(data_point,',',2) AS UNSIGNED) AS sm FROM player ORDER BY CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 20;";
+    //public static final String queryTopSM = "SELECT id, CAST( split_str(data_point,',',2) AS UNSIGNED) AS sm FROM player ORDER BY CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 20;";
 
-    public static final String queryTopSM2 = "SELECT id, CAST( split_str(data_point,',',2) AS UNSIGNED) AS sm FROM player WHERE account_id > 1294260 ORDER BY CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 20;";
+   // public static final String queryTopSM2 = "SELECT id, CAST( split_str(data_point,',',2) AS UNSIGNED) AS sm FROM player WHERE account_id > 1294260 ORDER BY CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 20;";
 
     public static final String queryTopSD = "SELECT id, CAST( split_str(data_point,',',8)  AS UNSIGNED) AS sd FROM player ORDER BY CAST( split_str(data_point,',',8)  AS UNSIGNED) DESC LIMIT 20;";
     public static final String queryTopHP = "SELECT id, CAST( split_str(data_point,',',6) AS UNSIGNED) AS hp FROM player ORDER BY CAST( split_str(data_point,',',6) AS UNSIGNED) DESC LIMIT 20;";
     public static final String queryTopKI = "SELECT id, CAST( split_str(data_point,',',7) AS UNSIGNED) AS ki FROM player ORDER BY CAST( split_str(data_point,',',7) AS UNSIGNED) DESC LIMIT 20;";
-    public static final String queryTopNV = "SELECT id, CAST( split_str(split_str(data_task,',',1),'[',2) AS UNSIGNED) AS nv FROM player ORDER BY CAST( split_str(split_str(data_task,',',1),'[',2) AS UNSIGNED) DESC, CAST(split_str(data_task,',',2) AS UNSIGNED) DESC, CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 50;";
-    public static final String queryTopSK = "SELECT id, CAST( split_str( data_inventory,',',5) AS UNSIGNED) AS event FROM player ORDER BY CAST( split_str( data_inventory,',',5) AS UNSIGNED) DESC LIMIT 20;";
+    //public static final String queryTopNV = "SELECT id, CAST( split_str(split_str(data_task,',',1),'[',2) AS UNSIGNED) AS nv FROM player ORDER BY CAST( split_str(split_str(data_task,',',1),'[',2) AS UNSIGNED) DESC, CAST(split_str(data_task,',',2) AS UNSIGNED) DESC, CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 50;";
+   // public static final String queryTopSK = "SELECT id, CAST( split_str( data_inventory,',',5) AS UNSIGNED) AS event FROM player ORDER BY CAST( split_str( data_inventory,',',5) AS UNSIGNED) DESC LIMIT 20;";
     public static final String queryTopPVP = "SELECT id, CAST( split_str( data_inventory,',',3) AS UNSIGNED) AS HONGNGOC FROM player ORDER BY CAST( split_str( data_inventory,',',3) AS UNSIGNED) DESC LIMIT 10;";
 //    public static final String queryTopNHS = "SELECT id, CAST( NguHanhSonPoint AS UNSIGNED) AS nhs FROM player ORDER BY CAST( NguHanhSonPoint AS UNSIGNED) DESC LIMIT 20;";
-    public static final String queryTopSKHE = "SELECT id, CAST( topsk16 AS UNSIGNED) AS topsk16 FROM account ORDER BY CAST( topsk16 AS UNSIGNED) DESC LIMIT 20;";
-    public static final String queryTopSK20_10 = "SELECT id, CAST( sk20_10 AS UNSIGNED) AS sk20_10 FROM account ORDER BY CAST( sk20_10 AS UNSIGNED) DESC LIMIT 20;";
-    public static final String queryTopSKHE2 = "SELECT player.id, account.topsk16 FROM account, player WHERE account.id = player.account_id  ORDER BY topsk16 DESC LIMIT 10";
+    //public static final String queryTopSKHE = "SELECT id, CAST( topsk16 AS UNSIGNED) AS topsk16 FROM account ORDER BY CAST( topsk16 AS UNSIGNED) DESC LIMIT 20;";
+    //public static final String queryTopSK20_10 = "SELECT id, CAST( sk20_10 AS UNSIGNED) AS sk20_10 FROM account ORDER BY CAST( sk20_10 AS UNSIGNED) DESC LIMIT 20;";
+    //public static final String queryTopSKHE2 = "SELECT player.id, account.topsk16 FROM account, player WHERE account.id = player.account_id  ORDER BY topsk16 DESC LIMIT 10";
     public static final String queryTopTV = "select \n"
             + "  player.id , \n"
             + "  account.id as accountId, \n"
@@ -403,109 +403,109 @@ public class Manager {
             + "limit \n"
             + "  30;";
     public static final int DAU_THAN = 1475;
-    public static final String queryTopDauThan = "select \n"
-            + "  account.id as accountId, \n"
-            + "  player.name, \n"
-            + "	CAST(\n"
-            + "    REPLACE(\n"
-            + "      SUBSTRING_INDEX(\n"
-            + "        SUBSTRING_INDEX(\n"
-            + "          CONCAT(\n"
-            + "            '[" + DAU_THAN + ",', \n"
-            + "            SUBSTRING_INDEX(\n"
-            + "              SUBSTRING_INDEX(player.items_bag, '[" + DAU_THAN + ",', -1), \n"
-            + "              ']', \n"
-            + "              1\n"
-            + "            )\n"
-            + "          ), \n"
-            + "          ',', \n"
-            + "          2\n"
-            + "        ), \n"
-            + "        ']', \n"
-            + "        1\n"
-            + "      ), \n"
-            + "      '[" + DAU_THAN + ",', \n"
-            + "      ''\n"
-            + "    ) as unsigned\n"
-            + "  ) as tv_hanhtrang, \n"
-            + "	CAST(\n"
-            + "    REPLACE(\n"
-            + "      SUBSTRING_INDEX(\n"
-            + "        SUBSTRING_INDEX(\n"
-            + "          CONCAT(\n"
-            + "            '[" + DAU_THAN + ",', \n"
-            + "            SUBSTRING_INDEX(\n"
-            + "              SUBSTRING_INDEX(player.items_box, '[" + DAU_THAN + ",', -1), \n"
-            + "              ']', \n"
-            + "              1\n"
-            + "            )\n"
-            + "          ), \n"
-            + "          ',', \n"
-            + "          2\n"
-            + "        ), \n"
-            + "        ']', \n"
-            + "        1\n"
-            + "      ), \n"
-            + "      '[" + DAU_THAN + ",', \n"
-            + "      ''\n"
-            + "    ) as unsigned\n"
-            + "  ) as tv_ruong,\n"
-            + "  CAST(\n"
-            + "    REPLACE(\n"
-            + "      SUBSTRING_INDEX(\n"
-            + "        SUBSTRING_INDEX(\n"
-            + "          CONCAT(\n"
-            + "            '[" + DAU_THAN + ",', \n"
-            + "            SUBSTRING_INDEX(\n"
-            + "              SUBSTRING_INDEX(player.items_bag, '[" + DAU_THAN + ",', -1), \n"
-            + "              ']', \n"
-            + "              1\n"
-            + "            )\n"
-            + "          ), \n"
-            + "          ',', \n"
-            + "          2\n"
-            + "        ), \n"
-            + "        ']', \n"
-            + "        1\n"
-            + "      ), \n"
-            + "      '[" + DAU_THAN + ",', \n"
-            + "      ''\n"
-            + "    ) as unsigned\n"
-            + "  ) + CAST(\n"
-            + "    REPLACE(\n"
-            + "      SUBSTRING_INDEX(\n"
-            + "        SUBSTRING_INDEX(\n"
-            + "          CONCAT(\n"
-            + "            '[" + DAU_THAN + ",', \n"
-            + "            SUBSTRING_INDEX(\n"
-            + "              SUBSTRING_INDEX(player.items_box, '[" + DAU_THAN + ",', -1), \n"
-            + "              ']', \n"
-            + "              1\n"
-            + "            )\n"
-            + "          ), \n"
-            + "          ',', \n"
-            + "          2\n"
-            + "        ), \n"
-            + "        ']', \n"
-            + "        1\n"
-            + "      ), \n"
-            + "      '[" + DAU_THAN + ",', \n"
-            + "      ''\n"
-            + "    ) as unsigned\n"
-            + "  ) AS thoi_vang \n"
-            + "from \n"
-            + "  player \n"
-            + "  inner join account on account.id = player.account_id \n"
-            + "where \n"
-            + "  (\n"
-            + "    player.items_box like '%\"[" + DAU_THAN + ",%' \n"
-            + "    or player.items_bag like '%\"[" + DAU_THAN + ",%'\n"
-            + " )\n"
-            + "having thoi_vang >= 0 \n"
-            + "order by \n"
-            + "  thoi_vang DESC \n"
-            + "limit \n"
-            + "  10;";
+//    public static final String queryTopDauThan = "select \n"
+//            + "  account.id as accountId, \n"
+//            + "  player.name, \n"
+//            + "	CAST(\n"
+//            + "    REPLACE(\n"
+//            + "      SUBSTRING_INDEX(\n"
+//            + "        SUBSTRING_INDEX(\n"
+//            + "          CONCAT(\n"
+//            + "            '[" + DAU_THAN + ",', \n"
+//            + "            SUBSTRING_INDEX(\n"
+//            + "              SUBSTRING_INDEX(player.items_bag, '[" + DAU_THAN + ",', -1), \n"
+//            + "              ']', \n"
+//            + "              1\n"
+//            + "            )\n"
+//            + "          ), \n"
+//            + "          ',', \n"
+//            + "          2\n"
+//            + "        ), \n"
+//            + "        ']', \n"
+//            + "        1\n"
+//            + "      ), \n"
+//            + "      '[" + DAU_THAN + ",', \n"
+//            + "      ''\n"
+//            + "    ) as unsigned\n"
+//            + "  ) as tv_hanhtrang, \n"
+//            + "	CAST(\n"
+//            + "    REPLACE(\n"
+//            + "      SUBSTRING_INDEX(\n"
+//            + "        SUBSTRING_INDEX(\n"
+//            + "          CONCAT(\n"
+//            + "            '[" + DAU_THAN + ",', \n"
+//            + "            SUBSTRING_INDEX(\n"
+//            + "              SUBSTRING_INDEX(player.items_box, '[" + DAU_THAN + ",', -1), \n"
+//            + "              ']', \n"
+//            + "              1\n"
+//            + "            )\n"
+//            + "          ), \n"
+//            + "          ',', \n"
+//            + "          2\n"
+//            + "        ), \n"
+//            + "        ']', \n"
+//            + "        1\n"
+//            + "      ), \n"
+//            + "      '[" + DAU_THAN + ",', \n"
+//            + "      ''\n"
+//            + "    ) as unsigned\n"
+//            + "  ) as tv_ruong,\n"
+//            + "  CAST(\n"
+//            + "    REPLACE(\n"
+//            + "      SUBSTRING_INDEX(\n"
+//            + "        SUBSTRING_INDEX(\n"
+//            + "          CONCAT(\n"
+//            + "            '[" + DAU_THAN + ",', \n"
+//            + "            SUBSTRING_INDEX(\n"
+//            + "              SUBSTRING_INDEX(player.items_bag, '[" + DAU_THAN + ",', -1), \n"
+//            + "              ']', \n"
+//            + "              1\n"
+//            + "            )\n"
+//            + "          ), \n"
+//            + "          ',', \n"
+//            + "          2\n"
+//            + "        ), \n"
+//            + "        ']', \n"
+//            + "        1\n"
+//            + "      ), \n"
+//            + "      '[" + DAU_THAN + ",', \n"
+//            + "      ''\n"
+//            + "    ) as unsigned\n"
+//            + "  ) + CAST(\n"
+//            + "    REPLACE(\n"
+//            + "      SUBSTRING_INDEX(\n"
+//            + "        SUBSTRING_INDEX(\n"
+//            + "          CONCAT(\n"
+//            + "            '[" + DAU_THAN + ",', \n"
+//            + "            SUBSTRING_INDEX(\n"
+//            + "              SUBSTRING_INDEX(player.items_box, '[" + DAU_THAN + ",', -1), \n"
+//            + "              ']', \n"
+//            + "              1\n"
+//            + "            )\n"
+//            + "          ), \n"
+//            + "          ',', \n"
+//            + "          2\n"
+//            + "        ), \n"
+//            + "        ']', \n"
+//            + "        1\n"
+//            + "      ), \n"
+//            + "      '[" + DAU_THAN + ",', \n"
+//            + "      ''\n"
+//            + "    ) as unsigned\n"
+//            + "  ) AS thoi_vang \n"
+//            + "from \n"
+//            + "  player \n"
+//            + "  inner join account on account.id = player.account_id \n"
+//            + "where \n"
+//            + "  (\n"
+//            + "    player.items_box like '%\"[" + DAU_THAN + ",%' \n"
+//            + "    or player.items_bag like '%\"[" + DAU_THAN + ",%'\n"
+//            + " )\n"
+//            + "having thoi_vang >= 0 \n"
+//            + "order by \n"
+//            + "  thoi_vang DESC \n"
+//            + "limit \n"
+//            + "  10;";
 
     public static List<TOP> topSM;
     public static List<TOP> topSM2;
@@ -1581,26 +1581,26 @@ public class Manager {
 ////                System.err.println("sss " + item.getConsignID());
 //            }
 //            Logger.success("Load kí gửi new thành công (" + RadarService.gI().RADAR_TEMPLATE.size() + ")\n");
-            topSM = realTop(queryTopSM, con);
-            Logger.success("TOP POWER (" + topSM.size() + ")  --> Success !!\n");
-            topSM2 = realTop(queryTopSM2, con);
-            Logger.success("TOP POWER 2 (" + topSM2.size() + ")  --> Success !!\n");
-            topNV = realTop(queryTopNV, con);
-            Logger.success("TOP QUEST (" + topNV.size() + ")  --> Success !!\n");
-            topSK = realTop(queryTopSK, con);
-            Logger.success("TOP EVENT (" + topSK.size() + ")  --> Success !!\n");
+//            topSM = realTop(queryTopSM, con);
+//            Logger.success("TOP POWER (" + topSM.size() + ")  --> Success !!\n");
+//            topSM2 = realTop(queryTopSM2, con);
+//            Logger.success("TOP POWER 2 (" + topSM2.size() + ")  --> Success !!\n");
+//            topNV = realTop(queryTopNV, con);
+//            Logger.success("TOP QUEST (" + topNV.size() + ")  --> Success !!\n");
+//            topSK = realTop(queryTopSK, con);
+//            Logger.success("TOP EVENT (" + topSK.size() + ")  --> Success !!\n");
             topPVP = realTop(queryTopPVP, con);
             Logger.success("TOP RUBY (" + topSK.size() + ")  --> Success !!\n");
             topSD = realTop(queryTopSD, con);
             Logger.success("TOP Sức đánh (" + topSD.size() + ")  --> Success !!\n");
-            topSKHE = realTop(queryTopSKHE2, con);
-            Logger.success("TOP SKHE (" + topSKHE.size() + ")  --> Success !!\n");
+//            topSKHE = realTop(queryTopSKHE2, con);
+//            Logger.success("TOP SKHE (" + topSKHE.size() + ")  --> Success !!\n");
 
             topTV = realTop(queryTopTV, con);
             Logger.success("TOP Thỏi (" + topTV.size() + ")  --> Success !!\n");
 
-            topDauThan = realTop(queryTopDauThan, con);
-            Logger.success("TOP đậu thần (" + topDauThan.size() + ")  --> Success !!\n");
+//            topDauThan = realTop(queryTopDauThan, con);
+//            Logger.success("TOP đậu thần (" + topDauThan.size() + ")  --> Success !!\n");
 
 //            
 //            Logger.success("TOP NHS (" + topNHS.size() + ")  --> Success !!\n");
@@ -1645,22 +1645,22 @@ public class Manager {
             while (rs.next()) {
                 TOP top = TOP.builder().id_player(rs.getInt("id")).build();
                 switch (query) {
-                    case queryTopSM:
-                        top.setInfo1(rs.getLong("sm") + "");
-                        top.setInfo2(rs.getLong("sm") + "");
-                        break;
-                    case queryTopSM2:
-                        top.setInfo1(rs.getLong("sm2") + "");
-                        top.setInfo2(rs.getLong("sm2") + "");
-                        break;
-                    case queryTopNV:
-                        top.setInfo1(rs.getByte("nv") + "");
-                        top.setInfo2(rs.getByte("nv") + "");
-                        break;
-                    case queryTopSK:
-                        top.setInfo1(rs.getInt("event") + " điểm");
-                        top.setInfo2(rs.getInt("event") + " điểm");
-                        break;
+//                    case queryTopSM:
+//                        top.setInfo1(rs.getLong("sm") + "");
+//                        top.setInfo2(rs.getLong("sm") + "");
+//                        break;
+//                    case queryTopSM2:
+//                        top.setInfo1(rs.getLong("sm2") + "");
+//                        top.setInfo2(rs.getLong("sm2") + "");
+//                        break;
+//                    case queryTopNV:
+//                        top.setInfo1(rs.getByte("nv") + "");
+//                        top.setInfo2(rs.getByte("nv") + "");
+//                        break;
+//                    case queryTopSK:
+//                        top.setInfo1(rs.getInt("event") + " điểm");
+//                        top.setInfo2(rs.getInt("event") + " điểm");
+//                        break;
                     case queryTopPVP:
                         top.setInfo1(rs.getInt("HONGNGOC") + " Hồng Ngọc");
                         top.setInfo2(rs.getInt("HONGNGOC") + " Hồng Ngọc");
@@ -1669,10 +1669,10 @@ public class Manager {
                         top.setInfo1(rs.getLong("sd") + " Sức Đánh");
                         top.setInfo2(rs.getLong("sd") + " Sức Đánh");
                         break;
-                    case queryTopSKHE2:
-                        top.setInfo1(rs.getLong("topsk16") + "");
-                        top.setInfo2(rs.getLong("topsk16") + "");
-                        break;
+//                    case queryTopSKHE2:
+//                        top.setInfo1(rs.getLong("topsk16") + "");
+//                        top.setInfo2(rs.getLong("topsk16") + "");
+//                        break;
 //                    case queryTopNHS:
 //                        top.setInfo1(rs.getLong("nhs") + "Điểm");
 //                        top.setInfo2(rs.getLong("nhs") + "Điểm");
@@ -1683,12 +1683,12 @@ public class Manager {
                         info2 += "Hành trang :" + rs.getLong("tv_hanhtrang");
                         top.setInfo2(info2);
                         break;
-                    case queryTopDauThan:
-                        top.setInfo1("Tổng :" + rs.getLong("thoi_vang") + " tv");
-                        String info22 = "Rương : " + rs.getLong("tv_ruong") + "tv\n";
-                        info22 += "Hành trang :" + rs.getLong("tv_hanhtrang");
-                        top.setInfo2(info22);
-                        break;
+//                    case queryTopDauThan:
+//                        top.setInfo1("Tổng :" + rs.getLong("thoi_vang") + " tv");
+//                        String info22 = "Rương : " + rs.getLong("tv_ruong") + "tv\n";
+//                        info22 += "Hành trang :" + rs.getLong("tv_hanhtrang");
+//                        top.setInfo2(info22);
+//                        break;
                 }
                 tops.add(top);
             }

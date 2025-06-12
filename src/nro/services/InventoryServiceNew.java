@@ -18,6 +18,7 @@ import nro.consts.ConstDataEvent;
 import nro.models.map.giaidauvutru.Giaidauvutru;
 import nro.models.player.MiniPet;
 import nro.server.Manager;
+import nro.utils.Logger;
 
 public class InventoryServiceNew {
 
@@ -578,6 +579,11 @@ public class InventoryServiceNew {
             Service.gI().sendThongBaoOK(player, "Có lỗi xãy ra");
             return;
         }
+         // Kiểm tra chỉ số index trước khi get
+            if (index < 0 || index >= player.inventory.itemsBag.size()) {
+                Logger.error("itemBodyToBag: Invalid index " + index + ", size = " + player.inventory.itemsBag.size());
+                return;
+            }
         Item item = player.inventory.itemsBody.get(index);
         if (item.isNotNullItem()) {
             if (index == 11) {
@@ -603,6 +609,11 @@ public class InventoryServiceNew {
 
     public void itemBagToPetBody(Player player, int index) {
         if (player.pet != null && player.pet.nPoint.power >= 1500000) {
+            // Kiểm tra chỉ số index trước khi get
+            if (index < 0 || index >= player.inventory.itemsBag.size()) {
+                Logger.error("itemBagToPetBody: Invalid index " + index + ", size = " + player.inventory.itemsBag.size());
+                return;
+            }
             Item item = player.inventory.itemsBag.get(index);
             if (item.isNotNullItem()) {
                 Item itemSwap = putItemBody(player.pet, item);

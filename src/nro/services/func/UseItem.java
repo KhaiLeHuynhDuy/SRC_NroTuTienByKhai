@@ -94,25 +94,25 @@ public class UseItem {
                 case ITEM_BOX_TO_BODY_OR_BAG:
                     InventoryServiceNew.gI().itemBoxToBodyOrBag(player, index);
                     TaskService.gI().checkDoneTaskGetItemBox(player);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case ITEM_BAG_TO_BOX:
                     InventoryServiceNew.gI().itemBagToBox(player, index);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case ITEM_BODY_TO_BOX:
                     InventoryServiceNew.gI().itemBodyToBox(player, index);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case ITEM_BAG_TO_BODY:
                     InventoryServiceNew.gI().itemBagToBody(player, index);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case ITEM_BODY_TO_BAG:
                     InventoryServiceNew.gI().itemBodyToBag(player, index);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case ITEM_BAG_TO_PET_BODY:
                     InventoryServiceNew.gI().itemBagToPetBody(player, index);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case ITEM_BODY_PET_TO_BAG:
                     InventoryServiceNew.gI().itemPetBodyToBag(player, index);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
             }
             player.setClothes.setup();
             if (player.pet != null) {
@@ -179,7 +179,7 @@ public class UseItem {
                             this.eatPea(player);
                         }
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case DO_THROW_ITEM:
                     if (!(player.zone.map.mapId == 21 || player.zone.map.mapId == 22 || player.zone.map.mapId == 23)) {
                         Item item = null;
@@ -210,15 +210,15 @@ public class UseItem {
                     } else {
                         Service.gI().sendThongBao(player, "Không thể vất item ở nhà được !!!");
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case ACCEPT_THROW_ITEM:
                     InventoryServiceNew.gI().throwItem(player, where, index);
                     Service.gI().point(player);
                     InventoryServiceNew.gI().sendItemBags(player);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case ACCEPT_USE_ITEM:
                     UseItem.gI().useItem(player, player.inventory.itemsBag.get(index), index);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -238,18 +238,18 @@ public class UseItem {
                     break;
                 case 7: //sách học, nâng skill
                     learnSkill(pl, item);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case 6: //đậu thần
                     this.eatPea(pl);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
 
                 case 33:
                     UseCard(pl, item);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case 12: //ngọc rồng các loại
                     controllerCallRongThan(pl, item);
                     break;
-                //Zalo: 0358124452                                //Name: EMTI
+                                                  
                 case 23: //thú cưỡi mới
                     InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
                     break;
@@ -642,7 +642,7 @@ public class UseItem {
                             } else {
                                 Service.gI().sendThongBao(pl, "Cần 3 ô trống trong hành trang");
                             }
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case ConstDataEvent.ID_RUONG_2:
                             if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 3) {
                                 int idPetHo = Util.nextInt(1421, 1422);
@@ -684,7 +684,7 @@ public class UseItem {
                             } else {
                                 Service.gI().sendThongBao(pl, "Cần 3 ô trống trong hành trang");
                             }
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
 //                        case ConstDataEvent.ruongvip1:
 //                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 3) {
 //                                short idPetHo = 2146;
@@ -745,7 +745,7 @@ public class UseItem {
 //                            } else {
 //                                Service.gI().sendThongBao(pl, "Cần 3 ô trống trong hành trang");
 //                            }
-//                              break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                              break;                                                                   
 //                        case ConstDataEvent.ruongvip2:
 //                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 3) {
 //                                short idPetHo = 2147;
@@ -806,7 +806,7 @@ public class UseItem {
 //                            } else {
 //                                Service.gI().sendThongBao(pl, "Cần 3 ô trống trong hành trang");
 //                            }
-//                              break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                              break;                                                                   
 //                        case ConstDataEvent.ruongvip3:
 //                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 3) {
 //                                short idPetHo = 2148;
@@ -859,7 +859,7 @@ public class UseItem {
 //                            } else {
 //                                Service.gI().sendThongBao(pl, "Cần 3 ô trống trong hành trang");
 //                            }
-//                              break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                              break;                                                                   
 //                        case ConstDataEvent.top1sm:
 //                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 10) {
 //                                short idPetHo = 2153;
@@ -919,7 +919,7 @@ public class UseItem {
 //                            } else {
 //                                Service.gI().sendThongBao(pl, "Cần 10 ô trống trong hành trang");
 //                            }
-//                              break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                              break;                                                                   
 //                        case ConstDataEvent.top2sm:
 //
 //                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 3) {
@@ -958,7 +958,7 @@ public class UseItem {
 //                            } else {
 //                                Service.gI().sendThongBao(pl, "Cần 10 ô trống trong hành trang");
 //                            }
-//                              break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                              break;                                                                   
 //                        case ConstDataEvent.top3sm:
 //
 //                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 3) {
@@ -997,7 +997,7 @@ public class UseItem {
 //                            } else {
 //                                Service.gI().sendThongBao(pl, "Cần 10 ô trống trong hành trang");
 //                            }
-//                              break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                              break;                                                                   
 //                        case ConstDataEvent.top4sm:
 //
 //                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 3) {
@@ -1036,7 +1036,7 @@ public class UseItem {
 //                            } else {
 //                                Service.gI().sendThongBao(pl, "Cần 10 ô trống trong hành trang");
 //                            }
-//                              break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                              break;                                                                   
 //                        case ConstDataEvent.trumcuoi:
 //                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 3) {
 //                                short idPetHo = 2154;
@@ -1108,7 +1108,7 @@ public class UseItem {
 //                            } else {
 //                                Service.gI().sendThongBao(pl, "Cần 3 ô trống trong hành trang");
 //                            }
-//                              break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                              break;                                                                   
                         case 992:
 //                           case 992:
                             if (pl.nPoint.power < 60000000000L) {
@@ -1122,7 +1122,7 @@ public class UseItem {
                             } else {
                                 ChangeMapService.gI().goToHanhTinhThucVat(pl);
                             }
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 361:
                             if (pl.idNRNM != -1) {
                                 Service.gI().sendThongBao(pl, "Có lỗi xảy ra với ngọc rồng namek");
@@ -1132,34 +1132,34 @@ public class UseItem {
                             NpcService.gI().createMenuConMeo(pl, ConstNpc.CONFIRM_TELE_NAMEC, -1, "1 Sao (" + NgocRongNamecService.gI().getDis(pl, 0, (short) 353) + " m)\n2 Sao (" + NgocRongNamecService.gI().getDis(pl, 1, (short) 354) + " m)\n3 Sao (" + NgocRongNamecService.gI().getDis(pl, 2, (short) 355) + " m)\n4 Sao (" + NgocRongNamecService.gI().getDis(pl, 3, (short) 356) + " m)\n5 Sao (" + NgocRongNamecService.gI().getDis(pl, 4, (short) 357) + " m)\n6 Sao (" + NgocRongNamecService.gI().getDis(pl, 5, (short) 358) + " m)\n7 Sao (" + NgocRongNamecService.gI().getDis(pl, 6, (short) 359) + " m)", "Đến ngay\nViên " + (pl.idGo + 1) + " Sao\n50 ngọc", "Kết thức");
                             InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
                             InventoryServiceNew.gI().sendItemBags(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 293:
                             openGoiDau1(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 294:
                             openGoiDau2(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 295:
                             openGoiDau3(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 296:
                             openGoiDau4(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 297:
                             openGoiDau5(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 298:
                             openGoiDau6(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 299:
                             openGoiDau7(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 596:
                             openGoiDau8(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 597:
                             openGoiDau9(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
 //                        case 1194:
 //                            if (pl.lastTimeTitle1 == 0) {
 //                                pl.lastTimeTitle1 += System.currentTimeMillis() + (1000 * 60 * 60 * 24 * 3);
@@ -1171,7 +1171,7 @@ public class UseItem {
 //                            Service.gI().sendTitle(pl, 888);
 //                            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
 //                            Service.gI().sendThongBao(pl, "Bạn nhận được 3 ngày danh hiệu !");
-//                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                            break;                                                                   
 //                        case 1988:
 //                            if (pl.lastTimeTitle2 == 0) {
 //                                pl.lastTimeTitle2 += System.currentTimeMillis() + (1000 * 60 * 60 * 24 * 7);
@@ -1183,7 +1183,7 @@ public class UseItem {
 //                            Service.gI().sendTitle(pl, 889);
 //                            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
 //                            Service.gI().sendThongBao(pl, "Bạn nhận được 7 ngày danh hiệu !");
-//                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                            break;                                                                   
 //                        case 1195:
 //                            if (pl.lastTimeTitle3 == 0) {
 //                                pl.lastTimeTitle3 += System.currentTimeMillis() + (86400000L * 30L);
@@ -1196,42 +1196,42 @@ public class UseItem {
 //                            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
 //                            Service.gI().sendThongBao(pl, "Bạn nhận được 30 ngày danh hiệu !");
 //
-//                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                            break;                                                                   
                         //case 457: //khaile comment
                         case 1108:
                             Service.gI().sendThongBao(pl, "Không thể sử dụng");
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 211: //nho tím
                         case 212: //nho xanh
                             eatGrapes(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 74: //đùi gà
                         case 191: //cà chua
                         case 192: //cà rốt
                             eatHpMp(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
-                        //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
+                                                           
                         case 2127:
                             SkillService.gI().learSkillSpecial(pl, Skill.SUPER_KAME);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2128:
                             SkillService.gI().learSkillSpecial(pl, Skill.MA_PHONG_BA);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2129:
                             SkillService.gI().learSkillSpecial(pl, Skill.LIEN_HOAN_CHUONG);
                             break;
                         case 1996:
                             SkillService.gI().learSkillSpecial(pl, Skill.HAKAI);
-                            break;     //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                        
                         case 2117://hop qua 1/6
                             ItemService.gI().OpenItem2117(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2114://set tl kh
                             UseItem.gI().Hopdothanlinh(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2115://set hd kh
                             UseItem.gI().Hopdohuydiet(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2116://set ts kh
                             UseItem.gI().Hopthiensu(pl, item);
                             break;
@@ -1240,10 +1240,10 @@ public class UseItem {
                             break;
                         case 1909:
                             UseItem.gI().quagapthu(pl, item);
-                            break;//Zalo: 0358124452                                //Name: EMTI 
+                            break;                                   
                         case 1910:
                             UseItem.gI().quagapthu2(pl, item);
-                            break;//Zalo: 0358124452                                //Name: EMTI 
+                            break;                                   
 //                        case 992:
 //                            if (pl.nPoint.power < 60000000000L) {
 //                                Service.gI().sendThongBao(pl, "Bạn cần 60 tỷ sm để sử dụng");
@@ -1256,7 +1256,7 @@ public class UseItem {
 //                            } else {
 //                                ChangeMapService.gI().goToHanhTinhThucVat(pl);
 //                            }
-//                              break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                              break;                                                                   
                         case 342:
                         case 343:
                         case 344:
@@ -1268,10 +1268,10 @@ public class UseItem {
                             } else {
                                 Service.gI().sendThongBao(pl, "Chỉ được đặt 3 vệ tinh trong map");
                             }
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 380: //cskb
                             openCSKB(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 381: //cuồng nộ
                         case 382: //bổ huyết
                         case 383: //bổ khí
@@ -1314,10 +1314,10 @@ public class UseItem {
                         case 1604:
                         case 1605:
                             useItemTime(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 521: //tdlt
                             useTDLT(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
 //                        case 361:
 //                            if (pl.idNRNM != -1) {
 //                                Service.gI().sendThongBao(pl, "Không thể thực hiện");
@@ -1327,20 +1327,20 @@ public class UseItem {
 //                            NpcService.gI().createMenuConMeo(pl, ConstNpc.CONFIRM_TELE_NAMEC, -1, "1 Sao (" + NgocRongNamecService.gI().getDis(pl, 0, (short) 353) + " m)\n2 Sao (" + NgocRongNamecService.gI().getDis(pl, 1, (short) 354) + " m)\n3 Sao (" + NgocRongNamecService.gI().getDis(pl, 2, (short) 355) + " m)\n4 Sao (" + NgocRongNamecService.gI().getDis(pl, 3, (short) 356) + " m)\n5 Sao (" + NgocRongNamecService.gI().getDis(pl, 4, (short) 357) + " m)\n6 Sao (" + NgocRongNamecService.gI().getDis(pl, 5, (short) 358) + " m)\n7 Sao (" + NgocRongNamecService.gI().getDis(pl, 6, (short) 359) + " m)", "Đến ngay\nViên " + (pl.idGo + 1) + " Sao\n50 ngọc", "Kết thức");
 //                            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
 //                            InventoryServiceNew.gI().sendItemBags(pl);
-//                              break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                              break;                                                                   
                         case 454: //bông tai
                             UseItem.gI().usePorata(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 921: //bông tai
                             UseItem.gI().usePorata2(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2064: //bông tai
                             if (pl.nPoint.power < 80000000000L) {
                                 Service.gI().sendThongBao(pl, "Bạn cần 80 tỷ sm để sử dụng");
                                 return;
                             }
                             UseItem.gI().usePorata3(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2113:
                             if (pl.nPoint.power < 150000000000L) {
                                 Service.gI().sendThongBao(pl, "Bạn cần 150 tỷ sm để sử dụng");
@@ -1357,43 +1357,43 @@ public class UseItem {
                                 return;
                             }
                             UseItem.gI().usePorata5(pl);
-                            break; //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                    
                         case 1472:
                             if (pl.nPoint.power < 500000000000L) {
                                 Service.gI().sendThongBao(pl, "Bạn cần 500 tỷ sm để sử dụng");
                                 return;
                             }
                             UseItem.gI().usePorata6(pl);
-                            break; //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                    
                         case 193: //gói 10 viên capsule
                             InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
                         case 194: //capsule đặc biệt
                             openCapsuleUI(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 401: //đổi đệ tử
                             changePet(pl, item);
                         case 570:
                             openWoodChest(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
 //                        case 1108: //đổi đệ tử
 //                            changePetBerus(pl, item);
-//                              break;                                //Zalo: 0358124452                                //Name: EMTI 
+//                              break;                                                                   
                         case 1109:
                             changePetBerusBiNgo(pl, item);
 //                            UseItem.gI().tuivang(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 1110:
                             changePetZamasu(pl, item);
 //                            UseItem.gI().tuivang(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 1111:
                             changePetDaishinkan(pl, item);
 //                            UseItem.gI().tuivang(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 1112:
                             changePetWhis(pl, item);
 //                            UseItem.gI().tuivang(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 628:
                             openPhieuCaiTrangHaiTac(pl, item);
                         case 402: //sách nâng chiêu 1 đệ tử
@@ -1401,20 +1401,20 @@ public class UseItem {
                         case 404: //sách nâng chiêu 3 đệ tử
                         case 759: //sách nâng chiêu 4 đệ tử
                             upSkillPet(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2123:
                             openDaBaoVe(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2124:
 //                            openSPL(pl, item);
                             openAllSPL(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2125:
                             openDaNangCap(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2126:
                             openManhTS(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2000://hop qua skh, item 2000 td
                         case 2001://hop qua skh, item 2001 nm
                         case 2002://hop qua skh, item 2002 xd
@@ -1422,10 +1422,10 @@ public class UseItem {
                             break;
                         case 1618:
                             UseItem.gI().saoPhaLeTrungCap(pl, item);
-                            break;//Zalo: 0358124452                                //Name: EMTI 
+                            break;                                   
                         case 1619:
                             UseItem.gI().saoPhaLeCaoCap(pl, item);
-                            break;//Zalo: 0358124452                                //Name: EMTI 
+                            break;                                   
                         case 2085:
                         case 2086:
                         case 2087:
@@ -1434,18 +1434,18 @@ public class UseItem {
                         case 2014://hop qua skh, item 2004 nm
                         case 2015://hop qua skh, item 2005 xd
                             UseItem.gI().itemDoThanLinh(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2003://hop qua skh, item 2003 td
                         case 2004://hop qua skh, item 2004 nm
                         case 2005://hop qua skh, item 2005 xd
                             UseItem.gI().ItemDHD(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 736:
                             ItemService.gI().OpenItem736(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 987:
                             Service.gI().sendThongBao(pl, "Bảo vệ trang bị không bị rớt cấp"); //đá bảo vệ
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2006:
 //                            if (item.quantity > 10) {
 //                                Service.gI().sendThongBaoOK(pl, "Có Bug không đó :3");
@@ -1454,79 +1454,79 @@ public class UseItem {
 //                                return;
 //                            }
                             Input.gI().createFormChangeNameByItem(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2145:
                             UseItem.gI().hopquavnd1(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2146:
                             UseItem.gI().hopquavnd2(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2134:
                             UseItem.gI().hopquat1nap(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2135:
                             UseItem.gI().hopquat2nap(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2136:
                             UseItem.gI().hopquat3nap(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2137:
                             UseItem.gI().hopquat45nap(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2138:
                             UseItem.gI().hopquat610nap(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2139:
                             UseItem.gI().hopquamocnap300(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2140:
                             UseItem.gI().hopquamocnap500(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2141:
                             UseItem.gI().hopquamocnap1000(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2167:
                             UseItem.gI().Top1nv(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2168:
                             UseItem.gI().Top2nv(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2169:
                             UseItem.gI().Top3nv(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2170:
                             UseItem.gI().Top4nv(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2171:
                             UseItem.gI().Top1sm(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2172:
                             UseItem.gI().Top2sm(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2173:
                             UseItem.gI().Top3sm(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2174:
                             UseItem.gI().Top4sm(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2175:
                             UseItem.gI().Top5sm(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2228:
                             UseItem.gI().Tuingocxanh(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2229:
                             UseItem.gI().Tuingochong(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 2230:
                             UseItem.gI().Itemsieucap(pl);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 1989:
                             openboxsukien(pl, item, 4);
                             break;
                         case 2028:
                             UseItem.gI().openLinhthu(pl, item);
-                            break;                                //Zalo: 0358124452                                //Name: EMTI 
+                            break;                                                                   
                         case 1331://hop qua
                             OpenhopThucuoi(pl, item);
                             break;
@@ -1557,121 +1557,168 @@ public class UseItem {
                             InventoryServiceNew.gI().sendItemBags(pl);
                             break;
                         }
-                        case 1668: // Hoàng Cuc Đan
+                        case 1668: // Hoàng Cực Đan
                         {
                             int requiredCap = 1;
-                            if (pl.capTT > requiredCap) {
-                                Service.gI().sendThongBao(pl, "Cảnh giới vượt mức");
+
+                            // Kiểm tra cảnh giới
+                            if (pl.capTT != requiredCap) {
+                                if (pl.capTT > requiredCap) {
+                                    Service.gI().sendThongBao(pl, "Cảnh giới vượt mức Luyện Khí, không thể sử dụng Hoàng Cực Đan");
+                                } else {
+                                    Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Hoàng Cực Đan");
+                                }
                                 break;
                             }
-                            if (pl.capTT < requiredCap) {
-                                Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Hoàng Cúc Đan");
+
+                            // Thiết lập giá trị tăng và giới hạn
+                            int damegIncrease = 10_000;
+                            int hpMpIncrease = damegIncrease * 3;
+
+                            int maxDameg = 3_600_000;
+                            int maxHpMp = maxDameg * 3;
+
+                            // Kiểm tra từng thuộc tính đã đạt max hay chưa
+                            boolean isDamegMaxed = (pl.nPoint.dameg >= maxDameg);
+                            boolean isHpMaxed = (pl.nPoint.hpg >= maxHpMp);
+                            boolean isMpMaxed = (pl.nPoint.mpg >= maxHpMp);
+
+                            // Nếu tất cả đều max thì không thể sử dụng
+                            if (isDamegMaxed && isHpMaxed && isMpMaxed) {
+                                Service.gI().sendThongBao(pl, "Đã đạt giới hạn tối đa, không thể sử dụng Hoàng Cực Đan");
                                 break;
                             }
-                            if (pl.capTT == requiredCap) {
-                                int damegIncrease = 10_000;
-                                int hpMpIncrease = damegIncrease * 3;
 
-                                int maxDameg = 3_600_000;
-                                int maxHpMp = maxDameg * 3;
-                                boolean avaiable = true;
-                                // Kiểm tra giới hạn hiện tại
-                                boolean damegMaxed = pl.nPoint.dameg >= maxDameg;
-                                boolean hpMpMaxed = pl.nPoint.hpg >= maxHpMp && pl.nPoint.mpg >= maxHpMp;
+                            // Tăng từng thuộc tính nếu chưa đạt max
+                            StringBuilder bonusMessage = new StringBuilder("Bạn nhận được: ");
+                            boolean receivedBonus = false;
 
-                                if (damegMaxed && hpMpMaxed) {
-                                    Service.gI().sendThongBao(pl, "Đã đạt giới hạn, không thể sử dụng vật phẩm");
-                                    avaiable = false;
-                                    break;
+                            if (!isDamegMaxed) {
+                                long oldDameg = pl.nPoint.dameg;
+                                pl.nPoint.dameg = Math.min(pl.nPoint.dameg + damegIncrease, maxDameg);
+                                if (pl.nPoint.dameg > oldDameg) {
+                                    bonusMessage.append(String.format("SD +%d, ", damegIncrease));
+                                    receivedBonus = true;
                                 }
+                            }
 
-                                // Tăng chỉ số nếu chưa đạt giới hạn
-                                if (avaiable) {
-
-                                    pl.nPoint.dameg = Math.min(pl.nPoint.dameg + damegIncrease, maxDameg);
-                                    pl.nPoint.hpg = Math.min(pl.nPoint.hpg + hpMpIncrease, maxHpMp);
-                                    pl.nPoint.mpg = Math.min(pl.nPoint.mpg + hpMpIncrease, maxHpMp);
-
-                                    // Cập nhật trạng thái
-                                    Service.gI().point(pl);
-                                    InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
-                                    InventoryServiceNew.gI().sendItemBags(pl);
-                                    Service.gI().sendThongBao(pl, "Bạn nhận được SD, HP và KI");
-                                    break;
+                            if (!isHpMaxed) {
+                                long oldHp = pl.nPoint.hpg;
+                                pl.nPoint.hpg = Math.min(pl.nPoint.hpg + hpMpIncrease, maxHpMp);
+                                if (pl.nPoint.hpg > oldHp) {
+                                    bonusMessage.append(String.format("HP +%d, ", hpMpIncrease));
+                                    receivedBonus = true;
                                 }
+                            }
 
+                            if (!isMpMaxed) {
+                                long oldMp = pl.nPoint.mpg;
+                                pl.nPoint.mpg = Math.min(pl.nPoint.mpg + hpMpIncrease, maxHpMp);
+                                if (pl.nPoint.mpg > oldMp) {
+                                    bonusMessage.append(String.format("KI +%d, ", hpMpIncrease));
+                                    receivedBonus = true;
+                                }
+                            }
+
+                            // Nếu có thuộc tính được tăng thì cập nhật
+                            if (receivedBonus) {
+                                // Xóa dấu ", " cuối cùng
+                                if (bonusMessage.length() > 0) {
+                                    bonusMessage.setLength(bonusMessage.length() - 2);
+                                }
+                                Service.gI().point(pl); // Cập nhật chỉ số
+                                InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1); // Trừ item
+                                InventoryServiceNew.gI().sendItemBags(pl); // Gửi lại túi đồ
+                                Service.gI().sendThongBao(pl, bonusMessage.toString()); // Thông báo chi tiết
+                            } else {
+                                Service.gI().sendThongBao(pl, "Không thể tăng thêm thuộc tính do đã đạt giới hạn");
                             }
                             break;
                         }
                         case 1667: // Trúc Cơ Đan
                         {
                             int requiredCap = 1;
-                            if (pl.capTT > requiredCap) {
-                                Service.gI().sendThongBao(pl, "Cảnh giới vượt mức");
+                            int requiredBinhCanh = 3;
+
+                            // Kiểm tra cảnh giới và bình cảnh
+                            if (pl.capTT != requiredCap || pl.capCS != requiredBinhCanh) {
+                                if (pl.capTT < requiredCap) {
+                                    Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng");
+                                } else if (pl.capTT > requiredCap) {
+                                    Service.gI().sendThongBao(pl, "Cảnh giới vượt mức yêu cầu để sử dụng");
+                                } else if (pl.capCS != requiredBinhCanh) {
+                                    Service.gI().sendThongBao(pl, "Bình cảnh chưa đạt yêu cầu để sử dụng");
+                                }
                                 break;
                             }
-                            if (pl.capTT < requiredCap) {
-                                Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Hoàng Cúc Đan");
+
+                            // Thiết lập giá trị
+                            int requiredDame = 3_600_000;
+                            int requiredHpKi = requiredDame * 3;
+
+                            int damegIncrease = 1_000_000;
+                            int hpMpIncrease = damegIncrease * 3;
+
+                            int maxDameg = 4_600_000;
+                            int maxHpMp = maxDameg * 3;
+
+                            // Kiểm tra điều kiện
+                            boolean atExactThreshold = (pl.nPoint.dameg == requiredDame)
+                                    && (pl.nPoint.hpg == requiredHpKi)
+                                    && (pl.nPoint.mpg == requiredHpKi);
+
+                            boolean alreadyMaxed = (pl.nPoint.dameg >= maxDameg)
+                                    || (pl.nPoint.hpg >= maxHpMp)
+                                    || (pl.nPoint.mpg >= maxHpMp);
+
+                            boolean notEligible = (pl.nPoint.dameg < requiredDame)
+                                    || (pl.nPoint.hpg < requiredHpKi)
+                                    || (pl.nPoint.mpg < requiredHpKi);
+
+                            // Xử lý logic
+                            if (notEligible) {
+                                Service.gI().sendThongBao(pl, "Chưa xong luyện khí mà đòi trúc cơ à mày !!!");
                                 break;
                             }
-                            if (pl.capTT == requiredCap) {
-                                int requiredDame = 3_600_000;
-                                int requiredHpKi = requiredDame * 3;
-
-                                int damegIncrease = 1_000_000;
-                                int hpMpIncrease = damegIncrease * 3;
-
-                                int maxDameg = 4_600_000;
-                                int maxHpMp = maxDameg * 3;
-                                boolean avaiable = true;
-
-                                // Kiểm tra nếu chưa đạt điều kiện đột phá
-                                boolean notEligible = pl.nPoint.dameg < requiredDame
-                                        || pl.nPoint.hpg < requiredHpKi
-                                        || pl.nPoint.mpg < requiredHpKi;
-
-                                if (notEligible) {
-                                    avaiable = false;
-                                    Service.gI().sendThongBao(pl, "Chưa xong luyện khí mà đòi trúc cơ à mày !!!");
-                                    break;
-                                }
-
-                                // Kiểm tra nếu đã vượt ngưỡng yêu cầu
-                                boolean alreadyBeyond = pl.nPoint.dameg > requiredDame
-                                        || pl.nPoint.hpg > requiredHpKi
-                                        || pl.nPoint.mpg > requiredHpKi;
-
-                                if (alreadyBeyond) {
-                                    avaiable = false;
-                                    Service.gI().sendThongBao(pl, "Mạnh rồi trúc cơ gì nữa !!!");
-                                    break;
-                                }
-                                if (avaiable) {
-
-                                    // Nếu đủ điều kiện, tiến hành đột phá Trúc Cơ
-                                    pl.nPoint.dameg = Math.min(pl.nPoint.dameg + damegIncrease, maxDameg);
-                                    pl.nPoint.hpg = Math.min(pl.nPoint.hpg + hpMpIncrease, maxHpMp);
-                                    pl.nPoint.mpg = Math.min(pl.nPoint.mpg + hpMpIncrease, maxHpMp);
-                                    pl.isUseTrucCoDan = true;
-                                    Service.gI().point(pl);
-                                    Service.gI().sendThongBao(pl, "Cảnh giới của bạn đã hoàn mỹ, lần tiếp theo đột phá vì Thiên Đạo Trúc Cơ");
-
-                                    // Trừ vật phẩm
-                                    InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
-                                    InventoryServiceNew.gI().sendItemBags(pl);
-                                    break;
-                                }
+                            if (alreadyMaxed) {
+                                Service.gI().sendThongBao(pl, "Đã đạt giới hạn, không thể sử dụng");
+                                break;
                             }
+                            if (!atExactThreshold) {
+                                Service.gI().sendThongBao(pl, "Cần đạt chính xác " + requiredDame + " SD và " + requiredHpKi + " HP/KI");
+                                break;
+                            }
+
+                            // Tăng chỉ số
+                            pl.nPoint.dameg = Math.min(pl.nPoint.dameg + damegIncrease, maxDameg);
+                            pl.nPoint.hpg = Math.min(pl.nPoint.hpg + hpMpIncrease, maxHpMp);
+                            pl.nPoint.mpg = Math.min(pl.nPoint.mpg + hpMpIncrease, maxHpMp);
+
+                            // Đánh dấu đã dùng Trúc Cơ Đan
+                            pl.isUseTrucCoDan = true;
+
+                            // Cập nhật
+                            Service.gI().point(pl);
+                            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+                            InventoryServiceNew.gI().sendItemBags(pl);
+                            Service.gI().sendThongBao(pl, "Đột phá Trúc Cơ thành công! Nhận được: SD +1tr, HP/KI +3tr");
                             break;
                         }
                         case 1664:// truc co so ky
                         {
                             int requiredCap = 2;
                             int requiredBinhCanh = 0;
-                            if (pl.capTT != requiredCap && pl.capCS != requiredBinhCanh) {
-                                Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Long Tủy Đan");
+                            if (pl.capTT != requiredCap || pl.capCS != requiredBinhCanh) {
+                                if (pl.capTT < requiredCap) {
+                                    Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Long Tủy Đan");
+                                } else if (pl.capTT > requiredCap) {
+                                    Service.gI().sendThongBao(pl, "Cảnh giới vượt mức yêu cầu để sử dụng Long Tủy Đan");
+                                } else if (pl.capCS != requiredBinhCanh) {
+                                    Service.gI().sendThongBao(pl, "Bình cảnh chưa đạt yêu cầu để sử dụng Long Tủy Đan");
+                                }
                                 break;
-                            } else {
+                            }
+                            if (pl.capTT == requiredCap && pl.capCS == requiredBinhCanh) {
                                 int requiredDame = 3_600_000;
                                 int requiredHpKi = requiredDame * 3;
 
@@ -1717,10 +1764,18 @@ public class UseItem {
                         case 1665: {// truc co trung ky
                             int requiredCap = 2;
                             int requiredBinhCanh = 1;
-                            if (pl.capTT != requiredCap && pl.capCS != requiredBinhCanh) {
-                                Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Chân Nguyên Đan");
+
+                            if (pl.capTT != requiredCap || pl.capCS != requiredBinhCanh) {
+                                if (pl.capTT < requiredCap) {
+                                    Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Chân Nguyên Đan");
+                                } else if (pl.capTT > requiredCap) {
+                                    Service.gI().sendThongBao(pl, "Cảnh giới vượt mức yêu cầu để sử dụng Chân Nguyên Đan");
+                                } else if (pl.capCS != requiredBinhCanh) {
+                                    Service.gI().sendThongBao(pl, "Bình cảnh chưa đạt yêu cầu để sử dụng Chân Nguyên Đan");
+                                }
                                 break;
-                            } else {
+                            }
+                            if (pl.capTT == requiredCap && pl.capCS == requiredBinhCanh) {
                                 int requiredDame = 6_000_000;
                                 int requiredHpKi = requiredDame * 3;
 
@@ -1767,10 +1822,17 @@ public class UseItem {
                         case 1666: {// truc co hau ky
                             int requiredCap = 2;
                             int requiredBinhCanh = 2;
-                            if (pl.capTT != requiredCap && pl.capCS != requiredBinhCanh) {
-                                Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Ngũ Hành Ngưng Đan");
+                            if (pl.capTT != requiredCap || pl.capCS != requiredBinhCanh) {
+                                if (pl.capTT < requiredCap) {
+                                    Service.gI().sendThongBao(pl, "Cảnh giới chưa đạt yêu cầu để sử dụng Ngũ Hành Ngưng Đan");
+                                } else if (pl.capTT > requiredCap) {
+                                    Service.gI().sendThongBao(pl, "Cảnh giới vượt mức yêu cầu để sử dụng Ngũ Hành Ngưng Đan");
+                                } else if (pl.capCS != requiredBinhCanh) {
+                                    Service.gI().sendThongBao(pl, "Bình cảnh chưa đạt yêu cầu để sử dụng Ngũ Hành Ngưng Đan");
+                                }
                                 break;
-                            } else {
+                            }
+                            if (pl.capTT == requiredCap && pl.capCS == requiredBinhCanh) {
                                 int requiredDame = 12_000_000;
                                 int requiredHpKi = requiredDame * 3;
 
@@ -1855,25 +1917,25 @@ public class UseItem {
         switch (item.template.id) {
             case 441: //hút máu
                 optionId = 95;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 442: //hút ki
                 optionId = 96;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 443: //phản sát thương
                 optionId = 97;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 444:
                 optionId = 98;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 445:
                 optionId = 156;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 446: //vàng
                 optionId = 100;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 447: //tnsm
                 optionId = 101;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
         }
         return optionId;
     }
@@ -1883,25 +1945,25 @@ public class UseItem {
         switch (item.template.id) {
             case 441: //hút máu
                 optionId = 95;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 442: //hút ki
                 optionId = 96;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 443: //phản sát thương
                 optionId = 97;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 444:
                 optionId = 98;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 445:
                 optionId = 156;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 446: //vàng
                 optionId = 100;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 447: //tnsm
                 optionId = 101;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
         }
         return optionId;
     }
@@ -2240,7 +2302,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2230) {
                     itemsieucap = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (itemsieucap != null) {
@@ -2298,7 +2360,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2167) {
                     top1nv = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (top1nv != null) {
@@ -2361,7 +2423,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2168) {
                     top2nv = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (top2nv != null) {
@@ -2424,7 +2486,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2169) {
                     top3nv = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (top3nv != null) {
@@ -2486,7 +2548,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2170) {
                     top1nv = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (top1nv != null) {
@@ -2549,7 +2611,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2171) {
                     top1nv = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (top1nv != null) {
@@ -2613,7 +2675,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2172) {
                     top2nv = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (top2nv != null) {
@@ -2676,7 +2738,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2173) {
                     top3nv = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (top3nv != null) {
@@ -2739,7 +2801,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2174) {
                     top1nv = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (top1nv != null) {
@@ -2803,7 +2865,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2175) {
                     top1nv = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (top1nv != null) {
@@ -2866,7 +2928,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2228) {
                     tuingocxanh = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (tuingocxanh != null) {
@@ -2894,7 +2956,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2229) {
                     tuingochong = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (tuingochong != null) {
@@ -2922,7 +2984,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2145) {
                     hopquavnd = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (pl.getSession() != null && pl.getSession().vnd > cn.ghVnd) {
@@ -2952,7 +3014,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2146) {
                     hopquavnd2 = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (pl.getSession() != null && pl.getSession().vnd > cn.ghVnd) {
@@ -2982,7 +3044,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2134) {
                     hopquat1nap = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (hopquat1nap != null) {
@@ -3061,7 +3123,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2135) {
                     hopquat2nap = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (hopquat2nap != null) {
@@ -3140,7 +3202,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2136) {
                     hopquat3nap = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (hopquat3nap != null) {
@@ -3214,7 +3276,7 @@ public class UseItem {
                 if (item.isNotNullItem() && item.template.id == 2137) {
                     hopquat45nap = item;
 
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (hopquat45nap != null) {
@@ -3272,7 +3334,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2138) {
                     hopquat610nap = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (hopquat610nap != null) {
@@ -3329,7 +3391,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2139) {
                     hopquamocnap300 = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (hopquamocnap300 != null) {
@@ -3376,7 +3438,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2140) {
                     hopquamocnap500 = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (hopquamocnap500 != null) {
@@ -3416,7 +3478,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2141) {
                     hopquamocnap1000 = item;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (hopquamocnap1000 != null) {
@@ -3460,15 +3522,15 @@ public class UseItem {
     private void useItemChangeFlagBag(Player player, Item item) {
         switch (item.template.id) {
             case 994: //vỏ ốc
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 995: //cây kem
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 996: //cá heo
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 997: //con diều
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 998: //diều rồng
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 999: //mèo mun
                 if (!player.effectFlagBag.useMeoMun) {
                     player.effectFlagBag.reset();
@@ -3476,7 +3538,7 @@ public class UseItem {
                 } else {
                     player.effectFlagBag.reset();
                 }
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 1000: //xiên cá
                 if (!player.effectFlagBag.useXienCa) {
                     player.effectFlagBag.reset();
@@ -3484,7 +3546,7 @@ public class UseItem {
                 } else {
                     player.effectFlagBag.reset();
                 }
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 1001: //phóng heo
                 if (!player.effectFlagBag.usePhongHeo) {
                     player.effectFlagBag.reset();
@@ -3492,7 +3554,7 @@ public class UseItem {
                 } else {
                     player.effectFlagBag.reset();
                 }
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
         }
         Service.gI().point(player);
         Service.gI().sendFlagBag(player);
@@ -4412,7 +4474,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeLoNuocThanhx2 = System.currentTimeMillis();
                 pl.itemTime.isLoNuocThanhx2 = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 1602:
                 if (pl.itemTime.isLoNuocThanhx2 == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng nước thánh rồi");
@@ -4516,25 +4578,25 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeDuoiKhi = System.currentTimeMillis();
                 pl.itemTime.isUseDuoiKhi = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
 
             case 2196:
                 pl.itemTime.lastTimeUseVooc = System.currentTimeMillis();
                 pl.itemTime.isUseVooc = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 2197:
                 pl.itemTime.lastTimeUseSaoBien = System.currentTimeMillis();
                 pl.itemTime.isUseSaoBien = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 2198:
                 pl.itemTime.lastTimeUseConCua = System.currentTimeMillis();
                 pl.itemTime.isUseConCua = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 2189:
                 pl.itemTime.lastTimeUseMayDoSK = System.currentTimeMillis();
                 pl.itemTime.isUseMayDoSK = true;
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 2157: //banh ngọt
                 if (pl.itemTime.isUseBanhNgot == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4543,7 +4605,7 @@ public class UseItem {
                 pl.itemTime.lastTimeBanhNgot = System.currentTimeMillis();
                 pl.itemTime.isUseBanhNgot = true;
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 2158: //kem ốc quế
                 if (pl.itemTime.isUseKemOcQue == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4552,7 +4614,7 @@ public class UseItem {
                 pl.itemTime.lastTimeKemOcQue = System.currentTimeMillis();
                 pl.itemTime.isUseKemOcQue = true;
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 2159: //kẻo dẻo
                 if (pl.itemTime.isUseKeoDeo == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4561,7 +4623,7 @@ public class UseItem {
                 pl.itemTime.lastTimeKeoDeo = System.currentTimeMillis();
                 pl.itemTime.isUseKeoDeo = true;
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 2160: //kẹo tỏng gói
                 if (pl.itemTime.isUseKeoTrongGoi == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4570,7 +4632,7 @@ public class UseItem {
                 pl.itemTime.lastTimeKeoTrongGoi = System.currentTimeMillis();
                 pl.itemTime.isUseKeoTrongGoi = true;
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 903: //banh sau
                 if (pl.itemTime.isUseBanhSau == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4579,7 +4641,7 @@ public class UseItem {
                 pl.itemTime.lastTimeBanhSau = System.currentTimeMillis();
                 pl.itemTime.isUseBanhSau = true;
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 902: //giáp xên
                 if (pl.itemTime.isUseBanhNhen == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4588,7 +4650,7 @@ public class UseItem {
                 pl.itemTime.lastTimeBanhNhen = System.currentTimeMillis();
                 pl.itemTime.isUseBanhNhen = true;
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 900: //cuồng nộ
                 if (pl.itemTime.isUseSupBi == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4597,7 +4659,7 @@ public class UseItem {
                 pl.itemTime.lastTimeSupBi = System.currentTimeMillis();
                 pl.itemTime.isUseSupBi = true;
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 899: //ẩn danh
                 if (pl.itemTime.isUseKeoMotMat == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4606,7 +4668,7 @@ public class UseItem {
                 pl.itemTime.lastTimeKeoMotMat = System.currentTimeMillis();
                 pl.itemTime.isUseKeoMotMat = true;
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 753:
                 if (pl.itemTime.isUseBanhChung == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4615,7 +4677,7 @@ public class UseItem {
                 pl.itemTime.lastTimeBanhChung = System.currentTimeMillis();
                 pl.itemTime.isUseBanhChung = true;
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 752:
                 if (pl.itemTime.isUseBanhTet == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4624,7 +4686,7 @@ public class UseItem {
                 pl.itemTime.lastTimeBanhTet = System.currentTimeMillis();
                 pl.itemTime.isUseBanhTet = true;
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 382: //bổ huyết
                 if (pl.itemTime.isUseBoHuyetSC == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4633,7 +4695,7 @@ public class UseItem {
                 pl.itemTime.lastTimeBoHuyet = System.currentTimeMillis();
                 pl.itemTime.isUseBoHuyet = true;
 
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 383: //bổ khí
                 if (pl.itemTime.isUseBoKhiSC == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4641,7 +4703,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeBoKhi = System.currentTimeMillis();
                 pl.itemTime.isUseBoKhi = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 384: //giáp xên
                 if (pl.itemTime.isUseGiapXenSC == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4649,7 +4711,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeGiapXen = System.currentTimeMillis();
                 pl.itemTime.isUseGiapXen = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 381: //cuồng nộ
                 if (pl.itemTime.isUseCuongNoSC == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4658,7 +4720,7 @@ public class UseItem {
                 pl.itemTime.lastTimeCuongNo = System.currentTimeMillis();
                 pl.itemTime.isUseCuongNo = true;
                 Service.gI().point(pl);
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 385: //ẩn danh
                 if (pl.itemTime.isUseAnDanhSC == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4666,11 +4728,11 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeAnDanh = System.currentTimeMillis();
                 pl.itemTime.isUseAnDanh = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 379: //máy dò capsule
                 pl.itemTime.lastTimeUseMayDo = System.currentTimeMillis();
                 pl.itemTime.isUseMayDo = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 1100: //bổ huyết
                 if (pl.itemTime.isUseBoHuyet == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4678,7 +4740,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeBoHuyetSC = System.currentTimeMillis();
                 pl.itemTime.isUseBoHuyetSC = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 1101: //bổ khí
                 if (pl.itemTime.isUseBoKhi == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4686,7 +4748,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeBoKhiSC = System.currentTimeMillis();
                 pl.itemTime.isUseBoKhiSC = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 1102: //giáp xên
                 if (pl.itemTime.isUseGiapXen == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4694,7 +4756,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeGiapXenSC = System.currentTimeMillis();
                 pl.itemTime.isUseGiapXenSC = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 1099: //cuồng nộ
                 if (pl.itemTime.isUseCuongNo == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4703,7 +4765,7 @@ public class UseItem {
                 pl.itemTime.lastTimeCuongNoSC = System.currentTimeMillis();
                 pl.itemTime.isUseCuongNoSC = true;
                 Service.gI().point(pl);
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 1103: //ẩn danh
                 if (pl.itemTime.isUseAnDanh == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4711,7 +4773,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeAnDanhSC = System.currentTimeMillis();
                 pl.itemTime.isUseAnDanhSC = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
 
             case 663: //bánh pudding
             case 664: //xúc xíc
@@ -4722,15 +4784,15 @@ public class UseItem {
                 pl.itemTime.isEatMeal = true;
                 ItemTimeService.gI().removeItemTime(pl, pl.itemTime.iconMeal);
                 pl.itemTime.iconMeal = item.template.iconID;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 2166: //máy dò đồ
                 pl.itemTime.lastTimeUseMayDo2 = System.currentTimeMillis();
                 pl.itemTime.isUseMayDo2 = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             case 2161: //máy dò đồ
                 pl.itemTime.lastTimeUseMayDo3 = System.currentTimeMillis();
                 pl.itemTime.isUseMayDo3 = true;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
         }
         Service.gI().point(pl);
         ItemTimeService.gI().sendAllItemTime(pl);
@@ -4747,11 +4809,11 @@ public class UseItem {
 //                case SummonDragon.NGOC_RONG_3_SAO:
 //                    SummonDragon.gI().openMenuSummonShenron(pl, (byte) (tempId - 13));
                     SummonDragon.gI().openMenuSummonShenron(pl, (byte) (tempId - 13), SummonDragon.DRAGON_SHENRON);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 default:
                     NpcService.gI().createMenuConMeo(pl, ConstNpc.TUTORIAL_SUMMON_DRAGON,
                             -1, "Bạn chỉ có thể gọi rồng từ ngọc 3 sao, 2 sao, 1 sao", "Hướng\ndẫn thêm\n(mới)", "OK");
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
             }
         }
         if (tempId >= GoiRongXuong.XUONG_1_SAO && tempId <= GoiRongXuong.XUONG_7_SAO) {
@@ -5002,7 +5064,7 @@ public class UseItem {
         for (Item item : player.inventory.itemsBag) {
             if (item.isNotNullItem() && item.template.type == 6) {
                 pea = item;
-                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                break;                                                                   
             }
         }
         if (pea != null) {
@@ -5011,11 +5073,11 @@ public class UseItem {
             for (Item.ItemOption io : pea.itemOptions) {
                 if (io.optionTemplate.id == 2) {
                     hpKiHoiPhuc = io.param * 1000;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
                 if (io.optionTemplate.id == 48) {
                     hpKiHoiPhuc = io.param;
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
             if (!player.isAdmin() && Manager.MapCold.contains(player.zone.map.mapId)) {
@@ -5058,7 +5120,7 @@ public class UseItem {
                     } else {
                         Service.gI().sendThongBao(pl, "Có lỗi xảy ra với skill 1 đệ");
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case 403: //skill 2
                     if (SkillUtil.upSkillPet(pl.pet.playerSkill.skills, 1)) {
                         Service.gI().chatJustForMe(pl, pl.pet, "Cảm ơn sư phụ");
@@ -5067,7 +5129,7 @@ public class UseItem {
                     } else {
                         Service.gI().sendThongBao(pl, "Đã có skill đâu mà nâng ảo à");
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case 404: //skill 3
                     if (SkillUtil.upSkillPet(pl.pet.playerSkill.skills, 2)) {
                         Service.gI().chatJustForMe(pl, pl.pet, "Cảm ơn sư phụ");
@@ -5076,7 +5138,7 @@ public class UseItem {
                     } else {
                         Service.gI().sendThongBao(pl, "Đã có skill đâu mà nâng ảo à");
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case 759: //skill 4
                     if (SkillUtil.upSkillPet(pl.pet.playerSkill.skills, 3)) {
                         Service.gI().chatJustForMe(pl, pl.pet, "Cảm ơn sư phụ");
@@ -5086,7 +5148,7 @@ public class UseItem {
                         Service.gI().sendThongBao(pl, "Đã có skill đâu mà nâng ảo à");
                     }
 
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
 
             }
 

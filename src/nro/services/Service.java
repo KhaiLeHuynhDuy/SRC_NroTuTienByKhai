@@ -498,35 +498,35 @@ public class Service {
                         x = 65;
                         y = x;
                         fr = 8;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16280:
                         // id anh
                         x = 70;
                         y = 38;
                         fr = 8;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
 
                     case 15262:
                         fr = 10;
                         x = 32;
                         y = 45;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 15264:
                         fr = 10;
                         x = 32;
                         y = 40;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 15266:
                         fr = 10;
                         x = 32;
                         y = 42;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
 
                     case 16167:
                         fr = 71;
                         x = 96;
                         y = 96;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16149:
                         fr = 71;
                         x = 70;
@@ -537,63 +537,63 @@ public class Service {
                         fr = 44;
                         x = 70;
                         y = 70;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16151:
                         fr = 51;
                         x = 70;
                         y = 70;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16175:
                         fr = 45;
                         x = 45;
                         y = 45;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16153:
                         fr = 48;
                         x = 86;
                         y = 86;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16155:
                         fr = 95;
                         x = 75;
                         y = 75;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16157:
                         fr = 81;
                         x = 96;
                         y = 96;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16159:
                         fr = 36;
                         x = 96;
                         y = 96;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16161:
                         fr = 77;
                         x = 70;
                         y = 70;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16163:
                         fr = 48;
                         x = 50;
                         y = 50;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16165:
                         fr = 61;
                         x = 50;
                         y = 50;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16169:
                         fr = 80;
                         x = 70;
                         y = 70;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16171:
                         fr = 61;
                         x = 96;
                         y = 96;
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
-                    //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
+                                                       
                     case 14200:
                     case 14202:
                     case 14204:
@@ -601,7 +601,7 @@ public class Service {
                         fr = 3;
                         x = 24;// kéo dãn khung hình dạng ngang
                         y = 26;// tăng để lên khung hình, giảm để xuống khung hình
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 14208:
                     case 14210:
 
@@ -609,12 +609,12 @@ public class Service {
                         fr = 3;
                         x = 24;// kéo dãn khung hình dạng ngang
                         y = 28;// tăng để lên khung hình, giảm để xuống khung hình
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 16081:
                         fr = 3;
                         x = 32;// // kéo dãn khung hình dạng ngang
                         y = 28;// tăng để lên khung hình
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 11703:
                         fr = 3;
                         x = 32;// // kéo dãn khung hình dạng ngang
@@ -657,9 +657,9 @@ public class Service {
                         y = 32;// tăng để lên khung hình
                         break;
 
-                    //Zalo: 0358124452                                //Name: EMTI 
+                                                       
                     default:
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     }
                 msg.writer().writeByte(fr);
                 for (int i = 0; i < fr; ++i) {
@@ -1047,14 +1047,14 @@ public class Service {
 
                 case "client":
                     Client.gI().show(player);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case "map":
                     sendThongBao(player, "Thông tin map: " + player.zone.map.mapName + " (" + player.zone.map.mapId + ")");
                     return;
                 case "vt":
                     sendThongBao(player, player.location.x + " - " + player.location.y + "\n"
                             + player.zone.map.yPhysicInTop(player.location.x, player.location.y));
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case "hs":
                     player.nPoint.setFullHpMp();
                     PlayerService.gI().sendInfoHpMp(player);
@@ -1071,7 +1071,7 @@ public class Service {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
                 case "c": {
                     Message msg;
@@ -1085,10 +1085,10 @@ public class Service {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
                 default:
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             if (player.isAdmin() && text.equals("nrnm")) {
                 Service.gI().activeNamecShenron(player);
@@ -1198,24 +1198,24 @@ public class Service {
                 case "di theo":
                 case "follow":
                     player.pet.changeStatus(Pet.FOLLOW);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case "bao ve":
                 case "protect":
                     player.pet.changeStatus(Pet.PROTECT);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case "tan cong":
                 case "attack":
                     player.pet.changeStatus(Pet.ATTACK);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case "ve nha":
                 case "go home":
                     player.pet.changeStatus(Pet.GOHOME);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 case "bien hinh":
                     player.pet.transform();
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 default:
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
         }
 
@@ -1787,7 +1787,7 @@ public class Service {
             for (Mob mob : pl.zone.mobs) {
                 if (mob.id == mobId) {
                     SkillService.gI().useSkill(pl, null, mob, null);
-                    break;                                //Zalo: 0358124452                                //Name: EMTI 
+                    break;                                                                   
                 }
             }
         }
@@ -2079,15 +2079,15 @@ public class Service {
                     case 363:
                         msg.writer().writeByte(73);
                         msg.writer().writeShort(0);
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     case 371:
                         msg.writer().writeByte(88);
                         msg.writer().writeShort(10);
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                     default:
                         msg.writer().writeByte(88);
                         msg.writer().writeShort(5);
-                        break;                                //Zalo: 0358124452                                //Name: EMTI 
+                        break;                                                                   
                 }
             }
             pl.sendMessage(msg);
@@ -2321,11 +2321,11 @@ public class Service {
                             case 1:
                                 msg.writer().writeShort(-1);
                                 msg.writer().writeUTF("Cần đạt sức mạnh 150tr để mở");
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 2:
                                 msg.writer().writeShort(-1);
                                 msg.writer().writeUTF("Cần đạt sức mạnh 1tỷ5 để mở");
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                             case 3:
                                 msg.writer().writeShort(-1);
                                 msg.writer().writeUTF("Cần đạt sức mạnh 20tỷ\nđể mở");
@@ -2333,9 +2333,9 @@ public class Service {
                             case 4:
                                 msg.writer().writeShort(-1);
                                 msg.writer().writeUTF("Cần đạt sức mạnh 150tỷ\nđể mở");
-                                break;//Zalo: 0358124452                                //Name: EMTI 
+                                break;                                   
                             default:
-                                break;                                //Zalo: 0358124452                                //Name: EMTI 
+                                break;                                                                   
                         }
                     }
                 }
