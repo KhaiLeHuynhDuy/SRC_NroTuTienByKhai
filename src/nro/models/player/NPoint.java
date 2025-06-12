@@ -619,7 +619,7 @@ public class NPoint {
 //        }
             if (this.player.isPl() && this.player.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA4) {  
 //            for (Item item : this.player.inventory.itemsBag) {  
-                if (item.isNotNullItem() && item.template.id == 2113) {  
+                if (item.isNotNullItem() && item.template.id == 2052) {  
                     for (Item.ItemOption io : item.itemOptions) {  
                         switch (io.optionTemplate.id) {  
                             case 5:

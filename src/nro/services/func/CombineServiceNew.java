@@ -77,7 +77,7 @@ public class CombineServiceNew {
     private static final int GOLD_BONG_TAI = 500_000_000;
     private static final int GEM_BONG_TAI = 5_000;
     private static final int RUBY_BONG_TAI = 50_000;
-    private static final int RATIO_BONG_TAI = 50;
+    private static final int RATIO_BONG_TAI = 40;
     private static final int RATIO_NANG_CAP = 45;
 
     public static final int NANG_CAP_LINH_THU = 603;
@@ -2482,9 +2482,9 @@ public class CombineServiceNew {
                 if (player.combineNew.itemsCombine.size() == 2) {
                     Item bongTai = null;
                     Item manhVo = null;
-                    int[] idBongTai = {454, 921, 2064, 2113};
-                    int[] idManhVo = {933, 933, 933}; // Đảm bảo các idManhVo tương ứng với idBongTai
-                    int[] slManhVo = {5999, 9999, 19999}; // Đảm bảo số lượng mảnh vỡ tương ứng với idManhVo
+                    int[] idBongTai = {454, 921, 2064, 2052};
+                    int[] idManhVo = {933, 933, 933, 933}; // Đảm bảo các idManhVo tương ứng với idBongTai
+                    int[] slManhVo = {5999, 9999, 19999, 32999}; // Đảm bảo số lượng mảnh vỡ tương ứng với idManhVo
                     for (Item item : player.combineNew.itemsCombine) {
                         if (Arrays.stream(idBongTai).anyMatch(id -> id == item.template.id)) {
                             bongTai = item;
@@ -4595,9 +4595,9 @@ public class CombineServiceNew {
                 Service.gI().sendThongBao(player, "Thiếu vàng");
                 return;
             }
-            int[] idBongTai = {454, 921, 2064, 2113};
-            int[] idManhVo = {933, 933, 933};
-            int[] slManhVo = {5999, 9999, 19999};
+            int[] idBongTai = {454, 921, 2064, 2052};
+            int[] idManhVo = {933, 933, 933, 933};
+            int[] slManhVo = {5999, 9999, 19999, 32999};
 
             for (Item item : player.combineNew.itemsCombine) {
                 if (Arrays.stream(idBongTai).anyMatch(id -> id == item.template.id)) {
@@ -7311,6 +7311,7 @@ public class CombineServiceNew {
                         + "Bông tai Potara + 5999 mảnh vỡ bông tai\n"
                         + "Bông tai cấp 2 + 9999 mảnh vỡ bông tai\n"
                         + "Bông tai cấp 3 + 19999 mảnh vỡ bông tai\n"
+                        + "Bông tai cấp 4 + 32999 mảnh vỡ bông tai\n"
                         + "Sau đó chọn 'Nâng cấp'\n"
                         + " Xịt mất 10% mảnh vỡ ";
 
