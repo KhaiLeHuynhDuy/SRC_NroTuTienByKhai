@@ -115,7 +115,7 @@ public class ConstDataEvent {
 
     public static boolean isActiveEvent() {
         if (!initsukien) {
-            initsukien = true;
+            initsukien = false;
             startEvent = Calendar.getInstance();
 
             // Thiết lập ngày và giờ bắt đầu

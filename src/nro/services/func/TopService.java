@@ -355,7 +355,7 @@ public class TopService implements Runnable {
                         Manager.topSD = Manager.realTop(Manager.queryTopSD, con);
                         //end khaile add
 //                        Manager.topNV = Manager.realTop(Manager.queryTopNV, con);
-//                        Manager.topSM = Manager.realTop(Manager.queryTopSM, con);
+                        Manager.topSukien = Manager.realTop(Manager.queryTopSukien, con);
 //                        Manager.topSM2 = Manager.realTop(Manager.queryTopSM2, con);
 //                        Manager.topSK = Manager.realTop(Manager.queryTopSK, con);
                         Manager.topPVP = Manager.realTop(Manager.queryTopPVP, con);

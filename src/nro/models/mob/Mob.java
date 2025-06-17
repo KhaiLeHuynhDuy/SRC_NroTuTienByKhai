@@ -392,8 +392,7 @@ public class Mob {
                 level = 1;
                 action = 6;
                 point.hp = this.point.maxHp;
-            }
-            else if (level == 1) {
+            } else if (level == 1) {
                 level = 2;
                 action = 5;
                 point.hp = this.point.maxHp;
@@ -431,7 +430,7 @@ public class Mob {
                     ItemMap itemMap = new ItemMap(zone, 1525, 1, location.x + X, location.y, -1);
                     Service.gI().dropItemMap(zone, itemMap);
                 }
-                
+
                 if (Util.isTrue(1, 20)) {
                     ItemMap itemMap = new ItemMap(zone, Util.nextInt(17, 20), 1, location.x + X, location.y, -1);
                     Service.gI().dropItemMap(zone, itemMap);
@@ -951,14 +950,14 @@ public class Mob {
         //end khaile comment
         int mapid = this.zone.map.mapId;
         if (mapid == 156 || mapid == 157 || mapid == 158 || mapid == 159) {
-            if (Util.isTrue(50, 100)) {
+            if (Util.isTrue(20, 100)) {
                 // Rớt vật phẩm 933
                 list.add(new ItemMap(zone, 933, 1, x, player.location.y, player.id));
             } else {
                 // Nếu không rớt 933 thì xét rớt 934 hoặc 935
-                if (Util.isTrue(30, 100)) {
+                if (Util.isTrue(15, 100)) {
                     list.add(new ItemMap(zone, 934, 1, x, player.location.y, player.id));
-                } else if (Util.isTrue(30, 100)) {
+                } else if (Util.isTrue(15, 100)) {
                     list.add(new ItemMap(zone, 935, 1, x, player.location.y, player.id));
                 }
             }
@@ -1001,31 +1000,64 @@ public class Mob {
             }
         }
         if (mapid == 123) { // nhs 1
-            if (!player.isPet && Util.isTrue(5, 100)) {
-                Service.gI().dropItemMapForMe(player, new ItemMap(zone, Util.nextInt(1672, 1674), 1, x, player.location.y, player.id));
+            if (!player.isPet && Util.isTrue(3, 100)) {
+//                Service.gI().dropItemMapForMe(player, new ItemMap(zone, Util.nextInt(1672, 1674), 1, x, player.location.y, player.id));
+                Item tandan = ItemService.gI().createNewItem((short) Util.nextInt(1672, 1674));
+                tandan.itemOptions.add(new Item.ItemOption(30, 1));
+                InventoryServiceNew.gI().addItemBag(player, tandan);
+                InventoryServiceNew.gI().sendItemBags(player);
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + tandan.template.name);
             }
         }
         if (mapid == 124) { //nhs 2
-            if (!player.isPet && Util.isTrue(5, 100)) {
-                Service.gI().dropItemMapForMe(player, new ItemMap(zone, Util.nextInt(1675, 1677), 1, x, player.location.y, player.id));
+            if (!player.isPet && Util.isTrue(3, 100)) {
+//                Service.gI().dropItemMapForMe(player, new ItemMap(zone, Util.nextInt(1675, 1677), 1, x, player.location.y, player.id));
+                Item tandan = ItemService.gI().createNewItem((short) Util.nextInt(1675, 1677));
+                tandan.itemOptions.add(new Item.ItemOption(30, 1));
+                InventoryServiceNew.gI().addItemBag(player, tandan);
+                InventoryServiceNew.gI().sendItemBags(player);
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + tandan.template.name);
             }
         }
         if (mapid == 122) { //nhs 3
-            if (!player.isPet && Util.isTrue(5, 100)) {
-                Service.gI().dropItemMapForMe(player, new ItemMap(zone, Util.nextInt(1678, 1680), 1, x, player.location.y, player.id));
+            if (!player.isPet && Util.isTrue(3, 100)) {
+//                Service.gI().dropItemMapForMe(player, new ItemMap(zone, Util.nextInt(1678, 1680), 1, x, player.location.y, player.id));
+                Item tandan = ItemService.gI().createNewItem((short) Util.nextInt(1678, 1680));
+                tandan.itemOptions.add(new Item.ItemOption(30, 1));
+                InventoryServiceNew.gI().addItemBag(player, tandan);
+                InventoryServiceNew.gI().sendItemBags(player);
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + tandan.template.name);
+            }
+        }
+        if (mapid >= 63 && mapid <= 83) { // sự kiện bãi biển
+            if (!player.isPet && Util.isTrue(10, 100)) {
+                Item tandan = ItemService.gI().createNewItem((short) Util.nextInt(1712, 1714));
+                tandan.itemOptions.add(new Item.ItemOption(93, 29));
+                InventoryServiceNew.gI().addItemBag(player, tandan);
+                InventoryServiceNew.gI().sendItemBags(player);
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + tandan.template.name);
+            }
+        }
+        if (mapid >= 92 && mapid <= 110) { // sự kiện bãi biển
+            if (!player.isPet && Util.isTrue(10, 100)) {
+                Item tandan = ItemService.gI().createNewItem((short) Util.nextInt(1712, 1714));
+                tandan.itemOptions.add(new Item.ItemOption(93, 29));
+                InventoryServiceNew.gI().addItemBag(player, tandan);
+                InventoryServiceNew.gI().sendItemBags(player);
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + tandan.template.name);
             }
         }
         if (mapid == 216) { // ln 1
-            if (!player.isPet && Util.isTrue(20, 100)) {
+            if (!player.isPet && Util.isTrue(25, 100)) {
                 dropTanDanGroup(player, zone, this.location, 1);
                 Service.gI().dropItemMapForMe(player, new ItemMap(zone, 457, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
             }
         }
         if (mapid == 217) { //ln 2
-            if (!player.isPet && Util.isTrue(60, 100)) {
+            if (!player.isPet && Util.isTrue(70, 100)) {
                 dropTanDanGroup(player, zone, this.location, 2);
             }
-            if (!player.isPet && Util.isTrue(20, 100)) {
+            if (!player.isPet && Util.isTrue(25, 100)) {
                 Service.gI().dropItemMapForMe(player, new ItemMap(zone, 1671, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));// linh khi
             }
             Service.gI().dropItemMapForMe(player, new ItemMap(zone, 457, 1, this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), player.id));
@@ -1045,11 +1077,11 @@ public class Mob {
             }
         }
 //end khaile add
-        if (mapid == 159) {
-            if (Util.isTrue(1, 200)) {
-                list.add(new ItemMap(zone, 2227, 1, x, player.location.y, player.id));
-            }
-        }
+//        if (mapid == 159) {
+//            if (Util.isTrue(1, 200)) {
+//                list.add(new ItemMap(zone, 2227, 1, x, player.location.y, player.id));
+//            }
+//        }
         // Võ Hoàng Kiệt - Zalo 0396527908 - FB : thekids.1002
         if (mapid == 159 || mapid == 158) {
             if (Util.isTrue(1, 200)) {
@@ -1277,18 +1309,18 @@ public class Mob {
                 list.add(thucan);
             }
         }
-        if (!player.isPet && player.getSession() != null
-                && player.getSession().actived
-                && (player.inventory.itemsBody.stream()
-                        .filter(item -> item.isNotNullItem() && item.isSKH())
-                        .limit(5)
-                        .count() == 5)) {
-            byte randomDo = (byte) new Random().nextInt(Manager.itemhe2023.length);
-            if (Util.isTrue(1, 400)) {
-                ItemMap itemhe = Util.ItemRotTuQuai(zone, Manager.itemhe2023[randomDo], 1, this.location.x, this.location.y, player.id);
-                list.add(itemhe);
-            }
-        }
+//        if (!player.isPet && player.getSession() != null
+//                && player.getSession().actived
+//                && (player.inventory.itemsBody.stream()
+//                        .filter(item -> item.isNotNullItem() && item.isSKH())
+//                        .limit(5)
+//                        .count() == 5)) {
+//            byte randomDo = (byte) new Random().nextInt(Manager.itemhe2023.length);
+//            if (Util.isTrue(1, 400)) {
+//                ItemMap itemhe = Util.ItemRotTuQuai(zone, Manager.itemhe2023[randomDo], 1, this.location.x, this.location.y, player.id);
+//                list.add(itemhe);
+//            }
+//        }
 
         if (!player.isPet && player.getSession() != null
                 //                && player.getSession().actived

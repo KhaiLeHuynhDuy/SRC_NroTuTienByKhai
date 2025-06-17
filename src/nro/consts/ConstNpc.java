@@ -122,6 +122,7 @@ public class ConstNpc {
     public static final byte THO_DAI_CA = 69;
     public static final byte THO_NGOC = 88;
     public static final byte NPC_CHETAO = 89;
+    public static final byte NPC_Sukien = 90;
     public static final byte GRANO_LA = 96;
     public static final byte TRUNG_LINH_THU = 97;
     public static final byte CAYTHONG = 102;

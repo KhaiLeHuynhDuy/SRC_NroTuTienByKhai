@@ -75,7 +75,8 @@ public class ClanService {
             Clan clan = null;
             try {
                 clan = Manager.CLANS.get(m);
-            } catch (Exception e) { e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
                 throw new Exception("Không tìm thấy clan id: " + id);
             }
             if (clan.id == id) {
@@ -136,7 +137,8 @@ public class ClanService {
                     changeInfoClan(player, imgId, slogan);
                     break;
             }
-        } catch (Exception e) { e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
             e.printStackTrace();
 
         }
@@ -156,7 +158,8 @@ public class ClanService {
                     askForJoinClan(player, msg.reader().readInt());
                     break;
             }
-        } catch (Exception e) { e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
@@ -196,7 +199,8 @@ public class ClanService {
                         }
                     }
                 }
-            } catch (Exception e) { e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
 
@@ -214,7 +218,8 @@ public class ClanService {
                     cancelAskJoinClan(player, clanMessageId);
                     break;
             }
-        } catch (Exception e) { e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
@@ -238,7 +243,8 @@ public class ClanService {
                     break;
             }
 
-        } catch (Exception e) { e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -253,7 +259,8 @@ public class ClanService {
                     acceptJoinClan(player, msg.reader().readInt());
                     break;
             }
-        } catch (Exception e) { e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
@@ -273,7 +280,8 @@ public class ClanService {
                 msg.writer().writeInt(758435); //code
                 pl.sendMessage(msg);
                 msg.cleanup();
-            } catch (Exception e) { e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -302,7 +310,8 @@ public class ClanService {
             } else {
                 Service.gI().sendThongBao(player, "Người ta có bang hội rồi má");
             }
-        } catch (Exception ex) { ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
             Service.gI().sendThongBao(player, ex.getMessage());
         }
     }
@@ -457,7 +466,8 @@ public class ClanService {
             } else {
                 Service.gI().sendThongBao(player, "Người ta có bang hội rồi");
             }
-        } catch (Exception ex) { ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
             Service.gI().sendThongBao(player, ex.getMessage());
         }
     }
@@ -540,7 +550,8 @@ public class ClanService {
             }
             player.sendMessage(msg);
             msg.cleanup();
-        } catch (Exception e) { e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
 
         }
     }
@@ -572,11 +583,13 @@ public class ClanService {
                     }
                     player.sendMessage(msg);
                     msg.cleanup();
-                } catch (Exception e) { e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                     Service.gI().sendThongBao(player, e.getMessage());
                 }
             }
-        } catch (Exception ex) { ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
             Service.gI().sendThongBao(player, ex.getMessage());
 
         }
@@ -642,7 +655,8 @@ public class ClanService {
             }
             player.sendMessage(msg);
             msg.cleanup();
-        } catch (Exception e) { e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
             Logger.logException(ClanService.class, e, "Lỗi send my clan " + player.clan.name + " - " + player.clan.id);
         }
     }
@@ -659,7 +673,8 @@ public class ClanService {
             }
             Service.gI().sendMessAllPlayerInMap(player.zone, msg);
             msg.cleanup();
-        } catch (Exception e) { e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -840,13 +855,15 @@ public class ClanService {
                     + Manager.SERVER + " = -1 where id = " + plId);
             ps.executeUpdate();
             ps.close();
-        } catch (Exception ex) { ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
             removeClanPlayer(plId);
             return;
         } finally {
             try {
                 ps.close();
-            } catch (Exception e) { e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -988,12 +1005,14 @@ public class ClanService {
             }
             ps.executeBatch();
             ps.close();
-        } catch (Exception e) { e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
             Logger.logException(Clan.class, e, "Có lỗi khi update clan vào db");
         } finally {
             try {
                 ps.close();
-            } catch (Exception e) { e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -1052,7 +1071,8 @@ public class ClanService {
                         cdrd,
                         clan.id);
                 Logger.error("DONE SAVE CLAN: " + clan.name + " (" + clan.id + ")");
-            } catch (Exception ex) { ex.printStackTrace();
+            } catch (Exception ex) {
+                ex.printStackTrace();
                 java.util.logging.Logger.getLogger(ClanService.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

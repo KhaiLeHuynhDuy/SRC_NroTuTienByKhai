@@ -12,15 +12,16 @@ import java.util.Random;
 import nro.consts.ConstPlayer;
 import nro.consts.cn;
 import nro.models.boss.list_boss.cell.SieuBoHung;
+import nro.models.item.Item;
 import nro.models.item.Item.ItemOption;
 import nro.services.RewardService;
 import nro.services.TaskService;
 import nro.utils.Logger;
 
-public class MaVuong extends Boss {
+public class Gomahbayby extends Boss {
 
-    public MaVuong() throws Exception {
-        super(BossType.MAVUONG, BossesData.MAVUONG);
+    public Gomahbayby() throws Exception {
+        super(BossType.GOMAH, BossesData.GOMAH);
     }
 
     @Override
@@ -30,7 +31,7 @@ public class MaVuong extends Boss {
         int trai = 0;
         int phai = 1;
         int next = 0;
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 5; i++) {
             int X = next == 0 ? -5 * trai : 5 * phai;
             if (next == 0) {
                 trai++;
@@ -46,24 +47,12 @@ public class MaVuong extends Boss {
             }
             //Item roi
             if (Util.isTrue(50, 100)) {
-                ItemMap itemMap = new ItemMap(zone, 457, 1, location.x + X, location.y, -1);
+                ItemMap itemMap = new ItemMap(zone, 1716, 1, location.x + X, location.y, -1);
+                itemMap.options.add(new Item.ItemOption(30, 1)); // ko thể gd
                 Service.gI().dropItemMap(zone, itemMap);
             } else {
-                ItemMap hongngoc = new ItemMap(zone, 1525, 1, location.x + X, location.y, -1);
+                ItemMap hongngoc = new ItemMap(zone, 457, 1, location.x + X, location.y, -1);
                 Service.gI().dropItemMap(zone, hongngoc);
-            }
-            if (Util.isTrue(1, 20)) {
-                ItemMap itemMap = new ItemMap(zone, Util.nextInt(1099, 1102), 1, location.x + X, location.y, -1);
-                Service.gI().dropItemMap(zone, itemMap);
-            }
-
-            if (Util.isTrue(1, 20)) {
-                ItemMap itemMap = new ItemMap(zone, Util.nextInt(17, 20), 1, location.x + X, location.y, -1);
-                Service.gI().dropItemMap(zone, itemMap);
-            }
-            if (Util.isTrue(1, 20)) {
-                ItemMap itemMap = new ItemMap(zone, 861, Util.nextInt(10, 20), location.x + X, location.y, -1);
-                Service.gI().dropItemMap(zone, itemMap);
             }
         }
 
@@ -108,10 +97,10 @@ public class MaVuong extends Boss {
         }
         try {
         } catch (Exception ex) {
-            Logger.logException(MaVuong.class, ex);
+            Logger.logException(Gomahbayby.class, ex);
         }
         this.attack();
-        if (Util.canDoWithTime(st, 900000)) {
+        if (Util.canDoWithTime(st, 9000000)) {
             this.changeStatus(BossStatus.LEAVE_MAP);
         }
     }

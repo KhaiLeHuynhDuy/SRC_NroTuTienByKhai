@@ -146,7 +146,7 @@ public class Manager {
     public static final short[] itembuff = {74, 191, 192, 211, 212};
     public static final short[] ca = {1001, 1002, 1003, 1004, 1010, 1011, 1012};
     public static final short[] thucan = {663, 664, 665, 666, 667};
-    public static final short[] itemhe2023 = {2157, 2158, 2159, 2160};
+//    public static final short[] itemhe2023 = {2157, 2158, 2159, 2160};
     public static final short[] itemtet = {748, 749, 750, 751};
     public static final short[] nr = {18, 19, 20};
     public static final short[] nrbdkb = {18, 19};
@@ -158,10 +158,10 @@ public class Manager {
     //end khaile modify
     public static final short[] nr4s = {17};
     public static final short[] nr1_2s = {14, 15};
-    public static final short[] trungthu = {886,
-        887,
-        888,
-        889};
+//    public static final short[] trungthu = {886,
+//        887,
+//        888,
+//        889};
     public static final short[] ID_ITEMS_EFF = {1555,
         1556,
         1557,
@@ -200,8 +200,8 @@ public class Manager {
     public static final short[] itemIds_TL = {555, 557, 559, 556, 558, 560, 562, 564, 566, 563, 565, 567, 561};
     public static final short[] itemAVATAR_BLACK = {1124, 1125};
     public static final short[] itemIds_NR_SB = {16, 17, 18};
-    public static final short[] itemIds_DVT = {1396, 1397, 1398, 1399, 1400};
-    public static final short[] itemIds_tinhthach = {1360, 1361, 1362, 1363, 1364, 1365, 1366};
+    //public static final short[] itemIds_DVT = {1396, 1397, 1398, 1399, 1400};
+    //public static final short[] itemIds_tinhthach = {1360, 1361, 1362, 1363, 1364, 1365, 1366};
     public static final short[] itemDC12 = {233, 237, 241, 245, 249, 253, 257, 261, 265, 269, 273, 277};
     public static final List<Integer> MapNguHanhSon = Arrays.asList(122, 123, 124);
     public static final List<Integer> MapTuongLai = Arrays.asList(92, 93, 94, 95, 96, 97, 98, 99, 100);
@@ -287,15 +287,14 @@ public class Manager {
             14);
     //public static final String queryTopSM = "SELECT id, CAST( split_str(data_point,',',2) AS UNSIGNED) AS sm FROM player ORDER BY CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 20;";
 
-   // public static final String queryTopSM2 = "SELECT id, CAST( split_str(data_point,',',2) AS UNSIGNED) AS sm FROM player WHERE account_id > 1294260 ORDER BY CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 20;";
-
+    // public static final String queryTopSM2 = "SELECT id, CAST( split_str(data_point,',',2) AS UNSIGNED) AS sm FROM player WHERE account_id > 1294260 ORDER BY CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 20;";
     public static final String queryTopSD = "SELECT id, CAST( split_str(data_point,',',8)  AS UNSIGNED) AS sd FROM player ORDER BY CAST( split_str(data_point,',',8)  AS UNSIGNED) DESC LIMIT 20;";
     public static final String queryTopHP = "SELECT id, CAST( split_str(data_point,',',6) AS UNSIGNED) AS hp FROM player ORDER BY CAST( split_str(data_point,',',6) AS UNSIGNED) DESC LIMIT 20;";
     public static final String queryTopKI = "SELECT id, CAST( split_str(data_point,',',7) AS UNSIGNED) AS ki FROM player ORDER BY CAST( split_str(data_point,',',7) AS UNSIGNED) DESC LIMIT 20;";
     //public static final String queryTopNV = "SELECT id, CAST( split_str(split_str(data_task,',',1),'[',2) AS UNSIGNED) AS nv FROM player ORDER BY CAST( split_str(split_str(data_task,',',1),'[',2) AS UNSIGNED) DESC, CAST(split_str(data_task,',',2) AS UNSIGNED) DESC, CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 50;";
-   // public static final String queryTopSK = "SELECT id, CAST( split_str( data_inventory,',',5) AS UNSIGNED) AS event FROM player ORDER BY CAST( split_str( data_inventory,',',5) AS UNSIGNED) DESC LIMIT 20;";
+    public static final String queryTopSK = "SELECT id, CAST( split_str( data_inventory,',',5) AS UNSIGNED) AS event FROM player ORDER BY CAST( split_str( data_inventory,',',5) AS UNSIGNED) DESC LIMIT 20;";
     public static final String queryTopPVP = "SELECT id, CAST( split_str( data_inventory,',',3) AS UNSIGNED) AS HONGNGOC FROM player ORDER BY CAST( split_str( data_inventory,',',3) AS UNSIGNED) DESC LIMIT 10;";
-//    public static final String queryTopNHS = "SELECT id, CAST( NguHanhSonPoint AS UNSIGNED) AS nhs FROM player ORDER BY CAST( NguHanhSonPoint AS UNSIGNED) DESC LIMIT 20;";
+    public static final String queryTopSukien = "SELECT id, CAST( sukien AS UNSIGNED) AS sk FROM player ORDER BY CAST( sukien AS UNSIGNED) DESC LIMIT 50;";
     //public static final String queryTopSKHE = "SELECT id, CAST( topsk16 AS UNSIGNED) AS topsk16 FROM account ORDER BY CAST( topsk16 AS UNSIGNED) DESC LIMIT 20;";
     //public static final String queryTopSK20_10 = "SELECT id, CAST( sk20_10 AS UNSIGNED) AS sk20_10 FROM account ORDER BY CAST( sk20_10 AS UNSIGNED) DESC LIMIT 20;";
     //public static final String queryTopSKHE2 = "SELECT player.id, account.topsk16 FROM account, player WHERE account.id = player.account_id  ORDER BY topsk16 DESC LIMIT 10";
@@ -518,6 +517,7 @@ public class Manager {
     public static List<TOP> topNHS;
     public static List<TOP> topSKHE;
     public static List<TOP> topTV;
+    public static List<TOP> topSukien;
     public static List<TOP> topDauThan;
     public static List<TOP> topSieuHang;
     public static long timeRealTop = 0;
@@ -711,7 +711,7 @@ public class Manager {
         TestDame td = new TestDame();
         td.initTestDame();
         //end khaile add test dame & uncomment thread
-        Logger.success("Init map thành công!");
+        Logger.success("Init map thành công!\n");
     }
     public static byte[][] SMALL_VERSION_DATA;
 
@@ -750,6 +750,13 @@ public class Manager {
             }
         } catch (IOException | NumberFormatException ex) {
             Logger.logException(Manager.class, ex, "Lỗi load small version");
+        }
+    }
+
+    public void loadSuKien() {
+        try (Connection con = GirlkunDB.getConnection()) {
+            topSukien = realTop(queryTopSukien, con);
+        } catch (Exception e) {
         }
     }
 
@@ -1587,12 +1594,14 @@ public class Manager {
 //            Logger.success("TOP POWER 2 (" + topSM2.size() + ")  --> Success !!\n");
 //            topNV = realTop(queryTopNV, con);
 //            Logger.success("TOP QUEST (" + topNV.size() + ")  --> Success !!\n");
-//            topSK = realTop(queryTopSK, con);
-//            Logger.success("TOP EVENT (" + topSK.size() + ")  --> Success !!\n");
+            topSK = realTop(queryTopSK, con);
+            Logger.success("TOP EVENT (" + topSK.size() + ")  --> Success !!\n");
             topPVP = realTop(queryTopPVP, con);
             Logger.success("TOP RUBY (" + topSK.size() + ")  --> Success !!\n");
             topSD = realTop(queryTopSD, con);
             Logger.success("TOP Sức đánh (" + topSD.size() + ")  --> Success !!\n");
+            topSukien = realTop(queryTopSukien, con);
+            Logger.success("TOP Sự kiện (" + topSukien.size() + ")  --> Success !!\n");
 //            topSKHE = realTop(queryTopSKHE2, con);
 //            Logger.success("TOP SKHE (" + topSKHE.size() + ")  --> Success !!\n");
 
@@ -1601,7 +1610,6 @@ public class Manager {
 
 //            topDauThan = realTop(queryTopDauThan, con);
 //            Logger.success("TOP đậu thần (" + topDauThan.size() + ")  --> Success !!\n");
-
 //            
 //            Logger.success("TOP NHS (" + topNHS.size() + ")  --> Success !!\n");
 //            topNHS = realTop(queryTopNHS, con);
@@ -1657,10 +1665,10 @@ public class Manager {
 //                        top.setInfo1(rs.getByte("nv") + "");
 //                        top.setInfo2(rs.getByte("nv") + "");
 //                        break;
-//                    case queryTopSK:
-//                        top.setInfo1(rs.getInt("event") + " điểm");
-//                        top.setInfo2(rs.getInt("event") + " điểm");
-//                        break;
+                    case queryTopSK:
+                        top.setInfo1(rs.getInt("event") + " điểm");
+                        top.setInfo2(rs.getInt("event") + " điểm");
+                        break;
                     case queryTopPVP:
                         top.setInfo1(rs.getInt("HONGNGOC") + " Hồng Ngọc");
                         top.setInfo2(rs.getInt("HONGNGOC") + " Hồng Ngọc");
@@ -1668,6 +1676,10 @@ public class Manager {
                     case queryTopSD:
                         top.setInfo1(rs.getLong("sd") + " Sức Đánh");
                         top.setInfo2(rs.getLong("sd") + " Sức Đánh");
+                        break;
+                    case queryTopSukien:
+                        top.setInfo1(rs.getInt("sk") + " Điểm");
+                        top.setInfo2(rs.getInt("sk") + " Điểm");
                         break;
 //                    case queryTopSKHE2:
 //                        top.setInfo1(rs.getLong("topsk16") + "");

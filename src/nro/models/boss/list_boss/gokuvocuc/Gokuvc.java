@@ -55,7 +55,7 @@ public class Gokuvc extends Boss {
             Service.gI().dropItemMap(this.zone, new ItemMap(zone, Manager.itemIds_NR_SB[randomNR], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         }
         if (Util.isTrue(1, 10)) {
-            Service.gI().dropItemMap(this.zone, new ItemMap(zone, 987, 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, 462, 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
         } else {
             Service.gI().dropItemMap(this.zone, new ItemMap(zone, 462, 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
 
@@ -102,7 +102,7 @@ public class Gokuvc extends Boss {
     @Override
     public double injured(Player plAtt, double damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
-            if (!piercing && Util.isTrue(30, 100)) {
+            if (!piercing && Util.isTrue(50, 100)) {
                 this.chat("Xí hụt");
                 return 0;
             }

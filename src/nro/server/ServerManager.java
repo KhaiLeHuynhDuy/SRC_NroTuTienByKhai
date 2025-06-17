@@ -171,7 +171,7 @@ public class ServerManager {
 //        MaQuaTangManager.gI().init();
         new Thread(DaiHoiVoThuat.getInstance(), "Thread DHVT").start();
 
-        MiniGame.gI().MiniGame_S1.active(1000);
+//        MiniGame.gI().MiniGame_S1.active(1000);
         
 //        ChonAiDay.gI().lastTimeEnd = System.currentTimeMillis() + 300000;
 //        new Thread(ChonAiDay.gI(), "Thread CAD").start();
@@ -199,30 +199,30 @@ public class ServerManager {
                 }
             }
         }, "Update dai hoi vo thuat").start();
-        new Thread(() -> {
-            while (isRunning) {
-                try {
-
-                    long start = System.currentTimeMillis();
+//        new Thread(() -> {
+//            while (isRunning) {
+//                try {
+//
+//                    long start = System.currentTimeMillis();
 //                    ConstDataEvent.isRunningSK16 = ConstDataEvent.isActiveEvent();
 //                    SK20_10.isRunningSK2010 = SK20_10.isActiveEvent();
 //                    ConstDataEventSM.isRunningSK = ConstDataEventSM.isActiveEvent();
 //                    ConstDataEventNAP.isRunningSK = ConstDataEventNAP.isActiveEvent();
-                    TaskTraoQua.startTask();
-                    TaskTraoQuaNHS.startTask();
+//                    TaskTraoQua.startTask();
+//                    TaskTraoQuaNHS.startTask();
 //                    TaskTraoQuaNap.startTask();
 //                    TaskTraoQuaSM.startTask();
-                    TaskTraoQuaTV.startTask();
+//                    TaskTraoQuaTV.startTask();
 
-                    long timeUpdate = System.currentTimeMillis() - start;
-                    if (timeUpdate < delay) {
-                        Thread.sleep(delay - timeUpdate);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }, "Update sự kiện auto nhận quà").start();
+//                    long timeUpdate = System.currentTimeMillis() - start;
+//                    if (timeUpdate < delay) {
+//                        Thread.sleep(delay - timeUpdate);
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, "Update sự kiện auto nhận quà").start();
         new Thread(() -> {
             while (isRunning) {
                 try {

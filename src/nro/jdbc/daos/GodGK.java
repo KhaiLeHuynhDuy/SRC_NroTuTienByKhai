@@ -200,6 +200,7 @@ public class GodGK {
                             player.dotpha = rs.getByte("dotpha"); // Add this line
                             player.time_dd = rs.getLong("time_dd");
                             player.diemtichluy = rs.getInt("diemtichluy");
+                            player.sukien = rs.getInt("sukien");
                             //end khaile add code
                             int clanId = rs.getInt("clan_id_sv" + Manager.SERVER);
                             if (clanId != -1) {

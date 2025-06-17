@@ -182,9 +182,9 @@ public class DoKiepService {
     private static final int MAX_CAP_TU_TIEN = 3;
     private static final int ITEM_ID_REQUIRED = 457;
 
-    private static final int[] ITEM_REQUIRE = {15, 150, 1500, 5500, 15055};
+    private static final int[] ITEM_REQUIRE = {45, 180, 750, 5500, 15055};
     private static final int[] DAME_REQUIRE = {25_000, 3_000_000, 10_000_000, 19_000_000, 30_000_000};
-    private static final double[] SUCCESS_RATE = {10.0, 0.05, 0.008, 0.00005, 0.00001};
+    private static final double[] SUCCESS_RATE = {10.0, 0.05, 0.015, 0.00005, 0.00001};
 
     public static DoKiepService gI() {
         if (instance == null) {

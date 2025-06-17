@@ -209,6 +209,7 @@ public class Player {
     public int ThoiVangChallenge;
 
     public int diemtichluy;
+    public int sukien;
     public long time_dd;
     public byte vip;
 
@@ -861,19 +862,19 @@ public class Player {
 //                    }
                     if (this.isPl() && this.isDie()) {
                         if (this.nPoint.power > 1500000) {
-                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx2) {  
+                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx2) {
                                 this.nPoint.power -= ((long) this.nPoint.power * 10 / 1000);
                             }
-                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx5) {  
+                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx5) {
                                 this.nPoint.power -= ((long) this.nPoint.power * 30 / 1000);
                             }
-                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx7) {  
+                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx7) {
                                 this.nPoint.power -= ((long) this.nPoint.power * 50 / 1000);
                             }
-                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx10) {  
+                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx10) {
                                 this.nPoint.power -= ((long) this.nPoint.power * 70 / 1000);
                             }
-                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx15) {  
+                            if (this.itemTime != null && this.itemTime.isLoNuocThanhx15) {
                                 this.nPoint.power -= ((long) this.nPoint.power * 100 / 1000);
                             }
                         }
@@ -1051,17 +1052,18 @@ public class Player {
     private static final short[][] idOutfitFusion = {
         {380, 381, 382},
         {383, 384, 385},
-        {391, 392, 393},
-        {870, 871, 872},
-        {873, 874, 875},
-        {867, 868, 869},
-        {2108, 2109, 2110},
-        {2105, 2106, 2107},
-        {2102, 2103, 2104},
-        {1324, 1325, 1326},
+        {391, 392, 393},// bong tai 1
+
+        {1544, 1545, 1546},//bong tai 2
+        {1544, 1545, 1546},
+        {1544, 1545, 1546},
+        {1547, 1548, 1549}, //bong tai 3
+        {1547, 1548, 1549},
+        {1547, 1548, 1549},
+        {1324, 1325, 1326},// bong tai 4
         {1321, 1322, 1323},
         {1318, 1319, 1320},
-        {1372, 1373, 1374},
+        {1372, 1373, 1374},// bong tai 5
         {1366, 1367, 1368},
         {1369, 1370, 1371},
         {1372, 1373, 1374},
@@ -1317,6 +1319,14 @@ public class Player {
                     return 77;
                 case 2218:
                     return 28;
+                case 1709:
+                    return 60;
+                case 1710:
+                    return 60;
+                case 1711:
+                    return 16;
+                case 1715:
+                    return 87;
 
             }
         }
@@ -1403,35 +1413,35 @@ public class Player {
                 if (io.optionTemplate.id == 72) {
                     levelAo = io.param;
                     optionLevelAo = io;
-                    break;                                                                   
+                    break;
                 }
             }
             for (Item.ItemOption io : itemQuan.itemOptions) {
                 if (io.optionTemplate.id == 72) {
                     levelQuan = io.param;
                     optionLevelQuan = io;
-                    break;                                                                   
+                    break;
                 }
             }
             for (Item.ItemOption io : itemGang.itemOptions) {
                 if (io.optionTemplate.id == 72) {
                     levelGang = io.param;
                     optionLevelGang = io;
-                    break;                                                                   
+                    break;
                 }
             }
             for (Item.ItemOption io : itemGiay.itemOptions) {
                 if (io.optionTemplate.id == 72) {
                     levelGiay = io.param;
                     optionLevelGiay = io;
-                    break;                                                                   
+                    break;
                 }
             }
             for (Item.ItemOption io : itemNhan.itemOptions) {
                 if (io.optionTemplate.id == 72) {
                     levelNhan = io.param;
                     optionLevelNhan = io;
-                    break;                                                                   
+                    break;
                 }
             }
             if (optionLevelAo != null && optionLevelQuan != null && optionLevelGang != null && optionLevelGiay != null && optionLevelNhan != null

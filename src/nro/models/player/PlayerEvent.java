@@ -167,7 +167,7 @@ public class PlayerEvent {
         eventPointBoss += num;
     }
 
-    public void subEventPointBHM(int num) {
+    public void subEventPointBoss(int num) {
         eventPointBoss -= num;
     }
 

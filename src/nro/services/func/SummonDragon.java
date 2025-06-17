@@ -523,7 +523,7 @@ public class SummonDragon {
                                         item.itemOptions.add(new ItemOption(72, 1));
                                     }
                                     for (ItemOption io : item.itemOptions) {
-                                        if (io.optionTemplate.id == 0) {
+                                        if (io.optionTemplate.id == 0|| io.optionTemplate.id == 198) {
                                             io.param += (io.param * 10 / 100);
                                             break;
                                         }
@@ -648,7 +648,7 @@ public class SummonDragon {
                                         item.itemOptions.add(new ItemOption(72, 1));
                                     }
                                     for (ItemOption io : item.itemOptions) {
-                                        if (io.optionTemplate.id == 0) {
+                                        if (io.optionTemplate.id == 0|| io.optionTemplate.id == 198) {
                                             io.param += (io.param * 10 / 100);
                                             break;
                                         }

@@ -94,25 +94,25 @@ public class UseItem {
                 case ITEM_BOX_TO_BODY_OR_BAG:
                     InventoryServiceNew.gI().itemBoxToBodyOrBag(player, index);
                     TaskService.gI().checkDoneTaskGetItemBox(player);
-                    break;                                                                   
+                    break;
                 case ITEM_BAG_TO_BOX:
                     InventoryServiceNew.gI().itemBagToBox(player, index);
-                    break;                                                                   
+                    break;
                 case ITEM_BODY_TO_BOX:
                     InventoryServiceNew.gI().itemBodyToBox(player, index);
-                    break;                                                                   
+                    break;
                 case ITEM_BAG_TO_BODY:
                     InventoryServiceNew.gI().itemBagToBody(player, index);
-                    break;                                                                   
+                    break;
                 case ITEM_BODY_TO_BAG:
                     InventoryServiceNew.gI().itemBodyToBag(player, index);
-                    break;                                                                   
+                    break;
                 case ITEM_BAG_TO_PET_BODY:
                     InventoryServiceNew.gI().itemBagToPetBody(player, index);
-                    break;                                                                   
+                    break;
                 case ITEM_BODY_PET_TO_BAG:
                     InventoryServiceNew.gI().itemPetBodyToBag(player, index);
-                    break;                                                                   
+                    break;
             }
             player.setClothes.setup();
             if (player.pet != null) {
@@ -179,7 +179,7 @@ public class UseItem {
                             this.eatPea(player);
                         }
                     }
-                    break;                                                                   
+                    break;
                 case DO_THROW_ITEM:
                     if (!(player.zone.map.mapId == 21 || player.zone.map.mapId == 22 || player.zone.map.mapId == 23)) {
                         Item item = null;
@@ -210,15 +210,15 @@ public class UseItem {
                     } else {
                         Service.gI().sendThongBao(player, "Không thể vất item ở nhà được !!!");
                     }
-                    break;                                                                   
+                    break;
                 case ACCEPT_THROW_ITEM:
                     InventoryServiceNew.gI().throwItem(player, where, index);
                     Service.gI().point(player);
                     InventoryServiceNew.gI().sendItemBags(player);
-                    break;                                                                   
+                    break;
                 case ACCEPT_USE_ITEM:
                     UseItem.gI().useItem(player, player.inventory.itemsBag.get(index), index);
-                    break;                                                                   
+                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -238,18 +238,18 @@ public class UseItem {
                     break;
                 case 7: //sách học, nâng skill
                     learnSkill(pl, item);
-                    break;                                                                   
+                    break;
                 case 6: //đậu thần
                     this.eatPea(pl);
-                    break;                                                                   
+                    break;
 
                 case 33:
                     UseCard(pl, item);
-                    break;                                                                   
+                    break;
                 case 12: //ngọc rồng các loại
                     controllerCallRongThan(pl, item);
                     break;
-                                                  
+
                 case 23: //thú cưỡi mới
                     InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
                     break;
@@ -642,7 +642,7 @@ public class UseItem {
                             } else {
                                 Service.gI().sendThongBao(pl, "Cần 3 ô trống trong hành trang");
                             }
-                            break;                                                                   
+                            break;
                         case ConstDataEvent.ID_RUONG_2:
                             if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 3) {
                                 int idPetHo = Util.nextInt(1421, 1422);
@@ -684,7 +684,7 @@ public class UseItem {
                             } else {
                                 Service.gI().sendThongBao(pl, "Cần 3 ô trống trong hành trang");
                             }
-                            break;                                                                   
+                            break;
 //                        case ConstDataEvent.ruongvip1:
 //                            if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 3) {
 //                                short idPetHo = 2146;
@@ -1122,7 +1122,7 @@ public class UseItem {
                             } else {
                                 ChangeMapService.gI().goToHanhTinhThucVat(pl);
                             }
-                            break;                                                                   
+                            break;
                         case 361:
                             if (pl.idNRNM != -1) {
                                 Service.gI().sendThongBao(pl, "Có lỗi xảy ra với ngọc rồng namek");
@@ -1132,34 +1132,34 @@ public class UseItem {
                             NpcService.gI().createMenuConMeo(pl, ConstNpc.CONFIRM_TELE_NAMEC, -1, "1 Sao (" + NgocRongNamecService.gI().getDis(pl, 0, (short) 353) + " m)\n2 Sao (" + NgocRongNamecService.gI().getDis(pl, 1, (short) 354) + " m)\n3 Sao (" + NgocRongNamecService.gI().getDis(pl, 2, (short) 355) + " m)\n4 Sao (" + NgocRongNamecService.gI().getDis(pl, 3, (short) 356) + " m)\n5 Sao (" + NgocRongNamecService.gI().getDis(pl, 4, (short) 357) + " m)\n6 Sao (" + NgocRongNamecService.gI().getDis(pl, 5, (short) 358) + " m)\n7 Sao (" + NgocRongNamecService.gI().getDis(pl, 6, (short) 359) + " m)", "Đến ngay\nViên " + (pl.idGo + 1) + " Sao\n50 ngọc", "Kết thức");
                             InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
                             InventoryServiceNew.gI().sendItemBags(pl);
-                            break;                                                                   
+                            break;
                         case 293:
                             openGoiDau1(pl, item);
-                            break;                                                                   
+                            break;
                         case 294:
                             openGoiDau2(pl, item);
-                            break;                                                                   
+                            break;
                         case 295:
                             openGoiDau3(pl, item);
-                            break;                                                                   
+                            break;
                         case 296:
                             openGoiDau4(pl, item);
-                            break;                                                                   
+                            break;
                         case 297:
                             openGoiDau5(pl, item);
-                            break;                                                                   
+                            break;
                         case 298:
                             openGoiDau6(pl, item);
-                            break;                                                                   
+                            break;
                         case 299:
                             openGoiDau7(pl, item);
-                            break;                                                                   
+                            break;
                         case 596:
                             openGoiDau8(pl, item);
-                            break;                                                                   
+                            break;
                         case 597:
                             openGoiDau9(pl, item);
-                            break;                                                                   
+                            break;
 //                        case 1194:
 //                            if (pl.lastTimeTitle1 == 0) {
 //                                pl.lastTimeTitle1 += System.currentTimeMillis() + (1000 * 60 * 60 * 24 * 3);
@@ -1200,38 +1200,38 @@ public class UseItem {
                         //case 457: //khaile comment
                         case 1108:
                             Service.gI().sendThongBao(pl, "Không thể sử dụng");
-                            break;                                                                   
+                            break;
                         case 211: //nho tím
                         case 212: //nho xanh
                             eatGrapes(pl, item);
-                            break;                                                                   
+                            break;
                         case 74: //đùi gà
                         case 191: //cà chua
                         case 192: //cà rốt
                             eatHpMp(pl, item);
-                            break;                                                                   
-                                                           
+                            break;
+
                         case 2127:
                             SkillService.gI().learSkillSpecial(pl, Skill.SUPER_KAME);
-                            break;                                                                   
+                            break;
                         case 2128:
                             SkillService.gI().learSkillSpecial(pl, Skill.MA_PHONG_BA);
-                            break;                                                                   
+                            break;
                         case 2129:
                             SkillService.gI().learSkillSpecial(pl, Skill.LIEN_HOAN_CHUONG);
                             break;
                         case 1996:
                             SkillService.gI().learSkillSpecial(pl, Skill.HAKAI);
-                            break;                                        
+                            break;
                         case 2117://hop qua 1/6
                             ItemService.gI().OpenItem2117(pl, item);
-                            break;                                                                   
+                            break;
                         case 2114://set tl kh
                             UseItem.gI().Hopdothanlinh(pl, item);
-                            break;                                                                   
+                            break;
                         case 2115://set hd kh
                             UseItem.gI().Hopdohuydiet(pl, item);
-                            break;                                                                   
+                            break;
                         case 2116://set ts kh
                             UseItem.gI().Hopthiensu(pl, item);
                             break;
@@ -1240,10 +1240,10 @@ public class UseItem {
                             break;
                         case 1909:
                             UseItem.gI().quagapthu(pl, item);
-                            break;                                   
+                            break;
                         case 1910:
                             UseItem.gI().quagapthu2(pl, item);
-                            break;                                   
+                            break;
 //                        case 992:
 //                            if (pl.nPoint.power < 60000000000L) {
 //                                Service.gI().sendThongBao(pl, "Bạn cần 60 tỷ sm để sử dụng");
@@ -1268,10 +1268,10 @@ public class UseItem {
                             } else {
                                 Service.gI().sendThongBao(pl, "Chỉ được đặt 3 vệ tinh trong map");
                             }
-                            break;                                                                   
+                            break;
                         case 380: //cskb
                             openCSKB(pl, item);
-                            break;                                                                   
+                            break;
                         case 381: //cuồng nộ
                         case 382: //bổ huyết
                         case 383: //bổ khí
@@ -1314,10 +1314,10 @@ public class UseItem {
                         case 1604:
                         case 1605:
                             useItemTime(pl, item);
-                            break;                                                                   
+                            break;
                         case 521: //tdlt
                             useTDLT(pl, item);
-                            break;                                                                   
+                            break;
 //                        case 361:
 //                            if (pl.idNRNM != -1) {
 //                                Service.gI().sendThongBao(pl, "Không thể thực hiện");
@@ -1330,22 +1330,22 @@ public class UseItem {
 //                              break;                                                                   
                         case 454: //bông tai
                             UseItem.gI().usePorata(pl);
-                            break;                                                                   
+                            break;
                         case 921: //bông tai
                             UseItem.gI().usePorata2(pl);
-                            break;                                                                   
+                            break;
                         case 2064: //bông tai
-                            if (pl.nPoint.power < 80000000000L) {
-                                Service.gI().sendThongBao(pl, "Bạn cần 80 tỷ sm để sử dụng");
-                                return;
-                            }
+//                            if (pl.nPoint.power < 80000000000L) {
+//                                Service.gI().sendThongBao(pl, "Bạn cần 80 tỷ sm để sử dụng");
+//                                return;
+//                            }
                             UseItem.gI().usePorata3(pl);
-                            break;                                                                   
-                        case 2113:
-                            if (pl.nPoint.power < 150000000000L) {
-                                Service.gI().sendThongBao(pl, "Bạn cần 150 tỷ sm để sử dụng");
-                                return;
-                            }
+                            break;
+                        case 2052:
+//                            if (pl.nPoint.power < 150000000000L) {
+//                                Service.gI().sendThongBao(pl, "Bạn cần 150 tỷ sm để sử dụng");
+//                                return;
+//                            }
                             UseItem.gI().usePorata4(pl);
                             break;
                         case 1552:
@@ -1357,43 +1357,43 @@ public class UseItem {
                                 return;
                             }
                             UseItem.gI().usePorata5(pl);
-                            break;                                    
+                            break;
                         case 1472:
                             if (pl.nPoint.power < 500000000000L) {
                                 Service.gI().sendThongBao(pl, "Bạn cần 500 tỷ sm để sử dụng");
                                 return;
                             }
                             UseItem.gI().usePorata6(pl);
-                            break;                                    
+                            break;
                         case 193: //gói 10 viên capsule
                             InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
                         case 194: //capsule đặc biệt
                             openCapsuleUI(pl);
-                            break;                                                                   
+                            break;
                         case 401: //đổi đệ tử
                             changePet(pl, item);
                         case 570:
                             openWoodChest(pl, item);
-                            break;                                                                   
+                            break;
 //                        case 1108: //đổi đệ tử
 //                            changePetBerus(pl, item);
 //                              break;                                                                   
                         case 1109:
                             changePetBerusBiNgo(pl, item);
 //                            UseItem.gI().tuivang(pl, item);
-                            break;                                                                   
+                            break;
                         case 1110:
                             changePetZamasu(pl, item);
 //                            UseItem.gI().tuivang(pl, item);
-                            break;                                                                   
+                            break;
                         case 1111:
                             changePetDaishinkan(pl, item);
 //                            UseItem.gI().tuivang(pl, item);
-                            break;                                                                   
+                            break;
                         case 1112:
                             changePetWhis(pl, item);
 //                            UseItem.gI().tuivang(pl, item);
-                            break;                                                                   
+                            break;
                         case 628:
                             openPhieuCaiTrangHaiTac(pl, item);
                         case 402: //sách nâng chiêu 1 đệ tử
@@ -1401,20 +1401,20 @@ public class UseItem {
                         case 404: //sách nâng chiêu 3 đệ tử
                         case 759: //sách nâng chiêu 4 đệ tử
                             upSkillPet(pl, item);
-                            break;                                                                   
+                            break;
                         case 2123:
                             openDaBaoVe(pl, item);
-                            break;                                                                   
+                            break;
                         case 2124:
 //                            openSPL(pl, item);
                             openAllSPL(pl, item);
-                            break;                                                                   
+                            break;
                         case 2125:
                             openDaNangCap(pl, item);
-                            break;                                                                   
+                            break;
                         case 2126:
                             openManhTS(pl, item);
-                            break;                                                                   
+                            break;
                         case 2000://hop qua skh, item 2000 td
                         case 2001://hop qua skh, item 2001 nm
                         case 2002://hop qua skh, item 2002 xd
@@ -1422,10 +1422,10 @@ public class UseItem {
                             break;
                         case 1618:
                             UseItem.gI().saoPhaLeTrungCap(pl, item);
-                            break;                                   
+                            break;
                         case 1619:
                             UseItem.gI().saoPhaLeCaoCap(pl, item);
-                            break;                                   
+                            break;
                         case 2085:
                         case 2086:
                         case 2087:
@@ -1434,18 +1434,18 @@ public class UseItem {
                         case 2014://hop qua skh, item 2004 nm
                         case 2015://hop qua skh, item 2005 xd
                             UseItem.gI().itemDoThanLinh(pl, item);
-                            break;                                                                   
+                            break;
                         case 2003://hop qua skh, item 2003 td
                         case 2004://hop qua skh, item 2004 nm
                         case 2005://hop qua skh, item 2005 xd
                             UseItem.gI().ItemDHD(pl, item);
-                            break;                                                                   
+                            break;
                         case 736:
                             ItemService.gI().OpenItem736(pl, item);
-                            break;                                                                   
+                            break;
                         case 987:
                             Service.gI().sendThongBao(pl, "Bảo vệ trang bị không bị rớt cấp"); //đá bảo vệ
-                            break;                                                                   
+                            break;
                         case 2006:
 //                            if (item.quantity > 10) {
 //                                Service.gI().sendThongBaoOK(pl, "Có Bug không đó :3");
@@ -1454,79 +1454,79 @@ public class UseItem {
 //                                return;
 //                            }
                             Input.gI().createFormChangeNameByItem(pl);
-                            break;                                                                   
+                            break;
                         case 2145:
                             UseItem.gI().hopquavnd1(pl);
-                            break;                                                                   
+                            break;
                         case 2146:
                             UseItem.gI().hopquavnd2(pl);
-                            break;                                                                   
+                            break;
                         case 2134:
                             UseItem.gI().hopquat1nap(pl);
-                            break;                                                                   
+                            break;
                         case 2135:
                             UseItem.gI().hopquat2nap(pl);
-                            break;                                                                   
+                            break;
                         case 2136:
                             UseItem.gI().hopquat3nap(pl);
-                            break;                                                                   
+                            break;
                         case 2137:
                             UseItem.gI().hopquat45nap(pl);
-                            break;                                                                   
+                            break;
                         case 2138:
                             UseItem.gI().hopquat610nap(pl);
-                            break;                                                                   
+                            break;
                         case 2139:
                             UseItem.gI().hopquamocnap300(pl);
-                            break;                                                                   
+                            break;
                         case 2140:
                             UseItem.gI().hopquamocnap500(pl);
-                            break;                                                                   
+                            break;
                         case 2141:
                             UseItem.gI().hopquamocnap1000(pl);
-                            break;                                                                   
+                            break;
                         case 2167:
                             UseItem.gI().Top1nv(pl);
-                            break;                                                                   
+                            break;
                         case 2168:
                             UseItem.gI().Top2nv(pl);
-                            break;                                                                   
+                            break;
                         case 2169:
                             UseItem.gI().Top3nv(pl);
-                            break;                                                                   
+                            break;
                         case 2170:
                             UseItem.gI().Top4nv(pl);
-                            break;                                                                   
+                            break;
                         case 2171:
                             UseItem.gI().Top1sm(pl);
-                            break;                                                                   
+                            break;
                         case 2172:
                             UseItem.gI().Top2sm(pl);
-                            break;                                                                   
+                            break;
                         case 2173:
                             UseItem.gI().Top3sm(pl);
-                            break;                                                                   
+                            break;
                         case 2174:
                             UseItem.gI().Top4sm(pl);
-                            break;                                                                   
+                            break;
                         case 2175:
                             UseItem.gI().Top5sm(pl);
-                            break;                                                                   
+                            break;
                         case 2228:
                             UseItem.gI().Tuingocxanh(pl);
-                            break;                                                                   
+                            break;
                         case 2229:
                             UseItem.gI().Tuingochong(pl);
-                            break;                                                                   
+                            break;
                         case 2230:
                             UseItem.gI().Itemsieucap(pl);
-                            break;                                                                   
+                            break;
                         case 1989:
                             openboxsukien(pl, item, 4);
                             break;
                         case 2028:
                             UseItem.gI().openLinhthu(pl, item);
-                            break;                                                                   
+                            break;
                         case 1331://hop qua
                             OpenhopThucuoi(pl, item);
                             break;
@@ -1544,6 +1544,9 @@ public class UseItem {
                             break;
                         case 722:
                             Openhop8_3(pl, item);
+                            break;
+                        case 1716://sukien he bai bien
+                            ruongkhobau(pl, item);
                             break;
 
                         //khaile add
@@ -1885,6 +1888,40 @@ public class UseItem {
                             } else {
                                 ChangeMapService.gI().changeMapBySpaceShip(pl, 222, -1, 552);
                             }
+                            break;
+                        }
+                        case 1568: {
+                            if (pl.pet == null) {
+                                Service.gI().sendThongBaoOK(pl, "Có đệ mới dùng được");
+                                break;
+                            } else {
+                                PetService.gI().createPet_Vip1(pl, pl.pet != null, pl.gender);
+                                InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+                                InventoryServiceNew.gI().sendItemBags(pl);
+                                break;
+                            }
+
+                        }
+                        case 1569: {
+                            Item newItem = ItemService.gI().createNewItem((short) 1275, 1);
+                            newItem.itemOptions.add(new ItemOption(50, 30));
+                            newItem.itemOptions.add(new ItemOption(77, 30));
+                            newItem.itemOptions.add(new ItemOption(103, 30));
+                            newItem.itemOptions.add(new ItemOption(30, 1));
+                            InventoryServiceNew.gI().addItemBag(pl, newItem);
+                            break;
+                        }
+                        case 1570: {
+                            break;
+                        }
+                        case 1571: {
+                            break;
+                        }
+                        case 1572: {
+                            break;
+                        }
+                        case 1573: {
+                            break;
                         }
                         //end khaile add
                     }
@@ -1917,25 +1954,25 @@ public class UseItem {
         switch (item.template.id) {
             case 441: //hút máu
                 optionId = 95;
-                break;                                                                   
+                break;
             case 442: //hút ki
                 optionId = 96;
-                break;                                                                   
+                break;
             case 443: //phản sát thương
                 optionId = 97;
-                break;                                                                   
+                break;
             case 444:
                 optionId = 98;
-                break;                                                                   
+                break;
             case 445:
                 optionId = 156;
-                break;                                                                   
+                break;
             case 446: //vàng
                 optionId = 100;
-                break;                                                                   
+                break;
             case 447: //tnsm
                 optionId = 101;
-                break;                                                                   
+                break;
         }
         return optionId;
     }
@@ -1945,25 +1982,25 @@ public class UseItem {
         switch (item.template.id) {
             case 441: //hút máu
                 optionId = 95;
-                break;                                                                   
+                break;
             case 442: //hút ki
                 optionId = 96;
-                break;                                                                   
+                break;
             case 443: //phản sát thương
                 optionId = 97;
-                break;                                                                   
+                break;
             case 444:
                 optionId = 98;
-                break;                                                                   
+                break;
             case 445:
                 optionId = 156;
-                break;                                                                   
+                break;
             case 446: //vàng
                 optionId = 100;
-                break;                                                                   
+                break;
             case 447: //tnsm
                 optionId = 101;
-                break;                                                                   
+                break;
         }
         return optionId;
     }
@@ -1997,6 +2034,40 @@ public class UseItem {
 
             CombineServiceNew.gI().sendEffectOpenItem(player, icon[0], icon[1]);
             Service.gI().sendThongBao(player, "Chúc mừng bạn nhận được " + newItem.template.name);
+        } else {
+            Service.gI().sendThongBao(player, "Hàng trang đã đầy");
+        }
+    }
+
+    private void ruongkhobau(Player player, Item item) {
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) > 1) {
+            int[] vp = {1099,
+                1100,
+                1101,
+                1102, 16};
+            int[] vpVip = {1709, 1710, 1630, 1502};
+            Item it = null;
+            short[] icon = new short[2];
+            icon[0] = item.template.iconID;
+            if (Util.isTrue(90, 100)) {
+                it = ItemService.gI().createNewItem((short) vp[Util.nextInt(0, vp.length - 1)]);
+                it.quantity = 1;
+            } else {
+                it = ItemService.gI().createNewItem((short) vpVip[Util.nextInt(0, vpVip.length - 1)]);
+                it.quantity = 1;
+                it.itemOptions.add(new ItemOption(50, Util.nextInt(0, 70)));
+                it.itemOptions.add(new ItemOption(77, Util.nextInt(0, 70)));
+                it.itemOptions.add(new ItemOption(103, Util.nextInt(0, 70)));
+                if (Util.isTrue(95, 100)) {
+                    it.itemOptions.add(new ItemOption(93, Util.nextInt(1, 7)));
+                }
+            }
+            InventoryServiceNew.gI().addItemBag(player, it);
+            icon[1] = it.template.iconID;
+            InventoryServiceNew.gI().subQuantityItemsBag(player, item, 1);
+            InventoryServiceNew.gI().sendItemBags(player);
+            CombineServiceNew.gI().sendEffectOpenItem(player, icon[0], icon[1]);
+            Service.gI().sendThongBao(player, "Chúc mừng bạn nhận được " + it.template.name);
         } else {
             Service.gI().sendThongBao(player, "Hàng trang đã đầy");
         }
@@ -2302,7 +2373,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2230) {
                     itemsieucap = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (itemsieucap != null) {
@@ -2360,7 +2431,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2167) {
                     top1nv = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (top1nv != null) {
@@ -2423,7 +2494,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2168) {
                     top2nv = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (top2nv != null) {
@@ -2486,7 +2557,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2169) {
                     top3nv = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (top3nv != null) {
@@ -2548,7 +2619,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2170) {
                     top1nv = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (top1nv != null) {
@@ -2611,7 +2682,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2171) {
                     top1nv = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (top1nv != null) {
@@ -2675,7 +2746,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2172) {
                     top2nv = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (top2nv != null) {
@@ -2738,7 +2809,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2173) {
                     top3nv = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (top3nv != null) {
@@ -2801,7 +2872,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2174) {
                     top1nv = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (top1nv != null) {
@@ -2865,7 +2936,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2175) {
                     top1nv = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (top1nv != null) {
@@ -2928,7 +2999,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2228) {
                     tuingocxanh = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (tuingocxanh != null) {
@@ -2956,7 +3027,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2229) {
                     tuingochong = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (tuingochong != null) {
@@ -2984,7 +3055,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2145) {
                     hopquavnd = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (pl.getSession() != null && pl.getSession().vnd > cn.ghVnd) {
@@ -3014,7 +3085,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2146) {
                     hopquavnd2 = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (pl.getSession() != null && pl.getSession().vnd > cn.ghVnd) {
@@ -3044,7 +3115,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2134) {
                     hopquat1nap = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (hopquat1nap != null) {
@@ -3123,7 +3194,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2135) {
                     hopquat2nap = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (hopquat2nap != null) {
@@ -3202,7 +3273,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2136) {
                     hopquat3nap = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (hopquat3nap != null) {
@@ -3276,7 +3347,7 @@ public class UseItem {
                 if (item.isNotNullItem() && item.template.id == 2137) {
                     hopquat45nap = item;
 
-                    break;                                                                   
+                    break;
                 }
             }
             if (hopquat45nap != null) {
@@ -3334,7 +3405,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2138) {
                     hopquat610nap = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (hopquat610nap != null) {
@@ -3391,7 +3462,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2139) {
                     hopquamocnap300 = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (hopquamocnap300 != null) {
@@ -3438,7 +3509,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2140) {
                     hopquamocnap500 = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (hopquamocnap500 != null) {
@@ -3478,7 +3549,7 @@ public class UseItem {
             for (Item item : pl.inventory.itemsBag) {
                 if (item.isNotNullItem() && item.template.id == 2141) {
                     hopquamocnap1000 = item;
-                    break;                                                                   
+                    break;
                 }
             }
             if (hopquamocnap1000 != null) {
@@ -3522,15 +3593,15 @@ public class UseItem {
     private void useItemChangeFlagBag(Player player, Item item) {
         switch (item.template.id) {
             case 994: //vỏ ốc
-                break;                                                                   
+                break;
             case 995: //cây kem
-                break;                                                                   
+                break;
             case 996: //cá heo
-                break;                                                                   
+                break;
             case 997: //con diều
-                break;                                                                   
+                break;
             case 998: //diều rồng
-                break;                                                                   
+                break;
             case 999: //mèo mun
                 if (!player.effectFlagBag.useMeoMun) {
                     player.effectFlagBag.reset();
@@ -3538,7 +3609,7 @@ public class UseItem {
                 } else {
                     player.effectFlagBag.reset();
                 }
-                break;                                                                   
+                break;
             case 1000: //xiên cá
                 if (!player.effectFlagBag.useXienCa) {
                     player.effectFlagBag.reset();
@@ -3546,7 +3617,7 @@ public class UseItem {
                 } else {
                     player.effectFlagBag.reset();
                 }
-                break;                                                                   
+                break;
             case 1001: //phóng heo
                 if (!player.effectFlagBag.usePhongHeo) {
                     player.effectFlagBag.reset();
@@ -3554,7 +3625,7 @@ public class UseItem {
                 } else {
                     player.effectFlagBag.reset();
                 }
-                break;                                                                   
+                break;
         }
         Service.gI().point(player);
         Service.gI().sendFlagBag(player);
@@ -4474,7 +4545,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeLoNuocThanhx2 = System.currentTimeMillis();
                 pl.itemTime.isLoNuocThanhx2 = true;
-                break;                                                                   
+                break;
             case 1602:
                 if (pl.itemTime.isLoNuocThanhx2 == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng nước thánh rồi");
@@ -4578,25 +4649,25 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeDuoiKhi = System.currentTimeMillis();
                 pl.itemTime.isUseDuoiKhi = true;
-                break;                                                                   
+                break;
 
             case 2196:
                 pl.itemTime.lastTimeUseVooc = System.currentTimeMillis();
                 pl.itemTime.isUseVooc = true;
-                break;                                                                   
+                break;
             case 2197:
                 pl.itemTime.lastTimeUseSaoBien = System.currentTimeMillis();
                 pl.itemTime.isUseSaoBien = true;
-                break;                                                                   
+                break;
             case 2198:
                 pl.itemTime.lastTimeUseConCua = System.currentTimeMillis();
                 pl.itemTime.isUseConCua = true;
-                break;                                                                   
+                break;
             case 2189:
                 pl.itemTime.lastTimeUseMayDoSK = System.currentTimeMillis();
                 pl.itemTime.isUseMayDoSK = true;
 
-                break;                                                                   
+                break;
             case 2157: //banh ngọt
                 if (pl.itemTime.isUseBanhNgot == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4605,7 +4676,7 @@ public class UseItem {
                 pl.itemTime.lastTimeBanhNgot = System.currentTimeMillis();
                 pl.itemTime.isUseBanhNgot = true;
 
-                break;                                                                   
+                break;
             case 2158: //kem ốc quế
                 if (pl.itemTime.isUseKemOcQue == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4614,7 +4685,7 @@ public class UseItem {
                 pl.itemTime.lastTimeKemOcQue = System.currentTimeMillis();
                 pl.itemTime.isUseKemOcQue = true;
 
-                break;                                                                   
+                break;
             case 2159: //kẻo dẻo
                 if (pl.itemTime.isUseKeoDeo == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4623,7 +4694,7 @@ public class UseItem {
                 pl.itemTime.lastTimeKeoDeo = System.currentTimeMillis();
                 pl.itemTime.isUseKeoDeo = true;
 
-                break;                                                                   
+                break;
             case 2160: //kẹo tỏng gói
                 if (pl.itemTime.isUseKeoTrongGoi == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4632,7 +4703,7 @@ public class UseItem {
                 pl.itemTime.lastTimeKeoTrongGoi = System.currentTimeMillis();
                 pl.itemTime.isUseKeoTrongGoi = true;
 
-                break;                                                                   
+                break;
             case 903: //banh sau
                 if (pl.itemTime.isUseBanhSau == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4641,7 +4712,7 @@ public class UseItem {
                 pl.itemTime.lastTimeBanhSau = System.currentTimeMillis();
                 pl.itemTime.isUseBanhSau = true;
 
-                break;                                                                   
+                break;
             case 902: //giáp xên
                 if (pl.itemTime.isUseBanhNhen == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4650,7 +4721,7 @@ public class UseItem {
                 pl.itemTime.lastTimeBanhNhen = System.currentTimeMillis();
                 pl.itemTime.isUseBanhNhen = true;
 
-                break;                                                                   
+                break;
             case 900: //cuồng nộ
                 if (pl.itemTime.isUseSupBi == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4659,7 +4730,7 @@ public class UseItem {
                 pl.itemTime.lastTimeSupBi = System.currentTimeMillis();
                 pl.itemTime.isUseSupBi = true;
 
-                break;                                                                   
+                break;
             case 899: //ẩn danh
                 if (pl.itemTime.isUseKeoMotMat == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4668,7 +4739,7 @@ public class UseItem {
                 pl.itemTime.lastTimeKeoMotMat = System.currentTimeMillis();
                 pl.itemTime.isUseKeoMotMat = true;
 
-                break;                                                                   
+                break;
             case 753:
                 if (pl.itemTime.isUseBanhChung == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4677,7 +4748,7 @@ public class UseItem {
                 pl.itemTime.lastTimeBanhChung = System.currentTimeMillis();
                 pl.itemTime.isUseBanhChung = true;
 
-                break;                                                                   
+                break;
             case 752:
                 if (pl.itemTime.isUseBanhTet == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4686,7 +4757,7 @@ public class UseItem {
                 pl.itemTime.lastTimeBanhTet = System.currentTimeMillis();
                 pl.itemTime.isUseBanhTet = true;
 
-                break;                                                                   
+                break;
             case 382: //bổ huyết
                 if (pl.itemTime.isUseBoHuyetSC == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4695,7 +4766,7 @@ public class UseItem {
                 pl.itemTime.lastTimeBoHuyet = System.currentTimeMillis();
                 pl.itemTime.isUseBoHuyet = true;
 
-                break;                                                                   
+                break;
             case 383: //bổ khí
                 if (pl.itemTime.isUseBoKhiSC == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4703,7 +4774,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeBoKhi = System.currentTimeMillis();
                 pl.itemTime.isUseBoKhi = true;
-                break;                                                                   
+                break;
             case 384: //giáp xên
                 if (pl.itemTime.isUseGiapXenSC == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4711,7 +4782,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeGiapXen = System.currentTimeMillis();
                 pl.itemTime.isUseGiapXen = true;
-                break;                                                                   
+                break;
             case 381: //cuồng nộ
                 if (pl.itemTime.isUseCuongNoSC == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4720,7 +4791,7 @@ public class UseItem {
                 pl.itemTime.lastTimeCuongNo = System.currentTimeMillis();
                 pl.itemTime.isUseCuongNo = true;
                 Service.gI().point(pl);
-                break;                                                                   
+                break;
             case 385: //ẩn danh
                 if (pl.itemTime.isUseAnDanhSC == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4728,11 +4799,11 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeAnDanh = System.currentTimeMillis();
                 pl.itemTime.isUseAnDanh = true;
-                break;                                                                   
+                break;
             case 379: //máy dò capsule
                 pl.itemTime.lastTimeUseMayDo = System.currentTimeMillis();
                 pl.itemTime.isUseMayDo = true;
-                break;                                                                   
+                break;
             case 1100: //bổ huyết
                 if (pl.itemTime.isUseBoHuyet == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4740,7 +4811,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeBoHuyetSC = System.currentTimeMillis();
                 pl.itemTime.isUseBoHuyetSC = true;
-                break;                                                                   
+                break;
             case 1101: //bổ khí
                 if (pl.itemTime.isUseBoKhi == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4748,7 +4819,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeBoKhiSC = System.currentTimeMillis();
                 pl.itemTime.isUseBoKhiSC = true;
-                break;                                                                   
+                break;
             case 1102: //giáp xên
                 if (pl.itemTime.isUseGiapXen == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4756,7 +4827,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeGiapXenSC = System.currentTimeMillis();
                 pl.itemTime.isUseGiapXenSC = true;
-                break;                                                                   
+                break;
             case 1099: //cuồng nộ
                 if (pl.itemTime.isUseCuongNo == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4765,7 +4836,7 @@ public class UseItem {
                 pl.itemTime.lastTimeCuongNoSC = System.currentTimeMillis();
                 pl.itemTime.isUseCuongNoSC = true;
                 Service.gI().point(pl);
-                break;                                                                   
+                break;
             case 1103: //ẩn danh
                 if (pl.itemTime.isUseAnDanh == true) {
                     Service.gI().sendThongBao(pl, "Bạn đang sử dụng rồi");
@@ -4773,7 +4844,7 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeAnDanhSC = System.currentTimeMillis();
                 pl.itemTime.isUseAnDanhSC = true;
-                break;                                                                   
+                break;
 
             case 663: //bánh pudding
             case 664: //xúc xíc
@@ -4784,15 +4855,15 @@ public class UseItem {
                 pl.itemTime.isEatMeal = true;
                 ItemTimeService.gI().removeItemTime(pl, pl.itemTime.iconMeal);
                 pl.itemTime.iconMeal = item.template.iconID;
-                break;                                                                   
+                break;
             case 2166: //máy dò đồ
                 pl.itemTime.lastTimeUseMayDo2 = System.currentTimeMillis();
                 pl.itemTime.isUseMayDo2 = true;
-                break;                                                                   
+                break;
             case 2161: //máy dò đồ
                 pl.itemTime.lastTimeUseMayDo3 = System.currentTimeMillis();
                 pl.itemTime.isUseMayDo3 = true;
-                break;                                                                   
+                break;
         }
         Service.gI().point(pl);
         ItemTimeService.gI().sendAllItemTime(pl);
@@ -4809,11 +4880,11 @@ public class UseItem {
 //                case SummonDragon.NGOC_RONG_3_SAO:
 //                    SummonDragon.gI().openMenuSummonShenron(pl, (byte) (tempId - 13));
                     SummonDragon.gI().openMenuSummonShenron(pl, (byte) (tempId - 13), SummonDragon.DRAGON_SHENRON);
-                    break;                                                                   
+                    break;
                 default:
                     NpcService.gI().createMenuConMeo(pl, ConstNpc.TUTORIAL_SUMMON_DRAGON,
                             -1, "Bạn chỉ có thể gọi rồng từ ngọc 3 sao, 2 sao, 1 sao", "Hướng\ndẫn thêm\n(mới)", "OK");
-                    break;                                                                   
+                    break;
             }
         }
         if (tempId >= GoiRongXuong.XUONG_1_SAO && tempId <= GoiRongXuong.XUONG_7_SAO) {
@@ -5064,7 +5135,7 @@ public class UseItem {
         for (Item item : player.inventory.itemsBag) {
             if (item.isNotNullItem() && item.template.type == 6) {
                 pea = item;
-                break;                                                                   
+                break;
             }
         }
         if (pea != null) {
@@ -5073,11 +5144,11 @@ public class UseItem {
             for (Item.ItemOption io : pea.itemOptions) {
                 if (io.optionTemplate.id == 2) {
                     hpKiHoiPhuc = io.param * 1000;
-                    break;                                                                   
+                    break;
                 }
                 if (io.optionTemplate.id == 48) {
                     hpKiHoiPhuc = io.param;
-                    break;                                                                   
+                    break;
                 }
             }
             if (!player.isAdmin() && Manager.MapCold.contains(player.zone.map.mapId)) {
@@ -5120,7 +5191,7 @@ public class UseItem {
                     } else {
                         Service.gI().sendThongBao(pl, "Có lỗi xảy ra với skill 1 đệ");
                     }
-                    break;                                                                   
+                    break;
                 case 403: //skill 2
                     if (SkillUtil.upSkillPet(pl.pet.playerSkill.skills, 1)) {
                         Service.gI().chatJustForMe(pl, pl.pet, "Cảm ơn sư phụ");
@@ -5129,7 +5200,7 @@ public class UseItem {
                     } else {
                         Service.gI().sendThongBao(pl, "Đã có skill đâu mà nâng ảo à");
                     }
-                    break;                                                                   
+                    break;
                 case 404: //skill 3
                     if (SkillUtil.upSkillPet(pl.pet.playerSkill.skills, 2)) {
                         Service.gI().chatJustForMe(pl, pl.pet, "Cảm ơn sư phụ");
@@ -5138,7 +5209,7 @@ public class UseItem {
                     } else {
                         Service.gI().sendThongBao(pl, "Đã có skill đâu mà nâng ảo à");
                     }
-                    break;                                                                   
+                    break;
                 case 759: //skill 4
                     if (SkillUtil.upSkillPet(pl.pet.playerSkill.skills, 3)) {
                         Service.gI().chatJustForMe(pl, pl.pet, "Cảm ơn sư phụ");
@@ -5148,7 +5219,7 @@ public class UseItem {
                         Service.gI().sendThongBao(pl, "Đã có skill đâu mà nâng ảo à");
                     }
 
-                    break;                                                                   
+                    break;
 
             }
 

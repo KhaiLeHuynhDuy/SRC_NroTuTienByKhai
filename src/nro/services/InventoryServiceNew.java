@@ -579,11 +579,11 @@ public class InventoryServiceNew {
             Service.gI().sendThongBaoOK(player, "Có lỗi xãy ra");
             return;
         }
-         // Kiểm tra chỉ số index trước khi get
-            if (index < 0 || index >= player.inventory.itemsBag.size()) {
-                Logger.error("itemBodyToBag: Invalid index " + index + ", size = " + player.inventory.itemsBag.size());
-                return;
-            }
+        // Kiểm tra chỉ số index trước khi get
+        if (index < 0 || index >= player.inventory.itemsBag.size()) {
+            Logger.error("itemBodyToBag: Invalid index " + index + ", size = " + player.inventory.itemsBag.size());
+            return;
+        }
         Item item = player.inventory.itemsBody.get(index);
         if (item.isNotNullItem()) {
             if (index == 11) {
@@ -962,6 +962,20 @@ public class InventoryServiceNew {
         return addItemList(player.inventory.itemsBox, item);
     }
 
+    public static boolean checkListsEqual(List<ItemOption> list1, List<ItemOption> list2) {
+        if (list1.size() != list2.size()) {
+            return false;
+        }
+
+        for (int i = 0; i < list1.size(); i++) {
+            if (list1.get(i).optionTemplate.id != list2.get(i).optionTemplate.id || list1.get(i).param != list2.get(i).param) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public boolean addItemList(List<Item> items, Item itemAdd) {
         //nếu item ko có option, add option rỗng vào
         if (itemAdd.itemOptions.isEmpty()) {
@@ -987,7 +1001,7 @@ public class InventoryServiceNew {
         //khaile modify
         if (itemAdd.template.isUpToUp) {
             for (Item it : items) {
-                if (!it.isNotNullItem() || it.template.id != itemAdd.template.id) {
+                if (!it.isNotNullItem() || it.template.id != itemAdd.template.id || (!checkListsEqual(it.itemOptions, itemAdd.itemOptions))) {
                     continue;
                 }
                 if (it.template.id == itemAdd.template.id && it.haveOption(93)) {

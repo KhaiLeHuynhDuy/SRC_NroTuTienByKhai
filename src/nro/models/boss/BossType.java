@@ -181,6 +181,8 @@ public class BossType {
     public static final int HUYET_MA = 127;
     public static final int SUPER_BLACK_GOKU = 128;
     public static final int MAVUONG = 129;
+    public static final int GOMAH = 130;
+    public static final int GOMAHDAIVUONG = 131;
     //    public static boolean isBossNinjaClone(int id) {
 //        return (id >= NINJA_AO_TIM_CLONE && id <= NINJA_AO_TIM_CLONE_MAX);
 //    }

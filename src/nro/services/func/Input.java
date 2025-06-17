@@ -59,8 +59,8 @@ public class Input {
 
     public static final int TAI = 510;
     public static final int XIU = 511;
-    public static final int DOITHOI = 512;
-    public static final int useThoiVang = 514;
+    public static final int REN_THOI_VANG = 512;
+    public static final int USE_THOI_VANG = 514;
     public static final int LE = 562;
     public static final int CHAN = 563;
     public static final int CONSOMAYMAN = 564;
@@ -607,7 +607,7 @@ public class Input {
                     }
                     break;
                 //khaile add
-                case useThoiVang: {
+                case USE_THOI_VANG: {
                     // text[0] là số thỏi vàng muốn sử dụng
                     int sotvuse = Integer.parseInt(text[0]);
 
@@ -742,7 +742,7 @@ public class Input {
 //                        Service.gI().sendThongBao(player, "Lỗi.");
 //                    }
 //                    break;
-                case DOITHOI:
+                case REN_THOI_VANG:
                     int sotvdoi = Integer.valueOf(text[0]);
                     if (sotvdoi < 0) {
                         Service.gI().sendThongBao(player, "Số lượng không hợp lệ");
@@ -1028,7 +1028,7 @@ public class Input {
                 break;
                 case DOI_THOI_VANG: {
                     int coin = Integer.parseInt(text[0]);
-                    int sl = (int) ((int)coin * 0.5f);
+                    int sl = (int) ((int)coin * 0.75f);
                     if (player.getSession() != null && player.getSession().vnd < coin) {
                         Service.gI().sendThongBao(player, "Bạn không đủ " + coin + " COIN");
                         return;
@@ -1393,7 +1393,7 @@ public class Input {
 
     //khaile add form thoi vang
     public void createFormUseThoiVang(Player pl) {
-        createForm(pl, useThoiVang, "Chọn số thỏi vàng cần đổi", new SubInput("Số thỏi vàng", NUMERIC));
+        createForm(pl, USE_THOI_VANG, "Chọn số thỏi vàng cần đổi", new SubInput("Số thỏi vàng", NUMERIC));
     }
 
     //end khaile add
@@ -1429,15 +1429,15 @@ public class Input {
 
     public void Consomayman(Player pl) {
         createForm(pl, CONSOMAYMAN, "Hãy chọn 1 số từ " + MiniGame.gI().MiniGame_S1.min + "-"
-                + MiniGame.gI().MiniGame_S1.max + ", giá 1000 VND", new SubInput("Chọn số", ANY));
+                + MiniGame.gI().MiniGame_S1.max + ", giá 1000 COIN", new SubInput("Chọn số", ANY));
     }
 
     public void LE(Player pl) {
         createForm(pl, LE, "Nhập số thỏi vàng đặt lẻ", new SubInput("Số thỏi vàng", ANY));
     }
 
-    public void DOITHOI(Player pl) {
-        createForm(pl, DOITHOI, "Chọn số thỏi vàng cần đổi", new SubInput("Số thỏi vàng", ANY));
+    public void createFormRenThoiVang(Player pl) {
+        createForm(pl, REN_THOI_VANG, "Chọn số thỏi vàng cần đổi", new SubInput("Số thỏi vàng", ANY));
     }
 
     public void createFormNapThe(Player pl, String loaiThe, String menhGia) {
@@ -1473,7 +1473,7 @@ public class Input {
 
     public void createFormDoiThoiVang(Player pl) {
 
-        createForm(pl, DOI_THOI_VANG, "Đổi COIN --> Thỏi vàng < COIN x 0.5 >",
+        createForm(pl, DOI_THOI_VANG, " 100.000 COIN = 75.000 Thỏi vàng ",
                 new SubInput("Nhập số lượng COIN muốn đổi ra thỏi vàng", NUMERIC));
     }
 
@@ -1485,7 +1485,7 @@ public class Input {
 
     public void createFormDoiNgocHong(Player pl) {
 
-        createForm(pl, DOI_NGOC_HONG, "Đổi COIN --> Ngọc hồng < COIN x 15 >",
+        createForm(pl, DOI_NGOC_HONG, "100.000 COIN = 1.500.000 Hồng ngọc",
                 new SubInput("Nhập số lượng COIN muốn đổi ra ngọc hồng", NUMERIC));
     }
 

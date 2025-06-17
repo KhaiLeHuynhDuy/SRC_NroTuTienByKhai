@@ -239,7 +239,7 @@ public class Item {
     public boolean isThienMaThach() {
         if (this.template.id == 1707) {
             return true;
-        }else if (this.template.id == -1) {
+        } else if (this.template.id == -1) {
         }
         return false;
     }
@@ -247,7 +247,7 @@ public class Item {
     public boolean isLinhKhi() {
         if (this.template.id == 1671) {
             return true;
-        }else if (this.template.id == -1) {
+        } else if (this.template.id == -1) {
         }
         return false;
     }
@@ -255,7 +255,7 @@ public class Item {
     public boolean isTanDan() {
         if (this.template.id >= 1672 && this.template.id <= 1680) {
             return true;
-        }else if (this.template.id == -1) {
+        } else if (this.template.id == -1) {
         }
         return false;
     }
@@ -263,7 +263,15 @@ public class Item {
     public boolean isPhieuDoiNgoaiTrangVoCuc() {
         if (this.template.id >= 1693 && this.template.id <= 1697) {
             return true;
-        }else if (this.template.id == -1) {
+        } else if (this.template.id == -1) {
+        }
+        return false;
+    }
+
+    public boolean isDaCheTaoBoi() {
+        if (this.template.id == 1566 || this.template.id == 1567) {
+            return true;
+        } else if (this.template.id == -1) {
         }
         return false;
     }

@@ -826,13 +826,40 @@ public class Zone {
 //                                                : plInfo.vip < 4 ? "[S" + plInfo.vip + "]" + plInfo.name : plInfo.name);
 //            }
 //khaile nullcheck
+//            if (!"name".equals(plInfo.name)) {
+//                msg.writer().writeUTF(
+//                        plInfo.isMiniPet ? ""
+//                                : plInfo.isPet ? plInfo.name
+//                                        : plInfo.vip == 4 ? "[SS]" + plInfo.name
+//                                                : plInfo.vip < 4 ? "[S" + plInfo.vip + "]" + plInfo.name
+//                                                        : plInfo.name
+//                );
+//            }
             if (!"name".equals(plInfo.name)) {
+                String prefix = "";
+
+                if (plInfo.isMiniPet || plInfo.isBoss) {
+                    // MiniPet hoặc Boss thì không gắn tiền tố
+                    prefix = "";
+                } else if (plInfo.isPet) {
+                    // Pet thường cũng không có tiền tố
+                    prefix = "";
+                } else if (plInfo.vip == 4) {
+                    prefix = "[Đạo tử]";
+                } else if (plInfo.vip == 3) {
+                    prefix = "[Chân truyền]";
+                } else if (plInfo.vip == 2) {
+                    prefix = "[Nội môn]";
+                } else if (plInfo.vip == 1) {
+                    prefix = "[Ngoại môn]";
+                } else if (plInfo.vip == 0) {
+                    prefix = "[Tạp dịch]";
+                }
+
                 msg.writer().writeUTF(
-                        plInfo.isMiniPet ? ""
-                                : plInfo.isPet ? plInfo.name
-                                        : plInfo.vip == 4 ? "[SS]" + plInfo.name
-                                                : plInfo.vip < 4 ? "[S" + plInfo.vip + "]" + plInfo.name
-                                                        : plInfo.name
+                        plInfo.isMiniPet ? "" // Mini pet không ghi tên
+                                : plInfo.isPet || plInfo.isBoss ? plInfo.name // Pet và Boss chỉ ghi tên
+                                        : prefix + plInfo.name // Người chơi thường có danh hiệu
                 );
             }
 //end khaile nullcheck

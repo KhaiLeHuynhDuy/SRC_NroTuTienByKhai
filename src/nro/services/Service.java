@@ -109,6 +109,9 @@ public class Service {
             if (id == 1278) {
                 me.writer().writeShort(2042);
             }
+            if (id == 1279) {
+                me.writer().writeShort(189);
+            }
 
             me.writer().writeByte(1);
             me.writer().writeByte(-1);
@@ -149,6 +152,9 @@ public class Service {
             }
             if (id == 1278) {
                 me.writer().writeShort(2042);
+            }
+            if (id == 1279) {
+                me.writer().writeShort(189);
             }
 
             me.writer().writeByte(1);
@@ -498,35 +504,35 @@ public class Service {
                         x = 65;
                         y = x;
                         fr = 8;
-                        break;                                                                   
+                        break;
                     case 16280:
                         // id anh
                         x = 70;
                         y = 38;
                         fr = 8;
-                        break;                                                                   
+                        break;
 
                     case 15262:
                         fr = 10;
                         x = 32;
                         y = 45;
-                        break;                                                                   
+                        break;
                     case 15264:
                         fr = 10;
                         x = 32;
                         y = 40;
-                        break;                                                                   
+                        break;
                     case 15266:
                         fr = 10;
                         x = 32;
                         y = 42;
-                        break;                                                                   
+                        break;
 
                     case 16167:
                         fr = 71;
                         x = 96;
                         y = 96;
-                        break;                                                                   
+                        break;
                     case 16149:
                         fr = 71;
                         x = 70;
@@ -537,63 +543,63 @@ public class Service {
                         fr = 44;
                         x = 70;
                         y = 70;
-                        break;                                                                   
+                        break;
                     case 16151:
                         fr = 51;
                         x = 70;
                         y = 70;
-                        break;                                                                   
+                        break;
                     case 16175:
                         fr = 45;
                         x = 45;
                         y = 45;
-                        break;                                                                   
+                        break;
                     case 16153:
                         fr = 48;
                         x = 86;
                         y = 86;
-                        break;                                                                   
+                        break;
                     case 16155:
                         fr = 95;
                         x = 75;
                         y = 75;
-                        break;                                                                   
+                        break;
                     case 16157:
                         fr = 81;
                         x = 96;
                         y = 96;
-                        break;                                                                   
+                        break;
                     case 16159:
                         fr = 36;
                         x = 96;
                         y = 96;
-                        break;                                                                   
+                        break;
                     case 16161:
                         fr = 77;
                         x = 70;
                         y = 70;
-                        break;                                                                   
+                        break;
                     case 16163:
                         fr = 48;
                         x = 50;
                         y = 50;
-                        break;                                                                   
+                        break;
                     case 16165:
                         fr = 61;
                         x = 50;
                         y = 50;
-                        break;                                                                   
+                        break;
                     case 16169:
                         fr = 80;
                         x = 70;
                         y = 70;
-                        break;                                                                   
+                        break;
                     case 16171:
                         fr = 61;
                         x = 96;
                         y = 96;
-                        break;                                                                   
-                                                       
+                        break;
+
                     case 14200:
                     case 14202:
                     case 14204:
@@ -601,7 +607,7 @@ public class Service {
                         fr = 3;
                         x = 24;// kéo dãn khung hình dạng ngang
                         y = 26;// tăng để lên khung hình, giảm để xuống khung hình
-                        break;                                                                   
+                        break;
                     case 14208:
                     case 14210:
 
@@ -609,12 +615,12 @@ public class Service {
                         fr = 3;
                         x = 24;// kéo dãn khung hình dạng ngang
                         y = 28;// tăng để lên khung hình, giảm để xuống khung hình
-                        break;                                                                   
+                        break;
                     case 16081:
                         fr = 3;
                         x = 32;// // kéo dãn khung hình dạng ngang
                         y = 28;// tăng để lên khung hình
-                        break;                                                                   
+                        break;
                     case 11703:
                         fr = 3;
                         x = 32;// // kéo dãn khung hình dạng ngang
@@ -657,10 +663,9 @@ public class Service {
                         y = 32;// tăng để lên khung hình
                         break;
 
-                                                       
                     default:
-                        break;                                                                   
-                    }
+                        break;
+                }
                 msg.writer().writeByte(fr);
                 for (int i = 0; i < fr; ++i) {
                     msg.writer().writeByte(i);
@@ -781,7 +786,7 @@ public class Service {
                 sendThongBaoOK((MySession) session, "Tài khoản đã tồn tại");
             } else {
                 pass = (pass);
-                GirlkunDB.executeUpdate("insert into account (username, password, recaf, admin, vnd, tongnap) values()", user, pass, 0, 0, 1500000, 0);
+                GirlkunDB.executeUpdate("insert into account (username, password, recaf, admin, vnd, tongnap) values()", user, pass, 0, 0, 0, 0);
 
                 sendThongBaoOK((MySession) session, "Đăng ký tài khoản thành công!");
             }
@@ -1047,14 +1052,14 @@ public class Service {
 
                 case "client":
                     Client.gI().show(player);
-                    break;                                                                   
+                    break;
                 case "map":
                     sendThongBao(player, "Thông tin map: " + player.zone.map.mapName + " (" + player.zone.map.mapId + ")");
                     return;
                 case "vt":
                     sendThongBao(player, player.location.x + " - " + player.location.y + "\n"
                             + player.zone.map.yPhysicInTop(player.location.x, player.location.y));
-                    break;                                                                   
+                    break;
                 case "hs":
                     player.nPoint.setFullHpMp();
                     PlayerService.gI().sendInfoHpMp(player);
@@ -1071,7 +1076,7 @@ public class Service {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    break;                                                                   
+                    break;
                 }
                 case "c": {
                     Message msg;
@@ -1085,11 +1090,11 @@ public class Service {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    break;                                                                   
+                    break;
                 }
                 default:
-                    break;                                                                   
-                }
+                    break;
+            }
             if (player.isAdmin() && text.equals("nrnm")) {
                 Service.gI().activeNamecShenron(player);
             }
@@ -1135,9 +1140,9 @@ public class Service {
             if (player.isAdmin() && text.startsWith("admin")) {
 
                 NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_ADMIN, -1, "Quản trị viên:\n"
-                        //  + "\b|7|Số người online: " + (Client.gI().getPlayers().size()) + "\n"
-                        // + "\b|1|Thread: " + Thread.activeCount() + "\n"
-                        // + "|2|sessions: " + GirlkunSessionManager.gI().getSessions().size() + "\n"
+                        + "\b|7|Số người online: " + (Client.gI().getPlayers().size()) + "\n"
+                        + "\b|1|Thread: " + Thread.activeCount() + "\n"
+                        + "|2|sessions: " + GirlkunSessionManager.gI().getSessions().size() + "\n"
                         + "Time start server: " + ServerManager.timeStart + "\n",
                         "Ngọc rồng", "Đệ tử", "Bảo trì", "Tìm kiếm\nngười chơi", "Call\nBoss", "Send item", "Send item\noption", "Send item\nSKH", "Send\nGOLDBAR", "Buff VNĐ", "BUFF TOTAL VND", "Buff item2", "Mail box", "Top tv", "Đóng");
                 return;
@@ -1198,25 +1203,25 @@ public class Service {
                 case "di theo":
                 case "follow":
                     player.pet.changeStatus(Pet.FOLLOW);
-                    break;                                                                   
+                    break;
                 case "bao ve":
                 case "protect":
                     player.pet.changeStatus(Pet.PROTECT);
-                    break;                                                                   
+                    break;
                 case "tan cong":
                 case "attack":
                     player.pet.changeStatus(Pet.ATTACK);
-                    break;                                                                   
+                    break;
                 case "ve nha":
                 case "go home":
                     player.pet.changeStatus(Pet.GOHOME);
-                    break;                                                                   
+                    break;
                 case "bien hinh":
                     player.pet.transform();
-                    break;                                                                   
+                    break;
                 default:
-                    break;                                                                   
-                }
+                    break;
+            }
         }
 
         if (text.length()
@@ -1371,13 +1376,42 @@ public class Service {
             msg.writer().writeByte(pl.playerTask.taskMain.id);
             msg.writer().writeByte(pl.gender);
             msg.writer().writeShort(pl.head);
-            msg.writer().writeUTF(
-                    pl.isMiniPet ? ""
-                            : pl.isPet ? pl.name
-                                    : pl.vip == 4 ? "[SS]" + pl.name
-                                            : pl.vip < 4 ? "[S" + pl.vip + "]" + pl.name
-                                                    : pl.name
-            );
+            //khaile fix
+//            msg.writer().writeUTF(
+//                    pl.isMiniPet ? ""
+//                            : pl.isPet ? pl.name
+//                                    : pl.vip == 4 ? "[SS]" + pl.name
+//                                            : pl.vip < 4 ? "[S" + pl.vip + "]" + pl.name
+//                                                    : pl.name
+//            );
+            if (!"name".equals(pl.name)) {
+                String prefix = "";
+
+                if (pl.isMiniPet || pl.isBoss) {
+                    // MiniPet hoặc Boss thì không gắn tiền tố
+                    prefix = "";
+                } else if (pl.isPet) {
+                    // Pet thường cũng không có tiền tố
+                    prefix = "";
+                } else if (pl.vip == 4) {
+                    prefix = "[Đạo tử]";
+                } else if (pl.vip == 3) {
+                    prefix = "[Chân truyền]";
+                } else if (pl.vip == 2) {
+                    prefix = "[Nội môn]";
+                } else if (pl.vip == 1) {
+                    prefix = "[Ngoại môn]";
+                } else if (pl.vip == 0) {
+                    prefix = "[Tạp dịch]";
+                }
+
+                msg.writer().writeUTF(
+                        pl.isMiniPet ? "" // Mini pet không ghi tên
+                                : pl.isPet || pl.isBoss ? pl.name // Pet và Boss chỉ ghi tên
+                                        : prefix + pl.name // Người chơi thường có danh hiệu
+                );
+            }
+            //end khaile fix
             msg.writer().writeByte(0); //cPK
             msg.writer().writeByte(pl.typePk);
             msg.writer().writeLong(pl.nPoint.power);
@@ -1573,65 +1607,65 @@ public class Service {
 
         long sucmanh = pl.nPoint.power;
         if (sucmanh < 3000) {
-            return "Tân thủ";
+            return "Tu sĩ";
         } else if (sucmanh < 15000) {
-            return "Tập sự sơ cấp";
+            return "Tu sĩ";
         } else if (sucmanh < 40000) {
-            return "Tập sự trung cấp";
+            return "Tu sĩ";
         } else if (sucmanh < 90000) {
-            return "Tập sự cao cấp";
+            return "Tu sĩ";
         } else if (sucmanh < 170000) {
-            return "Tân binh";
+            return "Tu sĩ";
         } else if (sucmanh < 340000) {
-            return "Chiến binh";
+            return "Tu sĩ";
         } else if (sucmanh < 700000) {
-            return "Chiến binh cao cấp";
+            return "Tu sĩ";
         } else if (sucmanh < 1500000) {
-            return "Vệ binh";
+            return "Tu sĩ";
         } else if (sucmanh < 15000000) {
-            return "Vệ binh hoàng gia";
+            return "Tu sĩ";
         } else if (sucmanh < 150000000) {
-            return "Siêu " + get_HanhTinh(pl.gender) + " cấp 1";
+            return "Tu sĩ";
         } else if (sucmanh < 1500000000) {
-            return "Siêu " + get_HanhTinh(pl.gender) + " cấp 2";
+            return "Tu sĩ";
         } else if (sucmanh < 5000000000L) {
-            return "Siêu " + get_HanhTinh(pl.gender) + " cấp 3";
+            return "Tu sĩ";
         } else if (sucmanh < 10000000000L) {
-            return "Siêu " + get_HanhTinh(pl.gender) + " cấp 4";
+            return "Tu sĩ";
         } else if (sucmanh < 40000000000L) {
-            return "Thần " + get_HanhTinh(pl.gender) + " cấp 1";
+            return "Tu sĩ";
         } else if (sucmanh < 50010000000L) {
-            return "Thần " + get_HanhTinh(pl.gender) + " cấp 2";
+            return "Tu sĩ";
         } else if (sucmanh < 60010000000L) {
-            return "Thần " + get_HanhTinh(pl.gender) + " cấp 3";
+            return "Tu sĩ";
         } else if (sucmanh < 70010000000L) {
-            return "Giới Vương Thần " + get_HanhTinh(pl.gender) + " cấp 1";
+            return "Tu sĩ";
         } else if (sucmanh < 80010000000L) {
-            return "Giới Vương Thần " + get_HanhTinh(pl.gender) + " cấp 2";
+            return "Tu sĩ";
         } else if (sucmanh < 100010000000L) {
-            return "Giới Vương Thần " + get_HanhTinh(pl.gender) + " cấp 3";
+            return "Tu sĩ";
         } else if (sucmanh < 150010000000L) {
-            return "Siêu thần " + get_HanhTinh(pl.gender) + " cấp 1";
+            return "Tu sĩ";
         } else if (sucmanh < 211010000000L) {
-            return "Siêu thần " + get_HanhTinh(pl.gender) + " cấp 2";
+            return "Tu sĩ";
         } else if (sucmanh < 311010000000L) {
-            return "Siêu thần " + get_HanhTinh(pl.gender) + " cấp 3";
+            return "Tu sĩ";
         } else if (sucmanh < 411010000000L) {
-            return "Bản năng " + get_HanhTinh(pl.gender) + " cấp 1";
+            return "Tu sĩ";
         } else if (sucmanh < 411010000000L) {
-            return "Bản năng " + get_HanhTinh(pl.gender) + " cấp 2";
+            return "Tu sĩ";
         } else if (sucmanh < 511010000000L) {
-            return "Bản năng " + get_HanhTinh(pl.gender) + " cấp 3";
+            return "Tu sĩ";
         } else if (sucmanh < 611010000000L) {
-            return "Bản ngã " + get_HanhTinh(pl.gender) + " cấp 1";
+            return "Tu sĩ";
         } else if (sucmanh < 711010000000L) {
-            return "Bản ngã " + get_HanhTinh(pl.gender) + " cấp 2";
+            return "Tu sĩ";
         } else if (sucmanh < 811010000000L) {
-            return "Bản ngã " + get_HanhTinh(pl.gender) + " cấp 3";
+            return "Tu sĩ";
         } else if (sucmanh < 911010000000L) {
-            return "Thần Hủy Diệt " + get_HanhTinh(pl.gender) + " cấp 1";
+            return "Tu sĩ";
         } else if (sucmanh < 991010000000L) {
-            return "Thần Hủy Diệt " + get_HanhTinh(pl.gender) + " cấp 2";
+            return "Tu sĩ";
         }
 //        return "Đại Thiên Sứ";
         return "null";
@@ -1787,7 +1821,7 @@ public class Service {
             for (Mob mob : pl.zone.mobs) {
                 if (mob.id == mobId) {
                     SkillService.gI().useSkill(pl, null, mob, null);
-                    break;                                                                   
+                    break;
                 }
             }
         }
@@ -2079,15 +2113,15 @@ public class Service {
                     case 363:
                         msg.writer().writeByte(73);
                         msg.writer().writeShort(0);
-                        break;                                                                   
+                        break;
                     case 371:
                         msg.writer().writeByte(88);
                         msg.writer().writeShort(10);
-                        break;                                                                   
+                        break;
                     default:
                         msg.writer().writeByte(88);
                         msg.writer().writeShort(5);
-                        break;                                                                   
+                        break;
                 }
             }
             pl.sendMessage(msg);
@@ -2321,11 +2355,11 @@ public class Service {
                             case 1:
                                 msg.writer().writeShort(-1);
                                 msg.writer().writeUTF("Cần đạt sức mạnh 150tr để mở");
-                                break;                                                                   
+                                break;
                             case 2:
                                 msg.writer().writeShort(-1);
                                 msg.writer().writeUTF("Cần đạt sức mạnh 1tỷ5 để mở");
-                                break;                                                                   
+                                break;
                             case 3:
                                 msg.writer().writeShort(-1);
                                 msg.writer().writeUTF("Cần đạt sức mạnh 20tỷ\nđể mở");
@@ -2333,9 +2367,9 @@ public class Service {
                             case 4:
                                 msg.writer().writeShort(-1);
                                 msg.writer().writeUTF("Cần đạt sức mạnh 150tỷ\nđể mở");
-                                break;                                   
+                                break;
                             default:
-                                break;                                                                   
+                                break;
                         }
                     }
                 }

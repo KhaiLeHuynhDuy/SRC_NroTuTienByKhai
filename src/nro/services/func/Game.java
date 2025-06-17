@@ -91,7 +91,7 @@ public class Game {
     }
 
     public void newData(Player player, int point) {
-        if (player.getSession().totalvnd < 1000) {
+        if (player.getSession().vnd < 1000) {
             Service.gI().sendThongBao(player, "Bạn không đủ tiền chơi con số may mắn");
             return;
         }
@@ -105,7 +105,7 @@ public class Game {
                 Service.gI().sendThongBao(player, "Số này bạn đã chọn rồi vui lòng chọn số khác.");
             }
         });
-        if (PlayerDAO.subtotalvnd(player, 1000)) {
+        if (PlayerDAO.subvnd(player, 1000)) {
             if (!players.stream().anyMatch(game -> game.id == player.id && game.point == point)) {
 
                 GameData data = new GameData();
@@ -135,7 +135,7 @@ public class Game {
     public String strFinish(int id) {
         String finish = "";
         short[] caitrang = {1309, 1310, 1311, 1312, 1313, 1314, 1315, 1316, 1317, 1318, 1319, 1320, 1321, 1322, 1323, 1324};
-        short[] vpdl = {1502, 1503, 1524, 1620, 1621, 1622, 1624, 1629, 1630, 1631, 1633, 1634, 1635, 1651, 1652, 1653, 1654, 1655, 1920};
+        short[] vpdl = {1920};
         short[] pet = {1430, 1435, 1436, 1460, 1480, 1481, 1500, 1623, 1627, 1628, 1636, 1645, 1646, 1648, 1649, 1650};
         short[] vatpham = {457, 2229, 2228, 2230};
 

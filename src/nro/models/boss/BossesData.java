@@ -1488,8 +1488,52 @@ public class BossesData {
                 "|-1|Được thôi, nếu muốn chết đến vậy, ta rất vui lòng!!"
             }, //text chat 2
             new String[]{"|-1|Ma Vương tới chơi!!"}, //text chat 3
-            REST_1_M, //second rest
-            REST_1_M //second rest
+            REST_30_M, //second rest
+            REST_30_M //second rest
+    );
+    public static final BossData GOMAH = new BossData(
+            "Gomah Baby", //name
+            ConstPlayer.TRAI_DAT, //gender
+            new short[]{2015, 2016, 2017, 169, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+            25_000_000, //dame
+            new long[]{10_000_000L}, //hp
+            new int[]{29}, //map join
+            new int[][]{{Skill.THAI_DUONG_HA_SAN, 7, 15000},
+            {Skill.LIEN_HOAN, 3, 1000}, {Skill.DEMON, 6, 2000}, {Skill.MASENKO, 7, 10000}, {Skill.DRAGON, 1, 4000}, {Skill.GALICK, 5, 5000},
+            {Skill.DICH_CHUYEN_TUC_THOI, 1, 15000},},
+            new String[]{"|-1|Ta là Gomah",
+                "|-1|Cơ thể này,sức mạnh này",
+                "|-1|Ta khá thích việc loại bỏ các ngươi",
+                "|-1|Mau chấp nhận số phận đi lũ sâu bọ"
+            }, //text chat 1
+            new String[]{"|-1|Các ngươi chỉ có vậy thôi sao?",
+                "|-1|Được thôi, nếu muốn chết đến vậy, ta rất vui lòng!!"
+            }, //text chat 2
+            new String[]{"|-1|Ma Vương tới chơi!!"}, //text chat 3
+            REST_15_M, //second rest
+            REST_15_M //second rest
+    );
+    public static final BossData GOMAHDAIVUONG = new BossData(
+            "Gomah Đại Vương", //name
+            ConstPlayer.TRAI_DAT, //gender
+            new short[]{2015, 2016, 2017, 169, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+            25_000_000, //dame
+            new long[]{35_999_999_999L}, //hp
+            new int[]{29}, //map join
+            new int[][]{{Skill.THAI_DUONG_HA_SAN, 7, 15000},
+            {Skill.LIEN_HOAN, 3, 1000}, {Skill.DEMON, 6, 2000}, {Skill.MASENKO, 7, 10000}, {Skill.DRAGON, 1, 4000}, {Skill.GALICK, 5, 5000},
+            {Skill.DICH_CHUYEN_TUC_THOI, 1, 15000},},
+            new String[]{"|-1|Ta là Gomah Đại Vương",
+                "|-1|Cơ thể này,sức mạnh này",
+                "|-1|Ta khá thích việc loại bỏ các ngươi",
+                "|-1|Mau chấp nhận số phận đi lũ sâu bọ"
+            }, //text chat 1
+            new String[]{"|-1|Các ngươi chỉ có vậy thôi sao?",
+                "|-1|Được thôi, nếu muốn chết đến vậy, ta rất vui lòng!!"
+            }, //text chat 2
+            new String[]{"|-1|Ma Vương tới chơi!!"}, //text chat 3
+            REST_15_M, //second rest
+            REST_15_M //second rest
     );
 
     public static final BossData SUPER_BLACK_GOKU = new BossData(

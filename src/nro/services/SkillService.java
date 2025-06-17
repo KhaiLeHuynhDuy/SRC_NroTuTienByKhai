@@ -1261,12 +1261,13 @@ public class SkillService {
         }
     }
 //khaile modify code
+
     private void phanSatThuong(Player nguoiDanh, Player nguoiBiDanh, double dame) {
         int percentPST = nguoiBiDanh.nPoint.tlPST;
         if (nguoiBiDanh.dotpha == 2) {
             percentPST += 20;
         }
-      
+
         if (percentPST != 0) {
             double damePST = dame * percentPST / 100;
             Message msg;
@@ -1290,6 +1291,7 @@ public class SkillService {
         }
     }
 //end khaile modify
+
     private void hutHPMP(Player player, double dame, boolean attackMob) {
         int tiLeHutHp = player.nPoint.getTileHutHp(attackMob);
         int tiLeHutMp = player.nPoint.getTiLeHutMp();
@@ -1384,15 +1386,15 @@ public class SkillService {
             }
             PlayerService.gI().sendTypePk(plAtt);
             PlayerService.gI().sendTypePk(plInjure);
-            plAtt.tt = "|3|HP: " + Util.powerToString(plInjure.nPoint.hp) + "\n|1|MP: " + Util.powerToString(plInjure.nPoint.mp) + "\n|7|dame: " + Util.powerToString(dameHit);
-            if (dameHit > 2000000000 || plInjure.nPoint.hp > Integer.MAX_VALUE || plInjure.nPoint.mp > Integer.MAX_VALUE) {
-
-                if (plAtt.isPet) {
-                    Service.gI().sendThongBao(((Pet) plAtt).master, plAtt.tt);
-                } else {
-                    Service.gI().sendThongBao(plAtt, plAtt.tt);
-                }
-            }
+//            plAtt.tt = "|3|HP: " + Util.powerToString(plInjure.nPoint.hp) + "\n|1|MP: " + Util.powerToString(plInjure.nPoint.mp) + "\n|7|dame: " + Util.powerToString(dameHit);
+//            if (dameHit > 2000000000 || plInjure.nPoint.hp > Integer.MAX_VALUE || plInjure.nPoint.mp > Integer.MAX_VALUE) {
+//
+//                if (plAtt.isPet) {
+//                    Service.gI().sendThongBao(((Pet) plAtt).master, plAtt.tt);
+//                } else {
+//                    Service.gI().sendThongBao(plAtt, plAtt.tt);
+//                }
+//            }
 
             if (!plAtt.isNewPet && !plInjure.isNewPet || !plAtt.isMiniPet && !plInjure.isMiniPet) {
                 if (plInjure.pet != null) {
@@ -1437,7 +1439,7 @@ public class SkillService {
             hutHPMP(plAtt, dameHit, true);
             sendPlayerAttackMob(plAtt, mob);
             mob.injured(plAtt, dameHit, dieWhenHpFull);
-            plAtt.tt = "HP Đối Thủ: " + Util.powerToString(mob.point.hp) + "\nDAME gây ra: " + Util.powerToString(dameHit);
+           // plAtt.tt = "HP Đối Thủ: " + Util.powerToString(mob.point.hp) + "\nDAME gây ra: " + Util.powerToString(dameHit);
         }
     }
 

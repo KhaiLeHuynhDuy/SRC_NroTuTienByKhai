@@ -24,10 +24,10 @@ import nro.utils.Util;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONValue;
 
-public class PlayerDAO {  
+public class PlayerDAO {
 
-    public static boolean createNewPlayer(int userId, String name, byte gender, int hair) {    
-        try {  
+    public static boolean createNewPlayer(int userId, String name, byte gender, int hair) {
+        try {
             JSONArray dataArray = new JSONArray();
 
             dataArray.add(200_000_000); //vàng
@@ -71,12 +71,11 @@ public class PlayerDAO {
             /**
              *
              * [
-             * { 
+             * {
              * "temp_id":"1","option":[[5,7],[7,3]],"create_time":"49238749283748957""},
-             * { 
+             * {
              * "temp_id":"1","option":[[5,7],[7,3]],"create_time":"49238749283748957""},
-             * { 
-             * "temp_id":"-1","option":[],"create_time":"0""}, ... ]
+             * { "temp_id":"-1","option":[],"create_time":"0""}, ... ]
              */
 
             int idAo = gender == 0 ? 0 : gender == 1 ? 1 : 2;
@@ -88,7 +87,7 @@ public class PlayerDAO {
             JSONArray options = new JSONArray();
             JSONArray opt = new JSONArray();
             JSONArray opt2 = new JSONArray();
-            for (int i = 0; i < 11; i++) {  
+            for (int i = 0; i < 11; i++) {
                 if (i == 0) {   //áo
                     opt.add(47); //id option
                     opt.add(def); //param option
@@ -103,7 +102,7 @@ public class PlayerDAO {
                     item.add(1); //số lượng
                     options.add(opt.toJSONString());
                     opt.clear();
-                } else {  
+                } else {
                     item.add(-1); //id item
                     item.add(0); //số lượng
                 }
@@ -140,7 +139,7 @@ public class PlayerDAO {
                     item.add(1); //số lượng
                     options.add(opt.toJSONString());
                     opt.clear();
-                } else {  
+                } else {
                     item.add(-1); //id item
                     item.add(0); //số lượng
                 }
@@ -153,7 +152,7 @@ public class PlayerDAO {
             String itemsBag = dataArray.toJSONString();
             dataArray.clear();
 
-            for (int i = 0; i < 20; i++) {  
+            for (int i = 0; i < 20; i++) {
                 if (i == 0) {   //rada
                     opt.add(14); //id option
                     opt.add(1); //param option
@@ -161,7 +160,7 @@ public class PlayerDAO {
                     item.add(1); //số lượng
                     options.add(opt.toJSONString());
                     opt.clear();
-                } else {  
+                } else {
                     item.add(-1); //id item
                     item.add(0); //số lượng
                 }
@@ -174,7 +173,7 @@ public class PlayerDAO {
             String itemsBox = dataArray.toJSONString();
             dataArray.clear();
 
-            for (int i = 0; i < 110; i++) {  
+            for (int i = 0; i < 110; i++) {
                 item.add(-1); //id item
                 item.add(0); //số lượng
                 item.add(options.toJSONString()); //full option item
@@ -186,7 +185,7 @@ public class PlayerDAO {
             String itemMailBox = dataArray.toJSONString();
             dataArray.clear();
 
-            for (int i = 0; i < 110; i++) {  
+            for (int i = 0; i < 110; i++) {
                 item.add(-1); //id item
                 item.add(0); //số lượng
                 item.add(options.toJSONString()); //full option item
@@ -198,7 +197,7 @@ public class PlayerDAO {
             String itemsBoxLuckyRound = dataArray.toJSONString();
             dataArray.clear();
 
-            for (int i = 0; i < 110; i++) {  
+            for (int i = 0; i < 110; i++) {
                 item.add(-1); //id item
                 item.add(0); //số lượng
                 item.add(options.toJSONString()); //full option item
@@ -298,22 +297,21 @@ public class PlayerDAO {
             String charms = dataArray.toJSONString();
             dataArray.clear();
 
-            int[] skillsArr = gender == 0 ? new int[]{  
+            int[] skillsArr = gender == 0 ? new int[]{
                 0, 1, 6, 9, 10, 20, 22, 24, 27, 19}
-                    : gender == 1 ? new int[]{ 
+                    : gender == 1 ? new int[]{
                         2, 3, 7, 11, 12, 17, 18, 26, 27, 19}
-                    : new int[]{  
+                    : new int[]{
                         4, 5, 8, 13, 14, 21, 23, 25, 27, 19};
             //[{
-  
-//"temp_id":"4","point":0,"last_time_use":0},]
 
+//"temp_id":"4","point":0,"last_time_use":0},]
             JSONArray skill = new JSONArray();
-            for (int i = 0; i < skillsArr.length; i++) {  
+            for (int i = 0; i < skillsArr.length; i++) {
                 skill.add(skillsArr[i]); //id skill
-                if (i == 0) {  
+                if (i == 0) {
                     skill.add(1); //level skill
-                } else {  
+                } else {
                     skill.add(0); //level skill
                 }
                 skill.add(0); //thời gian sử dụng trước đó
@@ -336,7 +334,7 @@ public class PlayerDAO {
             dataArray.clear();
 
             JSONArray blackBall = new JSONArray();
-            for (int i = 1; i <= 7; i++) {  
+            for (int i = 1; i <= 7; i++) {
                 blackBall.add(0);
                 blackBall.add(0);
                 blackBall.add(0);
@@ -347,7 +345,7 @@ public class PlayerDAO {
             dataArray.clear();
 
             JSONArray blackGiaidau = new JSONArray();
-            for (int i = 1; i <= 7; i++) {  
+            for (int i = 1; i <= 7; i++) {
                 blackGiaidau.add(0);
                 blackGiaidau.add(0);
                 blackGiaidau.add(0);
@@ -418,7 +416,7 @@ public class PlayerDAO {
             Logger.success("Tạo player mới thành công!\n");
             return true;
 
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Thông báo lỗi lưu cư dân: ");
 
@@ -426,8 +424,8 @@ public class PlayerDAO {
         return false;
     }
 
-    public static boolean activedUser(Player player) {  
-        try {  
+    public static boolean activedUser(Player player) {
+        try {
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set active = ? where id = ?");
@@ -437,14 +435,14 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
 
-    public static boolean subvnd(Player player, int num) {  
-        try {  
+    public static boolean subvnd(Player player, int num) {
+        try {
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set vnd = (vnd - ?) where id = ?");
@@ -455,7 +453,7 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -463,8 +461,8 @@ public class PlayerDAO {
 
     }
 
-    public static boolean addvnd(Player player, int num) {  
-        try {  
+    public static boolean addvnd(Player player, int num) {
+        try {
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set vnd = (vnd + ?) where id = ?");
@@ -475,7 +473,7 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm addvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -483,8 +481,8 @@ public class PlayerDAO {
 
     }
 
-    public static boolean subtotalvnd(Player player, int num) {  
-        try {  
+    public static boolean subtotalvnd(Player player, int num) {
+        try {
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set tongnap = (tongnap - ?) where id = ?");
@@ -495,7 +493,7 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subtotalvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -503,8 +501,8 @@ public class PlayerDAO {
 
     }
 
-    public static boolean addtotalvnd(Player player, int num) {  
-        try {  
+    public static boolean addtotalvnd(Player player, int num) {
+        try {
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set tongnap = (tongnap + ?) where id = ?");
@@ -515,7 +513,7 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm addtotalvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -523,8 +521,8 @@ public class PlayerDAO {
 
     }
 
-    public static boolean Addvnd(String username, int num) {  
-        try {  
+    public static boolean Addvnd(String username, int num) {
+        try {
             username = username.trim();
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
@@ -535,7 +533,7 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -543,8 +541,8 @@ public class PlayerDAO {
 
     }
 
-    public static boolean VND(Player player, int vnd) {  
-        try {  
+    public static boolean VND(Player player, int vnd) {
+        try {
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set vnd = (vnd - ?) where id = ?");
@@ -556,7 +554,7 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -564,8 +562,8 @@ public class PlayerDAO {
 
     }
 
-    public static boolean Addtotalvnd(String username, int num) {  
-        try {  
+    public static boolean Addtotalvnd(String username, int num) {
+        try {
             username = username.trim();
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
@@ -576,7 +574,7 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -584,8 +582,8 @@ public class PlayerDAO {
 
     }
 
-    public static boolean Addtotalvnd2(String username, int num) {  
-        try {  
+    public static boolean Addtotalvnd2(String username, int num) {
+        try {
             username = username.trim();
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
@@ -596,7 +594,7 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -604,8 +602,8 @@ public class PlayerDAO {
 
     }
 
-    public static boolean Subtotalvnd(String username, int num) {  
-        try {  
+    public static boolean Subtotalvnd(String username, int num) {
+        try {
             username = username.trim();
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
@@ -616,7 +614,7 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.error(" Lỗi của Kiệt ở hàm subvnd, gặp lỗi này kêu kiệt fix ");
             return false;
@@ -624,8 +622,8 @@ public class PlayerDAO {
 
     }
 
-    public static boolean updatenhanngocxanh(Player player) {  
-        try {  
+    public static boolean updatenhanngocxanh(Player player) {
+        try {
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set nhanngocxanh = ? where id = ?");
@@ -636,7 +634,7 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
 
             return false;
@@ -644,8 +642,8 @@ public class PlayerDAO {
 
     }
 
-    public static boolean updatenhanngochong(Player player) {  
-        try {  
+    public static boolean updatenhanngochong(Player player) {
+        try {
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set nhanngochong = ? where id = ?");
@@ -656,7 +654,7 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
 
             return false;
@@ -664,8 +662,8 @@ public class PlayerDAO {
 
     }
 
-    public static boolean updatenhanvang(Player player) {  
-        try {  
+    public static boolean updatenhanvang(Player player) {
+        try {
             PreparedStatement ps = null;
             Connection con = GirlkunDB.getConnection();
             ps = con.prepareStatement("update account set nhanvang = ? where id = ?");
@@ -676,7 +674,7 @@ public class PlayerDAO {
             ps.close();
             con.close();
             return true;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
 
             return false;
@@ -684,8 +682,8 @@ public class PlayerDAO {
 
     }
 
-    public static void updatePlayer(Player player) {  
-        if (player.iDMark.isLoadedAllDataPlayer()) {  
+    public static void updatePlayer(Player player) {
+        if (player.iDMark.isLoadedAllDataPlayer()) {
             long st = System.currentTimeMillis();
             try {
                 JSONArray dataArray = new JSONArray();
@@ -706,15 +704,15 @@ public class PlayerDAO {
                 int y = player.location.y;
                 long hp = Util.TamkjllGH(player.nPoint.hp);
                 long mp = Util.TamkjllGH(player.nPoint.mp);
-                if (player.isDie()) {  
+                if (player.isDie()) {
                     mapId = player.gender + 21;
                     x = 300;
                     y = 336;
                     hp = 1;
                     mp = 1;
-                } else {  
+                } else {
                     if (MapService.gI().isMapDoanhTrai(mapId) || MapService.gI().isNguHanhSon(mapId) || MapService.gI().isMapBlackBallWar(mapId) || MapService.gI().isMapGiaidauvutru(mapId)
-                            || MapService.gI().isMapKhiGas(mapId) || MapService.gI().isMapConDuongRanDoc(mapId) || MapService.gI().isMapBanDoKhoBau(mapId) || MapService.gI().isMapMaBu(mapId)) {  
+                            || MapService.gI().isMapKhiGas(mapId) || MapService.gI().isMapConDuongRanDoc(mapId) || MapService.gI().isMapBanDoKhoBau(mapId) || MapService.gI().isMapMaBu(mapId)) {
                         mapId = player.gender + 21;
                         x = 300;
                         y = 336;
@@ -761,20 +759,20 @@ public class PlayerDAO {
 
                 //data body
                 JSONArray dataItem = new JSONArray();
-                for (Item item : player.inventory.itemsBody) {  
+                for (Item item : player.inventory.itemsBody) {
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {  
+                    if (item.isNotNullItem()) {
                         dataItem.add(item.template.id);
                         dataItem.add(item.quantity);
                         JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {  
+                        for (Item.ItemOption io : item.itemOptions) {
                             opt.add(io.optionTemplate.id);
                             opt.add(io.param);
                             options.add(opt.toJSONString());
                             opt.clear();
                         }
                         dataItem.add(options.toJSONString());
-                    } else {  
+                    } else {
                         dataItem.add(-1);
                         dataItem.add(0);
                         dataItem.add(opt.toJSONString());
@@ -787,20 +785,20 @@ public class PlayerDAO {
                 dataArray.clear();
 
                 //data bag
-                for (Item item : player.inventory.itemsBag) {  
+                for (Item item : player.inventory.itemsBag) {
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {  
+                    if (item.isNotNullItem()) {
                         dataItem.add(item.template.id);
                         dataItem.add(item.quantity);
                         JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {  
+                        for (Item.ItemOption io : item.itemOptions) {
                             opt.add(io.optionTemplate.id);
                             opt.add(io.param);
                             options.add(opt.toJSONString());
                             opt.clear();
                         }
                         dataItem.add(options.toJSONString());
-                    } else {  
+                    } else {
                         dataItem.add(-1);
                         dataItem.add(0);
                         dataItem.add(opt.toJSONString());
@@ -814,20 +812,20 @@ public class PlayerDAO {
 
                 //data card
                 //data box
-                for (Item item : player.inventory.itemsBox) {  
+                for (Item item : player.inventory.itemsBox) {
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {  
+                    if (item.isNotNullItem()) {
                         dataItem.add(item.template.id);
                         dataItem.add(item.quantity);
                         JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {  
+                        for (Item.ItemOption io : item.itemOptions) {
                             opt.add(io.optionTemplate.id);
                             opt.add(io.param);
                             options.add(opt.toJSONString());
                             opt.clear();
                         }
                         dataItem.add(options.toJSONString());
-                    } else {  
+                    } else {
                         dataItem.add(-1);
                         dataItem.add(0);
                         dataItem.add(opt.toJSONString());
@@ -840,20 +838,20 @@ public class PlayerDAO {
                 dataArray.clear();
 
                 //data box crack ball
-                for (Item item : player.inventory.itemsBoxCrackBall) {  
+                for (Item item : player.inventory.itemsBoxCrackBall) {
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {  
+                    if (item.isNotNullItem()) {
                         dataItem.add(item.template.id);
                         dataItem.add(item.quantity);
                         JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {  
+                        for (Item.ItemOption io : item.itemOptions) {
                             opt.add(io.optionTemplate.id);
                             opt.add(io.param);
                             options.add(opt.toJSONString());
                             opt.clear();
                         }
                         dataItem.add(options.toJSONString());
-                    } else {  
+                    } else {
                         dataItem.add(-1);
                         dataItem.add(0);
                         dataItem.add(opt.toJSONString());
@@ -866,20 +864,20 @@ public class PlayerDAO {
                 dataArray.clear();
 
                 //data box mail
-                for (Item item : player.inventory.itemsMailBox) {  
+                for (Item item : player.inventory.itemsMailBox) {
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {  
+                    if (item.isNotNullItem()) {
                         dataItem.add(item.template.id);
                         dataItem.add(item.quantity);
                         JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {  
+                        for (Item.ItemOption io : item.itemOptions) {
                             opt.add(io.optionTemplate.id);
                             opt.add(io.param);
                             options.add(opt.toJSONString());
                             opt.clear();
                         }
                         dataItem.add(options.toJSONString());
-                    } else {  
+                    } else {
                         dataItem.add(-1);
                         dataItem.add(0);
                         dataItem.add(opt.toJSONString());
@@ -892,20 +890,20 @@ public class PlayerDAO {
                 dataArray.clear();
 
                 //data box mail
-                for (Item item : player.inventory.itemsRuongPhu) {  
+                for (Item item : player.inventory.itemsRuongPhu) {
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {  
+                    if (item.isNotNullItem()) {
                         dataItem.add(item.template.id);
                         dataItem.add(item.quantity);
                         JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {  
+                        for (Item.ItemOption io : item.itemOptions) {
                             opt.add(io.optionTemplate.id);
                             opt.add(io.param);
                             options.add(opt.toJSONString());
                             opt.clear();
                         }
                         dataItem.add(options.toJSONString());
-                    } else {  
+                    } else {
                         dataItem.add(-1);
                         dataItem.add(0);
                         dataItem.add(opt.toJSONString());
@@ -919,7 +917,7 @@ public class PlayerDAO {
 
                 //data bạn bè
                 JSONArray dataFE = new JSONArray();
-                for (Friend f : player.friends) {  
+                for (Friend f : player.friends) {
                     dataFE.add(f.id);
                     dataFE.add(f.name);
                     dataFE.add(f.head);
@@ -934,7 +932,7 @@ public class PlayerDAO {
                 dataArray.clear();
 
                 //data kẻ thù
-                for (Friend e : player.enemies) {  
+                for (Friend e : player.enemies) {
                     dataFE.add(e.id);
                     dataFE.add(e.name);
                     dataFE.add(e.head);
@@ -992,7 +990,7 @@ public class PlayerDAO {
                 dataArray.clear();
 
                 //data trứng bư
-                if (player.mabuEgg != null) {  
+                if (player.mabuEgg != null) {
                     dataArray.add(player.mabuEgg.lastTimeCreate);
                     dataArray.add(player.mabuEgg.timeDone);
                 }
@@ -1028,7 +1026,7 @@ public class PlayerDAO {
 
                 //data skill
                 JSONArray dataSkill = new JSONArray();
-                for (Skill skill : player.playerSkill.skills) {  
+                for (Skill skill : player.playerSkill.skills) {
                     dataSkill.add(skill.template.id);
                     dataSkill.add(skill.point);
                     dataSkill.add(skill.lastTimeUseThisSkill);
@@ -1041,7 +1039,7 @@ public class PlayerDAO {
 //                dataArray.clear();
 
                 //data skill shortcut
-                for (int skillId : player.playerSkill.skillShortCut) {  
+                for (int skillId : player.playerSkill.skillShortCut) {
                     dataArray.add(skillId);
                 }
                 String skillShortcut = dataArray.toJSONString();
@@ -1131,7 +1129,7 @@ public class PlayerDAO {
                 dataArray.clear();
 
                 //data thưởng ngọc rồng đen
-                for (int i = 0; i < player.rewardBlackBall.timeOutOfDateReward.length; i++) {  
+                for (int i = 0; i < player.rewardBlackBall.timeOutOfDateReward.length; i++) {
                     JSONArray dataBlackBall = new JSONArray();
                     dataBlackBall.add(player.rewardBlackBall.timeOutOfDateReward[i]);
                     dataBlackBall.add(player.rewardBlackBall.lastTimeGetReward[i]);
@@ -1143,7 +1141,7 @@ public class PlayerDAO {
                 dataArray.clear();
 
                 //data thưởng giai dau
-                for (int i = 0; i < player.rewardGiaidau.timeOutOfDateReward.length; i++) {  
+                for (int i = 0; i < player.rewardGiaidau.timeOutOfDateReward.length; i++) {
                     JSONArray dataGiaidau = new JSONArray();
                     dataGiaidau.add(player.rewardGiaidau.timeOutOfDateReward[i]);
                     dataGiaidau.add(player.rewardGiaidau.lastTimeGetReward[i]);
@@ -1173,7 +1171,7 @@ public class PlayerDAO {
                 String minipet = dataArray.toJSONString();
                 String minipetInfo = dataArray.toJSONString();
                 String minipetPoint = dataArray.toJSONString();
-                if (player.minipet != null) {  
+                if (player.minipet != null) {
                     dataArray.add(player.minipet.gender);
                     dataArray.add(player.minipet.name);
                     dataArray.add(player.minipet.status);
@@ -1286,7 +1284,7 @@ public class PlayerDAO {
                         + "skills_shortcut = ?, pointPvp = ?, data_card = ?, info_phoban = ?, info_phoban_cdrd = ?,"
                         + "event_point = ?,"
                         + "event_point_boss = ?, event_point_nhs = ?, event_point_quai = ?, diem_quy_lao = ?,diem_moc = ?,"
-                        + "hp_point_fusion = ?, mp_point_fusion = ?, dame_point_fusion = ?, isUseTrucCoDan = ?, capTT = ?, capCS=?, dotpha =?, time_dd =?, data_diem =?,diemtichluy =?"
+                        + "hp_point_fusion = ?, mp_point_fusion = ?, dame_point_fusion = ?, isUseTrucCoDan = ?, capTT = ?, capCS=?, dotpha =?, time_dd =?, data_diem =?,diemtichluy =?,sukien =?"
                         //khaile add code
 
                         //end khaile add code
@@ -1345,19 +1343,20 @@ public class PlayerDAO {
                         player.time_dd,
                         data_diem,
                         player.diemtichluy,
+                        player.sukien,
                         //end khaille add code
                         player.id);
 //                Logger.log(Logger.RED, "Cư dân: " + player.name + " đã lưu dữ liệu thành công! " + (System.currentTimeMillis() - st) + "\n");
-            } catch (Exception e) {  
+            } catch (Exception e) {
                 e.printStackTrace();
                 Logger.logException(PlayerDAO.class, e, "Thông báo lỗi lưu cư dân: " + player.name);
             }
         }
     }
 
-    public static boolean subGoldBar(Player player, int num) {  
+    public static boolean subGoldBar(Player player, int num) {
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {  
+        try (Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("update account set thoi_vang = (thoi_vang - ?), active = ? where id = ?");
             ps.setInt(1, num);
             ps.setInt(2, player.getSession().actived ? 1 : 0);
@@ -1365,18 +1364,18 @@ public class PlayerDAO {
             ps.executeUpdate();
             ps.close();
             player.getSession().goldBar -= num;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi update thỏi vàng " + player.name);
             return false;
-        } finally {  
+        } finally {
         }
         return false;
     }
 
-    public static boolean subvndBar(Player player, int num) {  
+    public static boolean subvndBar(Player player, int num) {
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {  
+        try (Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("update account set vnd = (vnd - ?), active = ? where id = ?");
             ps.setInt(1, num);
             ps.setInt(2, player.getSession().actived ? 1 : 0);
@@ -1384,18 +1383,18 @@ public class PlayerDAO {
             ps.executeUpdate();
             ps.close();
             player.getSession().vnd -= num;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi update vnd " + player.name);
             return false;
-        } finally {  
+        } finally {
         }
         return false;
     }
 
-    public static boolean subcoinBar(Player player, int num) {  
+    public static boolean subcoinBar(Player player, int num) {
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {  
+        try (Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("update account set coin = (coin - ?), active = ? where id = ?");
             ps.setInt(1, num);
             ps.setInt(2, player.getSession().actived ? 1 : 0);
@@ -1403,26 +1402,26 @@ public class PlayerDAO {
             ps.executeUpdate();
             ps.close();
             player.getSession().coinBar -= num;
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi update Coin " + player.name);
             return false;
-        } finally {  
+        } finally {
         }
-        if (num > 1000) {  
+        if (num > 1000) {
             insertHistoryGold(player, num);
         }
         return true;
     }
 
-    public static boolean setIs_gift_box(Player player) {  
+    public static boolean setIs_gift_box(Player player) {
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {  
+        try (Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("update account set is_gift_box = 0 where id = ?");
             ps.setInt(1, player.getSession().userId);
             ps.executeUpdate();
             ps.close();
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi update new_reg " + player.name);
             return false;
@@ -1431,9 +1430,9 @@ public class PlayerDAO {
     }
 
     public static void addHistoryReceiveGoldBar(Player player, int goldBefore, int goldAfter,
-            int goldBagBefore, int goldBagAfter, int goldBoxBefore, int goldBoxAfter) {  
+            int goldBagBefore, int goldBagAfter, int goldBoxBefore, int goldBoxAfter) {
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {  
+        try (Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("insert into history_receive_goldbar(player_id,player_name,gold_before_receive,"
                     + "gold_after_receive,gold_bag_before,gold_bag_after,gold_box_before,gold_box_after) values (?,?,?,?,?,?,?,?)");
             ps.setInt(1, (int) player.id);
@@ -1445,26 +1444,26 @@ public class PlayerDAO {
             ps.setInt(7, goldBoxBefore);
             ps.setInt(8, goldBoxAfter);
             ps.executeUpdate();
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi update thỏi vàng " + player.name);
-        } finally {  
-            try {  
+        } finally {
+            try {
                 ps.close();
-            } catch (Exception e) {  
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public static void updateItemReward(Player player) {  
+    public static void updateItemReward(Player player) {
         String dataItemReward = "";
-        for (Item item : player.getSession().itemsReward) {  
-            if (item.isNotNullItem()) {  
+        for (Item item : player.getSession().itemsReward) {
+            if (item.isNotNullItem()) {
                 dataItemReward += "{  " + item.template.id + ":" + item.quantity;
-                if (!item.itemOptions.isEmpty()) {  
+                if (!item.itemOptions.isEmpty()) {
                     dataItemReward += "|";
-                    for (Item.ItemOption io : item.itemOptions) {  
+                    for (Item.ItemOption io : item.itemOptions) {
                         dataItemReward += "[" + io.optionTemplate.id + ":" + io.param + "],";
                     }
                     dataItemReward = dataItemReward.substring(0, dataItemReward.length() - 1) + "};";
@@ -1473,33 +1472,33 @@ public class PlayerDAO {
         }
         PreparedStatement ps = null;
         ResultSet rs = null;
-        try (Connection con = GirlkunDB.getConnection();) {  
+        try (Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("update account set reward = ? where id = ?");
             ps.setString(1, dataItemReward);
             ps.setInt(2, player.getSession().userId);
             ps.executeUpdate();
             ps.close();
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi update phần thưởng " + player.name);
-        } finally {  
-            try {  
+        } finally {
+            try {
                 ps.close();
-            } catch (Exception e) {  
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public static boolean insertHistoryGold(Player player, int quantily) {  
+    public static boolean insertHistoryGold(Player player, int quantily) {
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {  
+        try (Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("insert into history_gold(name,gold) values (?,?)");
             ps.setString(1, player.name);
             ps.setInt(2, quantily);
             ps.executeUpdate();
             ps.close();
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();
             Logger.logException(PlayerDAO.class, e, "Lỗi insert history_gold " + player.name);
             return false;
@@ -1507,32 +1506,32 @@ public class PlayerDAO {
         return true;
     }
 
-    public static boolean checkLogout(Connection con, Player player) {  
-        if (player.getSession() == null) {  
+    public static boolean checkLogout(Connection con, Player player) {
+        if (player.getSession() == null) {
             // Handle the case when the session is null
             return false;
         }
 
         long lastTimeLogout = 0;
         long lastTimeLogin = 0;
-        try (PreparedStatement ps = con.prepareStatement("select * from account where id = ? limit 1")) {  
+        try (PreparedStatement ps = con.prepareStatement("select * from account where id = ? limit 1")) {
             ps.setInt(1, player.getSession().userId);
-            try (ResultSet rs = ps.executeQuery()) {  
-                while (rs.next()) {  
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
                     lastTimeLogout = rs.getTimestamp("last_time_logout").getTime();
                     lastTimeLogin = rs.getTimestamp("last_time_login").getTime();
                 }
             }
-        } catch (SQLException e) {  
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
         return lastTimeLogout > lastTimeLogin;
     }
 
-    public static void LogNapTIen(String uid, String menhgia, String seri, String code, String tranid) {  
+    public static void LogNapTIen(String uid, String menhgia, String seri, String code, String tranid) {
         String UPDATE_PASS = "INSERT INTO naptien(uid,sotien,seri,code,loaithe,time,noidung,tinhtrang,tranid,magioithieu) VALUES(?,?,?,?,?,?,?,?,?,?)";
-        try {  
+        try {
             Connection conn = GirlkunDB.getConnection();
             PreparedStatement ps = null;
             //UPDATE NRSD,
@@ -1550,13 +1549,13 @@ public class PlayerDAO {
             ps.setString(8, "0");
             ps.setString(9, tranid);
             ps.setString(10, "0");
-            if (ps.executeUpdate() == 1) {  
+            if (ps.executeUpdate() == 1) {
             }
 
             conn.commit();
             //UPDATE NRSD
             conn.close();
-        } catch (SQLException e) {  
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

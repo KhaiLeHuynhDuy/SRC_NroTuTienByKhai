@@ -12,59 +12,31 @@ import java.util.Random;
 import nro.consts.ConstPlayer;
 import nro.consts.cn;
 import nro.models.boss.list_boss.cell.SieuBoHung;
+import nro.models.item.Item;
 import nro.models.item.Item.ItemOption;
 import nro.services.RewardService;
 import nro.services.TaskService;
 import nro.utils.Logger;
 
-public class MaVuong extends Boss {
+public class Gomahdaivuong extends Boss {
 
-    public MaVuong() throws Exception {
-        super(BossType.MAVUONG, BossesData.MAVUONG);
+    public Gomahdaivuong() throws Exception {
+        super(BossType.GOMAHDAIVUONG, BossesData.GOMAHDAIVUONG);
     }
 
     @Override
     public void reward(Player pl) {
         pl.event.addEventPointBoss(1);
         Service.gI().sendThongBao(pl, "Bạn nhận được 1 điểm săn boss");
-        int trai = 0;
-        int phai = 1;
-        int next = 0;
-        for (int i = 0; i < 20; i++) {
-            int X = next == 0 ? -5 * trai : 5 * phai;
-            if (next == 0) {
-                trai++;
-            } else {
-                phai++;
-            }
-            next = next == 0 ? 1 : 0;
-            if (trai > 15) {
-                trai = 0;
-            }
-            if (phai > 15) {
-                phai = 1;
-            }
-            //Item roi
-            if (Util.isTrue(50, 100)) {
-                ItemMap itemMap = new ItemMap(zone, 457, 1, location.x + X, location.y, -1);
-                Service.gI().dropItemMap(zone, itemMap);
-            } else {
-                ItemMap hongngoc = new ItemMap(zone, 1525, 1, location.x + X, location.y, -1);
-                Service.gI().dropItemMap(zone, hongngoc);
-            }
-            if (Util.isTrue(1, 20)) {
-                ItemMap itemMap = new ItemMap(zone, Util.nextInt(1099, 1102), 1, location.x + X, location.y, -1);
-                Service.gI().dropItemMap(zone, itemMap);
-            }
+        //Item roi     
+        if (Util.isTrue(80, 100)) {
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, 1716, Util.nextInt(1, 3), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        } else {
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, 457, Util.nextInt(1, 10), this.location.x + 6, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), pl.id));
+        }
 
-            if (Util.isTrue(1, 20)) {
-                ItemMap itemMap = new ItemMap(zone, Util.nextInt(17, 20), 1, location.x + X, location.y, -1);
-                Service.gI().dropItemMap(zone, itemMap);
-            }
-            if (Util.isTrue(1, 20)) {
-                ItemMap itemMap = new ItemMap(zone, 861, Util.nextInt(10, 20), location.x + X, location.y, -1);
-                Service.gI().dropItemMap(zone, itemMap);
-            }
+        if (Util.isTrue(1, 10)) {
+            generalRewards(pl);
         }
 
     }
@@ -76,7 +48,7 @@ public class MaVuong extends Boss {
                 this.chat("Xí hụt");
                 return 0;
             }
-            damage = Util.nextInt(100, 10000);
+            damage = this.nPoint.subDameInjureWithDeff(damage);
             if (plAtt != null && !piercing && effectSkill.isShielding) {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
@@ -108,7 +80,7 @@ public class MaVuong extends Boss {
         }
         try {
         } catch (Exception ex) {
-            Logger.logException(MaVuong.class, ex);
+            Logger.logException(Gomahdaivuong.class, ex);
         }
         this.attack();
         if (Util.canDoWithTime(st, 900000)) {

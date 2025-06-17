@@ -18,18 +18,18 @@ import java.util.Arrays;
 import java.util.List;
 
 // su kien 1/6
-public class ConstDataEventSM {  
+public class ConstDataEventSM {
 
     public static ConstDataEventSM gI;
 
-    public static ConstDataEventSM gI() {  
-        if (gI == null) {  
+    public static ConstDataEventSM gI() {
+        if (gI == null) {
             gI = new ConstDataEventSM();
         }
         return gI;
     }
 
-    public static boolean isEventActive() {  
+    public static boolean isEventActive() {
         return false;
     }
 
@@ -53,7 +53,7 @@ public class ConstDataEventSM {
 
     public static boolean isActiveEvent() {
         if (!initsukien) {
-            initsukien = true;
+            initsukien = false;
             startEvent = Calendar.getInstance();
 
             // Thiết lập ngày và giờ bắt đầu
@@ -143,7 +143,7 @@ public class ConstDataEventSM {
     };
 
     public static void TraoQuaSuKien(Player pl, int i) {
-          int[][] optionSKH = {{127, 128, 129}, {130, 132, 131}, {134, 135, 133}};
+        int[][] optionSKH = {{127, 128, 129}, {130, 132, 131}, {134, 135, 133}};
         int[][] option2SKH = {{139, 140, 141}, {142, 144, 143}, {137, 138, 136}};
         int option = 0;
         int option2 = 0;

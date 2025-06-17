@@ -538,7 +538,7 @@ public class ShopServiceNew {
         if (pointExchange > 0) {
             if (evPoint >= pointExchange) {
 
-                player.event.subEventPointBHM(pointExchange);
+                player.event.subEventPointBoss(pointExchange);
 
                 InventoryServiceNew.gI().addItemBag(player, ItemService.gI().createItemFromItemShop(is));
                 InventoryServiceNew.gI().sendItemBags(player);

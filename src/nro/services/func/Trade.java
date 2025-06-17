@@ -171,7 +171,6 @@ public class Trade {
                 return true;
             }
         }
-
         switch (item.template.type) {
             case 27: //
                 return item.template.id == 457;

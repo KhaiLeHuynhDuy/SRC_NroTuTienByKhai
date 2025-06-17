@@ -145,6 +145,8 @@ public class BossManager {
                 BossType.MATROI,
                 BossType.XUONG,
                 BossType.MAVUONG,
+                BossType.GOMAH,
+                BossType.GOMAHDAIVUONG,
                 BossType.HUYET_MA,
                 BossType.NHAT_THAN, BossType.NGUYET_THAN,
                 BossType.FIDE2, BossType.HEART,
@@ -461,6 +463,10 @@ public class BossManager {
                     return new Black();
                 case BossType.MAVUONG:
                     return new MaVuong();
+                case BossType.GOMAH:
+                    return new Gomahbayby();
+                case BossType.GOMAHDAIVUONG:
+                    return new Gomahdaivuong();
                 case BossType.CUMBER:
                     return new Cumber();
 //                case BossType.DOI:
