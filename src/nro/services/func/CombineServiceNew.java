@@ -2478,20 +2478,99 @@ public class CombineServiceNew {
                     this.npsthiensu64.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Còn thiếu nguyên liệu để nâng cấp hãy quay lại sau", "Đóng");
                 }
                 break;
-            case NANG_CAP_BONG_TAI:// Nâng cấp btc2
+//            case NANG_CAP_BONG_TAI:// Nâng cấp btc2
+//                if (player.combineNew.itemsCombine.size() == 2) {
+//                    Item bongTai = null;
+//                    Item manhVo = null;
+//                    int[] idBongTai = {454, 921, 2064, 2052};
+//                    int[] idManhVo = {933, 933, 933, 933}; // Đảm bảo các idManhVo tương ứng với idBongTai
+//                    int[] slManhVo = {5999, 9999, 19999, 32999}; // Đảm bảo số lượng mảnh vỡ tương ứng với idManhVo
+//                    for (Item item : player.combineNew.itemsCombine) {
+//                        if (Arrays.stream(idBongTai).anyMatch(id -> id == item.template.id)) {
+//                            bongTai = item;
+//                        } else if (Arrays.stream(idManhVo).anyMatch(id -> id == item.template.id)) {
+//                            manhVo = item;
+//                        }
+//                    }
+//                    if (bongTai != null && manhVo != null) {
+//                        int indexBongTai = -1;
+//                        for (int i = 0; i < idBongTai.length; i++) {
+//                            if (bongTai.template.id == idBongTai[i]) {
+//                                indexBongTai = i;
+//                                break;
+//                            }
+//                        }
+//                        if (indexBongTai == -1) {
+//                            baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Bông tai không hợp lệ.", "Đóng");
+//                            break;
+//                        }
+//                        if (bongTai.template.id == idBongTai[3]) {
+//                            baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Đã max level", "Đóng");
+//                            break;
+//                        }
+//                        if (bongTai.template.id == idBongTai[2] && manhVo.template.id == idManhVo[1]) {
+//                            baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+//                                    "Cần x" + slManhVo[indexBongTai] + " " + ItemService.gI().getTemplate(idManhVo[indexBongTai]).name,
+//                                    "Đóng");
+//                            break;
+//                        }
+//
+//                        int sl = 100 + 100 * indexBongTai;
+//                        long gold = cn.vangNangPotara * (indexBongTai + 1);
+//                        int gem = cn.gemNangPotara * (indexBongTai + 1);
+//                        player.combineNew.goldCombine = gold;
+//                        player.combineNew.gemCombine = gem;
+//                        player.combineNew.ratioCombine = RATIO_BONG_TAI;
+//
+//                        if (manhVo.quantity >= slManhVo[indexBongTai]) {
+//                            String npcSay = "Bông tai " + ItemService.gI().getTemplate(idBongTai[indexBongTai + 1]).name + "\n|2|";
+//                            for (Item.ItemOption io : bongTai.itemOptions) {
+//                                npcSay += io.getOptionString() + "\n";
+//                            }
+//                            npcSay += "|7|Tỉ lệ thành công: " + player.combineNew.ratioCombine + "%" + "\n"
+//                                    + "|1|Cần " + Util.numberToMoney(gold) + " Vàng"
+//                                    + "\n" + Util.numberToMoney(gem) + " Ngọc Xanh"
+//                                    + "\n" + sl + " Thỏi vàng";
+//                            baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE, npcSay, "Nâng cấp");
+//                        } else {
+//                            baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+//                                    "Cần x" + slManhVo[indexBongTai] + " " + ItemService.gI().getTemplate(idManhVo[indexBongTai]).name,
+//                                    "Đóng");
+//                        }
+//                    } else {
+//                        baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+//                                "Cần 1 bông tai và số lượng mảnh vỡ tương ứng.",
+//                                "Đóng");
+//                    }
+//                } else {
+//                    baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+//                            "Cần 1 bông tai và số lượng mảnh vỡ tương ứng.",
+//                            "Đóng");
+//                }
+//                break;
+            case NANG_CAP_BONG_TAI: // Nâng cấp bông tai cấp 2–4
                 if (player.combineNew.itemsCombine.size() == 2) {
                     Item bongTai = null;
                     Item manhVo = null;
-                    int[] idBongTai = {454, 921, 2064, 2052};
-                    int[] idManhVo = {933, 933, 933, 933}; // Đảm bảo các idManhVo tương ứng với idBongTai
-                    int[] slManhVo = {5999, 9999, 19999, 32999}; // Đảm bảo số lượng mảnh vỡ tương ứng với idManhVo
+
+                    int[] idBongTai = {454, 921, 2064, 2052}; // cấp 1 → 4
+                    int[] slManhVo = {5999, 9999, 19999}; // số lượng mảnh vỡ cần cho từng cấp
+                    int manhVoId = 933; // ID của mảnh vỡ dùng chung
+
+                    // Xác định rõ ràng từng loại item
                     for (Item item : player.combineNew.itemsCombine) {
-                        if (Arrays.stream(idBongTai).anyMatch(id -> id == item.template.id)) {
-                            bongTai = item;
-                        } else if (Arrays.stream(idManhVo).anyMatch(id -> id == item.template.id)) {
+                        if (item.template.id == manhVoId) {
                             manhVo = item;
+                        } else {
+                            for (int id : idBongTai) {
+                                if (item.template.id == id) {
+                                    bongTai = item;
+                                    break;
+                                }
+                            }
                         }
                     }
+
                     if (bongTai != null && manhVo != null) {
                         int indexBongTai = -1;
                         for (int i = 0; i < idBongTai.length; i++) {
@@ -2500,26 +2579,23 @@ public class CombineServiceNew {
                                 break;
                             }
                         }
+
                         if (indexBongTai == -1) {
                             baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Bông tai không hợp lệ.", "Đóng");
                             break;
                         }
+
                         if (bongTai.template.id == idBongTai[3]) {
-                            baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Đã max level", "Đóng");
-                            break;
-                        }
-                        if (bongTai.template.id == idBongTai[2] && manhVo.template.id == idManhVo[1]) {
-                            baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                                    "Cần x" + slManhVo[indexBongTai] + " " + ItemService.gI().getTemplate(idManhVo[indexBongTai]).name,
-                                    "Đóng");
+                            baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Bông tai đã đạt cấp tối đa.", "Đóng");
                             break;
                         }
 
-                        int sl = 100 + 100 * indexBongTai;
-                        long gold = cn.vangNangPotara * (indexBongTai + 1);
-                        int gem = cn.gemNangPotara * (indexBongTai + 1);
-                        player.combineNew.goldCombine = gold;
-                        player.combineNew.gemCombine = gem;
+                        int thoiVang = 100 + 100 * indexBongTai;
+                        long vang = cn.vangNangPotara * (indexBongTai + 1);
+                        int ngoc = cn.gemNangPotara * (indexBongTai + 1);
+
+                        player.combineNew.goldCombine = vang;
+                        player.combineNew.gemCombine = ngoc;
                         player.combineNew.ratioCombine = RATIO_BONG_TAI;
 
                         if (manhVo.quantity >= slManhVo[indexBongTai]) {
@@ -2528,27 +2604,24 @@ public class CombineServiceNew {
                                 npcSay += io.getOptionString() + "\n";
                             }
                             npcSay += "|7|Tỉ lệ thành công: " + player.combineNew.ratioCombine + "%" + "\n"
-                                    + "|1|Cần " + Util.numberToMoney(gold) + " Vàng"
-                                    + "\n" + Util.numberToMoney(gem) + " Ngọc Xanh"
-                                    + "\n" + sl + " Thỏi vàng";
+                                    + "|1|Cần " + Util.numberToMoney(vang) + " Vàng"
+                                    + "\n" + Util.numberToMoney(ngoc) + " Ngọc Xanh"
+                                    + "\n" + thoiVang + " Thỏi vàng";
                             baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE, npcSay, "Nâng cấp");
                         } else {
                             baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                                    "Cần x" + slManhVo[indexBongTai] + " " + ItemService.gI().getTemplate(idManhVo[indexBongTai]).name,
+                                    "Cần " + slManhVo[indexBongTai] + " " + ItemService.gI().getTemplate(manhVoId).name,
                                     "Đóng");
                         }
                     } else {
                         baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                                "Cần 1 bông tai và số lượng mảnh vỡ tương ứng.",
-                                "Đóng");
+                                "Cần 1 bông tai và mảnh vỡ tương ứng.", "Đóng");
                     }
                 } else {
                     baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                            "Cần 1 bông tai và số lượng mảnh vỡ tương ứng.",
-                            "Đóng");
+                            "Cần đúng 1 bông tai và 1 mảnh vỡ.", "Đóng");
                 }
                 break;
-
             case MO_CHI_SO_BONG_TAI:// mở chỉ số bông tai cấp 2
                 if (player.combineNew.itemsCombine.size() == 3) {
                     Item bongTai = null;
@@ -4602,27 +4675,27 @@ public class CombineServiceNew {
             int gem = player.combineNew.gemCombine;
             Item bongTai = null;
             Item manhVo = null;
-            if (player.inventory.gem < gem) {
-                Service.gI().sendThongBao(player, "Thiếu ngọc xanh");
-                return;
-            }
-            if (player.inventory.gold < gold) {
-                Service.gI().sendThongBao(player, "Thiếu vàng");
-                return;
-            }
-            int[] idBongTai = {454, 921, 2064, 2052};
-            int[] idManhVo = {933, 933, 933, 933};
-            int[] slManhVo = {5999, 9999, 19999, 32999};
 
+            int[] idBongTai = {454, 921, 2064, 2052};
+            int[] slManhVo = {5999, 9999, 19999};
+            int manhVoId = 933;
+
+            // Tìm đúng bông tai và mảnh vỡ
             for (Item item : player.combineNew.itemsCombine) {
-                if (Arrays.stream(idBongTai).anyMatch(id -> id == item.template.id)) {
-                    bongTai = item;
-                } else if (Arrays.stream(idManhVo).anyMatch(id -> id == item.template.id)) {
+                if (item.template.id == manhVoId) {
                     manhVo = item;
+                } else {
+                    for (int id : idBongTai) {
+                        if (item.template.id == id) {
+                            bongTai = item;
+                            break;
+                        }
+                    }
                 }
             }
+
             if (bongTai != null && manhVo != null) {
-                int indexBongTai = 2;
+                int indexBongTai = -1;
                 for (int i = 0; i < idBongTai.length; i++) {
                     if (bongTai.template.id == idBongTai[i]) {
                         indexBongTai = i;
@@ -4630,29 +4703,53 @@ public class CombineServiceNew {
                     }
                 }
 
-                int sl = 50 + 50 * indexBongTai;
+                if (indexBongTai == -1 || indexBongTai == idBongTai.length - 1) {
+                    Service.gI().sendThongBao(player, "Không thể nâng cấp bông tai này.");
+                    return;
+                }
+
+                int thoiVang = 50 + 50 * indexBongTai;
+                int requiredManhVo = slManhVo[indexBongTai];
+
+                if (player.inventory.gem < gem) {
+                    Service.gI().sendThongBao(player, "Thiếu ngọc xanh");
+                    return;
+                }
+                if (player.inventory.gold < gold) {
+                    Service.gI().sendThongBao(player, "Thiếu vàng");
+                    return;
+                }
+                if (manhVo.quantity < requiredManhVo) {
+                    Service.gI().sendThongBao(player, "Thiếu " + requiredManhVo + " mảnh vỡ bông tai");
+                    return;
+                }
+                if (!this.SubThoiVang(player, thoiVang)) {
+                    Service.gI().sendThongBao(player, "Cần " + thoiVang + " thỏi vàng để thực hiện");
+                    return;
+                }
+
+                // Bắt đầu nâng cấp
                 player.inventory.gold -= gold;
                 player.inventory.gem -= gem;
-                if (!this.SubThoiVang(player, sl)) {
-                    Service.gI().sendThongBao(player, "Cần " + sl + " thỏi vàng để thực hiện");
+
+                boolean success = Util.isTrue(player.combineNew.ratioCombine, 100);
+                if (success) {
+                    InventoryServiceNew.gI().subQuantityItemsBag(player, manhVo, requiredManhVo);
+                    bongTai.template = ItemService.gI().getTemplate(idBongTai[indexBongTai + 1]);
+                    sendEffectSuccessCombine(player);
+                    Service.gI().sendThongBao(player, "Nâng cấp thành công");
                 } else {
-                    if (Util.isTrue(player.combineNew.ratioCombine, 100)) {
-                        InventoryServiceNew.gI().subQuantityItemsBag(player, manhVo, slManhVo[indexBongTai]);
-                        bongTai.template = ItemService.gI().getTemplate(idBongTai[indexBongTai + 1]);
-                        sendEffectSuccessCombine(player);
-                        Service.gI().sendThongBao(player, "Nâng cấp thành công");
-                    } else {
-                        player.inventory.gold -= gold;
-                        player.inventory.gem -= gem;
-                        InventoryServiceNew.gI().subQuantityItemsBag(player, manhVo, slManhVo[indexBongTai] / 10);
-                        sendEffectFailCombine(player);
-                        Service.gI().sendThongBao(player, "Nâng cấp thất bại");
-                    }
+                    int failPenalty = requiredManhVo / 10;
+                    InventoryServiceNew.gI().subQuantityItemsBag(player, manhVo, failPenalty);
+                    sendEffectFailCombine(player);
+                    Service.gI().sendThongBao(player, "Nâng cấp thất bại");
                 }
+
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendMoney(player);
                 reOpenItemCombine(player);
-
+            } else {
+                Service.gI().sendThongBao(player, "Cần 1 bông tai và 1 mảnh vỡ để nâng cấp");
             }
         }
     }
@@ -4672,7 +4769,7 @@ public class CombineServiceNew {
             Item bongTai = null;
             Item manhHon = null;
             Item daXanhLam = null;
-            int[] idBongTai = {454, 921, 2064, 2113};
+            int[] idBongTai = {454, 921, 2064, 2052};
             int[] idManhHon = {934, 934, 934, 934};
             int[] idDaXanhLam = {935, 935, 935, 935};
             int[] slManhHon = {39, 49, 69, 99};
@@ -7326,7 +7423,6 @@ public class CombineServiceNew {
                         + "Bông tai Potara + 5999 mảnh vỡ bông tai\n"
                         + "Bông tai cấp 2 + 9999 mảnh vỡ bông tai\n"
                         + "Bông tai cấp 3 + 19999 mảnh vỡ bông tai\n"
-                        + "Bông tai cấp 4 + 32999 mảnh vỡ bông tai\n"
                         + "Sau đó chọn 'Nâng cấp'\n"
                         + " Xịt mất 10% mảnh vỡ ";
 

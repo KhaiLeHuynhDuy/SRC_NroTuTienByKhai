@@ -759,9 +759,34 @@ public class Zone {
 //            Logger.logException(MapService.class, e);
 //        }
 //    }
-    public void load_Another_To_Me(Player player) { //load những player trong map và gửi cho player vào map
+//    public void load_Another_To_Me(Player player) { //load những player trong map và gửi cho player vào map
+//        try {
+//            if (this.map.isMapOffline) {
+//                for (Player pl : this.humanoids) {
+//                    if (pl.id == -player.id) {
+//                        infoPlayer(player, pl);
+//                        break;
+//                    }
+//                }
+//            } else {
+//                for (Player pl : this.humanoids) {
+//                    if (pl != null && !player.equals(pl)) {
+////                        infoPlayer(player, pl);
+//                        try {
+//                            infoPlayer(player, pl);
+//                        } catch (IndexOutOfBoundsException e) {
+//                            Logger.logException(MapService.class, new Exception("Failed to infoPlayer: " + pl + " to " + player, e));                            // Continue with other players instead of breaking
+//                        }
+//                    }
+//                }
+//            }
+//        } catch (Exception e) {
+//            Logger.logException(MapService.class, e);
+//        }
+//    }
+    public void load_Another_To_Me(Player player) { // load những player trong map và gửi cho player vào map
         try {
-            if (this.map.isMapOffline) {
+            if (MapService.gI().isMapOffline(this.map.mapId)) {
                 for (Player pl : this.humanoids) {
                     if (pl.id == -player.id) {
                         infoPlayer(player, pl);
@@ -771,12 +796,7 @@ public class Zone {
             } else {
                 for (Player pl : this.humanoids) {
                     if (pl != null && !player.equals(pl)) {
-//                        infoPlayer(player, pl);
-                        try {
-                            infoPlayer(player, pl);
-                        } catch (IndexOutOfBoundsException e) {
-                            Logger.logException(MapService.class, new Exception("Failed to infoPlayer: " + pl + " to " + player, e));                            // Continue with other players instead of breaking
-                        }
+                        infoPlayer(player, pl);
                     }
                 }
             }
@@ -820,21 +840,6 @@ public class Zone {
             msg.writer().writeByte(plInfo.gender);
             msg.writer().writeByte(plInfo.gender);
             msg.writer().writeShort(plInfo.getHead());
-//            if (!plInfo.name.equals("name")) {
-//                msg.writer().writeUTF(
-//                        plInfo.isMiniPet ? "" : plInfo.isPet ? plInfo.name : plInfo.vip == 4 ? "[SS]" + plInfo.name
-//                                                : plInfo.vip < 4 ? "[S" + plInfo.vip + "]" + plInfo.name : plInfo.name);
-//            }
-//khaile nullcheck
-//            if (!"name".equals(plInfo.name)) {
-//                msg.writer().writeUTF(
-//                        plInfo.isMiniPet ? ""
-//                                : plInfo.isPet ? plInfo.name
-//                                        : plInfo.vip == 4 ? "[SS]" + plInfo.name
-//                                                : plInfo.vip < 4 ? "[S" + plInfo.vip + "]" + plInfo.name
-//                                                        : plInfo.name
-//                );
-//            }
             if (!"name".equals(plInfo.name)) {
                 String prefix = "";
 
@@ -855,7 +860,6 @@ public class Zone {
                 } else if (plInfo.vip == 0) {
                     prefix = "[Tạp dịch]";
                 }
-
                 msg.writer().writeUTF(
                         plInfo.isMiniPet ? "" // Mini pet không ghi tên
                                 : plInfo.isPet || plInfo.isBoss ? plInfo.name // Pet và Boss chỉ ghi tên
@@ -863,26 +867,26 @@ public class Zone {
                 );
             }
 //end khaile nullcheck
-            if (plInfo.nPoint == null) {
-//                msg.writeFix(Util.maxIntValue(100));
-//                msg.writeFix(Util.maxIntValue(100));
-                System.err.println(plInfo.name + " null nPoint_infoPlayer");
-                return;
-            }
-            msg.writeFix(Util.maxIntValue(plInfo.nPoint.hp));
-            msg.writeFix(Util.maxIntValue(plInfo.nPoint.hpMax));
+//            if (plInfo.nPoint == null) {
+////                msg.writeFix(Util.maxIntValue(100));
+////                msg.writeFix(Util.maxIntValue(100));
+//                System.err.println(plInfo.name + " null nPoint_infoPlayer");
+//                return;
+//            }
+            msg.writer().writeLong(plInfo.nPoint.hp);
+            msg.writer().writeLong(plInfo.nPoint.hpMax);
 
             msg.writer().writeShort(plInfo.getBody());
             msg.writer().writeShort(plInfo.getLeg());
             msg.writer().writeByte(plInfo.getFlagBag()); //bag
 
             msg.writer().writeByte(-1);
-            if (plInfo.location == null) {
+//            if (plInfo.location == null) {
 //                msg.writeFix(Util.maxIntValue(-1));
 //                msg.writeFix(Util.maxIntValue(-1));
-                System.err.println(plInfo.name + " null location_infoPlayer");
-                return;
-            }
+//                System.err.println(plInfo.name + " null location_infoPlayer");
+//                return;
+//            }
             msg.writer().writeShort(plInfo.location.x);
             msg.writer().writeShort(plInfo.location.y);
 
@@ -919,15 +923,8 @@ public class Zone {
                 msg = new Message(-8);
                 msg.writer().writeInt((int) plInfo.id);
                 msg.writer().writeByte(0);
-                if (plInfo.location == null) {
-//                msg.writeFix(Util.maxIntValue(-1));
-//                msg.writeFix(Util.maxIntValue(-1));
-                    System.err.println(plInfo.name + " null2 location_infoPlayer");
-                    return;
-                }
                 msg.writer().writeShort(plInfo.location.x);
                 msg.writer().writeShort(plInfo.location.y);
-                plReceive.sendMessage(msg);
                 msg.cleanup();
             }
         } catch (Exception e) {

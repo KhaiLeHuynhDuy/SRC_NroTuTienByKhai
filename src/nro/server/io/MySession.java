@@ -24,7 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class MySession extends Session {
 
     private static final Map<String, AntiLogin> ANTILOGIN = new HashMap<>();
@@ -130,7 +129,8 @@ public class MySession extends Session {
             e.printStackTrace();
             // Ghi log lỗi
             Logger.error("Lỗi định dạng số trong initItemsReward: " + e.getMessage());
-        } catch (Exception e) { e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
             // Ghi log các lỗi khác
             Logger.error("Lỗi không xác định trong initItemsReward: " + e.getMessage());
         }
@@ -173,7 +173,7 @@ public class MySession extends Session {
             Service.gI().sendThongBaoOK(this, "Server này chỉ để lưu dữ liệu\nVui lòng qua server khác");
             return;
         }
-      
+
         if (Maintenance.isRuning) {
             Service.gI().sendThongBaoOK(this, "Server đang trong thời gian bảo trì, vui lòng quay lại sau");
             return;
@@ -195,10 +195,10 @@ public class MySession extends Session {
                 player = GodGK.login(this, al);
                 if (player != null) {
 
-                     // -77 max small
+                    // -77 max small
                     DataGame.sendSmallVersion(this);
                     // -93 bgitem version
-                 //  Service.gI().sendMessage(this, -93, "1630679752231_-93_r");
+                    Service.gI().sendMessage(this, -93, "1630679752231_-93_r");
 
                     this.timeWait = 0;
                     this.joinedGame = true;
@@ -212,7 +212,7 @@ public class MySession extends Session {
                         player.pet.nPoint.setMp(Util.maxIntValue(player.pet.nPoint.mp));
                     }
 
-                     player.setSession(this);
+                    player.setSession(this);
                     Client.gI().put(player);
                     this.player = player;
                     //-28 -4 version data game
@@ -220,23 +220,11 @@ public class MySession extends Session {
                     //-31 data item background
                     DataGame.sendDataItemBG(this);
                     Controller.getInstance().sendInfo(this);
-//                    
-
-//                    player.setSession(this);
-//                    Client.gI().put(player);
-//                    this.player = player;
-//                    //-28 -4 version data game
-//                    DataGame.sendVersionGame(this);
-//                    //-31 data item background
-//                    DataGame.sendDataItemBG(this);
-//                    Controller.getInstance().sendInfo(this);
-//                    
-//                    Service.gI().sendTimeSkill(player);
-//                    PlayerService.gI().sendInfoHpMp(player);
                     Logger.warning("Login thành công player " + this.player.name + ": " + (System.currentTimeMillis() - st) + " ms\n");
 //                    Service.gI().sendThongBaoOK(this, "Ngọc rồng sao đen sẽ mở lúc 21h hôm nay");
                 }
-            } catch (Exception e) { e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
                 if (player != null) {
                     player.dispose();
                 }

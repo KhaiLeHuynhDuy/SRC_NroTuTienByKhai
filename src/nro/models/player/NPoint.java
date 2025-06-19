@@ -239,7 +239,7 @@ public class NPoint {
                                 this.mpAdd += io.param;
                                 break;
                             case 8: // Hút #% HP, KI xung quanh mỗi 5 giây
-                                this.tlHutHpMpXQ += io.param;
+//                                this.tlHutHpMpXQ += io.param;
                                 break;
                             case 14: // Chí mạng+#%
                                 this.critAdd += io.param;
@@ -365,7 +365,7 @@ public class NPoint {
                             break;
                         case 230:
                         case 8: //Hút #% HP, KI xung quanh mỗi 5 giây
-                            this.tlHutHpMpXQ += io.param;
+//                            this.tlHutHpMpXQ += io.param;
                             break;
                         case 247:
                         case 14: //Chí mạng+#%

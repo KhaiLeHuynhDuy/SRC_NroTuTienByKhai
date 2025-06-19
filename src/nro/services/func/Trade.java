@@ -173,7 +173,7 @@ public class Trade {
         }
         switch (item.template.type) {
             case 27: //
-                return item.template.id == 457;
+                return item.template.id == 570;
             case 5: //cải trang
             case 6: //đậu thần
             case 7: //sách skill

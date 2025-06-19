@@ -721,8 +721,8 @@ public class Util {
 //        List<Integer> itemhe2023 = Arrays.asList(2157, 2158, 2159, 2160);
 
 //        List<Integer> ca = Arrays.asList(1001, 1002, 1003, 1004, 1010, 1011, 1012);
-        List<Integer> itembuff = Arrays.asList(462, 569, 74, 191, 192, 211, 212);
-        List<Integer> chu = Arrays.asList(537, 538, 539, 540);
+//        List<Integer> itembuff = Arrays.asList(462, 569, 74, 191, 192, 211, 212);
+//        List<Integer> chu = Arrays.asList(537, 538, 539, 540);
         //List<Integer> trungthu = Arrays.asList(886, 887, 888, 889, 1132, 1133);
         List<Integer> item = Arrays.asList(457, 77, 76, 17, 1067, 1068, 1069, 1070, 1066, 18, 19, 20);
         List<Integer> tinhan = Arrays.asList(1314, 1315, 1316);
@@ -766,9 +766,9 @@ public class Util {
 //        if (ca.contains(tempId)) {
 //            it.options.add(new Item.ItemOption(93, 10));//còn lại # ngày
 //        }
-        if (itembuff.contains(tempId)) {
-            it.options.add(new Item.ItemOption(93, 10));//còn lại # ngày
-        }
+//        if (itembuff.contains(tempId)) {
+//            it.options.add(new Item.ItemOption(93, 10));//còn lại # ngày
+//        }
         if (item.contains(tempId)) {
             it.options.add(new Item.ItemOption(93, 10));//
         }

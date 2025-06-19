@@ -966,6 +966,12 @@ public class Controller implements IMessageHandler {
                             ItemTimeService.gI().sendTextConDuongRanDoc(player);
 //                            ItemTimeService.gI().sendTextKhiGas(player);
                             ItemTimeService.gI().sendTextDoanhTrai(player);
+                            if (player.isAdmin()) {
+                                Service.gI().sendMessageServer(player.name + " đã online, Tất Cả Quỳ Xuống !!");
+                            }
+                            if (player.vip == 4) {
+                                Service.gI().sendMessageServer(" Cung nghênh [Đạo tử] " + player.name + " đã giáng lâm bát hoang vị diện !!");
+                            }
                         }
                         break;
                     default:
@@ -1136,7 +1142,6 @@ public class Controller implements IMessageHandler {
 
         //clear vt sk
 //        clearVTSK(player);
-   
         if (player.inventory.itemsBody.get(11).isNotNullItem()) {
             new Thread(() -> {
                 try {

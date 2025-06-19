@@ -189,7 +189,7 @@ public class Client implements Runnable {
                 if (player.newpet != null) {
                     ChangeMapService.gI().exitMap(player.newpet);
                 }
-                 if (player.minipet != null) {
+                if (player.minipet != null) {
                     ChangeMapService.gI().exitMap(player.minipet);
                 }
                 ChangeMapService.gI().exitMap(player.pet);
@@ -328,17 +328,24 @@ public class Client implements Runnable {
     }
 
     public void close() {
-        Logger.error("BEGIN KICK OUT SESSION.............................." + players.size() + "\n");
-        while (!GirlkunSessionManager.gI().getSessions().isEmpty()) {
-            Logger.error("LEFT PLAYER: " + this.players.size() + ".........................\n");
-            this.kickSession((MySession) GirlkunSessionManager.gI().getSessions().remove(0));
-        }
+        Logger.error("BEGIN KICK OUT SESSION.......................... " + players.size() + " Player\n");
         while (!players.isEmpty()) {
             this.kickSession((MySession) players.remove(0).getSession());
         }
-        Logger.error("...........................................SUCCESSFUL\n");
+        Logger.error("CLIENT SUCCESSFUL................................\n");
     }
 
+//    public void close() {
+//        Logger.error("BEGIN KICK OUT SESSION.............................." + players.size() + "\n");
+//        while (!GirlkunSessionManager.gI().getSessions().isEmpty()) {
+//            Logger.error("LEFT PLAYER: " + this.players.size() + ".........................\n");
+//            this.kickSession((MySession) GirlkunSessionManager.gI().getSessions().remove(0));
+//        }
+//        while (!players.isEmpty()) {
+//            this.kickSession((MySession) players.remove(0).getSession());
+//        }
+//        Logger.error("...........................................SUCCESSFUL\n");
+//    }
 //    public void cloneMySessionNotConnect() {
 //        Logger.error("START KICK SESSION DDOS\n");
 //        Logger.error("COUNT: " + GirlkunSessionManager.gI().getSessions().size());

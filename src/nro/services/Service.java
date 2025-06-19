@@ -187,6 +187,22 @@ public class Service {
         }
     }
 
+    public Message messageReadOpt(byte command) throws IOException {
+        Message ms = new Message(24);
+        ms.writer().writeByte(command);
+        return ms;
+    }
+
+    public void sendMessageServer(String data) {
+        Message msg;
+        try {
+            msg = messageReadOpt((byte) 4);
+            msg.writer().writeUTF(data);
+            sendMessAllPlayer(msg);
+        } catch (Exception e) {
+        }
+    }
+
     public void sendFoot(Player player, int id) {
         Message me;
         try {
@@ -351,39 +367,86 @@ public class Service {
         }
     }
 
+//    public void showListTop(Player player, List<TOP> tops) {
+//        Message msg;
+//        try {
+//            msg = new Message(-96);
+//            msg.writer().writeByte(0);
+//            msg.writer().writeUTF("Top");
+//            msg.writer().writeByte(tops.size());
+//            for (int i = 0; i < tops.size(); i++) {
+//                TOP top = tops.get(i);
+//                Player pl = GodGK.loadById(top.getId_player());
+//                if (pl == null) {
+//                    System.out.println("Player object is null for top player ID: " + top.getId_player());
+//                    continue; // Skip to the next iteration if player object is null
+//                }
+//                msg.writer().writeInt(i + 1);
+//                msg.writer().writeInt((int) pl.id);
+//                msg.writer().writeShort(pl.getHead());
+//                if (player.getSession().version > 214) {
+//                    msg.writer().writeShort(-1);
+//                }
+//                msg.writer().writeShort(pl.getBody());
+//                msg.writer().writeShort(pl.getLeg());
+//                msg.writer().writeUTF(pl.name);
+//                msg.writer().writeUTF(top.getInfo1());
+//                msg.writer().writeUTF("");//khaile add
+//                //khaile comment
+//                //msg.writer().writeUTF(top.getInfo2());
+//                //end khaile comment
+//            }
+//            player.sendMessage(msg);
+//            msg.cleanup();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
     public void showListTop(Player player, List<TOP> tops) {
         Message msg;
         try {
+            if (tops == null || tops.isEmpty()) {
+                // Trả về nếu danh sách tops không hợp lệ
+                Service.gI().sendThongBao(player, "Không có dữ liệu top để hiển thị.");
+                return;
+            }
+
             msg = new Message(-96);
             msg.writer().writeByte(0);
             msg.writer().writeUTF("Top");
             msg.writer().writeByte(tops.size());
+
             for (int i = 0; i < tops.size(); i++) {
                 TOP top = tops.get(i);
+
+                // Kiểm tra nếu player không tồn tại
                 Player pl = GodGK.loadById(top.getId_player());
                 if (pl == null) {
-                    System.out.println("Player object is null for top player ID: " + top.getId_player());
-                    continue; // Skip to the next iteration if player object is null
+                    // Nếu không tìm thấy player, có thể ghi thông báo lỗi hoặc bỏ qua
+                    System.out.println("Player with ID " + top.getId_player() + " not found.");
+                    continue;  // Bỏ qua nếu không tìm thấy player
                 }
+
                 msg.writer().writeInt(i + 1);
-                msg.writer().writeInt((int) pl.id);
-                msg.writer().writeShort(pl.getHead());
+                msg.writer().writeInt((int) pl.id); // Ghi ID của player
+                msg.writer().writeShort(pl.getHead()); // Ghi đầu
                 if (player.getSession().version > 214) {
-                    msg.writer().writeShort(-1);
+                    msg.writer().writeShort(-1); // Thêm thông tin cho phiên bản mới
                 }
-                msg.writer().writeShort(pl.getBody());
-                msg.writer().writeShort(pl.getLeg());
-                msg.writer().writeUTF(pl.name);
-                msg.writer().writeUTF(top.getInfo1());
-                msg.writer().writeUTF("");//khaile add
-                //khaile comment
-                //msg.writer().writeUTF(top.getInfo2());
-                //end khaile comment
+                msg.writer().writeShort(pl.getBody()); // Ghi thân
+                msg.writer().writeShort(pl.getLeg()); // Ghi chân
+                msg.writer().writeUTF(pl.name); // Ghi tên
+                msg.writer().writeUTF(top.getInfo1()); // Ghi thông tin 1
+                msg.writer().writeUTF(top.getInfo2()); // Ghi thông tin 2
             }
+
+            // Gửi tin nhắn
             player.sendMessage(msg);
             msg.cleanup();
         } catch (Exception e) {
             e.printStackTrace();
+            // Ghi lại thông báo lỗi chi tiết
+            Service.gI().sendThongBao(player, "Có lỗi xảy ra khi hiển thị top.");
         }
     }
 

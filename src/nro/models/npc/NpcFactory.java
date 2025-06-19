@@ -1959,9 +1959,17 @@ public class NpcFactory {
                                     ChangeMapService.gI().changeMapInYard(player, 176, -1, 552);
                                     break;
                                 case 2:// dung nham 1
+                                    if (player.nPoint.dameg > 3_600_000) {
+                                        Service.gI().sendThongBao(player, "Vui lòng vào Dung Nham 2");
+                                        return;
+                                    }
                                     ChangeMapService.gI().changeMapInYard(player, 216, -1, 552);
                                     break;
                                 case 3:// dung nham 2
+                                    if (player.nPoint.dameg > 18_000_000) {
+                                        Service.gI().sendThongBao(player, "Vui lòng vào Dung Nham 3");
+                                        return;
+                                    }
                                     ChangeMapService.gI().changeMapInYard(player, 217, -1, 552);
                                     break;
                                 case 4:// dung nham 3

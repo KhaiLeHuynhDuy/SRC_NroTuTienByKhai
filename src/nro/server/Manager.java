@@ -706,8 +706,8 @@ public class Manager {
         }, "Update Maps").start();
         Referee r = new Referee();
         r.initReferee();
-        Yajiro r1 = new Yajiro();
-        r1.initYajiro();
+//        Yajiro r1 = new Yajiro();
+//        r1.initYajiro();
         TestDame td = new TestDame();
         td.initTestDame();
         //end khaile add test dame & uncomment thread

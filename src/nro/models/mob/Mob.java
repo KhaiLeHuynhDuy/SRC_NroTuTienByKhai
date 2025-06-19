@@ -1032,7 +1032,7 @@ public class Mob {
         if (mapid >= 63 && mapid <= 83) { // sự kiện bãi biển
             if (!player.isPet && Util.isTrue(10, 100)) {
                 Item tandan = ItemService.gI().createNewItem((short) Util.nextInt(1712, 1714));
-                tandan.itemOptions.add(new Item.ItemOption(93, 29));
+//                tandan.itemOptions.add(new Item.ItemOption(93, 29));
                 InventoryServiceNew.gI().addItemBag(player, tandan);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được " + tandan.template.name);
@@ -1041,7 +1041,7 @@ public class Mob {
         if (mapid >= 92 && mapid <= 110) { // sự kiện bãi biển
             if (!player.isPet && Util.isTrue(10, 100)) {
                 Item tandan = ItemService.gI().createNewItem((short) Util.nextInt(1712, 1714));
-                tandan.itemOptions.add(new Item.ItemOption(93, 29));
+//                tandan.itemOptions.add(new Item.ItemOption(93, 29));
                 InventoryServiceNew.gI().addItemBag(player, tandan);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được " + tandan.template.name);

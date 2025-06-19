@@ -172,10 +172,8 @@ public class ServerManager {
         new Thread(DaiHoiVoThuat.getInstance(), "Thread DHVT").start();
 
 //        MiniGame.gI().MiniGame_S1.active(1000);
-        
 //        ChonAiDay.gI().lastTimeEnd = System.currentTimeMillis() + 300000;
 //        new Thread(ChonAiDay.gI(), "Thread CAD").start();
-
         NgocRongNamecService.gI().initNgocRongNamec((byte) 0);
 
         new Thread(NgocRongNamecService.gI(), "Thread NRNM").start();
@@ -331,7 +329,7 @@ public class ServerManager {
             while (true) {
                 String line = sc.nextLine();
                 if (line.equals("baotri")) {
-                    Maintenance.gI().start(60 * 2);
+                    Maintenance.gI().start(2);
                 } else if (line.equals("athread")) {
                     ServerNotify.gI().notify("Nro Arriety debug server: " + Thread.activeCount());
                 } else if (line.equals("nplayer")) {
